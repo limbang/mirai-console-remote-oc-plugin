@@ -8,8 +8,13 @@
 
 package top.limbang.remoteoc
 
+import kotlinx.coroutines.cancel
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription
 import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
+import net.mamoe.mirai.event.GlobalEventChannel
+import net.mamoe.mirai.event.registerTo
+import top.limbang.remoteoc.listener.TeamListener
+
 
 object RemoteOC : KotlinPlugin(
     JvmPluginDescription(
@@ -23,10 +28,18 @@ object RemoteOC : KotlinPlugin(
 ){
 
     override fun onEnable() {
+        // 加载数据
+        RemoteOCData.reload()
 
+        // 创建事件通道
+        val eventChannel = GlobalEventChannel.parentScope(this)
+
+        // 注册事件监听器
+        TeamListener.registerTo(eventChannel)
     }
 
     override fun onDisable() {
-
+        // 取消事件监听器
+        TeamListener.cancel()
     }
 }
