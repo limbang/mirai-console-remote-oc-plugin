@@ -8,8 +8,9 @@
 package top.limbang.remoteoc.network.model
 
 import kotlinx.serialization.Serializable
+import top.limbang.remoteoc.network.serializer.ResultDataSerializer
 
-@Serializable
+@Serializable(with = ResultDataSerializer::class)
 data class ResultData<T>(
     val data: List<T>,
     val message: String
