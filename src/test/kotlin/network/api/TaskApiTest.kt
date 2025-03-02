@@ -7,10 +7,10 @@
 
 package top.limbang.remoteoc.network.api
 
+import entity.CraftingData
 import entity.Item
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.json.Json
 import org.slf4j.LoggerFactory
 import top.limbang.remoteoc.entity.AeCommand
 import top.limbang.remoteoc.entity.CpuDetail
@@ -42,7 +42,7 @@ internal class TaskApiTest {
     }
 
     @Test
-    fun getCommands() = runBlocking {
+    fun getCommandsTest() = runBlocking {
         val response = api.getCommands(clientId)
 
         assertEquals(response.code, 200)
@@ -62,7 +62,7 @@ internal class TaskApiTest {
     }
 
     @Test
-    fun getTaskStatus() = runBlocking {
+    fun getTaskStatusTest() = runBlocking {
         val response = api.getTaskStatus("123", true, false)
 
         assertEquals("success", response.message)
@@ -73,7 +73,7 @@ internal class TaskApiTest {
     val itemUtil = ItemUtil(javaClass.classLoader.getResource("logback.xml")!!.path.substringBeforeLast("/"))
 
     @Test
-    fun getCpuList() = runBlocking {
+    fun getCpuListTest() = runBlocking {
         // 创建命令请求
         val taskStatusResponse = try {
             api.executeCommand(
@@ -96,14 +96,39 @@ internal class TaskApiTest {
             separator = "\n",
             prefix = "=== CPU 状态 ===\n",
             postfix = "\n================",
-            transform = { "CPU:${it.index + 1} 并行处理器：${it.value.coprocessors} 存储容量：${it.value.storage / 1024} K 忙碌状态: ${it.value.busy}" }
+            transform = { cpu ->
+                "CPU:${cpu.index + 1}\n" +
+                        "并行处理器：${cpu.value.coprocessors}\n" +
+                        "存储容量：${cpu.value.storage / 1024} K\n" +
+                        "忙碌状态: ${cpu.value.busy}" +
+                        (if (cpu.value.cpu.activeItems.isNotEmpty()) {
+                            "\n正在执行的物品：\n" + itemUtil.getLocalItems(cpu.value.cpu.activeItems).joinToString(
+                                separator = "\n",
+                                transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
+                            )
+                        } else "") +
+                        (if (cpu.value.cpu.storedItems.isNotEmpty()) {
+                            "\n待存储的物品：\n" + itemUtil.getLocalItems(cpu.value.cpu.storedItems)
+                                .joinToString(
+                                    separator = "\n",
+                                    transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
+                                )
+                        } else "") +
+                        (if (cpu.value.cpu.pendingItems.isNotEmpty()) {
+                            "\n待处理的物品：\n" + itemUtil.getLocalItems(cpu.value.cpu.pendingItems)
+                                .joinToString(
+                                    separator = "\n",
+                                    transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
+                                )
+                        } else "")
+            }
         )
 
         logger.info(cpuInfo)
     }
 
     @Test
-    fun getAllCraftables() = runBlocking {
+    fun getAllCraftablesTest() = runBlocking {
         // 创建命令请求
         val taskStatusResponse = try {
             api.executeCommand(
@@ -123,14 +148,53 @@ internal class TaskApiTest {
         val result = json.decodeFromString<ResultData<Item>>(itemList)
 
         val itemInfo = itemUtil.getLocalItems(result.data).joinToString(
-            separator = "\n" ,
+            separator = "\n",
             prefix = "=== 可合成清单 ===\n",
             postfix = "\n==============",
             transform = { "物品名称：${it.chineseName} 物品图片路径：${it.imgPath}" }
-            )
+        )
 
         logger.info(itemInfo)
     }
 
+    @Test
+    fun requestItemTest() = runBlocking {
+        // 定义一个物品
+        val localizedItem = itemUtil.getLocalItem(Item("gregtech:gt.metaitem.01", "Titanium Plate", 17028, 0))!!
+
+        // 创建命令请求
+        val taskStatusResponse = try {
+            api.executeCommand(
+                taskId = "test_requestItem",
+                command = AeCommand.RequestItem(
+                    itemName = localizedItem.item.name,
+                    damage = localizedItem.item.damage,
+                    amount = 1
+                ),
+                clientId = "limbang"
+            )
+        } catch (e: TimeoutCancellationException) {
+            // 处理超时
+            logger.error(TIMEOUT_ERROR)
+            return@runBlocking
+        } ?: return@runBlocking
+
+        // 处理结果
+        val message = taskStatusResponse.result!!.first()
+
+        val result = json.decodeFromString<ResultData<CraftingData>>(message)
+
+        // 处理合成结果
+        result.data.forEach { craftingData ->
+            logger.info(
+                "物品名称：${localizedItem.chineseName}\n" +
+                        "物品数量：${craftingData.item.size}\n" +
+                        "正在合成：${craftingData.computing}\n" +
+                        "是否取消：${craftingData.canceled.result}\n" +
+                        "是否完成：${craftingData.done.result}\n" +
+                        "是否失败：${craftingData.failed}"
+            )
+        }
+    }
 
 }

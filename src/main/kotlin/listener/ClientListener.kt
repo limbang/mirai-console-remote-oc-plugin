@@ -7,6 +7,7 @@
 
 package top.limbang.remoteoc.listener
 
+import entity.CraftingData
 import entity.Item
 import kotlinx.coroutines.TimeoutCancellationException
 import net.mamoe.mirai.event.EventHandler
@@ -33,6 +34,8 @@ import top.limbang.remoteoc.utils.json
 object ClientListener : SimpleListenerHost() {
 
     private val BIND_CLIENT_REGEX = """^绑定客户端\s?([a-zA-Z0-9]{2,16})""".toRegex()
+    private val CRAFT_ITEM_REGEX = """^合成\s+([^\s\n]+(?:\s+[^\s\n]+)*?)(?:\s+(\d{1,12}))?$""".toRegex()
+    private val itemUtil = ItemUtil(dataFolderPath.toString())
 
     /**
      * 绑定客户端
@@ -135,7 +138,32 @@ object ClientListener : SimpleListenerHost() {
             separator = "\n",
             prefix = "\n=== CPU 状态 ===\n",
             postfix = "\n================",
-            transform = { "CPU:${it.index + 1} 并行处理器：${it.value.coprocessors} 存储容量：${it.value.storage / 1024} K 忙碌状态: ${it.value.busy}" }
+            transform = { cpu ->
+                "CPU:${cpu.index + 1}\n" +
+                        "并行处理器：${cpu.value.coprocessors}\n" +
+                        "存储容量：${cpu.value.storage / 1024} K\n" +
+                        "忙碌状态: ${cpu.value.busy}" +
+                        (if (cpu.value.cpu.activeItems.isNotEmpty()) {
+                            "\n正在执行的物品：\n" + itemUtil.getLocalItems(cpu.value.cpu.activeItems).joinToString(
+                                separator = "\n",
+                                transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
+                            )
+                        } else "") +
+                        (if (cpu.value.cpu.storedItems.isNotEmpty()) {
+                            "\n待存储的物品：\n" + itemUtil.getLocalItems(cpu.value.cpu.storedItems)
+                                .joinToString(
+                                    separator = "\n",
+                                    transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
+                                )
+                        } else "") +
+                        (if (cpu.value.cpu.pendingItems.isNotEmpty()) {
+                            "\n待处理的物品：\n" + itemUtil.getLocalItems(cpu.value.cpu.pendingItems)
+                                .joinToString(
+                                    separator = "\n",
+                                    transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
+                                )
+                        } else "")
+            }
         )
 
         sendMessage(cpuInfo)
@@ -180,5 +208,51 @@ object ClientListener : SimpleListenerHost() {
 
         sendMessage(itemInfo)
     }
+
+    /**
+     * 合成物品
+     */
+    @EventHandler
+    suspend fun GroupMessageEvent.craftItem() {
+        val content = message.contentToString()
+        val commandMatch = CRAFT_ITEM_REGEX.find(content) ?: return
+        val (itemName, count) = commandMatch.destructured
+
+        // 获取团队信息
+        val team = validateTeamAndClient() ?: return
+        // 获取合成清单
+        val craftItems = teamCraftItem[team.name] ?: run { sendMessage("❌ 请先获取合成清单"); return }
+        // 查询物品是否可以合成
+        val localizedItem =
+            craftItems.find { it.chineseName == itemName } ?: run { sendMessage("❌ 该物品无法合成"); return }
+        // 转换数量
+        val countInt = if (count.isEmpty()) 1 else count.toInt()
+
+        // 创建命令请求
+        val taskStatusResponse = try {
+            taskApi.executeCommand(
+                taskId = "${sender.id}_requestItem",
+                command = AeCommand.RequestItem(
+                    itemName = localizedItem.item.name,
+                    damage = localizedItem.item.damage,
+                    amount = countInt
+                ),
+                clientId = teamClients.getValue(team.name)
+            )
+        } catch (e: TimeoutCancellationException) {
+            // 处理超时
+            sendMessage(TIMEOUT_ERROR)
+            return
+        } ?: return
+
+        // 处理结果
+        val message = taskStatusResponse.result!!.first()
+
+        val result = json.decodeFromString<ResultData<CraftingData>>(message)
+
+        // 处理合成结果
+        result.data.forEach { craftingData ->
+            sendMessage("✅ ${localizedItem.chineseName}合成进行中，请稍后查询结果\n")
+        }
     }
 }

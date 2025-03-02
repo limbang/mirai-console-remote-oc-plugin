@@ -27,5 +27,12 @@ sealed class AeCommand(val commandString: String) {
     data object GetAllCraftables :
         AeCommand("return ae.getAllCraftables()")
 
-
+    /**
+     * 请求物品命令
+     * @param itemName 物品名称
+     * @param damage 物品耐久度
+     * @param amount 请求数量
+     */
+    data class RequestItem(val itemName: String, val damage: Int, val amount: Int) :
+        AeCommand("""return ae.requestItem("$itemName", $damage, $amount)""")
 }
