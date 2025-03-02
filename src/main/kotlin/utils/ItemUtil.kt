@@ -54,7 +54,7 @@ class ItemUtil(
      * @param item 原始物品对象，需包含名称(name)和损伤值(damage)
      * @return [LocalizedItem] 包含本地化名称和图片路径的对象（可能为null）
      */
-    private fun getLocalItem(item: Item): LocalizedItem? {
+    fun getLocalItem(item: Item): LocalizedItem? {
         // 优先执行过滤检查
         if (nameFilters.contains(item.name)) return null
 
@@ -89,7 +89,7 @@ class ItemUtil(
      * @param fluid 原始液体对象，需包含名称(name)
      * @return [LocalizedFluid] 包含本地化名称和图片路径的对象
      */
-    private fun getLocalFluid(fluid: Fluid): LocalizedFluid {
+    fun getLocalFluid(fluid: Fluid): LocalizedFluid {
         val fluidMetadata = fluidData[fluid.name]
         return if (fluidMetadata != null) {
             LocalizedFluid(fluid, fluidMetadata.chineseName, "img/fluids/${fluid.label}.png")
