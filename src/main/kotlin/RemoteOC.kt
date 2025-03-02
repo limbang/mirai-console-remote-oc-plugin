@@ -16,6 +16,7 @@ import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
 import net.mamoe.mirai.event.GlobalEventChannel
 import net.mamoe.mirai.event.registerTo
 import top.limbang.remoteoc.RemoteOCCompositeCommand.init
+import top.limbang.remoteoc.listener.ClientListener
 import top.limbang.remoteoc.listener.TeamListener
 
 
@@ -43,11 +44,13 @@ object RemoteOC : KotlinPlugin(
 
         // 注册事件监听器
         TeamListener.registerTo(eventChannel)
+        ClientListener.registerTo(eventChannel)
     }
 
     override fun onDisable() {
         // 取消事件监听器
         TeamListener.cancel()
+        ClientListener.cancel()
         RemoteOCCompositeCommand.unregister()
     }
 }
