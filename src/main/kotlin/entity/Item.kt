@@ -20,21 +20,21 @@ import kotlinx.serialization.Serializable
  * - 物品配置文件的持久化存储
  * - 合成配方中的材料项表示
  *
- * @property damage 物品损伤值或元数据标识，用于区分同类物品的不同状态。
- *
- *                示例：
- *                - 0 = 默认状态
- *                - 32767 = 完全损坏（某些模组设定）
- *                - 1-10 = 特殊变种（如不同颜色的羊毛）
- * @property label 物品的本地化显示名称，用于用户界面展示。
- *
- *               示例："高级合金框架", "超能硅岩电池 IV"
  * @property name 物品的唯一命名空间标识符，遵循 [Minecraft命名规范]。
  *
  *              示例：
  *              - "minecraft:diamond_sword" （原版物品）
  *              - "gregtech:wire_coil_32x" （模组物品）
  *              - "ae2:certus_quartz_crystal" （跨模组物品）
+ * @property label 物品的本地化显示名称，用于用户界面展示。
+ *
+ *               示例："高级合金框架", "超能硅岩电池 IV"
+ * @property damage 物品损伤值或元数据标识，用于区分同类物品的不同状态。
+ *
+ *                示例：
+ *                - 0 = 默认状态
+ *                - 32767 = 完全损坏（某些模组设定）
+ *                - 1-10 = 特殊变种（如不同颜色的羊毛）
  * @property size 物品堆叠数量，取值范围通常为1-64（原版上限），
  *
  *              部分模组物品可突破限制。特殊值：
@@ -44,9 +44,9 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class Item(
-    val damage: Int,
-    val label: String,
     val name: String,
+    val label: String,
+    val damage: Int,
     val size: Int
 )
 
