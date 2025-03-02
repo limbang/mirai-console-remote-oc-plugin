@@ -75,6 +75,7 @@ data class ItemMetadata(
  * @property chineseName 缓存的中文名称
  * @property imgPath 缓存的图标路径
  */
+@Serializable
 data class LocalizedItem(
     val item: Item,
     val chineseName: String,
@@ -88,6 +89,7 @@ data class LocalizedItem(
  * @property label 物质的本地化显示名称，用于用户界面展示。
  * @property amount 物质的数量，单位为 mB（1 mB = 1/1000 mL）。
  */
+@Serializable
 data class Fluid(
     val name: String,
     val label: String,
@@ -123,6 +125,7 @@ data class FluidMetadata(
  * @property chineseName 缓存的中文名称
  * @property imgPath 缓存的图标路径
  */
+@Serializable
 data class LocalizedFluid(
     val fluid: Fluid,
     val chineseName: String,
