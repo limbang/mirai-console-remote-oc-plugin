@@ -7,6 +7,7 @@
 
 package top.limbang.remoteoc.entity
 
+import entity.Item
 import kotlinx.serialization.Serializable
 
 
@@ -38,9 +39,9 @@ data class CpuDetail(
  */
 @Serializable
 data class CpuCoreStatus(
-    val activeItems: List<String>,
-    val storedItems: List<String>,
-    val pendingItems: List<String>,
+    val activeItems: List<Item>,
+    val storedItems: List<Item>,
+    val pendingItems: List<Item>,
     val active: Boolean,
     val busy: Boolean
 )
