@@ -20,6 +20,7 @@ import top.limbang.remoteoc.network.model.ResultData
 import top.limbang.remoteoc.utils.ItemUtil
 import top.limbang.remoteoc.utils.TIMEOUT_ERROR
 import top.limbang.remoteoc.utils.executeCommand
+import top.limbang.remoteoc.utils.json
 import java.io.FileInputStream
 import java.util.*
 import kotlin.test.Test
@@ -89,7 +90,7 @@ internal class TaskApiTest {
         // 处理结果
         val cpuList = taskStatusResponse.result!!.first()
 
-        val result = Json.decodeFromString<ResultData<CpuDetail>>(cpuList)
+        val result = json.decodeFromString<ResultData<CpuDetail>>(cpuList)
 
         val cpuInfo = result.data.withIndex().joinToString(
             separator = "\n",
@@ -119,7 +120,7 @@ internal class TaskApiTest {
         // 处理结果
         val itemList = taskStatusResponse.result!!.first()
 
-        val result = Json.decodeFromString<ResultData<Item>>(itemList)
+        val result = json.decodeFromString<ResultData<Item>>(itemList)
 
         val itemInfo = itemUtil.getLocalItems(result.data).joinToString(
             separator = "\n" ,

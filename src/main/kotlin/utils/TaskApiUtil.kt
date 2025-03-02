@@ -9,6 +9,7 @@ package top.limbang.remoteoc.utils
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withTimeout
+import kotlinx.serialization.json.Json
 import org.slf4j.LoggerFactory
 import top.limbang.remoteoc.entity.AeCommand
 import top.limbang.remoteoc.network.api.TaskApi
@@ -16,6 +17,14 @@ import top.limbang.remoteoc.network.model.CommandRequest
 import top.limbang.remoteoc.network.model.TaskStatusResponse
 
 private val logger = LoggerFactory.getLogger(TaskApi::class.java)
+
+/** 定义JSON序列化器 */
+val json: Json = Json {
+    isLenient = true // 宽松模式
+    encodeDefaults = true // 编码默认值
+    ignoreUnknownKeys = true // 忽略未知的键
+    explicitNulls = false // 忽略空值
+}
 
 /**
  * 异步执行远程命令并轮询任务状态直至完成或超时

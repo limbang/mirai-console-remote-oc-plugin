@@ -14,6 +14,7 @@ import top.limbang.remoteoc.entity.ServerInfo
 import top.limbang.remoteoc.network.RetrofitClient
 import top.limbang.remoteoc.network.api.InfoApi
 import top.limbang.remoteoc.network.api.TaskApi
+import top.limbang.remoteoc.utils.json
 
 object RemoteOCCompositeCommand : CompositeCommand(
     owner = RemoteOC,
@@ -40,8 +41,9 @@ object RemoteOCCompositeCommand : CompositeCommand(
     fun init() {
         val remoteOCServer = RemoteOCData.remoteOCServer
         if (remoteOCServer != null) {
-            taskApi = RetrofitClient(remoteOCServer.url, remoteOCServer.token).create(TaskApi::class.java)
-            infoApi = RetrofitClient(remoteOCServer.url, remoteOCServer.token).create(InfoApi::class.java)
+            val retrofitClient = RetrofitClient(remoteOCServer.url, remoteOCServer.token, json = json)
+            taskApi = retrofitClient.create(TaskApi::class.java)
+            infoApi = retrofitClient.create(InfoApi::class.java)
         }
     }
 }
