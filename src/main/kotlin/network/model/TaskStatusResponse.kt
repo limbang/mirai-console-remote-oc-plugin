@@ -14,7 +14,6 @@ import kotlinx.serialization.Serializable
 /**
  * 任务状态响应体
  *
- * @property clientId 客户端唯一标识符
  * @property gzip 是否启用 GZIP 压缩
  * @property taskId 任务唯一标识符
  * @property status 任务状态（如 "completed"）
@@ -25,7 +24,6 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class TaskStatusResponse(
-    @SerialName("client_id")val clientId: String,
     val gzip: Boolean,
     val taskId: String,
     val status: String,

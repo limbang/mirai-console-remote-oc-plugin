@@ -66,7 +66,7 @@ internal class TaskApiTest {
 
         assertEquals("success", response.message)
 
-        println("客户端ID: ${response.data?.clientId}, 任务ID: ${response.data?.taskId}, 任务状态: ${response.data?.status}, 结果: ${response.data?.result}")
+        println("任务ID: ${response.data?.taskId}, 任务状态: ${response.data?.status}, 结果: ${response.data?.result}")
     }
 
     val itemUtil = ItemUtil(javaClass.classLoader.getResource("logback.xml")!!.path.substringBeforeLast("/"))
