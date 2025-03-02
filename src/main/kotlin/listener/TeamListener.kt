@@ -176,7 +176,7 @@ object TeamListener : SimpleListenerHost() {
         if (!message.contentToString().startsWith("团队列表")) return
         val teamList = teams.keys.joinToString("\n")
         if (teamList.isEmpty()) return run { subject.sendMessage("ℹ️ 暂无团队") }
-        val message = "🛡️ 团队列表 🛡️\n$teamList"
+        val message = "\n🛡️ 团队列表 🛡️\n$teamList"
         subject.sendMessage(message)
     }
 
@@ -192,7 +192,7 @@ object TeamListener : SimpleListenerHost() {
         val team = teams.values.find { it.members.contains(sender.id) }
             ?: return run { sendMessage("❌ 您不在任何团队中") }
         val message =
-            "🛡️ 团队信息 🛡️\n名称：${team.name}\n队长：${group[team.captainId]?.nameCardOrNick ?: "未知"}\n成员：\n${
+            "\n🛡️ 团队信息 🛡️\n名称：${team.name}\n队长：${group[team.captainId]?.nameCardOrNick ?: "未知"}\n成员：\n${
                 team.members.joinToString("\n") { group[it]!!.nameCardOrNick }
             }\n邀请列表：\n${
                 team.invitations.joinToString("\n") { group[it]!!.nameCardOrNick }
@@ -208,7 +208,7 @@ object TeamListener : SimpleListenerHost() {
     @EventHandler
     suspend fun GroupMessageEvent.teamHelp() {
         if (!message.contentToString().startsWith("团队帮助")) return
-        val message = "🛠️ 团队指令帮助 🛠️\n" +
+        val message = "\n🛠️ 团队指令帮助 🛠️\n" +
                 "创建团队：创建团队 团队名称\n" +
                 "解散团队：解散团队\n" +
                 "邀请成员：邀请加入 @成员\n" +
