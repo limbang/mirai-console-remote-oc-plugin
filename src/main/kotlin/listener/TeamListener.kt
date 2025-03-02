@@ -33,8 +33,7 @@ object TeamListener : SimpleListenerHost() {
     @EventHandler
     suspend fun GroupMessageEvent.createTeam() {
         val content = message.contentToString()
-        val commandMatch =
-            CREATE_TEAM_REGEX.find(content) ?: return
+        val commandMatch = CREATE_TEAM_REGEX.find(content) ?: return
         val (teamName) = commandMatch.destructured
 
         // 检查团队名称是否重复
@@ -93,7 +92,6 @@ object TeamListener : SimpleListenerHost() {
 
         // 邀请成员
         team.invitations.add(memberId.toLong())
-        subject.sendMessage(At(memberId.toLong()))
         sendMessage("📩 已向[$name]发送邀请,同意加入[${team.name}]团队请输入“加入团队”")
     }
 
@@ -228,7 +226,7 @@ object TeamListener : SimpleListenerHost() {
      *
      * @param message
      */
-    private suspend fun GroupMessageEvent.sendMessage(message: String) {
-        subject.sendMessage(message)
+    suspend fun GroupMessageEvent.sendMessage(message: String) {
+        subject.sendMessage(At(sender.id) + message)
     }
 }
