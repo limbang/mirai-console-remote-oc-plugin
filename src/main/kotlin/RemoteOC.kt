@@ -9,10 +9,13 @@
 package top.limbang.remoteoc
 
 import kotlinx.coroutines.cancel
+import net.mamoe.mirai.console.command.CommandManager.INSTANCE.register
+import net.mamoe.mirai.console.command.CommandManager.INSTANCE.unregister
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription
 import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
 import net.mamoe.mirai.event.GlobalEventChannel
 import net.mamoe.mirai.event.registerTo
+import top.limbang.remoteoc.RemoteOCCompositeCommand.init
 import top.limbang.remoteoc.listener.TeamListener
 
 
@@ -30,6 +33,10 @@ object RemoteOC : KotlinPlugin(
     override fun onEnable() {
         // 加载数据
         RemoteOCData.reload()
+        // 初始化命令
+        RemoteOCCompositeCommand.register()
+        // 初始化 API 服务
+        init()
 
         // 创建事件通道
         val eventChannel = GlobalEventChannel.parentScope(this)
@@ -41,5 +48,6 @@ object RemoteOC : KotlinPlugin(
     override fun onDisable() {
         // 取消事件监听器
         TeamListener.cancel()
+        RemoteOCCompositeCommand.unregister()
     }
 }
