@@ -7,7 +7,6 @@
 
 package top.limbang.remoteoc.entity
 
-import entity.Item
 import kotlinx.serialization.Serializable
 
 
@@ -44,4 +43,22 @@ data class CpuCoreStatus(
     val pendingItems: List<Item>,
     val active: Boolean,
     val busy: Boolean
+)
+
+/**
+ * CPU 任务队列实体类
+ *
+ * @property itemName 物品名称
+ * @property activeNumber 正在合成数量
+ * @property pendingNumber 计划合成数量
+ * @property storedNumber 现存数量
+ * @property imagePath 图片路径
+ */
+@Serializable
+data class CpuTaskQueue(
+    val itemName: String,
+    val activeNumber: Int = 0,
+    val pendingNumber: Int = 0,
+    val storedNumber: Int = 0,
+    val imagePath: String
 )

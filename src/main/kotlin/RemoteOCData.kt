@@ -7,10 +7,11 @@
 
 package top.limbang.remoteoc
 
-import entity.LocalizedItem
+
 import net.mamoe.mirai.console.data.AutoSavePluginData
 import net.mamoe.mirai.console.data.ValueDescription
 import net.mamoe.mirai.console.data.value
+import top.limbang.remoteoc.entity.LocalizedItem
 import top.limbang.remoteoc.entity.ServerInfo
 import top.limbang.remoteoc.entity.Team
 
