@@ -26,7 +26,7 @@ import java.io.File
  * @throws IllegalArgumentException 当数据文件不存在时抛出
  */
 class ItemUtil(
-    resourceDir: String,
+    private val resourceDir: String,
     itemJsonName: String = "items_GTNH270.json",
     fluidsJsonName: String = "fluids_GTNH270.json",
     private val nameFilters: Set<String> = setOf("ae2fc:fluid_drop", "programmablehatches:prog_circuit")
@@ -60,10 +60,10 @@ class ItemUtil(
 
         val itemMetadata = itemData[item.name]?.get(item.damage.toString())
         return if (itemMetadata != null) {
-            LocalizedItem(item, itemMetadata.chineseName, "img/items/${itemMetadata.imgPath}")
+            LocalizedItem(item, itemMetadata.chineseName, "$resourceDir/img/items/${itemMetadata.imgPath}")
         } else {
             logger.warn("未找到物品: $item 采用默认名称和图片")
-            LocalizedItem(item, item.label, "img/default.png")
+            LocalizedItem(item, item.label, "$resourceDir/img/default.png")
         }
     }
 
@@ -92,9 +92,9 @@ class ItemUtil(
     fun getLocalFluid(fluid: Fluid): LocalizedFluid {
         val fluidMetadata = fluidData[fluid.name]
         return if (fluidMetadata != null) {
-            LocalizedFluid(fluid, fluidMetadata.chineseName, "img/fluids/${fluid.label}.png")
+            LocalizedFluid(fluid, fluidMetadata.chineseName, "$resourceDir/img/fluids/${fluid.label}.png")
         } else {
-            LocalizedFluid(fluid, fluid.label, "img/default.png")
+            LocalizedFluid(fluid, fluid.label, "$resourceDir/img/default.png")
         }
     }
 
