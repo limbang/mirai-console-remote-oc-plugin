@@ -13,6 +13,7 @@ import kotlinx.coroutines.TimeoutCancellationException
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.SimpleListenerHost
 import net.mamoe.mirai.event.events.GroupMessageEvent
+import net.mamoe.mirai.message.data.buildForwardMessage
 import top.limbang.remoteoc.RemoteOC.dataFolderPath
 import top.limbang.remoteoc.RemoteOCCompositeCommand.taskApi
 import top.limbang.remoteoc.RemoteOCData.teamClients
@@ -144,20 +145,20 @@ object ClientListener : SimpleListenerHost() {
                         "存储容量：${cpu.value.storage / 1024} K\n" +
                         "忙碌状态: ${cpu.value.busy}" +
                         (if (cpu.value.cpu.activeItems.isNotEmpty()) {
-                            "\n正在执行的物品：\n" + itemUtil.getLocalItems(cpu.value.cpu.activeItems).joinToString(
+                            "\n正在合成：\n" + itemUtil.getLocalItems(cpu.value.cpu.activeItems).joinToString(
                                 separator = "\n",
                                 transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
                             )
                         } else "") +
                         (if (cpu.value.cpu.storedItems.isNotEmpty()) {
-                            "\n待存储的物品：\n" + itemUtil.getLocalItems(cpu.value.cpu.storedItems)
+                            "\n现存：\n" + itemUtil.getLocalItems(cpu.value.cpu.storedItems)
                                 .joinToString(
                                     separator = "\n",
                                     transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
                                 )
                         } else "") +
                         (if (cpu.value.cpu.pendingItems.isNotEmpty()) {
-                            "\n待处理的物品：\n" + itemUtil.getLocalItems(cpu.value.cpu.pendingItems)
+                            "\n计划合成：\n" + itemUtil.getLocalItems(cpu.value.cpu.pendingItems)
                                 .joinToString(
                                     separator = "\n",
                                     transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
@@ -166,7 +167,16 @@ object ClientListener : SimpleListenerHost() {
             }
         )
 
-        sendMessage(cpuInfo)
+        val forwardMessage = buildForwardMessage() {
+            cpuInfo.lineSequence() // 按换行符分割成行序列（兼容不同系统）
+                .chunked(20)   // 按 20 行分组
+                .map { it.joinToString("\n") } // 将每组合并回字符串
+                .toList().forEach { message ->
+                    bot named bot.nick says message
+                }
+        }
+
+        subject.sendMessage(forwardMessage)
     }
 
     /**
@@ -206,7 +216,16 @@ object ClientListener : SimpleListenerHost() {
             }
         )
 
-        sendMessage(itemInfo)
+        val forwardMessage = buildForwardMessage() {
+            itemInfo.lineSequence() // 按换行符分割成行序列（兼容不同系统）
+                .chunked(20)   // 按 20 行分组
+                .map { it.joinToString("\n") } // 将每组合并回字符串
+                .toList().forEach { message ->
+                    bot named bot.nick says message
+                }
+        }
+        subject.sendMessage(forwardMessage)
+
     }
 
     /**
