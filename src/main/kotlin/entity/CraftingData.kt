@@ -68,20 +68,20 @@ data class Done(
  */
 @Serializable
 data class ItemCrafting(
-    val canProvideEnergy: Boolean,
-    val capacity: Int,
-    val charge: Int,
+    val canProvideEnergy: Boolean = false,
+    val capacity: Int = 0,
+    val charge: Int = 0,
     val damage: Int,
-    val fluid: FluidAmount,
+    val fluid: FluidAmount = FluidAmount(0),
     val hasTag: Boolean,
     val label: String,
-    val maxCharge: Int,
+    val maxCharge: Int = 0,
     val maxDamage: Int,
     val maxSize: Int,
     val name: String,
     val size: Int,
-    val tier: Int,
-    val transferLimit: Int
+    val tier: Int = 0,
+    val transferLimit: Int = 0
 )
 
 /**

@@ -230,8 +230,14 @@ object ClientListener : SimpleListenerHost() {
         logger.info("合成请求结果：${result.message}")
 
         // 处理合成结果
-        result.data.forEach { _ ->
-            sendMessage("📥 ${localizedItem.chineseName}合成请求已发送，请稍后查询结果\n")
+        result.data.forEach { craftingData ->
+            sendMessage(
+                "📥 ${localizedItem.chineseName}合成请求已发送，请稍后查询结果\n" +
+                        "是否正在合成:${craftingData.computing}\n" +
+                        "是否失败:${craftingData.failed}\n" +
+                        "是否取消:${craftingData.canceled.result} \n" +
+                        "是否完成:${craftingData.done.result}\n"
+            )
         }
     }
 }
