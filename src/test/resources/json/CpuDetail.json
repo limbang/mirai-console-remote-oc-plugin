@@ -1,0 +1,151 @@
+[
+  {
+    "storage": 73728,
+    "coprocessors": 216,
+    "name": "",
+    "cpu": {
+      "activeItems": [
+        {
+          "name": "gregtech:gt.metaitem.01",
+          "label": "Titanium Ingot",
+          "damage": "11028",
+          "size": "1"
+        },
+        {
+          "name": "gregtech:gt.metaitem.01",
+          "label": "Hot Titanium Ingot",
+          "damage": "12028",
+          "size": "259"
+        },
+        {
+          "name": "gregtech:gt.metaitem.01",
+          "label": "Titanium Plate",
+          "damage": "17028",
+          "size": "1"
+        }
+      ],
+      "storedItems": [
+        {
+          "name": "gregtech:gt.metaitem.01",
+          "label": "Titanium Dust",
+          "damage": "2028",
+          "size": "661"
+        }
+      ],
+      "pendingItems": [
+        {
+          "name": "gregtech:gt.metaitem.01",
+          "label": "Titanium Ingot",
+          "damage": "11028",
+          "size": "920"
+        },
+        {
+          "name": "gregtech:gt.metaitem.01",
+          "label": "Hot Titanium Ingot",
+          "damage": "12028",
+          "size": "661"
+        },
+        {
+          "name": "gregtech:gt.metaitem.01",
+          "label": "Titanium Plate",
+          "damage": "17028",
+          "size": "921"
+        }
+      ],
+      "active": true,
+      "busy": true
+    },
+    "busy": true
+  },
+  {
+    "storage": 73728,
+    "coprocessors": 216,
+    "name": "",
+    "cpu": {
+      "activeItems": [],
+      "storedItems": [],
+      "pendingItems": [],
+      "active": false,
+      "busy": false
+    },
+    "busy": false
+  },
+  {
+    "storage": 73728,
+    "coprocessors": 216,
+    "name": "",
+    "cpu": {
+      "activeItems": [],
+      "storedItems": [],
+      "pendingItems": [],
+      "active": false,
+      "busy": false
+    },
+    "busy": false
+  },
+  {
+    "storage": 73728,
+    "coprocessors": 216,
+    "name": "",
+    "cpu": {
+      "activeItems": [],
+      "storedItems": [],
+      "pendingItems": [],
+      "active": false,
+      "busy": false
+    },
+    "busy": false
+  },
+  {
+    "storage": 73728,
+    "coprocessors": 216,
+    "name": "",
+    "cpu": {
+      "activeItems": [],
+      "storedItems": [],
+      "pendingItems": [],
+      "active": false,
+      "busy": false
+    },
+    "busy": false
+  },
+  {
+    "storage": 73728,
+    "coprocessors": 216,
+    "name": "",
+    "cpu": {
+      "activeItems": [],
+      "storedItems": [],
+      "pendingItems": [],
+      "active": false,
+      "busy": false
+    },
+    "busy": false
+  },
+  {
+    "storage": 73728,
+    "coprocessors": 216,
+    "name": "",
+    "cpu": {
+      "activeItems": [],
+      "storedItems": [],
+      "pendingItems": [],
+      "active": false,
+      "busy": false
+    },
+    "busy": false
+  },
+  {
+    "storage": 73728,
+    "coprocessors": 216,
+    "name": "",
+    "cpu": {
+      "activeItems": [],
+      "storedItems": [],
+      "pendingItems": [],
+      "active": false,
+      "busy": false
+    },
+    "busy": false
+  }
+]
