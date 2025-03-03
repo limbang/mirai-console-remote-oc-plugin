@@ -20,63 +20,86 @@ import kotlin.math.ceil
 
 
 /**
- * 将 CPU 核心状态转换为任务队列视图
+ * 将 CPU 核心状态转换为任务队列统计视图
  *
- * 本方法通过聚合三个队列（active/stored/pending）中的物品数量，
- * 生成以本地化名称为维度的任务队列统计视图。
+ * 本方法通过聚合三个物品队列（active/stored/pending）中的有效物品数量，生成以本地化名称为维度的统计视图。
+ * 过滤逻辑通过 [getLocalItem] 函数实现，返回 null 的物品将被排除在统计结果之外。
  *
- * @param getLocalItem 本地化信息获取函数，用于过滤无效物品并获取展示信息
- * @return 按物品聚合的任务队列统计列表，每个条目包含：
- *         - 本地化物品名称
- *         - 各队列中该物品的数量（基于 size 属性累加）
- *         - 对应的图标路径
+ * @param getLocalItem 本地化信息获取函数，需处理以下逻辑：
+ *                     - 返回 [LocalizedItem]：表示有效物品
+ *                     - 返回 null：表示物品被过滤或无效
+ * @return 按物品本地化名称聚合的任务队列统计列表，包含以下特征：
+ *         - 列表按中文名称升序排列
+ *         - 仅包含未被过滤的有效物品
+ *         - 各队列数量基于物品的 (name, damage) 组合进行累加
  *
- * @throws IllegalStateException 当某个有效物品缺少本地化信息时抛出
+ * 实现流程：
+ * 1. 预缓存所有队列中有效物品的本地化信息
+ * 2. 分别统计三个队列中有效物品的数量
+ * 3. 合并统计结果生成最终视图
  */
 fun CpuCoreStatus.convertToTaskQueues(getLocalItem: (Item) -> LocalizedItem?): List<CpuTaskQueue> {
-    // 合并所有有效样本到缓存 Map
+    // region 预缓存阶段：收集所有队列中的有效物品本地化数据
+    // 通过序列处理合并三个队列，保证处理效率（避免创建多个临时集合）
     val sampleCache = sequenceOf(activeItems, storedItems, pendingItems)
         .flatten()
-        .mapNotNull(getLocalItem)
+        .mapNotNull { item ->
+            // 获取本地化信息，同时执行数据一致性校验
+            getLocalItem(item)?.also { localizedItem ->
+                // 防御性编程：确保本地化后的物品元数据与原始物品一致
+                require(localizedItem.item.name == item.name && localizedItem.item.damage == item.damage) {
+                    "物品元数据不一致！原始物品: (${item.name}, ${item.damage})，" +
+                            "本地化物品: (${localizedItem.item.name}, ${localizedItem.item.damage})"
+                }
+            }
+        }
+        // 以 (name, damage) 为唯一键建立缓存，供后续快速查找
         .associateBy { it.item.name to it.item.damage }
+    // endregion
 
-    // 合并统计逻辑
-    val (activeSums, storedSums, pendingSums) = listOf(
-        aggregate(activeItems),
-        aggregate(storedItems),
-        aggregate(pendingItems)
-    )
+    // region 统计阶段：过滤并聚合各队列物品数量
 
-    // 收集所有唯一键
+    /**
+     * 聚合有效物品数量（基于size属性累加）
+     *
+     * @param items 待处理物品队列
+     * @return 映射表结构：Key为(name, damage)，Value为对应物品的size总和
+     */
+    fun filterAndAggregate(items: List<Item>) = items
+        .mapNotNull { item -> getLocalItem(item)?.item }
+        .groupingBy { it.name to it.damage }
+        .fold(0) { acc, item -> acc + item.size }
+    // 并行处理三个队列的统计工作
+    val activeSums = filterAndAggregate(activeItems)   // 活动队列统计
+    val storedSums = filterAndAggregate(storedItems)   // 存储队列统计
+    val pendingSums = filterAndAggregate(pendingItems) // 待处理队列统计
+    // endregion
+
+    // region 结果合成阶段：合并统计结果生成最终视图
+    // 收集所有有效物品的唯一标识键（已通过预缓存确保存在）
     val allKeys = sequenceOf(activeSums, storedSums, pendingSums)
         .flatMap { it.keys }
         .toSet()
 
-    return allKeys.map { key ->
-        val (name, damage) = key
-        val sample = sampleCache[key] ?: throw IllegalStateException("物品 $name ($damage) 缺少本地化数据")
-        CpuTaskQueue(
-            itemName = sample.chineseName,
-            activeNumber = activeSums[key] ?: 0,
-            pendingNumber = pendingSums[key] ?: 0,
-            storedNumber = storedSums[key] ?: 0,
-            imagePath = sample.imgPath
-        )
-    }.sortedBy { it.itemName }
+    return allKeys
+        .map { key ->
+            // 从预缓存中安全获取本地化数据（!! 断言安全原因：key来源自已过滤的统计结果）
+            val sample = sampleCache[key]!!
+            CpuTaskQueue(
+                itemName = sample.chineseName,    // 本地化名称
+                activeNumber = activeSums[key] ?: 0,  // 活动队列数量（无记录时补零）
+                pendingNumber = pendingSums[key] ?: 0,// 待处理队列数量
+                storedNumber = storedSums[key] ?: 0,  // 存储队列数量
+                imagePath = sample.imgPath        // 本地化图标路径
+            )
+        }
+        // 按中文名称字典序排列结果
+        .sortedBy { it.itemName }
+    // endregion
 }
 
-/**
- * 聚合物品列表，返回以name-damage为键的聚合结果
- *
- * @param items 物品列表
- * @return 以name-damage为键的聚合结果
- */
-private fun aggregate(items: List<Item>) = items
-    .groupingBy { it.name to it.damage }
-    .fold(0) { acc, item -> acc + item.size }
 
-
-/**
+    /**
  * 将 CPU 详情转换为图片
  *
  * @param itemUtil 本地化信息获取工具

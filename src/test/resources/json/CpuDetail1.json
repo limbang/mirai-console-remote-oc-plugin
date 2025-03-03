@@ -1,0 +1,67 @@
+[
+  {
+    "busy": true,
+    "storage": 131072,
+    "cpu": {
+      "storedItems": [
+        {
+          "label": "Silicon Solar Grade (Poly SI) Ingot",
+          "damage": 11856,
+          "isCraftable": false,
+          "name": "gregtech:gt.metaitem.01",
+          "size": 10
+        },
+        {
+          "label": "Programming Circuit (Inscriber Silicon Press)",
+          "damage": 0,
+          "isCraftable": false,
+          "name": "programmablehatches:prog_circuit",
+          "size": 76
+        },
+        {
+          "label": "Programming Circuit (Programmed Circuit)",
+          "damage": 0,
+          "isCraftable": false,
+          "name": "programmablehatches:prog_circuit",
+          "size": 10
+        }
+      ],
+      "busy": true,
+      "active": true,
+      "activeItems": [
+        {
+          "label": "Printed Silicon",
+          "damage": 20,
+          "isCraftable": false,
+          "name": "appliedenergistics2:item.ItemMultiMaterial",
+          "size": 19
+        },
+        {
+          "label": "Silicon Solar Grade (Poly SI) Plate",
+          "damage": 17856,
+          "isCraftable": false,
+          "name": "gregtech:gt.metaitem.01",
+          "size": 66
+        }
+      ],
+      "pendingItems": [
+        {
+          "label": "Printed Silicon",
+          "damage": 20,
+          "isCraftable": false,
+          "name": "appliedenergistics2:item.ItemMultiMaterial",
+          "size": 76
+        },
+        {
+          "label": "Silicon Solar Grade (Poly SI) Plate",
+          "damage": 17856,
+          "isCraftable": false,
+          "name": "gregtech:gt.metaitem.01",
+          "size": 10
+        }
+      ]
+    },
+    "name": "",
+    "coprocessors": 1
+  }
+]
