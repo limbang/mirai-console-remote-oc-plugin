@@ -14,9 +14,9 @@ import kotlinx.serialization.Serializable
 
 /**
  * CPU 详细信息
- * @property storage 存储容量（单位：MB）
- * @property coprocessors 协处理器数量
- * @property name 设备名称
+ * @property storage 存储容量（单位：B）
+ * @property coprocessors 并行处理器数量
+ * @property name CPU 名称
  * @property cpu CPU 核心状态
  * @property busy 是否处于忙碌状态
  */
@@ -31,9 +31,9 @@ data class CpuDetail(
 
 /**
  * CPU 核心状态
- * @property activeItems 活跃任务队列
- * @property storedItems 存储任务队列
- * @property pendingItems 等待任务队列
+ * @property activeItems 正在合成任务队列
+ * @property storedItems 现存任务队列
+ * @property pendingItems 计划合成任务队列
  * @property active 是否激活
  * @property busy 是否忙碌
  */
