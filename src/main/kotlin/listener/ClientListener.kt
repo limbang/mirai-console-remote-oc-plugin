@@ -7,9 +7,8 @@
 
 package top.limbang.remoteoc.listener
 
-import entity.CraftingData
-import entity.Item
 import kotlinx.coroutines.TimeoutCancellationException
+import net.mamoe.mirai.contact.Contact.Companion.uploadImage
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.SimpleListenerHost
 import net.mamoe.mirai.event.events.GroupMessageEvent
@@ -19,15 +18,10 @@ import top.limbang.remoteoc.RemoteOCCompositeCommand.taskApi
 import top.limbang.remoteoc.RemoteOCData.teamClients
 import top.limbang.remoteoc.RemoteOCData.teamCraftItem
 import top.limbang.remoteoc.RemoteOCData.teams
-import top.limbang.remoteoc.entity.AeCommand
-import top.limbang.remoteoc.entity.CpuDetail
-import top.limbang.remoteoc.entity.Team
+import top.limbang.remoteoc.entity.*
 import top.limbang.remoteoc.listener.TeamListener.sendMessage
 import top.limbang.remoteoc.network.model.ResultData
-import top.limbang.remoteoc.utils.ItemUtil
-import top.limbang.remoteoc.utils.TIMEOUT_ERROR
-import top.limbang.remoteoc.utils.executeCommand
-import top.limbang.remoteoc.utils.json
+import top.limbang.remoteoc.utils.*
 
 /**
  * 监听操作客户端命令
@@ -135,48 +129,9 @@ object ClientListener : SimpleListenerHost() {
 
         val result = json.decodeFromString<ResultData<CpuDetail>>(cpuList)
 
-        val cpuInfo = result.data.withIndex().joinToString(
-            separator = "\n",
-            prefix = "\n=== CPU 状态 ===\n",
-            postfix = "\n================",
-            transform = { cpu ->
-                "CPU:${cpu.index + 1}\n" +
-                        "并行处理器：${cpu.value.coprocessors}\n" +
-                        "存储容量：${cpu.value.storage / 1024} K\n" +
-                        "忙碌状态: ${cpu.value.busy}" +
-                        (if (cpu.value.cpu.activeItems.isNotEmpty()) {
-                            "\n正在合成：\n" + itemUtil.getLocalItems(cpu.value.cpu.activeItems).joinToString(
-                                separator = "\n",
-                                transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
-                            )
-                        } else "") +
-                        (if (cpu.value.cpu.storedItems.isNotEmpty()) {
-                            "\n现存：\n" + itemUtil.getLocalItems(cpu.value.cpu.storedItems)
-                                .joinToString(
-                                    separator = "\n",
-                                    transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
-                                )
-                        } else "") +
-                        (if (cpu.value.cpu.pendingItems.isNotEmpty()) {
-                            "\n计划合成：\n" + itemUtil.getLocalItems(cpu.value.cpu.pendingItems)
-                                .joinToString(
-                                    separator = "\n",
-                                    transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
-                                )
-                        } else "")
-            }
-        )
-
-        val forwardMessage = buildForwardMessage() {
-            cpuInfo.lineSequence() // 按换行符分割成行序列（兼容不同系统）
-                .chunked(20)   // 按 20 行分组
-                .map { it.joinToString("\n") } // 将每组合并回字符串
-                .toList().forEach { message ->
-                    bot named bot.nick says message
-                }
-        }
-
-        subject.sendMessage(forwardMessage)
+        val bufferedImage = result.data.toImage(itemUtil)
+        val image = subject.uploadImage(bufferedImage.toInputStream())
+        subject.sendMessage(image)
     }
 
     /**
