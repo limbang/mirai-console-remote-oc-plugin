@@ -11,7 +11,6 @@ package top.limbang.remoteoc
 import net.mamoe.mirai.console.data.AutoSavePluginData
 import net.mamoe.mirai.console.data.ValueDescription
 import net.mamoe.mirai.console.data.value
-import top.limbang.remoteoc.entity.LocalizedItem
 import top.limbang.remoteoc.entity.ServerInfo
 import top.limbang.remoteoc.entity.Team
 
@@ -29,7 +28,4 @@ object RemoteOCData : AutoSavePluginData("remote-oc") {
 
     @ValueDescription("存储群对应的 Remote-OC 服务器信息")
     var remoteOCServer: ServerInfo? by value(null)
-
-    @ValueDescription("存储团队可合成物品的名称和实体")
-    val teamCraftItem: MutableMap<String, MutableList<LocalizedItem>> by value()
 }

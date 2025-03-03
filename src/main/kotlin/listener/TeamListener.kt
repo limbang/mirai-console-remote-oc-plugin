@@ -12,6 +12,10 @@ import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.SimpleListenerHost
 import net.mamoe.mirai.event.events.GroupMessageEvent
 import net.mamoe.mirai.message.data.At
+import top.limbang.remoteoc.RemoteOC.TEAM_CRAFTABLES_DIR
+import top.limbang.remoteoc.RemoteOC.resolveDataFile
+import top.limbang.remoteoc.RemoteOC.teamCraftables
+import top.limbang.remoteoc.RemoteOCData
 import top.limbang.remoteoc.RemoteOCData.teams
 import top.limbang.remoteoc.entity.Team
 
@@ -65,8 +69,14 @@ object TeamListener : SimpleListenerHost() {
         // 检查成员是否是队长
         if (team.captainId != sender.id) return run { sendMessage("⛔ 您不是队长，无法删除团队") }
 
-        // 删除团队
+        // 1. 删除团队
         teams.remove(teamName)
+        // 2. 移除绑定客户端ID
+        RemoteOCData.teamClients.remove(teamName)
+        // 3. 删除团队合成清单
+        teamCraftables.remove(teamName)
+        // 4. 删除对应的文件
+        resolveDataFile("$TEAM_CRAFTABLES_DIR/$teamName.json").takeIf { it.exists() }?.delete()
         sendMessage("🗑️ [$teamName]团队已解散")
     }
 

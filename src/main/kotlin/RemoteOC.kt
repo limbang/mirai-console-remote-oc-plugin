@@ -16,8 +16,10 @@ import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
 import net.mamoe.mirai.event.GlobalEventChannel
 import net.mamoe.mirai.event.registerTo
 import top.limbang.remoteoc.RemoteOCCompositeCommand.init
+import top.limbang.remoteoc.entity.LocalizedItem
 import top.limbang.remoteoc.listener.ClientListener
 import top.limbang.remoteoc.listener.TeamListener
+import top.limbang.remoteoc.utils.json
 
 
 object RemoteOC : KotlinPlugin(
@@ -25,26 +27,45 @@ object RemoteOC : KotlinPlugin(
         id = "top.limbang.RemoteOC",
         name = "RemoteOC",
         version = "0.0.1",
-    ){
+    ) {
         author("limbang")
         info("远程控制OC")
     }
-){
+) {
+    /** 团队合成清单 */
+    val teamCraftables = mutableMapOf<String, MutableSet<LocalizedItem>>()
+    /** 团队合成清单目录 */
+    const val TEAM_CRAFTABLES_DIR = "TeamCraftables"
 
     override fun onEnable() {
         // 加载数据
         RemoteOCData.reload()
+        // 确保团队合成目录存在
+        resolveDataPath(TEAM_CRAFTABLES_DIR).toFile().mkdirs()
+        // 加载团队合成清单
+        RemoteOCData.teamClients.keys.forEach { teamId ->
+            val file = resolveDataFile("$TEAM_CRAFTABLES_DIR/$teamId.json")
+            teamCraftables[teamId] = if (file.exists()) {
+                json.decodeFromString(file.readText())
+            } else {
+                // 创建空文件并初始化空集合
+                file.createNewFile()
+                mutableSetOf<LocalizedItem>().also {
+                    file.writeText(json.encodeToString(it))
+                }
+            }
+        }
         // 初始化命令
         RemoteOCCompositeCommand.register()
         // 初始化 API 服务
         init()
 
         // 创建事件通道
-        val eventChannel = GlobalEventChannel.parentScope(this)
-
-        // 注册事件监听器
-        TeamListener.registerTo(eventChannel)
-        ClientListener.registerTo(eventChannel)
+        GlobalEventChannel.parentScope(this).apply {
+            // 注册事件监听器
+            TeamListener.registerTo(this)
+            ClientListener.registerTo(this)
+        }
     }
 
     override fun onDisable() {
@@ -52,5 +73,11 @@ object RemoteOC : KotlinPlugin(
         TeamListener.cancel()
         ClientListener.cancel()
         RemoteOCCompositeCommand.unregister()
+        // 保存团队合成清单
+        RemoteOCData.teamClients.keys.forEach { teamId ->
+            resolveDataFile("$TEAM_CRAFTABLES_DIR/$teamId.json").apply {
+                writeText(json.encodeToString(teamCraftables[teamId] ?: mutableSetOf()))
+            }
+        }
     }
 }

@@ -14,9 +14,10 @@ import net.mamoe.mirai.event.SimpleListenerHost
 import net.mamoe.mirai.event.events.GroupMessageEvent
 import net.mamoe.mirai.message.data.buildForwardMessage
 import top.limbang.remoteoc.RemoteOC.dataFolderPath
+import top.limbang.remoteoc.RemoteOC.logger
+import top.limbang.remoteoc.RemoteOC.teamCraftables
 import top.limbang.remoteoc.RemoteOCCompositeCommand.taskApi
 import top.limbang.remoteoc.RemoteOCData.teamClients
-import top.limbang.remoteoc.RemoteOCData.teamCraftItem
 import top.limbang.remoteoc.RemoteOCData.teams
 import top.limbang.remoteoc.entity.*
 import top.limbang.remoteoc.listener.TeamListener.sendMessage
@@ -166,7 +167,7 @@ object ClientListener : SimpleListenerHost() {
             prefix = "\n=== 可合成清单 ===\n",
             postfix = "\n===合成物品发送格式：合成 物品名称 数量===",
             transform = {
-                teamCraftItem.getOrPut(team.name) { mutableListOf() }.add(it) // 把合成清单存储到插件数据中
+                teamCraftables.getOrPut(team.name) { mutableSetOf() }.add(it) // 把合成清单存储到插件数据中
                 "物品名称：${it.chineseName}"
             }
         )
@@ -195,12 +196,15 @@ object ClientListener : SimpleListenerHost() {
         // 获取团队信息
         val team = validateTeamAndClient() ?: return
         // 获取合成清单
-        val craftItems = teamCraftItem[team.name] ?: run { sendMessage("❌ 请先获取合成清单"); return }
+        val craftItems = teamCraftables[team.name] ?: run { sendMessage("❌ 请先获取合成清单"); return }
         // 查询物品是否可以合成
         val localizedItem =
             craftItems.find { it.chineseName == itemName } ?: run { sendMessage("❌ 该物品无法合成"); return }
         // 转换数量
         val countInt = if (count.isEmpty()) 1 else count.toInt()
+
+        // 发送合成请求
+        sendMessage("📤 合成[$itemName*$countInt]正在发送合成请求，请等待结果")
 
         // 创建命令请求
         val taskStatusResponse = try {
@@ -223,10 +227,11 @@ object ClientListener : SimpleListenerHost() {
         val message = taskStatusResponse.result!!.first()
 
         val result = json.decodeFromString<ResultData<CraftingData>>(message)
+        logger.info("合成请求结果：${result.message}")
 
         // 处理合成结果
-        result.data.forEach { craftingData ->
-            sendMessage("✅ ${localizedItem.chineseName}合成进行中，请稍后查询结果\n")
+        result.data.forEach { _ ->
+            sendMessage("📥 ${localizedItem.chineseName}合成请求已发送，请稍后查询结果\n")
         }
     }
 }
