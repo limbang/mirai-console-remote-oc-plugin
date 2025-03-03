@@ -1,7 +1,7 @@
 package top.limbang.remoteoc.utils
 
-import entity.Item
 import kotlinx.serialization.json.Json
+import top.limbang.remoteoc.entity.Item
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
