@@ -34,9 +34,7 @@ data class CraftingData(
  * @property result 取消的结果
  */
 @Serializable
-data class Canceled(
-    val result: Boolean
-)
+data class Canceled(val result: Boolean)
 
 /**
  * 完成的结果
@@ -44,9 +42,7 @@ data class Canceled(
  * @property result 完成的结果
  */
 @Serializable
-data class Done(
-    val result: Boolean
-)
+data class Done(val result: Boolean)
 
 /**
  * 物品的合成数据
@@ -68,20 +64,20 @@ data class Done(
  */
 @Serializable
 data class ItemCrafting(
-    val canProvideEnergy: Boolean = false,
-    val capacity: Int = 0,
-    val charge: Int = 0,
+    val canProvideEnergy: Boolean? = null,
+    val capacity: Int? = null,
+    val charge: Int? = null,
     val damage: Int,
-    val fluid: FluidAmount = FluidAmount(0),
+    val fluid: FluidAmount? = null,
     val hasTag: Boolean,
     val label: String,
-    val maxCharge: Int = 0,
+    val maxCharge: Int? = null,
     val maxDamage: Int,
     val maxSize: Int,
     val name: String,
     val size: Int,
-    val tier: Int = 0,
-    val transferLimit: Int = 0
+    val tier: Int? = null,
+    val transferLimit: Int? = null
 )
 
 /**
@@ -90,6 +86,4 @@ data class ItemCrafting(
  * @property amount 流体的数量
  */
 @Serializable
-data class FluidAmount(
-    val amount: Int
-)
+data class FluidAmount(val amount: Int)

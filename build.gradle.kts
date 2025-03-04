@@ -16,7 +16,7 @@ repositories {
 dependencies {
     val retrofitVersion = "2.11.0"
     val okhttpVersion = "5.0.0-alpha.14"
-    val serializationVersion = "1.8.0"
+    val serializationVersion = "1.6.2"
     val coroutinesVersion = "1.10.0"
 
     implementation("org.slf4j:slf4j-api:2.0.16")

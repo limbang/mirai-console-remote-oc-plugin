@@ -9,6 +9,7 @@
 package top.limbang.remoteoc
 
 import kotlinx.coroutines.cancel
+import kotlinx.serialization.encodeToString
 import net.mamoe.mirai.console.command.CommandManager.INSTANCE.register
 import net.mamoe.mirai.console.command.CommandManager.INSTANCE.unregister
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription

@@ -14,8 +14,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.slf4j.LoggerFactory
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
-import top.limbang.remoteoc.network.interceptor.AuthInterceptor
 import top.limbang.remoteoc.network.annotation.ServerToken
+import top.limbang.remoteoc.network.interceptor.AuthInterceptor
 import java.util.concurrent.TimeUnit
 
 /**
@@ -42,7 +42,6 @@ class RetrofitClient(
         isLenient = true // 宽松模式
         encodeDefaults = true // 编码默认值
         ignoreUnknownKeys = true // 忽略未知的键
-        explicitNulls = false // 忽略空值
     }
 ) {
     private val logger = LoggerFactory.getLogger(RetrofitClient::class.java)
