@@ -57,8 +57,8 @@ data class CpuCoreStatus(
 @Serializable
 data class CpuTaskQueue(
     val itemName: String,
-    val activeNumber: Int = 0,
-    val pendingNumber: Int = 0,
-    val storedNumber: Int = 0,
+    val activeNumber: Long = 0L,
+    val pendingNumber: Long = 0L,
+    val storedNumber: Long = 0L,
     val imagePath: String
 )

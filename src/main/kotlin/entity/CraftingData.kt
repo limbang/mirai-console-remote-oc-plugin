@@ -75,7 +75,7 @@ data class ItemCrafting(
     val maxDamage: Int,
     val maxSize: Int,
     val name: String,
-    val size: Int,
+    val size: Long,
     val tier: Int? = null,
     val transferLimit: Int? = null
 )
@@ -86,4 +86,4 @@ data class ItemCrafting(
  * @property amount 流体的数量
  */
 @Serializable
-data class FluidAmount(val amount: Int)
+data class FluidAmount(val amount: Long)

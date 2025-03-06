@@ -40,14 +40,15 @@ import kotlinx.serialization.Serializable
  *              部分模组物品可突破限制。特殊值：
  *              - 0 = 无效物品
  *              - (-1) = 无限数量（创造模式专用）
- *
+ * @property isCraftable 物品是否可合成，默认为 true。
  */
 @Serializable
 data class Item(
     val name: String,
     val label: String,
     val damage: Int,
-    val size: Int
+    val size: Long,
+    val isCraftable: Boolean = true
 )
 
 /**
@@ -93,7 +94,7 @@ data class LocalizedItem(
 data class Fluid(
     val name: String,
     val label: String,
-    val amount: Int
+    val amount: Long
 )
 
 /**
