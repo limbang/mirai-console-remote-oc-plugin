@@ -29,9 +29,16 @@ import top.limbang.remoteoc.utils.*
  */
 object ClientListener : SimpleListenerHost() {
 
+    // 指令正则
     private val BIND_CLIENT_REGEX = """^绑定客户端\s?([a-zA-Z0-9]{2,16})""".toRegex()
     private val CRAFT_ITEM_REGEX = """^合成\s+([^\s\n]+(?:\s+[^\s\n]+)*?)(?:\s+(\d{1,12}))?$""".toRegex()
+
+    // 物品本地化工具
     private val itemUtil = ItemUtil(dataFolderPath.toString())
+
+    // 合成数量限制
+    private const val MAX_CRAFT_AMOUNT = 1_000_000
+    private const val DEFAULT_CRAFT_AMOUNT = 1
 
     /**
      * 绑定客户端
@@ -76,12 +83,14 @@ object ClientListener : SimpleListenerHost() {
     suspend fun GroupMessageEvent.clientHelp() {
         if (!message.contentToString().startsWith("客户端帮助")) return
         sendMessage(
-            "\n🛠️ 客户端操作帮助 🛠️\n" +
-                    "1. 绑定客户端：绑定客户端 客户端名称 🏷️绑定客户端到当前所在的团队，绑定后即可使用远程控制功能。\n" +
-                    "2. 解绑客户端：解绑客户端 🏷️解绑当前所在的团队的客户端绑定。\n" +
-                    "3. 获取CPU信息：获取CPU信息 🏷️获取当前所在团队的CPU信息。\n" +
-                    "4. 获取合成清单：获取合成清单 🏷️获取当前所在团队的可合成清单。\n" +
-                    "5. 合成物品: 合成 物品名称 [数量] 🏷️合成指定名称的物品，数量为可选参数，默认为 1。"
+            """
+            🛠️ 客户端操作帮助 🛠️
+            1. 绑定客户端：绑定客户端 客户端名称 🏷️绑定客户端到当前所在的团队，绑定后即可使用远程控制功能。
+            2. 解绑客户端：解绑客户端 🏷️解绑当前所在的团队的客户端绑定。
+            3. 获取CPU信息：获取CPU信息 🏷️获取当前所在团队的CPU信息。
+            4. 获取合成清单：获取合成清单 🏷️获取当前所在团队的可合成清单。
+            5. 合成物品: 合成 物品名称 [数量] 🏷️合成指定名称的物品，数量为可选参数，默认为 1。  
+            """.trimIndent()
         )
     }
 
@@ -111,28 +120,8 @@ object ClientListener : SimpleListenerHost() {
         if (!message.contentToString().startsWith("获取CPU信息")) return
         // 获取团队信息
         val team = validateTeamAndClient() ?: return
-
-        // 创建命令请求
-        val taskStatusResponse = try {
-            taskApi.executeCommand(
-                taskId = "${sender.id}_getCpuList",
-                command = AeCommand.GetCpuList(includeDetails = true),
-                clientId = teamClients.getValue(team.name)
-            )
-        } catch (e: TimeoutCancellationException) {
-            // 处理超时
-            sendMessage(TIMEOUT_ERROR)
-            return
-        } ?: return
-
-        // 处理结果
-        val cpuList = taskStatusResponse.result!!.first()
-
-        val result = json.decodeFromString<ResultData<CpuDetail>>(cpuList)
-
-        val bufferedImage = result.data.toImage(itemUtil)
-        val image = subject.uploadImage(bufferedImage.toInputStream())
-        subject.sendMessage(image)
+        // 发送CPU信息
+        sendCpuInfo(team)
     }
 
     /**
@@ -143,7 +132,60 @@ object ClientListener : SimpleListenerHost() {
         if (!message.contentToString().startsWith("获取合成清单")) return
         // 获取团队信息
         val team = validateTeamAndClient() ?: return
+        // 发送合成清单
+        sendAllCraftables(team)
+    }
 
+    /**
+     * 合成物品
+     */
+    @EventHandler
+    suspend fun GroupMessageEvent.craftItem() {
+        val content = message.contentToString()
+        val commandMatch = CRAFT_ITEM_REGEX.find(content) ?: return
+        val (itemName, count) = commandMatch.destructured
+
+        // 解析合成数量
+        val countInt = count.toIntOrNull() ?: DEFAULT_CRAFT_AMOUNT
+        if (countInt !in 1..MAX_CRAFT_AMOUNT) {
+            sendMessage("❌ 合成数量无效（1-${MAX_CRAFT_AMOUNT}）")
+            return
+        }
+        // 获取团队信息
+        val team = validateTeamAndClient() ?: return
+        sendCraftItem(itemName, countInt, team)
+    }
+
+    /**
+     * 发送CPU信息到当前群组
+     *
+     * @param team 团队信息
+     */
+    private suspend fun GroupMessageEvent.sendCpuInfo(team: Team) {
+        val taskStatusResponse = try {
+            taskApi.executeCommand(
+                taskId = "${sender.id}_getCpuList",
+                command = AeCommand.GetCpuList(includeDetails = true),
+                clientId = teamClients.getValue(team.name)
+            )
+        } catch (e: TimeoutCancellationException) {
+            sendMessage(TIMEOUT_ERROR)
+            return
+        } ?: return
+
+        val cpuList = taskStatusResponse.result!!.first()
+        val result = json.decodeFromString<ResultData<CpuDetail>>(cpuList)
+        val bufferedImage = result.data?.toImage(itemUtil) ?: return run { sendMessage("❌ 获取CPU信息失败") }
+        val image = subject.uploadImage(bufferedImage.toInputStream())
+        subject.sendMessage(image)
+    }
+
+    /**
+     * 发送所有可合成物品到当前群组
+     *
+     * @param team 团队信息
+     */
+    private suspend fun GroupMessageEvent.sendAllCraftables(team: Team) {
         // 创建命令请求
         val taskStatusResponse = try {
             taskApi.executeCommand(
@@ -162,7 +204,7 @@ object ClientListener : SimpleListenerHost() {
 
         val result = json.decodeFromString<ResultData<Item>>(itemList)
 
-        val itemInfo = itemUtil.getLocalItems(result.data).joinToString(
+        val itemInfo = itemUtil.getLocalItems(result.data!!).joinToString(
             separator = "\n",
             prefix = "\n=== 可合成清单 ===\n",
             postfix = "\n===合成物品发送格式：合成 物品名称 数量===",
@@ -181,28 +223,21 @@ object ClientListener : SimpleListenerHost() {
                 }
         }
         subject.sendMessage(forwardMessage)
-
     }
 
     /**
-     * 合成物品
+     * 发送合成物品请求到当前群组
+     *
+     * @param itemName 物品名称
+     * @param countInt 合成数量
+     * @param team 团队信息
      */
-    @EventHandler
-    suspend fun GroupMessageEvent.craftItem() {
-        val content = message.contentToString()
-        val commandMatch = CRAFT_ITEM_REGEX.find(content) ?: return
-        val (itemName, count) = commandMatch.destructured
-
-        // 获取团队信息
-        val team = validateTeamAndClient() ?: return
+    private suspend fun GroupMessageEvent.sendCraftItem(itemName: String, countInt: Int, team: Team) {
         // 获取合成清单
         val craftItems = teamCraftables[team.name] ?: run { sendMessage("❌ 请先获取合成清单"); return }
         // 查询物品是否可以合成
         val localizedItem =
             craftItems.find { it.chineseName == itemName } ?: run { sendMessage("❌ 该物品无法合成"); return }
-        // 转换数量
-        val countInt = if (count.isEmpty()) 1 else count.toInt()
-
         // 发送合成请求
         sendMessage("📤 合成[$itemName*$countInt]正在发送合成请求，请等待结果")
 
@@ -223,18 +258,20 @@ object ClientListener : SimpleListenerHost() {
             return
         } ?: return
 
+        logger.debug("合成请求结果：$taskStatusResponse")
         // 处理结果
         val message = taskStatusResponse.result!!.first()
 
         val result = json.decodeFromString<ResultData<CraftingData>>(message)
-        logger.info("合成请求结果：${result.message}")
 
         // 处理合成结果
+        result.data ?: return run { sendMessage("❌ 合成失败：${result.message}") }
         result.data.forEach { craftingData ->
             if (craftingData.failed) {
                 sendMessage("❌ 合成失败：${craftingData.item.name}")
             } else {
-                sendMessage("📥 ${localizedItem.chineseName}合成请求已发送，请稍后查询结果\n")
+                sendMessage("📥 ${localizedItem.chineseName}*${countInt}合成请求已发送，正在获取CPU信息")
+                sendCpuInfo(team)
             }
         }
     }

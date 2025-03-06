@@ -14,12 +14,12 @@ import top.limbang.remoteoc.network.serializer.ListOrSingleSerializer
  * 任务结果数据
  *
  * @param T 数据类型
- * @property data 数据 (可能是 T 或 List<T>)
+ * @property data 数据 (可能是 T 或 List<T> 还可能是 null)
  * @property message 提示信息
  */
 @Serializable
 data class ResultData<T>(
     @Serializable(with = ListOrSingleSerializer::class)
-    val data: List<T>,
+    val data: List<T>? = null,
     val message: String
 )

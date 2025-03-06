@@ -92,7 +92,7 @@ internal class TaskApiTest {
 
         val result = json.decodeFromString<ResultData<CpuDetail>>(cpuList)
 
-        val cpuInfo = result.data.withIndex().joinToString(
+        val cpuInfo = result.data!!.withIndex().joinToString(
             separator = "\n",
             prefix = "=== CPU 状态 ===\n",
             postfix = "\n================",
@@ -147,7 +147,7 @@ internal class TaskApiTest {
 
         val result = json.decodeFromString<ResultData<Item>>(itemList)
 
-        val itemInfo = itemUtil.getLocalItems(result.data).joinToString(
+        val itemInfo = itemUtil.getLocalItems(result.data!!).joinToString(
             separator = "\n",
             prefix = "=== 可合成清单 ===\n",
             postfix = "\n==============",
@@ -185,7 +185,7 @@ internal class TaskApiTest {
         val result = json.decodeFromString<ResultData<CraftingData>>(message)
 
         // 处理合成结果
-        result.data.forEach { craftingData ->
+        result.data!!.forEach { craftingData ->
             logger.info(
                 "物品名称：${localizedItem.chineseName}\n" +
                         "物品数量：${craftingData.item.size}\n" +
