@@ -13,6 +13,7 @@ import top.limbang.remoteoc.entity.LocalizedItem
 import top.limbang.remoteoc.utils.MinecraftStyle.BACKGROUND_COLOR
 import top.limbang.remoteoc.utils.MinecraftStyle.BORDER_HIGHLIGHT_COLOR
 import top.limbang.remoteoc.utils.MinecraftStyle.BORDER_SHADOW_COLOR
+import top.limbang.remoteoc.utils.MinecraftStyle.ITEM_TEXT_COLOR
 import java.awt.*
 import java.awt.image.BufferedImage
 import java.io.File
@@ -22,6 +23,7 @@ import kotlin.math.ceil
 
 fun List<Item>.toImage(
     itemUtil: ItemUtil,
+    title: String = "终端",
     columnCount: Int = 9,
     cellWidth: Int = 64,
     cellHeight: Int = 64,
@@ -51,6 +53,11 @@ fun List<Item>.toImage(
     // 绘制背景
     g2d.color = BACKGROUND_COLOR
     g2d.fillRect(0, 0, canvasWidth, canvasHeight)
+
+    // 绘制标题文字
+    g2d.color = ITEM_TEXT_COLOR
+    g2d.font = Font("Microsoft YaHei", Font.PLAIN, 22)
+    g2d.drawString(title, horizontalPadding + (borderSize / 2), headerHeight - 10 + (borderSize / 2))
 
     // 绘制物品格子
     itemDisplayInfo.forEachIndexed { index, item ->
