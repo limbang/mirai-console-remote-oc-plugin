@@ -8,255 +8,104 @@
 package top.limbang.remoteoc.utils
 
 
-import top.limbang.remoteoc.entity.*
-import java.awt.*
+import top.limbang.remoteoc.RemoteOC
+import java.awt.AlphaComposite
+import java.awt.FontMetrics
+import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
-import java.io.File
 import java.io.InputStream
 import javax.imageio.ImageIO
-import kotlin.math.ceil
-
 
 /**
- * 将 CPU 核心状态转换为任务队列统计视图
+ * 绘制 Minecraft 风格的边框效果
  *
- * 本方法通过聚合三个物品队列（active/stored/pending）中的有效物品数量，生成以本地化名称为维度的统计视图。
- * 过滤逻辑通过 [getLocalItem] 函数实现，返回 null 的物品将被排除在统计结果之外。
+ * @param g 画笔
+ * @param width 宽度
+ * @param height 高度
  *
- * @param getLocalItem 本地化信息获取函数，需处理以下逻辑：
- *                     - 返回 [LocalizedItem]：表示有效物品
- *                     - 返回 null：表示物品被过滤或无效
- * @return 按物品本地化名称聚合的任务队列统计列表，包含以下特征：
- *         - 列表按中文名称升序排列
- *         - 仅包含未被过滤的有效物品
- *         - 各队列数量基于物品的 (name, damage) 组合进行累加
- *
- * 实现流程：
- * 1. 预缓存所有队列中有效物品的本地化信息
- * 2. 分别统计三个队列中有效物品的数量
- * 3. 合并统计结果生成最终视图
+ * @see MinecraftStyle
  */
-fun CpuCoreStatus.convertToTaskQueues(getLocalItem: (Item) -> LocalizedItem?): List<CpuTaskQueue> {
-    // region 预缓存阶段：收集所有队列中的有效物品本地化数据
-    // 通过序列处理合并三个队列，保证处理效率（避免创建多个临时集合）
-    val sampleCache = sequenceOf(activeItems, storedItems, pendingItems)
-        .flatten()
-        .mapNotNull { item ->
-            // 获取本地化信息，同时执行数据一致性校验
-            getLocalItem(item)?.also { localizedItem ->
-                // 防御性编程：确保本地化后的物品元数据与原始物品一致
-                require(localizedItem.item.name == item.name && localizedItem.item.damage == item.damage) {
-                    "物品元数据不一致！原始物品: (${item.name}, ${item.damage})，" +
-                            "本地化物品: (${localizedItem.item.name}, ${localizedItem.item.damage})"
-                }
-            }
-        }
-        // 以 (name, damage) 为唯一键建立缓存，供后续快速查找
-        .associateBy { it.item.name to it.item.damage }
-    // endregion
+fun drawBorderEffect(g: Graphics2D, width: Int, height: Int) = with(MinecraftStyle) {
+    // 预先计算常用倍数
+    val twoB = BORDER_WIDTH * 2
+    val threeB = BORDER_WIDTH * 3
+    val fourB = BORDER_WIDTH * 4
+    val innerWidth = width - BORDER_WIDTH * 5
+    val innerHeight = height - BORDER_WIDTH * 5
 
-    // region 统计阶段：过滤并聚合各队列物品数量
+    // 定义一个局部数据类用于描述矩形区域
+    data class Quad(val x: Int, val y: Int, val w: Int, val h: Int)
 
-    /**
-     * 聚合有效物品数量（基于size属性累加）
-     *
-     * @param items 待处理物品队列
-     * @return 映射表结构：Key为(name, damage)，Value为对应物品的size总和
-     */
-    fun filterAndAggregate(items: List<Item>) = items
-        .mapNotNull { item -> getLocalItem(item)?.item }
-        .groupingBy { it.name to it.damage }
-        .fold(0) { acc, item -> acc + item.size }
-    // 并行处理三个队列的统计工作
-    val activeSums = filterAndAggregate(activeItems)   // 活动队列统计
-    val storedSums = filterAndAggregate(storedItems)   // 存储队列统计
-    val pendingSums = filterAndAggregate(pendingItems) // 待处理队列统计
-    // endregion
+    // 简化绘制函数
+    fun fill(quad: Quad) = g.fillRect(quad.x, quad.y, quad.w, quad.h)
 
-    // region 结果合成阶段：合并统计结果生成最终视图
-    // 收集所有有效物品的唯一标识键（已通过预缓存确保存在）
-    val allKeys = sequenceOf(activeSums, storedSums, pendingSums)
-        .flatMap { it.keys }
-        .toSet()
-
-    return allKeys
-        .map { key ->
-            // 从预缓存中安全获取本地化数据（!! 断言安全原因：key来源自已过滤的统计结果）
-            val sample = sampleCache[key]!!
-            CpuTaskQueue(
-                itemName = sample.chineseName,    // 本地化名称
-                activeNumber = activeSums[key] ?: 0,  // 活动队列数量（无记录时补零）
-                pendingNumber = pendingSums[key] ?: 0,// 待处理队列数量
-                storedNumber = storedSums[key] ?: 0,  // 存储队列数量
-                imagePath = sample.imgPath        // 本地化图标路径
-            )
-        }
-        // 按中文名称字典序排列结果
-        .sortedBy { it.itemName }
-    // endregion
-}
-
-
-    /**
- * 将 CPU 详情转换为图片
- *
- * @param itemUtil 本地化信息获取工具
- * @param cpuNumber CPU 编号 (如果CPU名称为空有显示编号)
- */
-fun CpuDetail.toImage(itemUtil: ItemUtil, cpuNumber: Int): BufferedImage {
-    val taskQueues = cpu.convertToTaskQueues { itemUtil.getLocalItem(it) }
-
-    // 尺寸参数调整
-    val columnCount = 3
-    val cardWidth = 200
-    val cardHeight = 100
-    val horizontalPadding = 20
-    val verticalPadding = 15
-    val headerHeight = 50  // 顶部标题区域高度
-
-    // 计算画布尺寸（增加顶部空间）
-    val canvasWidth = (cardWidth + horizontalPadding) * columnCount + horizontalPadding
-    val rowCount = ceil(taskQueues.size.toDouble() / columnCount).toInt()
-    val canvasHeight = headerHeight + (cardHeight + verticalPadding) * rowCount + verticalPadding
-
-    val image = BufferedImage(canvasWidth, canvasHeight, BufferedImage.TYPE_INT_ARGB)
-    val g2d = image.createGraphics().apply {
-        setRenderingHints(
-            mapOf(
-                RenderingHints.KEY_ANTIALIASING to RenderingHints.VALUE_ANTIALIAS_ON,
-                RenderingHints.KEY_TEXT_ANTIALIASING to RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB
-            )
-        )
-    }
-
-    // 绘制背景
-    g2d.color = Color(0xDBDBDB)
-    g2d.fillRect(0, 0, canvasWidth, canvasHeight)
-
-    // 先绘制CPU标题信息
-    drawCpuHeader(this, cpuNumber, g2d, canvasWidth, headerHeight)
-
-    // 绘制任务卡片（下移headerHeight）
-    taskQueues.forEachIndexed { index, queue ->
-        val col = index % columnCount
-        val row = index / columnCount
-        val x = horizontalPadding + col * (cardWidth + horizontalPadding)
-        val y = headerHeight + verticalPadding + row * (cardHeight + verticalPadding)
-        drawTaskCard(g2d, queue, x, y, cardWidth, cardHeight)
-    }
-
-    // 绘制边框
-    drawBorderEffect(g2d, canvasWidth, canvasHeight)
-
-    g2d.dispose()
-    return image
-}
-
-/**
- * 绘制顶部标题样式的CPU信息
- */
-private fun drawCpuHeader(cpuDetail: CpuDetail, cpuNumber: Int, g: Graphics2D, width: Int, height: Int) {
-    // 背景条
-    g.color = Color(0xC6C6C6)
-    g.fillRect(0, 0, width, height)
-
-    // 文字内容
-    val cpuName = cpuDetail.name.ifEmpty { "CPU #$cpuNumber" }
-    val statusText = "状态: ${if (cpuDetail.busy) "忙碌中" else "空闲"}"
-    val storageText = "存储: ${cpuDetail.storage / 1024} KB"
-    val coresText = "处理器: ${cpuDetail.coprocessors} 核"
-
-    val fullText = listOf(cpuName, statusText, storageText, coresText).joinToString("  |  ")
-
-    // 文字样式
-    g.color = Color(0x595959)
-    g.font = Font("Microsoft YaHei", Font.BOLD, 16)
-
-    // 居中计算
-    val metrics = g.fontMetrics
-    val textWidth = metrics.stringWidth(fullText)
-    val startX = (width - textWidth) / 2
-    val startY = (height - metrics.height) / 2 + metrics.ascent
-
-    g.drawString(fullText, startX.coerceAtLeast(20), startY)  // 保证最小左边距
-
-    // 底部装饰线
-    g.color = Color(0x6a6a6a)
-    g.drawLine(0, height - 2, width, height - 2)
-    g.color = Color(0x999999)
-    g.drawLine(0, height - 1, width, height - 1)
-}
-
-private fun drawTaskCard(g: Graphics2D, queue: CpuTaskQueue, x: Int, y: Int, width: Int, height: Int) {
-    // 背景色
-    val bgColor = when {
-        queue.activeNumber > 0 && queue.pendingNumber > 0 -> Color(0xA6C699)
-        queue.pendingNumber > 0 -> Color(0xE8E5CA)
-        queue.storedNumber > 0 -> Color(0xDBDBDB)
-        else -> Color.WHITE
-    }
-
-    // 绘制卡片背景
-    g.color = bgColor
-    g.fillRoundRect(x, y, width, height, 8, 8)
-
-    // 绘制边框
-    g.color = Color(0x8B8B8B)
-    g.drawRoundRect(x, y, width, height, 8, 8)
-
-    // 图标处理
-    try {
-        val icon = ImageIO.read(File(queue.imagePath)).getScaledInstance(48, 48, Image.SCALE_SMOOTH)
-        g.drawImage(icon, x + width - 60, y + (height - 48) / 2, null)
-    } catch (e: Exception) {
-        // 图标加载失败处理
-    }
-
-    // 文字排版
-    val metrics = g.fontMetrics
-    val textX = x + 15
-    var textY = y + 30
-
-    // 物品名称（带截断）
-    g.color = Color.BLACK
-    g.font = Font("Microsoft YaHei", Font.BOLD, 14)
-    val itemName = truncateText(queue.itemName, metrics, width - 90)
-    g.drawString(itemName, textX, textY)
-
-    // 数值信息
-    textY += 25
-    g.font = Font("Microsoft YaHei", Font.PLAIN, 12)
+    // 1. 清空透明区域
+    g.composite = AlphaComposite.Clear
     listOf(
-        "正在合成" to queue.activeNumber,
-        "计划合成" to queue.pendingNumber,
-        "现存数量" to queue.storedNumber
-    ).forEach { (label, value) ->
-        if (value > 0) {
-            g.drawString("$label: $value", textX, textY)
-            textY += 20
-        }
-    }
+        // 左上角
+        Quad(0, 0, twoB, BORDER_WIDTH),
+        Quad(0, BORDER_WIDTH, BORDER_WIDTH, BORDER_WIDTH),
+        // 右下角
+        Quad(width - BORDER_WIDTH, height - twoB, BORDER_WIDTH, BORDER_WIDTH),
+        Quad(width - twoB, height - BORDER_WIDTH, twoB, BORDER_WIDTH),
+        // 右上角
+        Quad(width - threeB, 0, threeB, BORDER_WIDTH),
+        Quad(width - twoB, BORDER_WIDTH, twoB, BORDER_WIDTH),
+        Quad(width - BORDER_WIDTH, twoB, BORDER_WIDTH, BORDER_WIDTH),
+        // 左下角
+        Quad(0, height - threeB, BORDER_WIDTH, BORDER_WIDTH),
+        Quad(0, height - twoB, twoB, BORDER_WIDTH),
+        Quad(0, height - BORDER_WIDTH, threeB, BORDER_WIDTH)
+    ).forEach(::fill)
+
+    // 2. 绘制边框
+    g.composite = AlphaComposite.SrcOver
+    g.color = BORDER_COLOR
+    listOf(
+        // 横向边框
+        Quad(twoB, 0, innerWidth, BORDER_WIDTH),
+        Quad(threeB, height - BORDER_WIDTH, innerWidth, BORDER_WIDTH),
+        // 纵向边框
+        Quad(0, twoB, BORDER_WIDTH, innerHeight),
+        Quad(width - BORDER_WIDTH, threeB, BORDER_WIDTH, innerHeight),
+        // 圆角装饰点
+        Quad(BORDER_WIDTH, BORDER_WIDTH, BORDER_WIDTH, BORDER_WIDTH),
+        Quad(width - twoB, height - twoB, BORDER_WIDTH, BORDER_WIDTH),
+        Quad(width - threeB, BORDER_WIDTH, BORDER_WIDTH, BORDER_WIDTH),
+        Quad(width - twoB, twoB, BORDER_WIDTH, BORDER_WIDTH),
+        Quad(BORDER_WIDTH, height - threeB, BORDER_WIDTH, BORDER_WIDTH),
+        Quad(twoB, height - twoB, BORDER_WIDTH, BORDER_WIDTH)
+    ).forEach(::fill)
+
+    // 3. 绘制高光
+    g.color = BORDER_HIGHLIGHT_COLOR
+    listOf(
+        Quad(twoB, BORDER_WIDTH, innerWidth, BORDER_HIGHLIGHT_SHADOW_WIDTH),
+        Quad(BORDER_WIDTH, twoB, BORDER_HIGHLIGHT_SHADOW_WIDTH, innerHeight),
+        Quad(threeB, threeB, BORDER_WIDTH, BORDER_WIDTH)
+    ).forEach(::fill)
+
+    // 4. 绘制阴影
+    g.color = BORDER_SHADOW_COLOR
+    listOf(
+        Quad(width - threeB, threeB, BORDER_HIGHLIGHT_SHADOW_WIDTH, innerHeight),
+        Quad(threeB, height - threeB, innerWidth, BORDER_HIGHLIGHT_SHADOW_WIDTH),
+        Quad(width - fourB, height - fourB, BORDER_WIDTH, BORDER_WIDTH)
+    ).forEach(::fill)
 }
 
-private fun drawBorderEffect(g: Graphics2D, width: Int, height: Int) {
-    // 外框
-    g.color = Color(0x373737)
-    g.drawRect(0, 0, width - 1, height - 1)
 
-    // 内高光
-    g.color = Color.WHITE
-    g.drawLine(1, 1, width - 2, 1)
-    g.drawLine(1, 1, 1, height - 2)
-
-    // 阴影
-    g.color = Color(0x666666)
-    g.drawLine(width - 1, 0, width - 1, height - 1)
-    g.drawLine(0, height - 1, width - 1, height - 1)
-}
-
-private fun truncateText(text: String, metrics: FontMetrics, maxWidth: Int): String {
+/**
+ * 绘制会截断的文本
+ *
+ * @param text 文本
+ * @param metrics 字体信息
+ * @param maxWidth 最大宽度
+ * @return
+ */
+fun truncateText(text: String, metrics: FontMetrics, maxWidth: Int): String {
     if (metrics.stringWidth(text) <= maxWidth) return text
 
     val ellipsis = "..."
@@ -265,59 +114,6 @@ private fun truncateText(text: String, metrics: FontMetrics, maxWidth: Int): Str
         truncated = truncated.dropLast(1)
     }
     return truncated + ellipsis
-}
-
-/**
- * 合并图片
- *
- */
-fun List<BufferedImage>.merge(): BufferedImage {
-    // 计算合并图片尺寸
-    val maxWidth = maxOf { it.width }
-    val totalHeight = sumOf { it.height }
-
-    // 创建合并后的图片对象
-    val combinedImage = BufferedImage(
-        maxWidth,
-        totalHeight,
-        BufferedImage.TYPE_INT_ARGB
-    ).apply {
-        // 初始化白色背景
-        createGraphics().apply {
-            color = Color.WHITE
-            fillRect(0, 0, maxWidth, totalHeight)
-            dispose()
-        }
-    }
-
-    // 绘制所有图片到合并画布
-    with(combinedImage.createGraphics()) {
-        var yOffset = 0
-        forEach { img ->
-            drawImage(img, 0, yOffset, null)
-            yOffset += img.height
-        }
-        dispose()
-    }
-
-    return combinedImage
-}
-
-/**
- * 批量转换 CPU 详情为图片，并合并为一张大图
- *
- * @param itemUtil 本地化信息获取工具
- * @return 合并后的图片
- */
-fun List<CpuDetail>.toImage(itemUtil: ItemUtil): BufferedImage {
-    val images = mutableListOf<BufferedImage>()
-
-    withIndex().forEach { (index, cpuDetail) ->
-        val image = cpuDetail.toImage(itemUtil, index + 1)
-        images.add(image)
-    }
-
-    return images.merge()
 }
 
 /**
@@ -337,4 +133,77 @@ fun BufferedImage.toInputStream(format: String = "PNG"): InputStream {
     return ByteArrayInputStream(outputStream.toByteArray())
 }
 
+/**
+ * 加载图像资源
+ * @param name 图片文件名
+ * @return BufferedImage 对象，若加载失败则返回 null
+ */
+fun getImage(name: String): BufferedImage? {
+    val resource = RemoteOC::class.java.classLoader.getResourceAsStream("img/$name")
+    return resource?.use { ImageIO.read(it) }
+}
 
+/**
+ * 合并两个 BufferedImage 对象，并在水平方向上拼接 （背景透明）
+ *
+ * @param image 右边图像
+ * @return 合并后的图像
+ */
+fun BufferedImage.mergeImagesSideBySide(image: BufferedImage): BufferedImage {
+    val newWidth = this.width + image.width
+    val newHeight = maxOf(this.height, image.height)
+
+    val mergedImage = BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB)
+    val g: Graphics2D = mergedImage.createGraphics()
+
+    g.drawImage(this, 0, 0, null)  // 绘制左侧图片
+    g.drawImage(image, this.width, 0, null)  // 绘制右侧图片，从 this.width 开始
+
+    g.dispose()
+    return mergedImage
+}
+
+/**
+ * 合并两个 BufferedImage 对象，并在垂直方向上拼接 （背景透明）
+ *
+ * @param image 底部图像
+ * @return 合并后的图像
+ */
+fun BufferedImage.mergeImagesTopToBottom(image: BufferedImage): BufferedImage {
+    val newWidth = maxOf(this.width, image.width)  // 取较宽的作为合并后的宽度
+    val newHeight = this.height + image.height    // 总高度为两张图片高度之和
+
+    val mergedImage = BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB)
+    val g: Graphics2D = mergedImage.createGraphics()
+
+    g.drawImage(this, 0, 0, null)      // 绘制第一张图片（顶部）
+    g.drawImage(image, 0, this.height, null) // 绘制第二张图片（底部）
+
+    g.dispose()
+    return mergedImage
+}
+
+/**
+ * 合并一系列 BufferedImage 对象，并在垂直方向上拼接 （背景透明）
+ *
+ * @return 合并后的图像
+ */
+fun List<BufferedImage>.mergeImagesTopToBottom(): BufferedImage {
+    if (isEmpty()) throw IllegalArgumentException("Image list cannot be empty")
+
+    val newWidth = this.maxOf { it.width }  // 取最宽的图片宽度
+    val newHeight = this.sumOf { it.height }  // 计算总高度
+
+    val mergedImage = BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB)
+    val g: Graphics2D = mergedImage.createGraphics()
+
+    var currentY = 0
+    for (image in this) {
+        val x = (newWidth - image.width) / 2 // 居中绘制
+        g.drawImage(image, x, currentY, null)  // 绘制图片
+        currentY += image.height  // 递增 Y 坐标
+    }
+
+    g.dispose()
+    return mergedImage
+}
