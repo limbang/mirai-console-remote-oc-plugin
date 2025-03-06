@@ -12,9 +12,7 @@ import net.mamoe.mirai.contact.Contact.Companion.uploadImage
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.SimpleListenerHost
 import net.mamoe.mirai.event.events.GroupMessageEvent
-import net.mamoe.mirai.message.data.buildForwardMessage
 import top.limbang.remoteoc.RemoteOC.dataFolderPath
-import top.limbang.remoteoc.RemoteOC.logger
 import top.limbang.remoteoc.RemoteOC.teamCraftables
 import top.limbang.remoteoc.RemoteOCCompositeCommand.taskApi
 import top.limbang.remoteoc.RemoteOCData.teamClients
@@ -23,6 +21,7 @@ import top.limbang.remoteoc.entity.*
 import top.limbang.remoteoc.listener.TeamListener.sendMessage
 import top.limbang.remoteoc.network.model.ResultData
 import top.limbang.remoteoc.utils.*
+import kotlin.coroutines.CoroutineContext
 
 /**
  * 监听操作客户端命令
@@ -39,6 +38,11 @@ object ClientListener : SimpleListenerHost() {
     // 合成数量限制
     private const val MAX_CRAFT_AMOUNT = 1_000_000
     private const val DEFAULT_CRAFT_AMOUNT = 1
+
+    override fun handleException(context: CoroutineContext, exception: Throwable) {
+        println("捕获到事件处理异常: ${exception.message}")
+        exception.printStackTrace()
+    }
 
     /**
      * 绑定客户端
@@ -204,25 +208,16 @@ object ClientListener : SimpleListenerHost() {
 
         val result = json.decodeFromString<ResultData<Item>>(itemList)
 
-        val itemInfo = itemUtil.getLocalItems(result.data!!).joinToString(
-            separator = "\n",
-            prefix = "\n=== 可合成清单 ===\n",
-            postfix = "\n===合成物品发送格式：合成 物品名称 数量===",
-            transform = {
-                teamCraftables.getOrPut(team.name) { mutableSetOf() }.add(it) // 把合成清单存储到插件数据中
-                "物品名称：${it.chineseName}"
-            }
-        )
+        result.data ?: run { sendMessage("❌ 获取合成清单失败"); return }
 
-        val forwardMessage = buildForwardMessage() {
-            itemInfo.lineSequence() // 按换行符分割成行序列（兼容不同系统）
-                .chunked(20)   // 按 20 行分组
-                .map { it.joinToString("\n") } // 将每组合并回字符串
-                .toList().forEach { message ->
-                    bot named bot.nick says message
-                }
+        // 把合成清单存储到插件数据中
+        result.data.forEach {
+            teamCraftables.getOrPut(team.name) { mutableSetOf() }.add(itemUtil.getLocalItem(it))
         }
-        subject.sendMessage(forwardMessage)
+
+        val bufferedImage = result.data.toImage(itemUtil)
+        val image = subject.uploadImage(bufferedImage.toInputStream())
+        subject.sendMessage(image)
     }
 
     /**
@@ -258,7 +253,6 @@ object ClientListener : SimpleListenerHost() {
             return
         } ?: return
 
-        logger.debug("合成请求结果：$taskStatusResponse")
         // 处理结果
         val message = taskStatusResponse.result!!.first()
 
