@@ -23,7 +23,6 @@ val json: Json = Json {
     isLenient = true // 宽松模式
     encodeDefaults = true // 编码默认值
     ignoreUnknownKeys = true // 忽略未知的键
-    explicitNulls = false // 忽略空值
 }
 
 /**
