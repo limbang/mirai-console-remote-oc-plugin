@@ -9,6 +9,7 @@ package top.limbang.remoteoc.utils
 
 
 import top.limbang.remoteoc.entity.CpuDetail
+import top.limbang.remoteoc.entity.Item
 import java.io.File
 import javax.imageio.ImageIO
 import kotlin.test.Test
@@ -16,12 +17,21 @@ import kotlin.test.Test
 internal class ImageUtilKtTest {
 
     private val itemUtil = ItemUtil(javaClass.classLoader.getResource("logback.xml")!!.path.substringBeforeLast("/"))
-    private val cpuDetailJson = javaClass.classLoader.getResource("json/CpuDetail1.json")!!.readText()
+    private val cpuDetailJson = javaClass.classLoader.getResource("json/CpuDetail.json")!!.readText()
+    private val itemJson = javaClass.classLoader.getResource("json/item.json")!!.readText()
+
 
     @Test
-    fun toImage() {
+    fun cpuToImage() {
         val cpuDetails = json.decodeFromString<List<CpuDetail>>(cpuDetailJson)
         // 保存最终合并结果
         ImageIO.write(cpuDetails.toImage(itemUtil), "png", File("cpus.png"))
+    }
+
+    @Test
+    fun itemToImage(){
+        val items = json.decodeFromString<List<Item>>(itemJson)
+        // 保存最终合并结果
+        ImageIO.write(items.toImage(itemUtil), "png", File("item.png"))
     }
 }
