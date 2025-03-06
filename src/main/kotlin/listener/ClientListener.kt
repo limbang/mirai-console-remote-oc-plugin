@@ -265,12 +265,17 @@ object ClientListener : SimpleListenerHost() {
         val result = json.decodeFromString<ResultData<CraftingData>>(message)
 
         // 处理合成结果
-        result.data ?: return run { sendMessage("❌ 合成失败：${result.message}") }
+        result.data ?: run { sendMessage("❌ 合成失败：${result.message}");return }
         result.data.forEach { craftingData ->
             if (craftingData.failed) {
-                sendMessage("❌ 合成失败：${craftingData.item.name}")
+                val failureReason = craftingData.canceled.why ?: "未知原因"
+                val failureMessage = when {
+                    failureReason.contains("missing resources") -> "❌ 合成失败：${localizedItem.chineseName} 原因：缺少资源"
+                    else -> "❌ 合成失败：${localizedItem.chineseName} 原因：$failureReason"
+                }
+                sendMessage(failureMessage)
             } else {
-                sendMessage("📥 ${localizedItem.chineseName}*${countInt}合成请求已发送，正在获取CPU信息")
+                sendMessage("📥 [${localizedItem.chineseName}*${countInt}]合成请求已发送，正在获取CPU信息")
                 sendCpuInfo(team)
             }
         }

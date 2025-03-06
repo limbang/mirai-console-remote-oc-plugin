@@ -31,18 +31,20 @@ data class CraftingData(
 /**
  * 取消的结果
  *
+ * @property why 失败原因
  * @property result 取消的结果
  */
 @Serializable
-data class Canceled(val result: Boolean)
+data class Canceled(val why: String? = null,val result: Boolean)
 
 /**
  * 完成的结果
  *
+ * @property why 失败原因
  * @property result 完成的结果
  */
 @Serializable
-data class Done(val result: Boolean)
+data class Done(val why: String? = null, val result: Boolean)
 
 /**
  * 物品的合成数据
