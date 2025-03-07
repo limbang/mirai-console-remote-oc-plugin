@@ -89,11 +89,16 @@ object ClientListener : SimpleListenerHost() {
         sendMessage(
             """
             🛠️ 客户端操作帮助 🛠️
-            1. 绑定客户端：绑定客户端 客户端名称 🏷️绑定客户端到当前所在的团队，绑定后即可使用远程控制功能。
-            2. 解绑客户端：解绑客户端 🏷️解绑当前所在的团队的客户端绑定。
-            3. 获取CPU信息：获取CPU信息 🏷️获取当前所在团队的CPU信息。
-            4. 获取合成清单：获取合成清单 🏷️获取当前所在团队的可合成清单。
-            5. 合成物品: 合成 物品名称 [数量] 🏷️合成指定名称的物品，数量为可选参数，默认为 1。  
+            
+            1. 绑定客户端：绑定客户端 客户端名称 🏷️绑定客户端到当前所在的团队，绑定后即可使用远程控制功能
+            2. 解绑客户端：解绑客户端 🏷️解绑当前所在的团队的客户端绑定
+            3. 获取CPU信息：获取状态 🏷️获取当前团队的 AE CPU 状态
+            4. 获取所有可合成物品：合成终端 🏷️获取当前团队的 AE 的可合成物品
+            5. 合成物品: 合成 物品名称 [数量] 🏷️合成指定名称的物品，数量为可选参数，默认为 1  
+            6. 获取所有物品：物品终端 [过滤名称] 🏷️获取当前团队的 AE 的所有物品，可选参数为过滤名称
+            7. 获取所有流体：流体终端 🏷️获取当前团队的 AE 的所有流体
+            8. 获取所有源质：源质终端 🏷️获取当前团队的 AE 的所有源质
+            9. 客户端帮助：客户端帮助 🏷️显示客户端操作帮助
             """.trimIndent()
         )
     }
@@ -121,7 +126,7 @@ object ClientListener : SimpleListenerHost() {
      */
     @EventHandler
     suspend fun GroupMessageEvent.getCpuInfo() {
-        if (!message.contentToString().startsWith("获取CPU信息")) return
+        if (!message.contentToString().startsWith("获取状态")) return
         // 获取团队信息
         val team = validateTeamAndClient() ?: return
         // 发送CPU信息
@@ -129,11 +134,11 @@ object ClientListener : SimpleListenerHost() {
     }
 
     /**
-     * 获取合成清单
+     * 获取所有可合成物品
      */
     @EventHandler
     suspend fun GroupMessageEvent.getAllCraftables() {
-        if (!message.contentToString().startsWith("获取合成清单")) return
+        if (!message.contentToString().startsWith("合成终端")) return
         // 获取团队信息
         val team = validateTeamAndClient() ?: return
         // 发送合成清单
@@ -208,7 +213,7 @@ object ClientListener : SimpleListenerHost() {
 
         val result = json.decodeFromString<ResultData<Item>>(itemList)
 
-        result.data ?: run { sendMessage("❌ 获取合成清单失败"); return }
+        result.data ?: run { sendMessage("❌ 获取合成终端失败"); return }
 
         // 把合成清单存储到插件数据中
         result.data.forEach {
