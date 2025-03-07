@@ -8,7 +8,6 @@
 package top.limbang.remoteoc.entity
 
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
@@ -41,6 +40,8 @@ import kotlinx.serialization.Serializable
  *              - 0 = 无效物品
  *              - (-1) = 无限数量（创造模式专用）
  * @property isCraftable 物品是否可合成，默认为 true。
+ * @property hasTag 物品是否带有标签，默认为 false。
+ * @property tag 物品的标签，用于区分同类物品的不同属性。
  */
 @Serializable
 data class Item(
@@ -48,7 +49,9 @@ data class Item(
     val label: String,
     val damage: Int,
     val size: Long,
-    val isCraftable: Boolean = true
+    val isCraftable: Boolean = true,
+    val hasTag: Boolean = false,
+    val tag: String = ""
 )
 
 /**
@@ -56,15 +59,15 @@ data class Item(
  *
  * 适用于客户端界面渲染和本地化数据存储，实现与具体物品实例的松耦合关联。
  *
- * @property chineseName 物品的中文显示名称
+ * @property localizedName 物品的本地化显示名称，用于用户界面展示。
  * @property tooltip 物品的悬浮提示信息集合，每行最大长度建议不超过 40 字符
  * @property imgPath 物品图标的资源路径，遵循资源包规范
  */
 @Serializable
 data class ItemMetadata(
-    @SerialName("zh") val chineseName: String,
+    val localizedName: String,
     val tooltip: List<String>,
-    @SerialName("img_path") val imgPath: String
+    val imgPath: String
 )
 
 /**
@@ -89,12 +92,14 @@ data class LocalizedItem(
  * @property name 物质的唯一命名空间标识符，遵循 [Minecraft命名规范]。
  * @property label 物质的本地化显示名称，用于用户界面展示。
  * @property amount 物质的数量，单位为 mB（1 mB = 1/1000 mL）。
+ * @property isCraftable 物质是否可合成，默认为 true。
  */
 @Serializable
 data class Fluid(
     val name: String,
     val label: String,
-    val amount: Long
+    val amount: Long,
+    val isCraftable: Boolean
 )
 
 /**
@@ -102,19 +107,21 @@ data class Fluid(
  *
  * 包含流体的物理特性参数与本地化信息，适用于流体管道系统可视化。
  *
- * @property chineseName 流体中文名称
- * @property temperatureKelvin 温度值（单位：K，范围 0-5000）
- * @property luminanceLevel 发光强度（范围 0-15，0表示不发光）
- * @property densityKgPerCubicMeter 密度值（单位：kg/m³，影响流体分层）
- * @property viscosityPascalSecond 粘度系数（单位：Pa·s，影响流动速度）
+ * @property localizedName 流体的本地化显示名称，用于用户界面展示。
+ * @property temperature 温度值（单位：K，范围 0-5000）
+ * @property luminosity 发光强度（范围 0-15，0表示不发光）
+ * @property density 密度值（单位：kg/m³，影响流体分层）
+ * @property viscosity 粘度系数（单位：Pa·s，影响流动速度）
+ * @property imgPath 流体图标的资源路径，遵循资源包规范
  */
 @Serializable
 data class FluidMetadata(
-    @SerialName("zh") val chineseName: String,
-    @SerialName("Temperature") val temperatureKelvin: Int,
-    @SerialName("Luminosity") val luminanceLevel: Int,
-    @SerialName("Density") val densityKgPerCubicMeter: Int,
-    @SerialName("Viscosity") val viscosityPascalSecond: Int
+    val localizedName: String,
+    val temperature: Int,
+    val luminosity: Int,
+    val density: Int,
+    val viscosity: Int,
+    val imgPath: String
 )
 
 /**
