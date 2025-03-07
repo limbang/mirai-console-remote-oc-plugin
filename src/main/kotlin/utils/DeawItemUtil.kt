@@ -116,7 +116,7 @@ private fun drawTableCell(g: Graphics2D, item: LocalizedItem?, x: Int, y: Int, w
     // 绘制物品名称
     g.color = Color.WHITE
     g.font = Font("Microsoft YaHei", Font.PLAIN, 9)
-    g.drawString(item.chineseName, x + 5, y + 2 + g.fontMetrics.ascent)
+    g.drawString(truncateText(item.chineseName,g.fontMetrics,55), x + 5, y + 2 + g.fontMetrics.ascent)
 
     // 获取字体度量信息
     g.font = Font("Microsoft YaHei", Font.PLAIN, 12)
