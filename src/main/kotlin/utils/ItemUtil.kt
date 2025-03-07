@@ -11,6 +11,7 @@ package top.limbang.remoteoc.utils
 import kotlinx.serialization.json.Json
 import org.slf4j.LoggerFactory
 import top.limbang.remoteoc.entity.*
+import top.limbang.remoteoc.utils.NBTUtil.readFluidName
 import java.io.File
 
 /**
@@ -20,17 +21,14 @@ import java.io.File
  * 支持黑名单过滤和默认值回退机制。
  *
  * @param resourceDir JSON数据文件所在目录路径
- * @param itemJsonName 物品数据文件名（默认：items_GTNH270.json）
- * @param fluidsJsonName 液体数据文件名（默认：fluids_GTNH270.json）
- * @property nameFilters 需要过滤的特殊物品名称集合
- *
+ * @param itemJsonName 物品数据文件名（默认：items.json）
+ * @param fluidsJsonName 液体数据文件名（默认：fluids.json）
  * @throws IllegalArgumentException 当数据文件不存在时抛出
  */
 class ItemUtil(
     private val resourceDir: String,
-    itemJsonName: String = "items_GTNH270.json",
-    fluidsJsonName: String = "fluids_GTNH270.json",
-    private val nameFilters: Set<String> = setOf("ae2fc:fluid_drop", "programmablehatches:prog_circuit")
+    itemJsonName: String = "items.json",
+    fluidsJsonName: String = "fluids.json"
 ) {
 
     private val itemData: Map<String, Map<String, ItemMetadata>>
@@ -50,21 +48,33 @@ class ItemUtil(
     }
 
     /**
-     * 获取单个物品的本地化信息，若名称被过滤，则返回 null。
+     * 获取单个物品的本地化信息
      *
-     * @param item 原始物品对象，需包含名称(name)和损伤值(damage)
-     * @return [LocalizedItem] 包含本地化名称和图片路径的对象（可能为null）
+     * @param item 原始物品对象，需包含名称(name)和(damage)
+     * @return [LocalizedItem] 包含本地化名称和图片路径的对象
      */
-    fun getLocalItem(item: Item): LocalizedItem? {
-        // 优先执行过滤检查
-        if (nameFilters.contains(item.name)) return null
-
+    fun getLocalItem(item: Item): LocalizedItem {
+        // 液滴特殊处理
+        if (item.name == "ae2fc:fluid_drop") {
+            // 读取液体名称
+            val name = NBTUtil.base64StringToCompoundTag(item.tag).readFluidName()
+            val fluidMetadata = fluidData[name]
+            // 使用液体的本地化名称和液滴图片
+            val fluidImgPath =
+                "$resourceDir/image/${itemData[item.name]?.get(item.damage.toString())?.imgPath ?: "default.png"}"
+            return LocalizedItem(item, "${fluidMetadata?.localizedName ?: "未知"}液滴", fluidImgPath)
+        }
         val itemMetadata = itemData[item.name]?.get(item.damage.toString())
         return if (itemMetadata != null) {
-            LocalizedItem(item, itemMetadata.chineseName, "$resourceDir/img/items/${itemMetadata.imgPath}")
+            // 纸张特殊处理
+            val name =
+                if (item.name == "minecraft:paper" && item.label != "Paper" && itemMetadata.localizedName == "纸") {
+                    "${itemMetadata.localizedName} (${item.label})"
+                } else itemMetadata.localizedName
+            LocalizedItem(item, name, "$resourceDir/image/${itemMetadata.imgPath}")
         } else {
             logger.warn("未找到物品: $item 采用默认名称和图片")
-            LocalizedItem(item, item.label, "$resourceDir/img/default.png")
+            LocalizedItem(item, item.label, "$resourceDir/image/default.png")
         }
     }
 
@@ -81,7 +91,7 @@ class ItemUtil(
      * @see LocalizedItem 返回的数据载体类
      */
     fun getLocalItems(items: List<Item>): List<LocalizedItem> {
-        return items.mapNotNull { getLocalItem(it) }
+        return items.map { getLocalItem(it) }
     }
 
     /**
@@ -93,9 +103,9 @@ class ItemUtil(
     fun getLocalFluid(fluid: Fluid): LocalizedFluid {
         val fluidMetadata = fluidData[fluid.name]
         return if (fluidMetadata != null) {
-            LocalizedFluid(fluid, fluidMetadata.chineseName, "$resourceDir/img/fluids/${fluid.label}.png")
+            LocalizedFluid(fluid, fluidMetadata.localizedName, "$resourceDir/image/${fluid.label}.png")
         } else {
-            LocalizedFluid(fluid, fluid.label, "$resourceDir/img/default.png")
+            LocalizedFluid(fluid, fluid.label, "$resourceDir/image/default.png")
         }
     }
 
