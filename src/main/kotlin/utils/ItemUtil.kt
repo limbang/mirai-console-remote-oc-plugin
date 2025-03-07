@@ -12,6 +12,8 @@ import kotlinx.serialization.json.Json
 import org.slf4j.LoggerFactory
 import top.limbang.remoteoc.entity.*
 import top.limbang.remoteoc.utils.NBTUtil.readFluidName
+import top.limbang.remoteoc.utils.NBTUtil.readTargetCircuitDamage
+import top.limbang.remoteoc.utils.NBTUtil.readTargetCircuitStringId
 import java.io.File
 
 /**
@@ -48,35 +50,114 @@ class ItemUtil(
     }
 
     /**
+     * 判断物品是否为液滴
+     */
+    private fun Item.isFluidDrop() = name == "ae2fc:fluid_drop"
+
+    /**
+     * 判断物品是否为多功能舱室 prog_circuit
+     */
+    private fun Item.isProgrammableCircuit() =
+        name == "programmablehatches:prog_circuit" && damage == 0 && hasTag
+
+    /**
+     * 判断物品是否为纸张
+     */
+    private fun isSpecialPaper(item: Item, metadata: ItemMetadata) =
+        item.name == "minecraft:paper" && item.label != "Paper" && metadata.localizedName == "纸"
+
+    /**
      * 获取单个物品的本地化信息
      *
      * @param item 原始物品对象，需包含名称(name)和(damage)
      * @return [LocalizedItem] 包含本地化名称和图片路径的对象
      */
     fun getLocalItem(item: Item): LocalizedItem {
-        // 液滴特殊处理
-        if (item.name == "ae2fc:fluid_drop") {
-            // 读取液体名称
-            val name = NBTUtil.base64StringToCompoundTag(item.tag).readFluidName()
-            val fluidMetadata = fluidData[name]
-            // 使用液体的本地化名称和液滴图片
-            val fluidImgPath =
-                "$resourceDir/image/${itemData[item.name]?.get(item.damage.toString())?.imgPath ?: "default.png"}"
-            return LocalizedItem(item, "${fluidMetadata?.localizedName ?: "未知"}液滴", fluidImgPath)
-        }
-        val itemMetadata = itemData[item.name]?.get(item.damage.toString())
-        return if (itemMetadata != null) {
-            // 纸张特殊处理
-            val name =
-                if (item.name == "minecraft:paper" && item.label != "Paper" && itemMetadata.localizedName == "纸") {
-                    "${itemMetadata.localizedName} (${item.label})"
-                } else itemMetadata.localizedName
-            LocalizedItem(item, name, "$resourceDir/image/${itemMetadata.imgPath}")
-        } else {
-            logger.warn("未找到物品: $item 采用默认名称和图片")
+        // 液滴特殊处理逻辑
+        if (item.isFluidDrop()) return handleFluidDrop(item)
+        // 常规物品处理流程
+        return handleRegularItem(item)
+    }
+
+    /**
+     * 处理流体液滴物品
+     *
+     * 实现要点：
+     * 1. 从NBT标签解析流体名称
+     * 2. 使用流体名称的本地化版本+"液滴"后缀
+     * 3. 保持液滴自身材质路径逻辑不变
+     */
+    private fun handleFluidDrop(item: Item): LocalizedItem {
+        // 从Base64编码的tag解析流体名称
+        val compoundTag = NBTUtil.base64StringToCompoundTag(item.tag)
+        val fluidName = compoundTag.readFluidName()
+
+        // 获取流体元数据
+        val fluidMetadata = fluidData[fluidName]
+
+        // 构建本地化名称（流体名称 + "液滴"后缀）
+        val localizedName = "${fluidMetadata?.localizedName ?: "未知"}液滴"
+
+        // 保持原始液滴图标逻辑：从itemData读取图片路径
+        val fluidImgPath = itemData[item.name]
+            ?.get(item.damage.toString())
+            ?.imgPath
+            ?.let { "$resourceDir/image/$it" }
+            ?: "$resourceDir/image/default.png"
+
+        return LocalizedItem(item, localizedName, fluidImgPath)
+    }
+
+    /**
+     * 处理常规物品逻辑
+     *
+     * 实现要点：
+     * 1. 处理多功能舱室特殊NBT结构
+     * 2. 获取物品元数据
+     * 3. 特殊处理minecraft:paper的显示名称
+     */
+    private fun handleRegularItem(item: Item): LocalizedItem {
+        // 解析物品标识（优先处理programmable电路板）
+        val (damage, itemId) = resolveItemIdentifier(item)
+
+        // 获取物品元数据
+        val itemMetadata = itemData[itemId]?.get(damage.toString())
+
+        return itemMetadata?.let { meta ->
+            LocalizedItem(
+                item = item,
+                chineseName = buildDisplayName(item, meta),
+                imgPath = "$resourceDir/image/${meta.imgPath}",
+            )
+        } ?: run {
+            logger.warn("未找到物品: item 采用默认名称和图片")
             LocalizedItem(item, item.label, "$resourceDir/image/default.png")
         }
     }
+
+    /**
+     * 解析物品唯一标识，处理 programmable 电路板特殊 NBT 结构
+     */
+    private fun resolveItemIdentifier(item: Item): Pair<Int, String> {
+        return if (item.isProgrammableCircuit()) {
+            val tag = NBTUtil.base64StringToCompoundTag(item.tag)
+            tag.readTargetCircuitDamage() to (tag.readTargetCircuitStringId() ?: item.name)
+        } else {
+            item.damage to item.name
+        }
+    }
+
+    /**
+     * 构建显示名称，处理paper的特殊情况
+     */
+    private fun buildDisplayName(item: Item, meta: ItemMetadata): String {
+        return if (isSpecialPaper(item, meta)) {
+            "${meta.localizedName} (${item.label})"
+        } else {
+            meta.localizedName
+        }
+    }
+
 
     /**
      * 批量获取本地化物品信息

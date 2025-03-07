@@ -1,0 +1,536 @@
+[
+  {
+    "name": "minecraft:diamond_block",
+    "size": 0,
+    "damage": 0,
+    "label": "Block of Diamond"
+  },
+  {
+    "name": "appliedenergistics2:tile.BlockInterface",
+    "size": 12,
+    "damage": 0,
+    "label": "ME Interface"
+  },
+  {
+    "name": "appliedenergistics2:tile.BlockCraftingUnit",
+    "size": 2,
+    "damage": 0,
+    "label": "Crafting Unit"
+  },
+  {
+    "name": "gregtech:gt.blockcasings",
+    "size": 0,
+    "damage": 4,
+    "label": "EV Machine Casing"
+  },
+  {
+    "name": "IC2:itemDust2",
+    "size": 0,
+    "damage": 2,
+    "label": "Energium Dust"
+  },
+  {
+    "name": "IC2:itemBatCrystal",
+    "tag": "H4sIAAAAAAAA/+NiYGAAAHg/+U4EAAAA",
+    "damage": 0,
+    "label": "Energy Crystal",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "IC2:itemBatLamaCrystal",
+    "tag": "H4sIAAAAAAAA/+NiYGAAAHg/+U4EAAAA",
+    "damage": 26,
+    "label": "Lapotron Crystal",
+    "size": 1,
+    "hasTag": true
+  },
+  {
+    "name": "appliedenergistics2:item.ItemMultiMaterial",
+    "size": 1,
+    "damage": 16,
+    "label": "Printed Calculation Circuit"
+  },
+  {
+    "name": "appliedenergistics2:item.ItemMultiMaterial",
+    "size": 0,
+    "damage": 17,
+    "label": "Printed Engineering Circuit"
+  },
+  {
+    "name": "appliedenergistics2:item.ItemMultiMaterial",
+    "size": 0,
+    "damage": 18,
+    "label": "Printed Logic Circuit"
+  },
+  {
+    "name": "appliedenergistics2:item.ItemMultiMaterial",
+    "size": 47,
+    "damage": 20,
+    "label": "Printed Silicon"
+  },
+  {
+    "name": "ggfab:gt.ggfab.d1",
+    "size": 104,
+    "damage": 1,
+    "label": "Single Use Wrench"
+  },
+  {
+    "name": "dreamcraft:item.RawLapotronCrystal",
+    "size": 1,
+    "damage": 0,
+    "label": "Raw Lapotron Crystal"
+  },
+  {
+    "name": "dreamcraft:item.LapotronDust",
+    "size": 0,
+    "damage": 0,
+    "label": "Lapotron Dust"
+  },
+  {
+    "name": "gregtech:gt.metaitem.01",
+    "size": 160,
+    "damage": 17019,
+    "label": "Aluminium Plate"
+  },
+  {
+    "name": "gregtech:gt.metaitem.01",
+    "size": 64,
+    "damage": 17028,
+    "label": "Titanium Plate"
+  },
+  {
+    "name": "gregtech:gt.metaitem.01",
+    "size": 2,
+    "damage": 17086,
+    "label": "Gold Plate"
+  },
+  {
+    "name": "gregtech:gt.metaitem.01",
+    "size": 203,
+    "damage": 17500,
+    "label": "Diamond Plate"
+  },
+  {
+    "name": "gregtech:gt.metaitem.01",
+    "size": 234,
+    "damage": 17516,
+    "label": "Certus Quartz Plate"
+  },
+  {
+    "name": "gregtech:gt.metaitem.01",
+    "size": 45,
+    "damage": 17856,
+    "label": "Silicon Solar Grade (Poly SI) Plate"
+  },
+  {
+    "name": "gregtech:gt.metaitem.01",
+    "size": 4,
+    "damage": 32708,
+    "label": "Data Stick"
+  },
+  {
+    "name": "gregtech:gt.metaitem.01",
+    "size": 36,
+    "damage": 32714,
+    "label": "Engraved Lapotron Chip"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDJzc8pSc3TKy5JTc1hAAD9kuVQGgAAAA==",
+    "damage": 0,
+    "label": "drop of Molten Steel",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDOzc8pSc3TK8tMKkrMK0nMycmvZAAAv9iX+CEAAAA=",
+    "damage": 0,
+    "label": "drop of Molten Vibrant Alloy",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/w3LMQqAMAwF0K+gqOAtnD2Aq4KLkxeQ0KYlYCuk8f769jcAA0YjjWyrqHvFKjTr82ararQbJYoMdOiLqeR4icfklSk5pWCLGKf5ZMnhUcd+v6mUg3P5zwfcSYmyWwAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Reinforced Glass Lens)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0E9CaGLtFsLWtu4hEyZjFiWp362zey8AAQMlmzJ6PoqzQhOfcrOq0W6SxPTTDv3L7LftfmK0rEY9rtU4JaU4NU3zAvysZ1vuTgAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Extruder Shape (Casing))",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0F8JoYm1WwhbW+4hEyZjFq2kvq2zey8CET2lmHL1crzOgHq938xQodkkieknLbqHxbPtfmKwokY9rsU4JqU4NY3TDPxzJNo+TgAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Extruder Shape (Ring))",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0E9CaGLtFsLWlns0EyZjFiWp36O5n/cCEDBQsik3z0dxVmi2p9ysarS7JDGNX4f+Zfbbop8YLatRj2s1TkkpTk3TvAA/TYHL6E4AAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Emerald Lens)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0E9CaGLtFsLWlns0EyZjFiWp37s5nvcCEDBQsik3z0dxVmi2p9ysarS7JDGNX4f+Zfbbop8YLatRj2s1TkkpTk3TvAA/KtF97U4AAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Green Sapphire Lens)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0E9CaGLtFsLWlns0EyZjFiWp35s6kPcCEDBQsik3z0dxVmi2p9ysarS7JDGNX4f+Zfbbop8YLatRj2s1TkkpTk3TvAA/zRFOEE4AAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Enderpearl Lens)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0E9CaGLtFsLWlns0EyZjFiWp36O6j/cCEDBQsik3z0dxVmi2p9ysarS7JDGNX4f+Zfbbop8YLatRj2s1TkkpTk3TvAA/ioMKv04AAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Endereye Lens)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBMQ5AQBAF0L8SgkTtFkKr5R5M1mRMsSTra53dey3QoqNkUy6e4+sMKJf7vRgKVKskMf32Gs3D7JdtfqC3rEaN52wcklKcmoZxAn40tp6RTgAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Extruder Shape (Bolt))",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0E9CaGLtFsLWlns0EyZjFiWp39O5nPcCEDBQsik3z0dxVmi2p9ysarS7JDGNX4f+Zfbbop8YLatRj2s1TkkpTk3TvAA/omHBx04AAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Topaz Lens)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0E9CaGLtFsLWlns0EyZjFiWp36s5n/cCEDBQsik3z0dxVmi2p9ysarS7JDGNX4f+Zfbbop8YLatRj2s1TkkpTk3TvAA/xTF3wk4AAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Ruby Lens)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0E9CaGLtFsLWlns0EyZjFiWp33s6kvcCEDBQsik3z0dxVmi2p9ysarS7JDGNX4f+Zfbbop8YLatRj2s1TkkpTk3TvAA/ElLPwE4AAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Yellow Garnet Lens)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0F8JoYm1WwhbW+4hDZMxi1ZSv5bO7j0PePQMWYWr5aMYHer1LomuQrOFGFS+t0X3MFvS3U4MmkUpx7UoxygMRonjNAM/2tQAME4AAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Extruder Shape (Rotor))",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0E9CaGLtFsLWlns0EyZjFiWp35s5oPcCEDBQsik3z0dxVmi2p9ysarS7JDGNX4f+Zfbbop8YLatRj2s1TkkpTk3TvAA/ChOPR04AAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Diamond Lens)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0E9CaGLtFsLWtu4hEyZjFiWp362zey8AAQMlmzJ6PoqzQhOfcrOq0W6SxPRjh/5l9tt2PzFaVqMe12qcklKcmqZ5AX4V9vi1TgAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Extruder Shape (Gear))",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0E9CaGLtFsLWlns0EyZjFiWp362zey8AAQMlm3LzfBRnhWZ7ys2qRrtLEtMvduhfZr8t+onRshr1uFbjlJTi1DTNC/AD38aI104AAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Extruder Shape (Rod))",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0F8JoYm1WwhbW+4hDZMxi1ZSv7Fzdu95wKNnyCpcLR/F6FCvd0l0FZotxKDyvS26h9mS7nZi0CxKOa5FOUZhMEocpxn4AZ1GRJ9OAAAA",
+    "damage": 0,
+    "label": "Programming Circuit (Extruder Shape (Small Gear))",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBQQ5AMBAF0E9CaGLtFsLWlns0EyZjFiWp37O5nvcCEDBQsik3z0dxVmi2p9ysarS7JDGNX4f+Zfbbop8YLatRj2s1TkkpTk3TvAA/gqMzbU4AAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Sapphire Lens)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/wXBMQ5AQBAF0L8SgkTtFkKr5R4y1mRMsSTra53dey3QoqNkUy6e4+sMKJf7vRgKVKskMf32Gs3D7JdtfqC3rEaN52wcklKcmoZxAn77lGYUTgAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Extruder Shape (Cell))",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/w3EMQrCQBAF0J+AYgJ6EAsLS9ukscgZZEiG5cNmDbN/76+veCMw4iqL5JoYa6M6nKZvK+p6nGfbLTluFwxVwZI+3HC348j0zYtHYhXX+nxRvj/e/5aWxcXkQcvAD2S4FUphAAAA",
+    "damage": 0,
+    "label": "Programming Circuit (Inscriber Engineering Press)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/w3EMQrCQBAF0J+AYgLiPSwsLG2TxiJnkCEZlg+bNcz+vb++4o3AiKsskmtirI3qcJq+rajrcZ5tt+S4XTBUBUv6cMPdjiPTNy8eiVVc6/NF+f54/1taFheTBy0DP5W9WSNhAAAA",
+    "damage": 0,
+    "label": "Programming Circuit (Inscriber Logic Press)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/w3EMQrCQBAF0J+AYgJW3sLCwtI2aSxyBhmSYfmwWcPs3/vrK94IjLjKIrkmxtqoDqfp24q6HufZdkuO2wVDVbCkDzfc7TgyffPikVjFtT5flO+P97+lZXExedAy8ANPz++DYQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Inscriber Silicon Press)",
+    "size": 55,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/w3EMQ6CQBAF0I+JRkm4CAWFpS02FJzBTGCy+cmyktm/99dXvB7oMcgiuWbG1qgO1/nbiroLbm87LDmGOx5VwZI+3DHaeWb67sUjsYpbfb4oP6bl39qyuJo8aBn4AXe2wfFhAAAA",
+    "damage": 0,
+    "label": "Programming Circuit (Inscriber Calculation Press)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLwQmAMBAEwI2gaMAWLMEC/MY+JCTHeQ8jnGv/Ppz/RCBiZnYVJvPyGgP6dL+NocOw5yurII6YHro1PaxiURellHNTrtYo6plSj/J/4APZLwM2VQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLMQqAMBAEwFVQNGBr6RN8gG38h4R4nFcY4dz838LpJwABE5OrMJrnamzQxacWNi36Pd1JBfOA8aVb0cNOLOqilHxtytUKRT1RziP/H/gAs/qZlFUAAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLQQ5AQAwF0E9CmMQVHMEBbLmHNDNNdWEk9d3fwtu/BCRMlDDl5pFfZ4Nuu9/KpkW/yyWm6AaMD8OrHV4wW6hR87kaF69UC6GWI/8f+AAJTjcOVQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLQQ5AQAwF0E9CmMQVHMEBbLmHNDNNdWEk9d3fwtu/BCRMlDDl5pFfZ4Nuu9/KpkW/yyWmmAaMD8OrHV4wW6hR87kaF69UC6GWI/8f+ACjGR3zVQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLQQ5AMBAF0F9CaOIKjuAAttxDmnYyZqGS8d3fwtu/CERMTK7CzTy/xoBuu9/K0KDf05VU0A4YH7pVPaxgVhel5HNVLlYp6olSjvx/4AMWc1CiVQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLQQ5AMBAF0E9CaLiCIziAbd1DmpqMWahk/N7fwtu/AATMTK7CaJ6rsUEXn1rYtOj3dCcVTAPGl25FDzuxqItS8rUpVysU9UQ5j/x/4APGEmSaVQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLsQmAMBAF0K+gaMDCBRzBAWzjHhLicV5hhPNnfwtf/wIQMDG5CqN5rsYGXXxqYdOi39OdVDAPGF+6FT3sxKIuSsnXplytUNQT5Tzy/4EPycyHUVUAAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLMQqAMBAEwFVQNGBl7xN8gG38h4R4nFcY4dz838LpJwABE5OrMJrnamzQxacWNi36Pd1JBfOA8aVb0cNOLOqilHxtytUKRT1RziP/H/gAA9p1g1UAAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLwQmAMBAEwFVQNCBYgSVYgN/Yh4R4nPcwwrnp34fznwAETEyuwmieq7FBF59a2LTo93QnFcwDxpduRQ87saiLUvK1KVcrFPVEOY/8f+ADrMf+OFUAAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLQQ5AMBAF0E9CaMIRHMEBbOse0tRkzEIl4/f+Ft7+BSBgYnIVRvNcjQ26+NTCpkW/pzupYB4wvnQretiJRV2Ukq9NuVqhqCfKeeT/Ax8MBJZIVQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLMQqAMBAEwFVQNGBp6xN8gG38h4R4nFcY4dz838LpJwABE5OrMJrnamzQxacWNi36Pd1JBfOA8aVb0cNOLOqilHxtytUKRT1RziP/H/gAHOcSL1UAAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLwQmAMBAEwFVQNCB2YAkW4Df2ISEe5z2McG769+H8JwABE5OrMJrnamzQxacWNi36Pd1JBfOA8aVb0cNOLOqilHxtytUKRT1RziP/H/gAaQ/vIVUAAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLywmAMBAFwBfBX8AWLMECvGofEpJl3YMR1mf/Hpz7RCBiYnIVbub5NQa02/1Whgbdnq6kgn7A+NCt6mEFs7ooJZ+rcrFKUU+UcuT/Ax/DWMXcVQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLQQ5AQAwF0E9CmMQVHMEBbLmHNDNNdWEk9d3fwtu/BCRMlDDl5pFfZ4Nuu9/KpkW/yyWm6AeMD8OrHV4wW6hR87kaF69UC6GWI/8f+ACmU7y1VQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLMQqAMBAEwFVQNGBn7RN8gG38h4R4nFcY4dz838LpJwABE5OrMJrnamzQxacWNi36Pd1JBfOA8aVb0cNOLOqilHxtytUKRT1RziP/H/gAeexrRlUAAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLsQmAMBAF0K+gaMDGARzBAWzjHhLicV5hhPNnfwtf/wIQMDG5CqN5rsYGXXxqYdOi39OdVDAPGF+6FT3sxKIuSsnXplytUNQT5Tzy/4EPZtEM6lUAAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLQQ5AQAwF0E9CmMQVHMEBbLmHNDNNdWEk9d3fwtu/BCRMlDDl5pFfZ4Nuu9/KpkW/yyWmGAeMD8OrHV4wW6hR87kaF69UC6GWI/8f+AB2MoiNVQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLwQmAMBAEwI2gRMEWLMEC/MY+JMTjvIcRzk3/Ppz/TMCEmdlVmMxLMwb06WmVocOw5zurIEaML92qHnZiURellGtTrlYp6plyHuX/wAcTOfHkVQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLQQ5AMBAF0F9BaOIKjuAAttxDmnYyZqGS8d3fwtu/CERMTK7CzTy/xoBuu9/K0KDf05VU0A4YH7pVPaxgVhel5HNVLlYp6olSjvx/4ANsRU5nVQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLQQ5AQAwF0E9CmMQVHMEBbLmHNDNNdWEk9d3fwtu/BCRMlDDl5pFfZ4Nuu9/KpkW/yyWmaAeMD8OrHV4wW6hR87kaF69UC6GWI/8f+ABzeCnLVQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLwQmAMBAEwI2gaMAWLMEC/MY+JCTHeQ8jnGv/Ppz/RCBiZnYVJvPyGgP6dL+NocOw5yurIIyYHro1PaxiURellHNTrtYo6plSj/J/4APcZaJwVQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLQQ5AMBAF0E9CqLiCIziAbd1DmpqMWahk/N7fwtu/AATMTK7CaJ6rsUEXn1rYtOj3dCcVTAPGl25FDzuxqItS8rUpVysU9UQ5j/x/4AO8JHpfVQAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLMQqAMBAEwFVQNGBv5RN8gG38h4R4nFcY4dz838LpJwABE5OrMJrnamzQxacWNi36Pd1JBfOA8aVb0cNOLOqilHxtytUKRT1RziP/H/gABpDUxVUAAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/yXLMQqAMBAEwFVQNGBt5xN8gG38h4R4nFcY4dz838LpJwABE5OrMJrnamzQxacWNi36Pd1JBfOA8aVb0cNOLOqilHxtytUKRT1RziP/H/gA1vHg/VUAAAA=",
+    "damage": 0,
+    "label": "Programming Circuit (Programmed Circuit)",
+    "size": 0,
+    "hasTag": true
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "size": 0,
+    "damage": 0,
+    "label": "Programming Circuit (Reset)"
+  },
+  {
+    "name": "programmablehatches:prog_circuit",
+    "tag": "H4sIAAAAAAAA/+NiYOBi4C1JLEpPLXHOLEouzSxhZGB1zi/NK2FkYmBzScxNTE9lkOdg4CwuKcrMS4/PTGEQTE9PS0yySi/RAzP0UgwZGACIXK+DSAAAAA==",
+    "damage": 0,
+    "label": "Programming Circuit (Tool Casting Mold (Wrench))",
+    "size": 0,
+    "hasTag": true
+  }
+]

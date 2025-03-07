@@ -13,6 +13,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import top.limbang.remoteoc.entity.FluidMetadata
 import top.limbang.remoteoc.entity.ItemMetadata
+import top.limbang.remoteoc.utils.NBTUtil.readTargetCircuitStringId
 import java.io.File
 import java.sql.Connection
 import java.sql.DriverManager
@@ -36,6 +37,7 @@ object NESQLUtil {
      * @property localizedName 物品本地化名称
      * @property modId 物品所属模组ID
      * @property tooltip 物品提示信息
+     * @property nbt 物品 NBT 数据
      */
     @Serializable
     data class ItemEntry(
@@ -45,7 +47,8 @@ object NESQLUtil {
         @SerialName("ITEM_ID") val itemId: Int,
         @SerialName("LOCALIZED_NAME") val localizedName: String,
         @SerialName("MOD_ID") val modId: String,
-        @SerialName("TOOLTIP") val tooltip: String
+        @SerialName("TOOLTIP") val tooltip: String,
+        @SerialName("NBT") val nbt: String = ""
     )
 
     /**
@@ -94,7 +97,7 @@ object NESQLUtil {
     private val itemQuery = """
         SELECT 
             IMAGE_FILE_PATH, INTERNAL_NAME, ITEM_DAMAGE, 
-            ITEM_ID, LOCALIZED_NAME, MOD_ID, TOOLTIP
+            ITEM_ID, LOCALIZED_NAME, MOD_ID, TOOLTIP,NBT
         FROM ITEM
     """.trimIndent()
 
@@ -141,7 +144,8 @@ object NESQLUtil {
                                 itemId = rs.getInt("ITEM_ID"),
                                 localizedName = rs.getString("LOCALIZED_NAME"),
                                 modId = rs.getString("MOD_ID"),
-                                tooltip = rs.getString("TOOLTIP")
+                                tooltip = rs.getString("TOOLTIP"),
+                                nbt = rs.getString("NBT")
                             )
                         )
                     }
@@ -185,19 +189,29 @@ object NESQLUtil {
      */
     fun List<ItemEntry>.convertToItemJson(): Map<String, Map<String, ItemMetadata>> {
         // Key格式: modId:internalName
-        return this.groupBy { "${it.modId}:${it.internalName}" }
-            .mapValues { (_, groupEntries) ->
-                groupEntries.associate { entry ->
-                    entry.itemDamage.toString() to ItemMetadata(
-                        localizedName = entry.localizedName,
-                        tooltip = entry.tooltip
-                            .split("\n")          // 按换行符分割
-                            .map { it.trim() }              // 去除每行首尾空格
-                            .filter { it.isNotBlank() },    // 处理空值情况
-                        imgPath = entry.imageFilePath
-                    )
-                }
+        return this.groupBy {
+            // 处理 prog_circuit 特殊情况
+            val internalName = if (it.internalName == "prog_circuit" && it.nbt.isNotBlank()) {
+                NBTUtil.parseNBTFromString(it.nbt).readTargetCircuitStringId()
+            } else it.internalName
+            "${it.modId}:$internalName"
+        }.mapValues { (_, groupEntries) ->
+            groupEntries.associate { entry ->
+                // 处理 prog_circuit 特殊情况
+                val damage = if (entry.internalName == "prog_circuit" && entry.nbt.isNotBlank()) {
+                    NBTUtil.parseNBTFromString(entry.nbt).readTargetCircuitStringId()
+                } else entry.itemDamage
+                // Key格式: damage
+                damage.toString() to ItemMetadata(
+                    localizedName = entry.localizedName,
+                    tooltip = entry.tooltip
+                        .split("\n")          // 按换行符分割
+                        .map { it.trim() }              // 去除每行首尾空格
+                        .filter { it.isNotBlank() },    // 处理空值情况
+                    imgPath = entry.imageFilePath
+                )
             }
+        }
     }
 
     /**

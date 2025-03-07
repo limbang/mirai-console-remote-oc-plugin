@@ -18,7 +18,7 @@ internal class ImageUtilKtTest {
 
     private val itemUtil = ItemUtil(javaClass.classLoader.getResource("logback.xml")!!.path.substringBeforeLast("/"))
     private val cpuDetailJson = javaClass.classLoader.getResource("json/CpuDetail.json")!!.readText()
-    private val itemJson = javaClass.classLoader.getResource("json/item.json")!!.readText()
+    private val itemJson = javaClass.classLoader.getResource("json/item1.json")!!.readText()
 
 
     @Test
@@ -32,6 +32,6 @@ internal class ImageUtilKtTest {
     fun itemToImage(){
         val items = json.decodeFromString<List<Item>>(itemJson)
         // 保存最终合并结果
-        ImageIO.write(items.toImage(itemUtil), "png", File("item.png"))
+        ImageIO.write(items.toImage(itemUtil,title = "合成终端"), "png", File("item.png"))
     }
 }

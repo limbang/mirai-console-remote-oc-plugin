@@ -8,12 +8,23 @@
 package top.limbang.remoteoc.utils
 
 import net.querz.nbt.io.NBTDeserializer
+import net.querz.nbt.io.SNBTUtil
 import net.querz.nbt.tag.CompoundTag
 import java.io.ByteArrayInputStream
 import java.util.*
 
 
 object NBTUtil {
+
+    /**
+     * 解析 NBT 字符串
+     *
+     * @param nbtString NBT 字符串
+     * @return NBT Tag
+     */
+    fun parseNBTFromString(nbtString: String): CompoundTag {
+        return SNBTUtil.fromSNBT(nbtString) as CompoundTag
+    }
 
     /**
      * Base64 字符串 转 NBT Tag
@@ -38,4 +49,17 @@ object NBTUtil {
         return getString("Fluid")
     }
 
+    /**
+     * 读取 NBT Tag 中的 TargetCircuit 的 damage 值
+     */
+    fun CompoundTag.readTargetCircuitDamage(): Int {
+        return getCompoundTag("targetCircuit").getShort("Damage").toInt()
+    }
+
+    /**
+     * 读取 NBT Tag 中的 TargetCircuit 的 string_id 值
+     */
+    fun CompoundTag.readTargetCircuitStringId(): String? {
+        return getCompoundTag("targetCircuit").getString("string_id")
+    }
 }
