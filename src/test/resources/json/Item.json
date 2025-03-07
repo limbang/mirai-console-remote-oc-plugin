@@ -27,7 +27,7 @@
     "label": "Block of Diamond",
     "name": "minecraft:diamond_block",
     "damage": 0,
-    "size": 223
+    "size": 267
   },
   {
     "label": "Button",
@@ -99,7 +99,7 @@
     "label": "Extreme Voltage Battery Buffer",
     "name": "gregtech:gt.blockmachines",
     "damage": 184,
-    "size": 15
+    "size": 20
   },
   {
     "label": "Extreme Voltage Battery Buffer",
@@ -132,16 +132,20 @@
     "size": 0
   },
   {
-    "label": "流体塑形机 基础版套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 366,
-    "size": 0
+    "label": "流体塑形机 基础版套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wFIALf/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAf5rWB5L2T5aGR5b2i5py6IOWfuuehgOeJiOWll+S7tgAArDDagEgAAAA=",
+    "damage": 366
   },
   {
-    "label": "流体塑形机 究极版套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 366,
-    "size": 0
+    "label": "流体塑形机 究极版套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wFIALf/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAf5rWB5L2T5aGR5b2i5py6IOeptuaegeeJiOWll+S7tgAAi7A5lUgAAAA=",
+    "damage": 366
   },
   {
     "label": "Fluid Shaper",
@@ -210,10 +214,12 @@
     "size": 0
   },
   {
-    "label": "工业离心机套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 790,
-    "size": 0
+    "label": "工业离心机套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wE+AMH/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAV5bel5Lia56a75b+D5py65aWX5Lu2AABv00byPgAAAA==",
+    "damage": 790
   },
   {
     "label": "Industrial Material Press",
@@ -222,16 +228,20 @@
     "size": 0
   },
   {
-    "label": "工业辊压机套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 792,
-    "size": 0
+    "label": "工业辊压机套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wE+AMH/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAV5bel5Lia6L6K5Y6L5py65aWX5Lu2AAAGeU8IPgAAAA==",
+    "damage": 792
   },
   {
-    "label": "工业电解机套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 796,
-    "size": 0
+    "label": "工业电解机套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wE+AMH/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAV5bel5Lia55S16Kej5py65aWX5Lu2AACOdUIoPgAAAA==",
+    "damage": 796
   },
   {
     "label": "Industrial Electrolyzer",
@@ -246,16 +256,20 @@
     "size": 0
   },
   {
-    "label": "工业粉碎机套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 797,
-    "size": 0
+    "label": "工业粉碎机套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wE+AMH/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAV5bel5Lia57KJ56KO5py65aWX5Lu2AADRspsoPgAAAA==",
+    "damage": 797
   },
   {
-    "label": "合金冶炼炉套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 810,
-    "size": 0
+    "label": "合金冶炼炉套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wE+AMH/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAV5ZCI6YeR5Ya254K854KJ5aWX5Lu2AADHkRgKPgAAAA==",
+    "damage": 810
   },
   {
     "label": "Alloy Blast Smelter",
@@ -270,10 +284,12 @@
     "size": 0
   },
   {
-    "label": "工业搅拌机套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 811,
-    "size": 0
+    "label": "工业搅拌机套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wE+AMH/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAV5bel5Lia5pCF5ouM5py65aWX5Lu2AACcsIg/PgAAAA==",
+    "damage": 811
   },
   {
     "label": "Large Sifter Control Block",
@@ -282,16 +298,20 @@
     "size": 0
   },
   {
-    "label": "工业筛选机套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 840,
-    "size": 0
+    "label": "工业筛选机套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wE+AMH/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAV5bel5Lia562b6YCJ5py65aWX5Lu2AAAah5PAPgAAAA==",
+    "damage": 840
   },
   {
-    "label": "工业热力精炼厂套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 849,
-    "size": 0
+    "label": "工业热力精炼厂套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wFEALv/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAb5bel5Lia54Ot5Yqb57K+54K85Y6C5aWX5Lu2AAAhpFU7RAAAAA==",
+    "damage": 849
   },
   {
     "label": "Large Thermal Refinery",
@@ -306,10 +326,12 @@
     "size": 0
   },
   {
-    "label": "工业洗矿厂套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 850,
-    "size": 0
+    "label": "工业洗矿厂套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wE+AMH/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAV5bel5Lia5rSX55+/5Y6C5aWX5Lu2AABoNTS1PgAAAA==",
+    "damage": 850
   },
   {
     "label": "ExxonMobil Chemical Plant",
@@ -318,16 +340,20 @@
     "size": 1
   },
   {
-    "label": "埃克森美孚化工厂套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 998,
-    "size": 0
+    "label": "埃克森美孚化工厂套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wFHALj/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAe5Z+D5YWL5qOu576O5a2a5YyW5bel5Y6C5aWX5Lu2AAABhLtERwAAAA==",
+    "damage": 998
   },
   {
-    "label": "工业高炉套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 1000,
-    "size": 0
+    "label": "工业高炉套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wE7AMT/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAS5bel5Lia6auY54KJ5aWX5Lu2AACH7hADOwAAAA==",
+    "damage": 1000
   },
   {
     "label": "Electric Blast Furnace",
@@ -354,10 +380,12 @@
     "size": 1
   },
   {
-    "label": "大型化学反应釜套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 1169,
-    "size": 0
+    "label": "大型化学反应釜套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wFEALv/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAb5aSn5Z6L5YyW5a2m5Y+N5bqU6Yec5aWX5Lu2AADlUMKjRAAAAA==",
+    "damage": 1169
   },
   {
     "label": "2x Cobalt Wire",
@@ -582,10 +610,12 @@
     "size": 0
   },
   {
-    "label": "大型流体提取机套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 2730,
-    "size": 0
+    "label": "大型流体提取机套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wFEALv/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAb5aSn5Z6L5rWB5L2T5o+Q5Y+W5py65aWX5Lu2AAA54ds5RAAAAA==",
+    "damage": 2730
   },
   {
     "label": "Large Fluid Extractor",
@@ -672,22 +702,28 @@
     "size": 0
   },
   {
+    "name": "gregtech:gt.blockmachines",
     "label": "工业屠宰场套件",
-    "name": "gregtech:gt.blockmachines",
-    "damage": 14201,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wE+AMH/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAV5bel5Lia5bGg5a6w5Zy65aWX5Lu2AABYQfY0PgAAAA==",
+    "damage": 14201
   },
   {
+    "name": "gregtech:gt.blockmachines",
     "label": "闪电尖塔套件",
-    "name": "gregtech:gt.blockmachines",
-    "damage": 19053,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wE7AMT/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAS6Zeq55S15bCW5aGU5aWX5Lu2AABc8JQOOwAAAA==",
+    "damage": 19053
   },
   {
-    "label": "处理阵列：重生套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 19066,
-    "size": 0
+    "label": "处理阵列：重生套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wFEALv/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAb5aSE55CG6Zi15YiX77ya6YeN55Sf5aWX5Lu2AAC4NTswRAAAAA==",
+    "damage": 19066
   },
   {
     "label": "TST Processing Array",
@@ -702,10 +738,12 @@
     "size": 0
   },
   {
-    "label": "真空冷冻机套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 21033,
-    "size": 0
+    "label": "真空冷冻机套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wE+AMH/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAV55yf56m65Ya35Ya75py65aWX5Lu2AADxjR4oPgAAAA==",
+    "damage": 21033
   },
   {
     "label": "Huge Tantalloy-60 Fluid Pipe",
@@ -720,10 +758,12 @@
     "size": 0
   },
   {
-    "label": "工业流体加热器套件",
     "name": "gregtech:gt.blockmachines",
-    "damage": 31077,
-    "size": 0
+    "label": "工业流体加热器套件",
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/wFEALv/CgAAAwAKUmVwYWlyQ29zdAAAAAIKAAdkaXNwbGF5CAAETmFtZQAb5bel5Lia5rWB5L2T5Yqg54Ot5Zmo5aWX5Lu2AAAWkBI5RAAAAA==",
+    "damage": 31077
   },
   {
     "label": "Steel Pipe Casing",
@@ -1287,7 +1327,7 @@
     "label": "Electrum Ingot",
     "name": "gregtech:gt.metaitem.01",
     "damage": 11303,
-    "size": 1
+    "size": 0
   },
   {
     "label": "Stainless Steel Ingot",
@@ -1515,7 +1555,7 @@
     "label": "Titanium Plate",
     "name": "gregtech:gt.metaitem.01",
     "damage": 17028,
-    "size": 1201
+    "size": 1301
   },
   {
     "label": "Thaumium Plate",
@@ -2055,7 +2095,7 @@
     "label": "Fine Electrum Wire",
     "name": "gregtech:gt.metaitem.02",
     "damage": 19303,
-    "size": 4
+    "size": 0
   },
   {
     "label": "Fine Steel Wire",
@@ -2301,7 +2341,7 @@
     "label": "Nanocomponent Central Processing Unit",
     "name": "gregtech:gt.metaitem.03",
     "damage": 32055,
-    "size": 51
+    "size": 50
   },
   {
     "label": "Nanoprocessor",
@@ -2325,7 +2365,7 @@
     "label": "Advanced Circuit Board",
     "name": "gregtech:gt.metaitem.03",
     "damage": 32102,
-    "size": 97
+    "size": 96
   },
   {
     "label": "More Advanced Circuit Board",
@@ -2784,286 +2824,380 @@
     "size": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Glowstone",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDIzc8pSc3TS8/JLy8uyc9LZQAAvzZvTh4AAAA=",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of 2-Ethylanthrahydroquinone",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYZBLA1F6RqklGZU5iXklGUWJGZUpRfmFpZl5+XmpDABdBcISLAAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Lead",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDOzc8pSc3Ty0lNTGEAAEkz+cIZAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Iron",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDOzc8pSc3TyyzKz2MAAJ8WpjcZAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten HSS-G",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDOzc8pSc3TyyguTmcAABe5hHYZAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Cupronickel",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDKzc8pSc3TSy4tKMrPy0zOTs1hAADyyYfMIAAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Tungstensteel",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDJzc8pSc3TKynNSy8GMoA4NYcBADw8sLQiAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten TPV-Alloy",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDPzc8pSc3TKykoS8zJya9kAABFPdpjHQAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Silicon Carbide",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDNzc8pSc3TK87MyUzOz0tOLErKTEllAAA8+x6YIwAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Nichrome",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDPzc8pSc3Ty8tMzijKz01lAAA1Mr8DHQAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Bronze",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDNzc8pSc3TSyrKz6tKZQAAsfTFIhsAAAA=",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Tin",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 1296
+    "size": 1296,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDKzc8pSc3TK8nMYwAAb+3z6xgAAAA=",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Ammonia",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYWBPzM3Nz8tMZAAADUVujBUAAAA=",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Kanthal",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDLzc8pSc3Ty07MK8lIzGEAAAzPqtscAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Silver",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDNzc8pSc3TK87MKUstYgAA6PSJShsAAAA=",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Tumbaga",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDLzc8pSc3TKynNTUpMT2QAAK8Jv0gcAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Sodium Tungstate",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRAozk/JLM1VKCnNSy8uSSxJZQAAzIvUAR4AAAA=",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Eglin Steel",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDMzc8pSc3TS03PycwrLklNzWEAAJs7NbwfAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Thaumium",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 720
+    "size": 720,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDPzc8pSc3TK8lILM3NLM1lAABn3RvDHQAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Liquid Sodium",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDNySwE0vHF+SmZpbkMAHRAnfQbAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Phthalic Acid",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 8000
+    "size": 8000,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeAuyChJzMlMTkwGcgA4+p0RGQAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Incoloy-DS",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDIzc8pSc3Ty8xLzs/Jr0wpZgAA88cD/B4AAAA=",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Steam",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 1368931000
+    "size": 1469871000,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYWAtLklNzGUAAG7o94UTAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Honey",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 700
+    "size": 700,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeBMyy/Sy8jPS61kAADv3eGaFwAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Boric Acid",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeBMyi/KTE5MBjIBZTVNwxcAAAA=",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Hydrazine",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeBPA1F6GZUpRYlVmXmpDACBAsAPHQAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Platinum",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDPzc8pSc3TK8hJLMnMK81lAABNz7a5HQAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Blaze",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDJzc8pSc3TS8pJrEplAADTVyWBGgAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Grisium",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDLzc8pSc3TSy/KLM4szWUAADDtns8cAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Glass",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDJzc8pSc3TS89JLC5mAAA4SKHCGgAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Potin",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDJzc8pSc3TK8gvycxjAADc7cgSGgAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Stainless Steel",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 4152
+    "size": 4152,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDNzc8pSc3TKy5JzMzLSS0uLi5JTc1hAAAh3FyeIwAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Nitric Acid",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDKyywpykxOTAayAVkjxDgYAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of 2-Ethylanthraquinone",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 10000
+    "size": 10000,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYZBMA1F6RqklGZU5iXklGUWJhaWZefl5qQwAiPwoOicAAAA=",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Titanium",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 108
+    "size": 108,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDPzc8pSc3TK8ksSczLLM1lAADNVLDlHQAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Black Steel",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDMzc8pSc3TS8pJTM4uLklNzWEAANcBWV8fAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Sodium Potassium",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeAvzk/JLM0tyC9JLC4GMhgA8MLj+x0AAAA=",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Soldering Alloy",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 72
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDNzc8pSc3TK87PSUktysxLT8zJya9kAACHsKy/IwAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Dense Hydrazine Fuel Mixture",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRBJA1F6RfnJ2aklaaWpObmZFSkMAA5bON0iAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Blood Steel",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDMzc8pSc3TS8rJz08pLklNzWEAAOO/fDYfAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Vanadium",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDPzc8pSc3TK0vMS0zJLM1lAADfvL2RHQAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Hydrogen Peroxide",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 2000
+    "size": 2000,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRBLA1F6GZUpRfnpqXkFqUX5FZkpqQwAiglqJSQAAAA=",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Bacteria",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 125
+    "size": 125,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeBPyszLy0zVS0pMLkktykxkAAAgzKG0HQAAAA==",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Niobium-Titanium",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDLzc8pSc3Ty8vMT8oszS3JLEnMA9IMAIXMSO4kAAAA",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Seed Oil",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 12
+    "size": 12,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYWAvTk1Nyc/MYQAAaJeOFxUAAAA=",
+    "damage": 0
   },
   {
+    "name": "ae2fc:fluid_drop",
     "label": "drop of Molten Vibrant Alloy",
-    "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 0
+    "size": 0,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYRDOzc8pSc3TK8tMKkrMK0nMycmvZAAAv9iX+CEAAAA=",
+    "damage": 0
   },
   {
-    "label": "drop of Molten Redstone",
     "name": "ae2fc:fluid_drop",
-    "damage": 0,
-    "size": 3888
+    "label": "drop of Molten Redstone",
+    "size": 3888,
+    "hasTag": true,
+    "tag": "H4sIAAAAAAAA/+NiYOBgYHXLKc1MYeDPzc8pSc3TK0pNKS7Jz0tlAAAwEVQ/HQAAAA==",
+    "damage": 0
   },
   {
     "label": "Lander Tier 1",
