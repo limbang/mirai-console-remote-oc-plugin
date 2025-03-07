@@ -19,6 +19,7 @@ dependencies {
     val serializationVersion = "1.6.2"
     val coroutinesVersion = "1.10.0"
 
+    implementation("org.hsqldb:hsqldb:2.7.4")
     implementation("org.slf4j:slf4j-api:2.0.16")
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-kotlinx-serialization:$retrofitVersion")
