@@ -129,3 +129,6 @@ run/
 
 
 local.properties
+/src/test/resources/image/
+/src/test/resources/items.json
+/src/test/resources/fluids.json
