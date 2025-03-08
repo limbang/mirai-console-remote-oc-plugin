@@ -62,4 +62,17 @@ object NBTUtil {
     fun CompoundTag.readTargetCircuitStringId(): String? {
         return getCompoundTag("targetCircuit").getString("string_id")
     }
+
+    /**
+     * 名称正则
+     */
+    private val ASPECTS_REGEX = """key:"(.*)"""".toRegex()
+
+    /**
+     * 读取 NBT Tag 中的要素名称
+     */
+    fun readAspectsName(nbt: String): String? {
+        val (name) = ASPECTS_REGEX.find(nbt)?.destructured ?: return null
+        return name
+    }
 }

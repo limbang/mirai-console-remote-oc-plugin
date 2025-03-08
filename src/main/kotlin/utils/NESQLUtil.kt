@@ -190,10 +190,15 @@ object NESQLUtil {
     fun List<ItemEntry>.convertToItemJson(): Map<String, Map<String, ItemMetadata>> {
         // Key格式: modId:internalName
         return this.groupBy {
-            // 处理 prog_circuit 特殊情况
-            val internalName = if (it.internalName == "prog_circuit" && it.nbt.isNotBlank()) {
-                NBTUtil.parseNBTFromString(it.nbt).readTargetCircuitStringId()
-            } else it.internalName
+            // 处理特殊情况
+            val internalName = when {
+                // 可编程舱室
+                it.internalName == "prog_circuit" && it.nbt.isNotBlank() -> NBTUtil.parseNBTFromString(it.nbt)
+                    .readTargetCircuitStringId()
+                // 要素
+                it.internalName == "Aspect" && it.nbt.isNotBlank() -> NBTUtil.readAspectsName(it.nbt)
+                else -> it.internalName
+            }
             "${it.modId}:$internalName"
         }.mapValues { (_, groupEntries) ->
             groupEntries.associate { entry ->

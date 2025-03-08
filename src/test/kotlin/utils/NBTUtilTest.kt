@@ -27,4 +27,12 @@ internal class NBTUtilTest {
         val compoundTag = NBTUtil.parseNBTFromString(nbtString)
         println(compoundTag)
     }
+
+    @Test
+    fun readAspectsName() {
+        // 测试可编程舱室的NBT数据
+        val nbtString = """{Aspects:[0:{amount:2,key:"machina"}]}"""
+        val name = NBTUtil.readAspectsName(nbtString)
+        println(name)
+    }
 }
