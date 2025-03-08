@@ -1,0 +1,59 @@
+[
+  {
+    "name": "",
+    "coprocessors": 1,
+    "cpu": {
+      "active": true,
+      "storedItems": [
+        {
+          "name": "ae2fc:fluid_drop",
+          "isCraftable": false,
+          "damage": 0,
+          "label": "drop of Lubricant",
+          "size": 75
+        }
+      ],
+      "activeItems": [
+        {
+          "name": "gregtech:gt.metaitem.03",
+          "isCraftable": false,
+          "damage": 32031,
+          "label": "Phosphorus doped Monocrystalline Silicon Boule",
+          "size": 1
+        }
+      ],
+      "busy": true,
+      "pendingItems": [
+        {
+          "name": "gregtech:gt.metaitem.01",
+          "isCraftable": false,
+          "damage": 2856,
+          "label": "Silicon Solar Grade (Poly SI) Dust",
+          "size": 8
+        },
+        {
+          "name": "gregtech:gt.metaitem.03",
+          "isCraftable": false,
+          "damage": 32034,
+          "label": "Phosphorus doped Wafer",
+          "size": 32
+        }
+      ]
+    },
+    "busy": true,
+    "storage": 65536
+  },
+  {
+    "name": "",
+    "coprocessors": 1,
+    "cpu": {
+      "active": true,
+      "storedItems": [],
+      "activeItems": [],
+      "busy": false,
+      "pendingItems": []
+    },
+    "busy": false,
+    "storage": 65536
+  }
+]

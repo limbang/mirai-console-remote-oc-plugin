@@ -17,7 +17,7 @@ import kotlin.test.Test
 internal class ImageUtilKtTest {
 
     private val itemUtil = ItemUtil(javaClass.classLoader.getResource("logback.xml")!!.path.substringBeforeLast("/"))
-    private val cpuDetailJson = javaClass.classLoader.getResource("json/CpuDetail.json")!!.readText()
+    private val cpuDetailJson = javaClass.classLoader.getResource("json/CpuDetail2.json")!!.readText()
     private val itemJson = javaClass.classLoader.getResource("json/item1.json")!!.readText()
 
 

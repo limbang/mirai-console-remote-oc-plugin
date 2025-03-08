@@ -88,6 +88,14 @@ class ItemUtil(
      * 3. 保持液滴自身材质路径逻辑不变
      */
     private fun handleFluidDrop(item: Item): LocalizedItem {
+        // 处理缺少tag的情况,使用流体数据文件中的名称
+        if (item.tag.isEmpty()) {
+            val fluidName = item.label.removePrefix("drop of ").lowercase()
+            val fluidMetadata = fluidData[fluidName]
+            val fluidLocalizedName = fluidMetadata?.localizedName ?: fluidName
+            val fluidImgPath = "$resourceDir/image/${fluidMetadata?.imgPath ?: "default.png"}"
+            return LocalizedItem(item, fluidLocalizedName, fluidImgPath)
+        }
         // 从Base64编码的tag解析流体名称
         val compoundTag = NBTUtil.base64StringToCompoundTag(item.tag)
         val fluidName = compoundTag.readFluidName()
