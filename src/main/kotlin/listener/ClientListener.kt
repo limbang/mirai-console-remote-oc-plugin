@@ -161,7 +161,6 @@ object ClientListener : SimpleListenerHost() {
             teamCraftables.getOrPut(team.name) { mutableSetOf() }.add(itemUtil.getLocalizedData(it))
         }
         // 发送合成终端图片
-        sendImage(result.data.toImage(itemUtil, "合成终端"))
         sendImage(itemUtil.getLocalizedDataList(result.data).toImage("合成终端"))
     }
 
@@ -179,6 +178,21 @@ object ClientListener : SimpleListenerHost() {
         // 发送流体终端图片
         sendImage(itemUtil.getLocalizedDataList(result.data).toImage("流体终端"))
     }
+
+
+    /**
+     * 获取所有源质
+     */
+    @EventHandler
+    suspend fun GroupMessageEvent.getAllEntities() {
+        if (!message.contentToString().startsWith("源质终端")) return
+        // 获取团队信息
+        val team = validateTeamAndClient() ?: return
+        // 发送源质终端请求
+        val result = sendCommandRequest(team, AeCommand.GetAllEssentia,Essentia.serializer())
+        result?.data ?: run { sendMessage("❌ 获取源质终端失败"); return }
+        // 发送源质终端图片
+        sendImage(itemUtil.getLocalizedDataList(result.data).toImage("源质终端"))
     }
 
     /**

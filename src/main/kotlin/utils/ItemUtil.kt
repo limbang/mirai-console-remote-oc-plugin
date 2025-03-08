@@ -234,6 +234,43 @@ class ItemUtil(
         return fluids.map { getLocalizedData(it) }
     }
 
+    /**
+     * 获取单个源质的本地化信息
+     *
+     * @param essentia 原始源质对象，需包含名称(name)
+     * @return [LocalizedData] 包含本地化名称和图片路径的对象
+     */
+    fun getLocalizedData(essentia: Essentia): LocalizedData {
+        val name = essentia.name.removePrefix("gaseous").removeSuffix("essentia")
+        // 获取物品元数据
+        val meta = itemData["thaumcraftneiplugin:$name"]?.get("0")
+        return LocalizedData(
+            id = essentia.name,
+            name = meta?.localizedName?.removePrefix("要素: ") ?: essentia.label,
+            imgPath = "$resourceDir/image/${meta?.imgPath ?: "default.png"}",
+            damage = 0,
+            isCraftable = false,
+            size = essentia.amount
+        )
+    }
+
+    /**
+     * 批量获取本地化源质信息
+     *
+     * @param essentias 原始源质列表，元素需包含 name 属性
+     * @return 过滤后的有效本地化源质列表，元素包含：
+     *         - 原始源质引用
+     *         - 中文名称（优先使用配置，其次使用源质 label）
+     *         - 图标路径（默认返回 default.png）
+     *
+     * @see Essentia 原始源质类定义
+     * @see LocalizedData 返回的数据载体类
+     */
+    @JvmName("getLocalizedDataListFromEssentias")
+    fun getLocalizedDataList(essentias: List<Essentia>): List<LocalizedData> {
+        return essentias.map { getLocalizedData(it) }
+    }
+
     companion object {
         private val logger = LoggerFactory.getLogger(ItemUtil::class.java)
     }
