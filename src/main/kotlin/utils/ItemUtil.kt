@@ -212,7 +212,8 @@ class ItemUtil(
             imgPath = "$resourceDir/image/${fluidMetadata?.imgPath ?: "default.png"}",
             damage = 0,
             isCraftable = false,
-            size = fluid.amount
+            size = fluid.amount,
+            isFluid = true
         )
     }
 

@@ -122,14 +122,16 @@ private fun drawTableCell(g: Graphics2D, data: LocalizedData?, x: Int, y: Int, w
     // 若数据为 null，不需要绘制内容
     if (data == null) return
 
+    val iconSize = if (data.isFluid) 58 else 48
+
     // 加载并绘制图标
     val icon = try {
-        ImageIO.read(File(data.imgPath)).getScaledInstance(48, 48, Image.SCALE_SMOOTH)
+        ImageIO.read(File(data.imgPath)).getScaledInstance(iconSize, iconSize, Image.SCALE_SMOOTH)
     } catch (e: Exception) {
         // 图标加载失败，读取默认图标
         getImage("default.png")!!
     }
-    g.drawImage(icon, x + (width - 48) / 2, y + (height - 48) / 2, null)
+    g.drawImage(icon, x + (width - iconSize) / 2, y + (height - iconSize) / 2, null)
 
 
     // 绘制数据名称

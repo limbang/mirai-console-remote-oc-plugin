@@ -143,6 +143,7 @@ data class Essentia(
  * @property damage 损伤值或元数据标识，用于区分同类物品的不同状态。
  * @property isCraftable 是否可合成
  * @property size 数量
+ * @property isFluid 是否为流体
  */
 @Serializable
 data class LocalizedData(
@@ -151,5 +152,6 @@ data class LocalizedData(
     val imgPath: String,
     val damage: Int,
     val isCraftable: Boolean,
-    val size: Long
+    val size: Long,
+    val isFluid: Boolean = false
 )
