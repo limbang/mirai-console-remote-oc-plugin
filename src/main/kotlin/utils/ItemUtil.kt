@@ -70,9 +70,9 @@ class ItemUtil(
      * 获取单个物品的本地化信息
      *
      * @param item 原始物品对象，需包含名称(name)和(damage)
-     * @return [LocalizedItem] 包含本地化名称和图片路径的对象
+     * @return [LocalizedData] 包含本地化名称和图片路径的对象
      */
-    fun getLocalItem(item: Item): LocalizedItem {
+    fun getLocalizedData(item: Item): LocalizedData {
         // 液滴特殊处理逻辑
         if (item.isFluidDrop()) return handleFluidDrop(item)
         // 常规物品处理流程
@@ -87,14 +87,21 @@ class ItemUtil(
      * 2. 使用流体名称的本地化版本+"液滴"后缀
      * 3. 保持液滴自身材质路径逻辑不变
      */
-    private fun handleFluidDrop(item: Item): LocalizedItem {
+    private fun handleFluidDrop(item: Item): LocalizedData {
         // 处理缺少tag的情况,使用流体数据文件中的名称
         if (item.tag.isEmpty()) {
             val fluidName = item.label.removePrefix("drop of ").lowercase()
             val fluidMetadata = fluidData[fluidName]
             val fluidLocalizedName = fluidMetadata?.localizedName ?: fluidName
             val fluidImgPath = "$resourceDir/image/${fluidMetadata?.imgPath ?: "default.png"}"
-            return LocalizedItem(item, fluidLocalizedName, fluidImgPath)
+            return LocalizedData(
+                id = item.name,
+                name = fluidLocalizedName,
+                imgPath = fluidImgPath,
+                damage = item.damage,
+                isCraftable = item.isCraftable,
+                size = item.size
+            )
         }
         // 从Base64编码的tag解析流体名称
         val compoundTag = NBTUtil.base64StringToCompoundTag(item.tag)
@@ -113,7 +120,14 @@ class ItemUtil(
             ?.let { "$resourceDir/image/$it" }
             ?: "$resourceDir/image/default.png"
 
-        return LocalizedItem(item, localizedName, fluidImgPath)
+        return LocalizedData(
+            id = item.name,
+            name = localizedName,
+            imgPath = fluidImgPath,
+            damage = item.damage,
+            isCraftable = item.isCraftable,
+            size = item.size
+        )
     }
 
     /**
@@ -124,23 +138,23 @@ class ItemUtil(
      * 2. 获取物品元数据
      * 3. 特殊处理minecraft:paper的显示名称
      */
-    private fun handleRegularItem(item: Item): LocalizedItem {
+    private fun handleRegularItem(item: Item): LocalizedData {
         // 解析物品标识（优先处理programmable电路板）
         val (damage, itemId) = resolveItemIdentifier(item)
 
         // 获取物品元数据
-        val itemMetadata = itemData[itemId]?.get(damage.toString())
+        val meta = itemData[itemId]?.get(damage.toString())
+        // 输出警告日志
+        if (meta == null) logger.warn("未找到物品: ${item.label} 采用默认名称和图片")
 
-        return itemMetadata?.let { meta ->
-            LocalizedItem(
-                item = item,
-                chineseName = buildDisplayName(item, meta),
-                imgPath = "$resourceDir/image/${meta.imgPath}",
-            )
-        } ?: run {
-            logger.warn("未找到物品: item 采用默认名称和图片")
-            LocalizedItem(item, item.label, "$resourceDir/image/default.png")
-        }
+        return LocalizedData(
+            id = item.name,
+            name = if (meta != null) buildDisplayName(item, meta) else item.label,
+            imgPath = "$resourceDir/image/${meta?.imgPath ?: "default.png"}",
+            damage = damage,
+            isCraftable = item.isCraftable,
+            size = item.size
+        )
     }
 
     /**
@@ -177,25 +191,29 @@ class ItemUtil(
      *         - 图标路径（优先使用配置，默认返回 default.png）
      *
      * @see Item 原始物品类定义
-     * @see LocalizedItem 返回的数据载体类
+     * @see LocalizedData 返回的数据载体类
      */
-    fun getLocalItems(items: List<Item>): List<LocalizedItem> {
-        return items.map { getLocalItem(it) }
+    @JvmName("getLocalizedDataListFromItems")
+    fun getLocalizedDataList(items: List<Item>): List<LocalizedData> {
+        return items.map { getLocalizedData(it) }
     }
 
     /**
      * 获取单个液体的本地化信息
      *
      * @param fluid 原始液体对象，需包含名称(name)
-     * @return [LocalizedFluid] 包含本地化名称和图片路径的对象
+     * @return [LocalizedData] 包含本地化名称和图片路径的对象
      */
-    fun getLocalFluid(fluid: Fluid): LocalizedFluid {
+    fun getLocalizedData(fluid: Fluid): LocalizedData {
         val fluidMetadata = fluidData[fluid.name]
-        return if (fluidMetadata != null) {
-            LocalizedFluid(fluid, fluidMetadata.localizedName, "$resourceDir/image/${fluid.label}.png")
-        } else {
-            LocalizedFluid(fluid, fluid.label, "$resourceDir/image/default.png")
-        }
+        return LocalizedData(
+            id = fluid.name,
+            name = fluidMetadata?.localizedName ?: fluid.label,
+            imgPath = "$resourceDir/image/${fluidMetadata?.imgPath ?: "default.png"}",
+            damage = 0,
+            isCraftable = false,
+            size = fluid.amount
+        )
     }
 
     /**
@@ -208,10 +226,11 @@ class ItemUtil(
      *         - 图标路径（默认返回 fluid.png）
      *
      * @see Fluid 原始液体类定义
-     * @see LocalizedFluid 返回的数据载体类
+     * @see LocalizedData 返回的数据载体类
      */
-    fun getLocalFluids(fluids: List<Fluid>): List<LocalizedFluid> {
-        return fluids.map { getLocalFluid(it) }
+    @JvmName("getLocalizedDataListFromFluids")
+    fun getLocalizedDataList(fluids: List<Fluid>): List<LocalizedData> {
+        return fluids.map { getLocalizedData(it) }
     }
 
     companion object {

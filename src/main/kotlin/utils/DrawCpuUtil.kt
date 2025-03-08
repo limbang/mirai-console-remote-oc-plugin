@@ -35,25 +35,25 @@ import kotlin.math.ceil
  * @return 按本地化名称排序后的 CpuTaskQueue 列表。
  * @throws IllegalArgumentException 当本地化后的物品数据与原始数据不一致时抛出异常。
  */
-fun CpuCoreStatus.toCpuTaskQueues(getLocalItem: (Item) -> LocalizedItem?): List<CpuTaskQueue> {
+fun CpuCoreStatus.toCpuTaskQueues(getLocalizedData: (Item) -> LocalizedData?): List<CpuTaskQueue> {
     // 预缓存阶段：合并所有队列，并校验后建立本地化数据缓存
     val localizedItemCache = sequenceOf(activeItems, storedItems, pendingItems)
         .flatten()
         .mapNotNull { item ->
-            getLocalItem(item)?.also { localizedItem ->
+            getLocalizedData(item)?.also { localizedData ->
                 // 防御性校验：确保本地化物品与原始物品数据一致
-                require(localizedItem.item.name == item.name && localizedItem.item.damage == item.damage) {
+                require(localizedData.id == item.name && localizedData.damage == item.damage) {
                     "Localized item metadata mismatch! Original: (${item.name}, ${item.damage}), " +
-                            "Localized: (${localizedItem.item.name}, ${localizedItem.item.damage})"
+                            "Localized: (${localizedData.id}, ${localizedData.damage})"
                 }
             }
         }
-        .associateBy { it.item.name to it.item.damage }
+        .associateBy { it.id to it.damage }
 
     // 聚合阶段：统计各队列中每种物品的总 size
     fun aggregateItemSizes(items: List<Item>): Map<Pair<String, Int>, Long> =
-        items.mapNotNull { item -> getLocalItem(item)?.item }
-            .groupingBy { it.name to it.damage }
+        items.mapNotNull { item -> getLocalizedData(item) }
+            .groupingBy { it.id to it.damage }
             .fold(0L) { acc: Long, item -> acc + item.size }
 
     val activeSums = aggregateItemSizes(activeItems)
@@ -70,7 +70,7 @@ fun CpuCoreStatus.toCpuTaskQueues(getLocalItem: (Item) -> LocalizedItem?): List<
         // 缓存中必定存在对应的本地化数据
         val sample = localizedItemCache[key]!!
         CpuTaskQueue(
-            itemName = sample.chineseName,       // 本地化名称
+            itemName = sample.name,       // 本地化名称
             activeNumber = activeSums[key] ?: 0,   // 活动队列数量
             pendingNumber = pendingSums[key] ?: 0, // 待处理队列数量
             storedNumber = storedSums[key] ?: 0,   // 存储队列数量
@@ -111,7 +111,7 @@ fun CpuDetail.toImage(
     borderSize: Int = MinecraftStyle.BORDER_WIDTH * 2 + MinecraftStyle.BORDER_HIGHLIGHT_SHADOW_WIDTH * 2
 ): BufferedImage {
     // 注意：此处 cpu 为 CpuDetail 内的 CpuCoreStatus 属性
-    val taskQueues = cpu.toCpuTaskQueues { itemUtil.getLocalItem(it) }
+    val taskQueues = cpu.toCpuTaskQueues { itemUtil.getLocalizedData(it) }
 
     // 计算网格布局参数
     val rowCount = ceil(taskQueues.size.toDouble() / columnCount).toInt()

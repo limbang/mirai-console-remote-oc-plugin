@@ -17,7 +17,7 @@ import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
 import net.mamoe.mirai.event.GlobalEventChannel
 import net.mamoe.mirai.event.registerTo
 import top.limbang.remoteoc.RemoteOCCompositeCommand.init
-import top.limbang.remoteoc.entity.LocalizedItem
+import top.limbang.remoteoc.entity.LocalizedData
 import top.limbang.remoteoc.listener.ClientListener
 import top.limbang.remoteoc.listener.TeamListener
 import top.limbang.remoteoc.utils.json
@@ -34,7 +34,7 @@ object RemoteOC : KotlinPlugin(
     }
 ) {
     /** 团队合成清单 */
-    val teamCraftables = mutableMapOf<String, MutableSet<LocalizedItem>>()
+    val teamCraftables = mutableMapOf<String, MutableSet<LocalizedData>>()
     /** 团队合成清单目录 */
     const val TEAM_CRAFTABLES_DIR = "TeamCraftables"
 
@@ -51,7 +51,7 @@ object RemoteOC : KotlinPlugin(
             } else {
                 // 创建空文件并初始化空集合
                 file.createNewFile()
-                mutableSetOf<LocalizedItem>().also {
+                mutableSetOf<LocalizedData>().also {
                     file.writeText(json.encodeToString(it))
                 }
             }

@@ -158,10 +158,27 @@ object ClientListener : SimpleListenerHost() {
         result?.data ?: run { sendMessage("❌ 获取合成终端失败"); return }
         // 把合成终端的物品存储到插件数据中
         result.data.forEach {
-            teamCraftables.getOrPut(team.name) { mutableSetOf() }.add(itemUtil.getLocalItem(it))
+            teamCraftables.getOrPut(team.name) { mutableSetOf() }.add(itemUtil.getLocalizedData(it))
         }
         // 发送合成终端图片
         sendImage(result.data.toImage(itemUtil, "合成终端"))
+        sendImage(itemUtil.getLocalizedDataList(result.data).toImage("合成终端"))
+    }
+
+    /**
+     * 获取所有流体
+     */
+    @EventHandler
+    suspend fun GroupMessageEvent.getAllFluids() {
+        if (!message.contentToString().startsWith("流体终端")) return
+        // 获取团队信息
+        val team = validateTeamAndClient() ?: return
+        // 发送流体终端请求
+        val result = sendCommandRequest(team, AeCommand.GetAllFluids,Fluid.serializer())
+        result?.data ?: run { sendMessage("❌ 获取流体终端失败"); return }
+        // 发送流体终端图片
+        sendImage(itemUtil.getLocalizedDataList(result.data).toImage("流体终端"))
+    }
     }
 
     /**
@@ -186,7 +203,7 @@ object ClientListener : SimpleListenerHost() {
             teamCraftables[team.name] ?: run { sendMessage("❌ 请先发送[合成终端]指令获取可合成物品清单"); return }
         // 查询物品是否可以合成
         val localizedItem =
-            craftItems.find { it.chineseName == itemName } ?: run { sendMessage("❌ 该物品无法合成"); return }
+            craftItems.find { it.name == itemName } ?: run { sendMessage("❌ 该物品无法合成"); return }
         // 发送合成请求
         sendMessage("📤 合成[$itemName*$countInt]正在发送合成请求，请等待结果")
 
@@ -194,8 +211,8 @@ object ClientListener : SimpleListenerHost() {
         val result = sendCommandRequest(
             team = team,
             aeCommand = AeCommand.RequestItem(
-                itemName = localizedItem.item.name,
-                damage = localizedItem.item.damage,
+                itemName = localizedItem.id,
+                damage = localizedItem.damage,
                 amount = countInt
             ),
             serializer = CraftingData.serializer()
@@ -207,12 +224,12 @@ object ClientListener : SimpleListenerHost() {
             if (craftingData.failed) {
                 val failureReason = craftingData.canceled.why ?: "未知原因"
                 val failureMessage = when {
-                    failureReason.contains("missing resources") -> "❌ 合成失败：${localizedItem.chineseName} 原因：缺少资源"
-                    else -> "❌ 合成失败：${localizedItem.chineseName} 原因：$failureReason"
+                    failureReason.contains("missing resources") -> "❌ 合成失败：${localizedItem.name} 原因：缺少资源"
+                    else -> "❌ 合成失败：${localizedItem.name} 原因：$failureReason"
                 }
                 sendMessage(failureMessage)
             } else {
-                sendMessage("📥 [${localizedItem.chineseName}*${countInt}]合成请求已发送，正在获取CPU信息,请等待结果")
+                sendMessage("📥 [${localizedItem.name}*${countInt}]合成请求已发送，正在获取CPU信息,请等待结果")
                 sendCpuInfo(team)
             }
         }

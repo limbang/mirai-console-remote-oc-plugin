@@ -19,16 +19,16 @@ import kotlinx.serialization.Serializable
  * - 物品配置文件的持久化存储
  * - 合成配方中的材料项表示
  *
- * @property name 物品的唯一命名空间标识符，遵循 [Minecraft命名规范]。
+ * @property name 物品的唯一命名空间标识符
  *
  *              示例：
  *              - "minecraft:diamond_sword" （原版物品）
  *              - "gregtech:wire_coil_32x" （模组物品）
  *              - "ae2:certus_quartz_crystal" （跨模组物品）
- * @property label 物品的本地化显示名称，用于用户界面展示。
+ * @property label 物品的显示名称
  *
  *               示例："高级合金框架", "超能硅岩电池 IV"
- * @property damage 物品损伤值或元数据标识，用于区分同类物品的不同状态。
+ * @property damage 物品损伤值或元数据标识，用于区分同类物品的不同状态
  *
  *                示例：
  *                - 0 = 默认状态
@@ -39,9 +39,9 @@ import kotlinx.serialization.Serializable
  *              部分模组物品可突破限制。特殊值：
  *              - 0 = 无效物品
  *              - (-1) = 无限数量（创造模式专用）
- * @property isCraftable 物品是否可合成，默认为 true。
- * @property hasTag 物品是否带有标签，默认为 false。
- * @property tag 物品的标签，用于区分同类物品的不同属性。
+ * @property isCraftable 物品是否可合成，默认为 true
+ * @property hasTag 物品是否带有 nbt 标签，默认为 false
+ * @property tag 物品的标签，用于区分同类物品的不同属性
  */
 @Serializable
 data class Item(
@@ -71,35 +71,23 @@ data class ItemMetadata(
 )
 
 /**
- * 本地化物品组合实体
- *
- * 用于客户端运行时快速访问本地化数据，实现[Item]与本地化资源的桥接。
- *
- * @property item 原始物品数据实例
- * @property chineseName 缓存的中文名称
- * @property imgPath 缓存的图标路径
- */
-@Serializable
-data class LocalizedItem(
-    val item: Item,
-    val chineseName: String,
-    val imgPath: String
-)
-
-/**
  * 代表游戏内流体物质的不可变数据模型
  *
- * @property name 物质的唯一命名空间标识符，遵循 [Minecraft命名规范]。
- * @property label 物质的本地化显示名称，用于用户界面展示。
- * @property amount 物质的数量，单位为 mB（1 mB = 1/1000 mL）。
- * @property isCraftable 物质是否可合成，默认为 true。
+ * @property name 物质的唯一命名空间标识符
+ * @property label 显示名称
+ * @property amount 物质的数量，单位为 mB（1 mB = 1/1000 mL）
+ * @property isCraftable 物质是否可合成，默认为 false
+ * @property hasTag 物质是否带有 nbt 标签，默认为 false
+ * @property tag 物质的标签，用于区分同类物质的不同属性
  */
 @Serializable
 data class Fluid(
     val name: String,
     val label: String,
     val amount: Long,
-    val isCraftable: Boolean
+    val isCraftable: Boolean,
+    val hasTag: Boolean = false,
+    val tag: String = ""
 )
 
 /**
@@ -125,17 +113,41 @@ data class FluidMetadata(
 )
 
 /**
- * 本地化流体物质组合实体
+ * 源质实体
  *
- * 用于客户端运行时快速访问本地化数据，实现[Fluid]与本地化资源的桥接。
- *
- * @property fluid 原始流体数据实例
- * @property chineseName 缓存的中文名称
- * @property imgPath 缓存的图标路径
+ * @property name 源质的唯一命名空间标识符
+ * @property label 显示名称
+ * @property amount 源质的数量
+ * @property hasTag 源质是否带有 nbt 标签，默认为 false。
+ * @property tag 源质的标签，用于区分同类源质的不同属性。
  */
 @Serializable
-data class LocalizedFluid(
-    val fluid: Fluid,
-    val chineseName: String,
-    val imgPath: String
+data class Essentia(
+    val name: String,
+    val label: String,
+    val amount: Long,
+    val hasTag: Boolean = false,
+    val tag: String = ""
+)
+
+/**
+ * 本地化数据实体
+ *
+ * 用于通用绘制，实现 [Item] 、 [Fluid] 与本地化资源的桥接。
+ *
+ * @property id 唯一命名空间标识符
+ * @property name 本地化显示名称，用于用户界面展示。
+ * @property imgPath 图标的资源路径
+ * @property damage 损伤值或元数据标识，用于区分同类物品的不同状态。
+ * @property isCraftable 是否可合成
+ * @property size 数量
+ */
+@Serializable
+data class LocalizedData(
+    val id: String,
+    val name: String,
+    val imgPath: String,
+    val damage: Int,
+    val isCraftable: Boolean,
+    val size: Long
 )

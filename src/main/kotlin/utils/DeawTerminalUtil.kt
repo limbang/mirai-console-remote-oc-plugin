@@ -8,8 +8,7 @@
 package top.limbang.remoteoc.utils
 
 
-import top.limbang.remoteoc.entity.Item
-import top.limbang.remoteoc.entity.LocalizedItem
+import top.limbang.remoteoc.entity.LocalizedData
 import top.limbang.remoteoc.utils.MinecraftStyle.BACKGROUND_COLOR
 import top.limbang.remoteoc.utils.MinecraftStyle.BORDER_HIGHLIGHT_COLOR
 import top.limbang.remoteoc.utils.MinecraftStyle.BORDER_SHADOW_COLOR
@@ -21,8 +20,20 @@ import javax.imageio.ImageIO
 import kotlin.math.ceil
 
 
-fun List<Item>.toImage(
-    itemUtil: ItemUtil,
+/**
+ * 把本地化数据转换为终端图像
+ *
+ * @param title 终端标题 默认为 "终端"
+ * @param columnCount 列数 默认为 9
+ * @param cellWidth 单元格宽度 默认为 64
+ * @param cellHeight 单元格高度 默认为 64
+ * @param horizontalPadding 水平边距 默认为 20
+ * @param bottomPadding 底部边距 默认为 20
+ * @param headerHeight 标题高度 默认为 40
+ * @param borderSize 边框大小 默认为 边框总尺寸（由 MinecraftStyle 常量计算得出）
+ * @return BufferedImage 终端图像
+ */
+fun List<LocalizedData>.toImage(
     title: String = "终端",
     columnCount: Int = 9,
     cellWidth: Int = 64,
@@ -32,8 +43,6 @@ fun List<Item>.toImage(
     headerHeight: Int = 40,
     borderSize: Int = MinecraftStyle.BORDER_WIDTH * 2 + MinecraftStyle.BORDER_HIGHLIGHT_SHADOW_WIDTH * 2
 ): BufferedImage {
-    // 获取本地化的物品信息
-    val itemDisplayInfo = itemUtil.getLocalItems(this)
 
     // 计算网格布局参数
     val rowCount = ceil(size.toDouble() / columnCount).toInt()
@@ -60,19 +69,19 @@ fun List<Item>.toImage(
     g2d.drawString(title, horizontalPadding + (borderSize / 2), headerHeight - 10 + (borderSize / 2))
 
     // 绘制物品格子
-    itemDisplayInfo.forEachIndexed { index, item ->
+    forEachIndexed { index, data ->
         val col = index % columnCount
         val row = index / columnCount
         val x = horizontalPadding + (col * cellWidth) + (borderSize / 2)
         val y = headerHeight + (row * cellHeight) + (borderSize / 2)
-        drawTableCell(g2d, item, x, y, cellWidth, cellHeight)
+        drawTableCell(g2d, data, x, y, cellWidth, cellHeight)
     }
 
     // 补充空白单元格以保持网格完整性
     val totalCells = rowCount * columnCount
-    val emptyCells = totalCells - itemDisplayInfo.size
+    val emptyCells = totalCells - size
     repeat(emptyCells) { i ->
-        val index = itemDisplayInfo.size + i
+        val index = size + i
         val col = index % columnCount
         val row = index / columnCount
         val x = horizontalPadding + (col * cellWidth) + (borderSize / 2)
@@ -87,7 +96,17 @@ fun List<Item>.toImage(
     return image
 }
 
-private fun drawTableCell(g: Graphics2D, item: LocalizedItem?, x: Int, y: Int, width: Int, height: Int) {
+/**
+ * 绘制单元格
+ *
+ * @param g Graphics2D
+ * @param data 本地化数据
+ * @param x 左上角 x 坐标
+ * @param y 左上角 y 坐标
+ * @param width 宽度
+ * @param height 高度
+ */
+private fun drawTableCell(g: Graphics2D, data: LocalizedData?, x: Int, y: Int, width: Int, height: Int) {
     // 绘制单元格背景
     g.color = MinecraftStyle.ITEM_COLOR
     g.fillRect(x, y, width, height)
@@ -100,12 +119,12 @@ private fun drawTableCell(g: Graphics2D, item: LocalizedItem?, x: Int, y: Int, w
     g.fillRect(x + 3, y + height - 3, width - 3, 3)
     g.fillRect(x + width - 3, y + 3, 3, height - 3)
 
-    // 若 item 为 null，不需要绘制内容
-    if (item == null) return
+    // 若数据为 null，不需要绘制内容
+    if (data == null) return
 
     // 加载并绘制图标
     val icon = try {
-        ImageIO.read(File(item.imgPath)).getScaledInstance(48, 48, Image.SCALE_SMOOTH)
+        ImageIO.read(File(data.imgPath)).getScaledInstance(48, 48, Image.SCALE_SMOOTH)
     } catch (e: Exception) {
         // 图标加载失败，读取默认图标
         getImage("default.png")!!
@@ -113,15 +132,15 @@ private fun drawTableCell(g: Graphics2D, item: LocalizedItem?, x: Int, y: Int, w
     g.drawImage(icon, x + (width - 48) / 2, y + (height - 48) / 2, null)
 
 
-    // 绘制物品名称
+    // 绘制数据名称
     g.color = Color.WHITE
     g.font = Font("Microsoft YaHei", Font.PLAIN, 9)
-    g.drawString(truncateText(item.chineseName,g.fontMetrics,55), x + 5, y + 2 + g.fontMetrics.ascent)
+    g.drawString(truncateText(data.name,g.fontMetrics,55), x + 5, y + 2 + g.fontMetrics.ascent)
 
     // 获取字体度量信息
     g.font = Font("Microsoft YaHei", Font.PLAIN, 12)
     val fm = g.fontMetrics
-    val text = if (item.item.size < 1 && item.item.isCraftable) "合成" else NumberFormatter.format(item.item.size)
+    val text = if (data.size < 1 && data.isCraftable) "合成" else NumberFormatter.format(data.size)
     val textWidth = fm.stringWidth(text)
 
     // 计算文本的绘制位置，确保右对齐并留有边距

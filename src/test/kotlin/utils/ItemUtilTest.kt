@@ -16,8 +16,8 @@ internal class ItemUtilTest {
 
     @Test
     fun getItemNameTest() {
-        val result = itemUtil.getLocalItems(items).joinToString("\n") {
-            "物品名称：${it.chineseName} 物品图片路径：${it.imgPath}"
+        val result = itemUtil.getLocalizedDataList(items).joinToString("\n") {
+            "物品名称：${it.name} 物品图片路径：${it.imgPath}"
         }
         // 增加断言
         assertTrue(result.isNotEmpty())

@@ -102,23 +102,23 @@ internal class TaskApiTest {
                         "存储容量：${cpu.value.storage / 1024} K\n" +
                         "忙碌状态: ${cpu.value.busy}" +
                         (if (cpu.value.cpu.activeItems.isNotEmpty()) {
-                            "\n正在执行的物品：\n" + itemUtil.getLocalItems(cpu.value.cpu.activeItems).joinToString(
+                            "\n正在执行的物品：\n" + itemUtil.getLocalizedDataList(cpu.value.cpu.activeItems).joinToString(
                                 separator = "\n",
-                                transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
+                                transform = { "名称：${it.name} 数量：${it.size}" }
                             )
                         } else "") +
                         (if (cpu.value.cpu.storedItems.isNotEmpty()) {
-                            "\n待存储的物品：\n" + itemUtil.getLocalItems(cpu.value.cpu.storedItems)
+                            "\n待存储的物品：\n" + itemUtil.getLocalizedDataList(cpu.value.cpu.storedItems)
                                 .joinToString(
                                     separator = "\n",
-                                    transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
+                                    transform = { "名称：${it.name} 数量：${it.size}" }
                                 )
                         } else "") +
                         (if (cpu.value.cpu.pendingItems.isNotEmpty()) {
-                            "\n待处理的物品：\n" + itemUtil.getLocalItems(cpu.value.cpu.pendingItems)
+                            "\n待处理的物品：\n" + itemUtil.getLocalizedDataList(cpu.value.cpu.pendingItems)
                                 .joinToString(
                                     separator = "\n",
-                                    transform = { "名称：${it.chineseName} 数量：${it.item.size}" }
+                                    transform = { "名称：${it.name} 数量：${it.size}" }
                                 )
                         } else "")
             }
@@ -147,11 +147,11 @@ internal class TaskApiTest {
 
         val result = json.decodeFromString<ResultData<Item>>(itemList)
 
-        val itemInfo = itemUtil.getLocalItems(result.data!!).joinToString(
+        val itemInfo = itemUtil.getLocalizedDataList(result.data!!).joinToString(
             separator = "\n",
             prefix = "=== 可合成清单 ===\n",
             postfix = "\n==============",
-            transform = { "物品名称：${it.chineseName} 物品图片路径：${it.imgPath}" }
+            transform = { "物品名称：${it.name} 物品图片路径：${it.imgPath}" }
         )
 
         logger.info(itemInfo)
@@ -160,15 +160,15 @@ internal class TaskApiTest {
     @Test
     fun requestItemTest() = runBlocking {
         // 定义一个物品
-        val localizedItem = itemUtil.getLocalItem(Item("gregtech:gt.metaitem.01", "Titanium Plate", 17028, 0))!!
+        val localizedItem = itemUtil.getLocalizedData(Item("gregtech:gt.metaitem.01", "Titanium Plate", 17028, 0))!!
 
         // 创建命令请求
         val taskStatusResponse = try {
             api.executeCommand(
                 taskId = "test_requestItem",
                 command = AeCommand.RequestItem(
-                    itemName = localizedItem.item.name,
-                    damage = localizedItem.item.damage,
+                    itemName = localizedItem.id,
+                    damage = localizedItem.damage,
                     amount = 1
                 ),
                 clientId = "limbang"
@@ -187,7 +187,7 @@ internal class TaskApiTest {
         // 处理合成结果
         result.data!!.forEach { craftingData ->
             logger.info(
-                "物品名称：${localizedItem.chineseName}\n" +
+                "物品名称：${localizedItem.name}\n" +
                         "物品数量：${craftingData.item.size}\n" +
                         "正在合成：${craftingData.computing}\n" +
                         "是否取消：${craftingData.canceled.result}\n" +

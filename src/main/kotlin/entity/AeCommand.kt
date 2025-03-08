@@ -28,6 +28,24 @@ sealed class AeCommand(val commandString: String) {
         AeCommand("return ae.getAllCraftables()")
 
     /**
+     * 获取所有流体命令
+     */
+    data object GetAllFluids :
+        AeCommand("return ae.getAllFluids()")
+
+    /**
+     * 获取所有源质命令
+     */
+    data object GetAllEssentia :
+        AeCommand("return ae.getAllEssentia()")
+
+    /**
+     * 获取所有物品命令
+     */
+    data class GetAllItems(val filter: String?) :
+        AeCommand("return ae.getAllItems(${filter?.let { "\"$it\"" } ?: ""})")
+
+    /**
      * 请求物品命令
      * @param itemName 物品名称
      * @param damage 物品耐久度

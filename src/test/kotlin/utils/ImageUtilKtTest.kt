@@ -32,6 +32,6 @@ internal class ImageUtilKtTest {
     fun itemToImage(){
         val items = json.decodeFromString<List<Item>>(itemJson)
         // 保存最终合并结果
-        ImageIO.write(items.toImage(itemUtil,title = "合成终端"), "png", File("item.png"))
+        ImageIO.write(itemUtil.getLocalizedDataList(items).toImage(title = "合成终端"), "png", File("item.png"))
     }
 }
