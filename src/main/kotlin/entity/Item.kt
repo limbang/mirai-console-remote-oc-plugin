@@ -9,6 +9,7 @@ package top.limbang.remoteoc.entity
 
 
 import kotlinx.serialization.Serializable
+import top.limbang.remoteoc.network.serializer.ScientificLongSerializer
 
 /**
  * 代表游戏内物品的不可变数据模型
@@ -84,6 +85,7 @@ data class ItemMetadata(
 data class Fluid(
     val name: String,
     val label: String,
+    @Serializable(with = ScientificLongSerializer::class)
     val amount: Long,
     val isCraftable: Boolean,
     val hasTag: Boolean = false,
