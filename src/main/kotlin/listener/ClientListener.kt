@@ -8,6 +8,7 @@
 package top.limbang.remoteoc.listener
 
 import kotlinx.coroutines.TimeoutCancellationException
+import kotlinx.serialization.KSerializer
 import net.mamoe.mirai.contact.Contact.Companion.uploadImage
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.SimpleListenerHost
@@ -21,6 +22,7 @@ import top.limbang.remoteoc.entity.*
 import top.limbang.remoteoc.listener.TeamListener.sendMessage
 import top.limbang.remoteoc.network.model.ResultData
 import top.limbang.remoteoc.utils.*
+import java.awt.image.BufferedImage
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -120,7 +122,6 @@ object ClientListener : SimpleListenerHost() {
         return team
     }
 
-
     /**
      * 获取 CPU 信息
      */
@@ -129,8 +130,19 @@ object ClientListener : SimpleListenerHost() {
         if (!message.contentToString().startsWith("获取状态")) return
         // 获取团队信息
         val team = validateTeamAndClient() ?: return
-        // 发送CPU信息
+        // 发送CPU信息请求
         sendCpuInfo(team)
+    }
+
+    /**
+     * 获取 CPU 信息, 并发送图片
+     */
+    private suspend fun GroupMessageEvent.sendCpuInfo(team: Team) {
+        // 发送CPU信息请求
+        val result = sendCommandRequest(team, AeCommand.GetCpuList(true),CpuDetail.serializer())
+        result?.data ?: run { sendMessage("❌ 获取CPU信息失败"); return }
+        // 发送CPU信息图片
+        sendImage(result.data.toImage(itemUtil))
     }
 
     /**
@@ -141,8 +153,15 @@ object ClientListener : SimpleListenerHost() {
         if (!message.contentToString().startsWith("合成终端")) return
         // 获取团队信息
         val team = validateTeamAndClient() ?: return
-        // 发送合成清单
-        sendAllCraftables(team)
+        // 发送合成终端请求
+        val result = sendCommandRequest(team, AeCommand.GetAllCraftables,Item.serializer())
+        result?.data ?: run { sendMessage("❌ 获取合成终端失败"); return }
+        // 把合成终端的物品存储到插件数据中
+        result.data.forEach {
+            teamCraftables.getOrPut(team.name) { mutableSetOf() }.add(itemUtil.getLocalItem(it))
+        }
+        // 发送合成终端图片
+        sendImage(result.data.toImage(itemUtil, "合成终端"))
     }
 
     /**
@@ -162,109 +181,28 @@ object ClientListener : SimpleListenerHost() {
         }
         // 获取团队信息
         val team = validateTeamAndClient() ?: return
-        sendCraftItem(itemName, countInt, team)
-    }
-
-    /**
-     * 发送CPU信息到当前群组
-     *
-     * @param team 团队信息
-     */
-    private suspend fun GroupMessageEvent.sendCpuInfo(team: Team) {
-        val taskStatusResponse = try {
-            taskApi.executeCommand(
-                taskId = "${sender.id}_getCpuList",
-                command = AeCommand.GetCpuList(includeDetails = true),
-                clientId = teamClients.getValue(team.name)
-            )
-        } catch (e: TimeoutCancellationException) {
-            sendMessage(TIMEOUT_ERROR)
-            return
-        } ?: return
-
-        val cpuList = taskStatusResponse.result!!.first()
-        val result = json.decodeFromString<ResultData<CpuDetail>>(cpuList)
-        val bufferedImage = result.data?.toImage(itemUtil) ?: return run { sendMessage("❌ 获取CPU信息失败") }
-        val image = subject.uploadImage(bufferedImage.toInputStream())
-        subject.sendMessage(image)
-    }
-
-    /**
-     * 发送所有可合成物品到当前群组
-     *
-     * @param team 团队信息
-     */
-    private suspend fun GroupMessageEvent.sendAllCraftables(team: Team) {
-        // 创建命令请求
-        val taskStatusResponse = try {
-            taskApi.executeCommand(
-                taskId = "${sender.id}_getAllCraftables",
-                command = AeCommand.GetAllCraftables,
-                clientId = teamClients.getValue(team.name)
-            )
-        } catch (e: TimeoutCancellationException) {
-            // 处理超时
-            sendMessage(TIMEOUT_ERROR)
-            return
-        } ?: return
-
-        // 处理结果
-        val itemList = taskStatusResponse.result!!.first()
-
-        val result = json.decodeFromString<ResultData<Item>>(itemList)
-
-        result.data ?: run { sendMessage("❌ 获取合成终端失败"); return }
-
-        // 把合成清单存储到插件数据中
-        result.data.forEach {
-            teamCraftables.getOrPut(team.name) { mutableSetOf() }.add(itemUtil.getLocalItem(it))
-        }
-
-        val bufferedImage = result.data.toImage(itemUtil)
-        val image = subject.uploadImage(bufferedImage.toInputStream())
-        subject.sendMessage(image)
-    }
-
-    /**
-     * 发送合成物品请求到当前群组
-     *
-     * @param itemName 物品名称
-     * @param countInt 合成数量
-     * @param team 团队信息
-     */
-    private suspend fun GroupMessageEvent.sendCraftItem(itemName: String, countInt: Int, team: Team) {
-        // 获取合成清单
-        val craftItems = teamCraftables[team.name] ?: run { sendMessage("❌ 请先获取合成清单"); return }
+        // 获取合成物品清单
+        val craftItems =
+            teamCraftables[team.name] ?: run { sendMessage("❌ 请先发送[合成终端]指令获取可合成物品清单"); return }
         // 查询物品是否可以合成
         val localizedItem =
             craftItems.find { it.chineseName == itemName } ?: run { sendMessage("❌ 该物品无法合成"); return }
         // 发送合成请求
         sendMessage("📤 合成[$itemName*$countInt]正在发送合成请求，请等待结果")
 
-        // 创建命令请求
-        val taskStatusResponse = try {
-            taskApi.executeCommand(
-                taskId = "${sender.id}_requestItem",
-                command = AeCommand.RequestItem(
-                    itemName = localizedItem.item.name,
-                    damage = localizedItem.item.damage,
-                    amount = countInt
-                ),
-                clientId = teamClients.getValue(team.name)
-            )
-        } catch (e: TimeoutCancellationException) {
-            // 处理超时
-            sendMessage(TIMEOUT_ERROR)
-            return
-        } ?: return
-
-        // 处理结果
-        val message = taskStatusResponse.result!!.first()
-
-        val result = json.decodeFromString<ResultData<CraftingData>>(message)
+        // 发送合成请求
+        val result = sendCommandRequest(
+            team = team,
+            aeCommand = AeCommand.RequestItem(
+                itemName = localizedItem.item.name,
+                damage = localizedItem.item.damage,
+                amount = countInt
+            ),
+            serializer = CraftingData.serializer()
+        )
 
         // 处理合成结果
-        result.data ?: run { sendMessage("❌ 合成失败：${result.message}");return }
+        result?.data ?: run { sendMessage("❌ 合成失败：${result?.message ?: "未知原因"}");return }
         result.data.forEach { craftingData ->
             if (craftingData.failed) {
                 val failureReason = craftingData.canceled.why ?: "未知原因"
@@ -274,9 +212,53 @@ object ClientListener : SimpleListenerHost() {
                 }
                 sendMessage(failureMessage)
             } else {
-                sendMessage("📥 [${localizedItem.chineseName}*${countInt}]合成请求已发送，正在获取CPU信息")
+                sendMessage("📥 [${localizedItem.chineseName}*${countInt}]合成请求已发送，正在获取CPU信息,请等待结果")
                 sendCpuInfo(team)
             }
         }
     }
+
+
+    /**
+     * 发送命令请求
+     *
+     * @param T 命令返回类型
+     * @param team 团队信息
+     * @param aeCommand AE命令
+     * @return 命令返回结果 为空表示请求失败
+     */
+    private suspend fun <T> GroupMessageEvent.sendCommandRequest(team: Team, aeCommand: AeCommand, serializer: KSerializer<T>): ResultData<T>? {
+        // 创建命令请求
+        val taskStatusResponse = try {
+            taskApi.executeCommand(
+                taskId = "${sender.id}_${
+                    aeCommand.commandString.removePrefix("return ae.").substringBefore("(")
+                }",
+                command = aeCommand,
+                clientId = teamClients.getValue(team.name)
+            )
+        } catch (e: TimeoutCancellationException) {
+            // 处理超时
+            sendMessage(TIMEOUT_ERROR)
+            return null
+        } ?: return null
+        // 处理结果
+        val itemList = taskStatusResponse.result!!.first()
+        // 构造 ResultData 的序列化器，并传入 T 的序列化器
+        val resultDataSerializer = ResultData.serializer(serializer)
+        // 解析结果
+        val result = json.decodeFromString(resultDataSerializer,itemList)
+        return result
+    }
+
+    /**
+     * 上传图片并发送到群里
+     *
+     * @param bufferedImage 图片缓冲区
+     */
+    private suspend fun GroupMessageEvent.sendImage(bufferedImage: BufferedImage) {
+        val image = subject.uploadImage(bufferedImage.toInputStream())
+        subject.sendMessage(image)
+    }
+
 }
