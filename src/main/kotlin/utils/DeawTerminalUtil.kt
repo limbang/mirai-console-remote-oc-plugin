@@ -68,8 +68,8 @@ fun List<LocalizedData>.toImage(
     g2d.font = Font("Microsoft YaHei", Font.PLAIN, 22)
     g2d.drawString(title, horizontalPadding + (borderSize / 2), headerHeight - 10 + (borderSize / 2))
 
-    // 绘制物品格子
-    forEachIndexed { index, data ->
+    // 绘制物品格子, 按物品数量排序
+    sortedByDescending { it.size }.forEachIndexed { index, data ->
         val col = index % columnCount
         val row = index / columnCount
         val x = horizontalPadding + (col * cellWidth) + (borderSize / 2)
@@ -137,7 +137,7 @@ private fun drawTableCell(g: Graphics2D, data: LocalizedData?, x: Int, y: Int, w
     // 绘制数据名称
     g.color = Color.WHITE
     g.font = Font("Microsoft YaHei", Font.PLAIN, 9)
-    g.drawString(truncateText(data.name,g.fontMetrics,55), x + 5, y + 2 + g.fontMetrics.ascent)
+    g.drawString(truncateText(data.name, g.fontMetrics, 55), x + 5, y + 2 + g.fontMetrics.ascent)
 
     // 获取字体度量信息
     g.font = Font("Microsoft YaHei", Font.PLAIN, 12)
