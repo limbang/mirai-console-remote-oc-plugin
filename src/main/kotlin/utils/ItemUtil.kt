@@ -90,7 +90,7 @@ class ItemUtil(
     private fun handleFluidDrop(item: Item): LocalizedData {
         // 处理缺少tag的情况,使用流体数据文件中的名称
         if (item.tag.isEmpty()) {
-            val fluidName = item.label.removePrefix("drop of ").lowercase()
+            val fluidName = item.label.removePrefix("drop of ").lowercase().replace(" ", ".")
             val fluidMetadata = fluidData[fluidName]
             val fluidLocalizedName = fluidMetadata?.localizedName ?: fluidName
             val fluidImgPath = "$resourceDir/image/${fluidMetadata?.imgPath ?: "default.png"}"
