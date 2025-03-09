@@ -43,7 +43,7 @@ sealed class AeCommand(val commandString: String) {
      * 获取所有物品命令
      */
     data class GetAllItems(val filter: String?) :
-        AeCommand("return ae.getAllItems(${filter?.let { "\"$it\"" } ?: ""})")
+        AeCommand("return ae.getAllItems(${filter?.let { "'$it'" } ?: ""})")
 
     /**
      * 请求物品命令
@@ -52,5 +52,12 @@ sealed class AeCommand(val commandString: String) {
      * @param amount 请求数量
      */
     data class RequestItem(val itemName: String, val damage: Int, val amount: Int) :
-        AeCommand("""return ae.requestItem("$itemName", $damage, $amount)""")
+        AeCommand("return ae.requestItem('$itemName', $damage, $amount)")
+
+    /**
+     * 取消物品请求命令
+     * @param cpuName CPU名称
+     */
+    data class CancelCraftingByCpuName(val cpuName: String) :
+        AeCommand("return ae.cancelCraftingByCpuName('$cpuName')")
 }

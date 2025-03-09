@@ -33,6 +33,7 @@ object ClientListener : SimpleListenerHost() {
     // 指令正则
     private val BIND_CLIENT_REGEX = """^绑定客户端\s?([a-zA-Z0-9]{2,16})""".toRegex()
     private val CRAFT_ITEM_REGEX = """^合成\s+([^\s\n]+(?:\s+[^\s\n]+)*?)(?:\s+(\d{1,12}))?$""".toRegex()
+    private val CANCEL_CRAFTING_REGEX = """^取消合成\s+(.*)""".toRegex()
 
     // 物品本地化工具
     private val itemUtil = ItemUtil(dataFolderPath.toString())
@@ -139,7 +140,7 @@ object ClientListener : SimpleListenerHost() {
      */
     private suspend fun GroupMessageEvent.sendCpuInfo(team: Team) {
         // 发送CPU信息请求
-        val result = sendCommandRequest(team, AeCommand.GetCpuList(true),CpuDetail.serializer())
+        val result = sendCommandRequest(team, AeCommand.GetCpuList(true), CpuDetail.serializer())
         result?.data ?: run { sendMessage("❌ 获取CPU信息失败"); return }
         // 发送CPU信息图片
         sendImage(result.data.toImage(itemUtil))
@@ -154,7 +155,7 @@ object ClientListener : SimpleListenerHost() {
         // 获取团队信息
         val team = validateTeamAndClient() ?: return
         // 发送合成终端请求
-        val result = sendCommandRequest(team, AeCommand.GetAllCraftables,Item.serializer())
+        val result = sendCommandRequest(team, AeCommand.GetAllCraftables, Item.serializer())
         result?.data ?: run { sendMessage("❌ 获取合成终端失败"); return }
         // 把合成终端的物品存储到插件数据中
         result.data.forEach {
@@ -173,7 +174,7 @@ object ClientListener : SimpleListenerHost() {
         // 获取团队信息
         val team = validateTeamAndClient() ?: return
         // 发送流体终端请求
-        val result = sendCommandRequest(team, AeCommand.GetAllFluids,Fluid.serializer())
+        val result = sendCommandRequest(team, AeCommand.GetAllFluids, Fluid.serializer())
         result?.data ?: run { sendMessage("❌ 获取流体终端失败"); return }
         // 发送流体终端图片
         sendImage(itemUtil.getLocalizedDataList(result.data).toImage("流体终端"))
@@ -189,7 +190,7 @@ object ClientListener : SimpleListenerHost() {
         // 获取团队信息
         val team = validateTeamAndClient() ?: return
         // 发送源质终端请求
-        val result = sendCommandRequest(team, AeCommand.GetAllEssentia,Essentia.serializer())
+        val result = sendCommandRequest(team, AeCommand.GetAllEssentia, Essentia.serializer())
         result?.data ?: run { sendMessage("❌ 获取源质终端失败"); return }
         // 发送源质终端图片
         sendImage(itemUtil.getLocalizedDataList(result.data).toImage("源质终端"))
@@ -249,6 +250,28 @@ object ClientListener : SimpleListenerHost() {
         }
     }
 
+    /**
+     * 取消合成
+     */
+    @EventHandler
+    suspend fun GroupMessageEvent.cancelCrafting() {
+        val content = message.contentToString()
+        val commandMatch = CANCEL_CRAFTING_REGEX.find(content) ?: return
+        val (cpuName) = commandMatch.destructured
+
+        // 判断cpu名称是否为空
+        if (cpuName.isBlank()) {
+            sendMessage("❌ 请输入CPU名称(使用[石英切割刀]为CPU命名)")
+            return
+        }
+
+        // 获取团队信息
+        val team = validateTeamAndClient() ?: return
+        // 发送取消合成请求
+        val result = sendCommandRequest(team, AeCommand.CancelCraftingByCpuName(cpuName), Item.serializer())
+        // 发送结果消息
+       sendMessage(result?.message ?: "❌ 取消合成失败：未知原因")
+    }
 
     /**
      * 发送命令请求
@@ -258,7 +281,11 @@ object ClientListener : SimpleListenerHost() {
      * @param aeCommand AE命令
      * @return 命令返回结果 为空表示请求失败
      */
-    private suspend fun <T> GroupMessageEvent.sendCommandRequest(team: Team, aeCommand: AeCommand, serializer: KSerializer<T>): ResultData<T>? {
+    private suspend fun <T> GroupMessageEvent.sendCommandRequest(
+        team: Team,
+        aeCommand: AeCommand,
+        serializer: KSerializer<T>
+    ): ResultData<T>? {
         // 创建命令请求
         val taskStatusResponse = try {
             taskApi.executeCommand(
@@ -277,9 +304,8 @@ object ClientListener : SimpleListenerHost() {
         val itemList = taskStatusResponse.result!!.first()
         // 构造 ResultData 的序列化器，并传入 T 的序列化器
         val resultDataSerializer = ResultData.serializer(serializer)
-        // 解析结果
-        val result = json.decodeFromString(resultDataSerializer,itemList)
-        return result
+        // 返回解析结果
+        return json.decodeFromString(resultDataSerializer, itemList)
     }
 
     /**
