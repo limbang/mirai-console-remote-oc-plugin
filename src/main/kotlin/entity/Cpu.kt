@@ -8,7 +8,7 @@
 package top.limbang.remoteoc.entity
 
 import kotlinx.serialization.Serializable
-
+import top.limbang.remoteoc.network.serializer.CpuCoreStatusSerializer
 
 
 /**
@@ -24,6 +24,7 @@ data class CpuDetail(
     val storage: Int,
     val coprocessors: Int,
     val name: String,
+    @Serializable(with = CpuCoreStatusSerializer::class)
     val cpu: CpuCoreStatus,
     val busy: Boolean
 )
@@ -44,6 +45,14 @@ data class CpuCoreStatus(
     val active: Boolean,
     val busy: Boolean
 )
+
+/** 扩展属性：判断 CPU 是否为空状态 */
+val CpuCoreStatus.isEmpty: Boolean
+    get() = activeItems.isEmpty() &&
+            storedItems.isEmpty() &&
+            pendingItems.isEmpty() &&
+            !active &&
+            !busy
 
 /**
  * CPU 任务队列实体类

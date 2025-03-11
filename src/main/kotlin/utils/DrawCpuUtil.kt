@@ -421,7 +421,7 @@ fun List<CpuDetail>.drawCpuStatus(
  */
 fun List<CpuDetail>.toImage(itemUtil: ItemUtil): BufferedImage {
     // 查看是否有忙碌的 CPU,若没有则返回 绘制 CPU 状态栏
-    val activeCpu = filter { it.busy }
+    val activeCpu = filter { it.cpu.isEmpty.not() }
     val cpuStatus = drawCpuStatus()
     if (activeCpu.isEmpty()) return cpuStatus
     // 判断有几个忙碌的 CPU,如果等于 1 则绘制 CPU 状态栏靠左,活动任务靠右的布局
