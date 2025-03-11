@@ -218,16 +218,19 @@ object TeamListener : SimpleListenerHost() {
     @EventHandler
     suspend fun GroupMessageEvent.teamHelp() {
         if (!message.contentToString().startsWith("团队帮助")) return
-        val message = "\n🛠️ 团队指令帮助 🛠️\n" +
-                "创建团队：创建团队 团队名称\n" +
-                "解散团队：解散团队\n" +
-                "邀请成员：邀请加入 @成员\n" +
-                "加入团队：加入团队\n" +
-                "退出团队：退出团队\n" +
-                "踢出成员：踢出团队 @成员\n" +
-                "团队列表：团队列表\n" +
-                "团队信息：团队信息\n" +
-                "团队帮助：团队帮助"
+        val message = """
+                🛠️ 团队指令帮助 🛠️
+                
+                1. 创建团队 团队名称 🏷️️ 创建一个新的团队
+                2. 解散团队 🏷️ 解散当前所在的团队（队长权限）
+                3. 邀请加入 @成员 🏷️ 邀请一个成员加入当前所在的团队（队长权限）
+                4. 加入团队 🏷️ 加入被邀请的团队
+                5. 退出团队 🏷️ 退出当前所在的团队（队长例外）
+                6. 踢出团队 @成员 🏷️ 踢出一个成员（队长权限）
+                7. 团队列表 🏷️️ 查看所有团队列表
+                8. 团队信息 🏷️️ 查看当前所在的团队信息
+                9. 团队帮助 🏷️️ 查看团队指令帮助
+                """.trimIndent()
         sendMessage(message)
     }
 

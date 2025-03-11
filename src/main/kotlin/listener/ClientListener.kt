@@ -97,16 +97,17 @@ object ClientListener : SimpleListenerHost() {
             """
             🛠️ 客户端操作帮助 🛠️
             
-            1. 绑定客户端：绑定客户端 客户端名称 [是否简单模式]🏷️绑定客户端到当前所在的团队，
+            1. 绑定客户端 客户端名称 [是否简单模式] 🏷️绑定客户端到当前所在的团队，
             绑定后即可使用远程控制功能,类型为可选参数，默认为 false , GTNH 外的OC客户端请设置为 true
-            2. 解绑客户端：解绑客户端 🏷️解绑当前所在的团队的客户端绑定
-            3. 获取CPU信息：获取状态 🏷️获取当前团队的 AE CPU 状态
-            4. 获取所有可合成物品：合成终端 🏷️获取当前团队的 AE 的可合成物品
-            5. 合成物品: 合成 物品名称 [数量] 🏷️合成指定名称的物品，数量为可选参数，默认为 1  
-            6. 获取所有物品：物品终端 [过滤名称] 🏷️获取当前团队的 AE 的所有物品，可选参数为过滤名称
-            7. 获取所有流体：流体终端 🏷️获取当前团队的 AE 的所有流体
-            8. 获取所有源质：源质终端 🏷️获取当前团队的 AE 的所有源质
-            9. 客户端帮助：客户端帮助 🏷️显示客户端操作帮助
+            2. 解绑客户端 🏷️解绑当前所在的团队的客户端绑定
+            3. 获取状态 🏷️获取当前团队的 AE CPU 状态
+            4. 合成终端 🏷️获取当前团队的 AE 的可合成物品
+            5. 合成 物品名称 [数量] 🏷️合成指定名称的物品，数量为可选参数，默认为 1  
+            6. 物品终端 [过滤名称] 🏷️获取当前团队的 AE 的所有物品，可选参数为过滤名称
+            7. 流体终端 🏷️获取当前团队的 AE 的所有流体
+            8. 源质终端 🏷️获取当前团队的 AE 的所有源质
+            9. 取消合成 CPU名称 🏷️取消指定名称的CPU的合成任务(使用[石英切割刀]为CPU命名)
+            10. 客户端帮助 🏷️显示客户端操作帮助
             """.trimIndent()
         )
     }
@@ -267,12 +268,6 @@ object ClientListener : SimpleListenerHost() {
         val content = message.contentToString()
         val commandMatch = CANCEL_CRAFTING_REGEX.find(content) ?: return
         val (cpuName) = commandMatch.destructured
-
-        // 判断cpu名称是否为空
-        if (cpuName.isBlank()) {
-            sendMessage("❌ 请输入CPU名称(使用[石英切割刀]为CPU命名)")
-            return
-        }
 
         // 获取团队信息
         val team = validateTeamAndClient() ?: return
