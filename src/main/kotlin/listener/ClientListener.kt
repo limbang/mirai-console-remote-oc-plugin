@@ -16,6 +16,7 @@ import net.mamoe.mirai.event.events.GroupMessageEvent
 import top.limbang.remoteoc.RemoteOC.dataFolderPath
 import top.limbang.remoteoc.RemoteOC.teamCraftables
 import top.limbang.remoteoc.RemoteOCCompositeCommand.taskApi
+import top.limbang.remoteoc.RemoteOCData
 import top.limbang.remoteoc.RemoteOCData.teamClients
 import top.limbang.remoteoc.RemoteOCData.teams
 import top.limbang.remoteoc.entity.*
@@ -31,7 +32,7 @@ import kotlin.coroutines.CoroutineContext
 object ClientListener : SimpleListenerHost() {
 
     // 指令正则
-    private val BIND_CLIENT_REGEX = """^绑定客户端\s?([a-zA-Z0-9]{2,16})""".toRegex()
+    private val BIND_CLIENT_REGEX = """^绑定客户端\s?([a-zA-Z0-9]{2,16})(?:\s+(true|false))?""".toRegex()
     private val CRAFT_ITEM_REGEX = """^合成\s+([^\s\n]+(?:\s+[^\s\n]+)*?)(?:\s+(\d{1,12}))?$""".toRegex()
     private val CANCEL_CRAFTING_REGEX = """^取消合成\s+(.*)""".toRegex()
 
@@ -54,13 +55,15 @@ object ClientListener : SimpleListenerHost() {
     suspend fun GroupMessageEvent.bindClient() {
         val content = message.contentToString()
         val commandMatch = BIND_CLIENT_REGEX.find(content) ?: return
-        val (clientName) = commandMatch.destructured
+        val (clientName, isSimpleMode) = commandMatch.destructured
 
         // 检查客户端是否被绑定
         if (teamClients.containsValue(clientName)) return run { sendMessage("❌ 客户端已被绑定") }
         // 检查是否加入团队
         val team = teams.values.find { it.members.contains(sender.id) }
             ?: return run { sendMessage("❌ 您不在任何团队中") }
+        // 团队客户端模式
+        RemoteOCData.isSimpleMode[team.name] = isSimpleMode.lowercase() == "true"
 
         // 绑定客户端
         teamClients[team.name] = clientName
@@ -80,6 +83,7 @@ object ClientListener : SimpleListenerHost() {
         if (team.captainId != sender.id) return run { sendMessage("⛔ 您不是队长，无法解绑客户端") }
         // 解绑客户端
         teamClients.remove(team.name)
+        RemoteOCData.isSimpleMode.remove(team.name)
         sendMessage("✅ 解绑成功")
     }
 
@@ -93,7 +97,8 @@ object ClientListener : SimpleListenerHost() {
             """
             🛠️ 客户端操作帮助 🛠️
             
-            1. 绑定客户端：绑定客户端 客户端名称 🏷️绑定客户端到当前所在的团队，绑定后即可使用远程控制功能
+            1. 绑定客户端：绑定客户端 客户端名称 [是否简单模式]🏷️绑定客户端到当前所在的团队，
+            绑定后即可使用远程控制功能,类型为可选参数，默认为 false , GTNH 外的OC客户端请设置为 true
             2. 解绑客户端：解绑客户端 🏷️解绑当前所在的团队的客户端绑定
             3. 获取CPU信息：获取状态 🏷️获取当前团队的 AE CPU 状态
             4. 获取所有可合成物品：合成终端 🏷️获取当前团队的 AE 的可合成物品
@@ -140,7 +145,11 @@ object ClientListener : SimpleListenerHost() {
      */
     private suspend fun GroupMessageEvent.sendCpuInfo(team: Team) {
         // 发送CPU信息请求
-        val result = sendCommandRequest(team, AeCommand.GetCpuList(true), CpuDetail.serializer())
+        val result = sendCommandRequest(
+            team = team,
+            aeCommand = AeCommand.GetCpuList(RemoteOCData.isSimpleMode[team.name]?.not() ?: true),
+            serializer = CpuDetail.serializer()
+        )
         result?.data ?: run { sendMessage("❌ 获取CPU信息失败"); return }
         // 发送CPU信息图片
         sendImage(result.data.toImage(itemUtil))
@@ -270,7 +279,7 @@ object ClientListener : SimpleListenerHost() {
         // 发送取消合成请求
         val result = sendCommandRequest(team, AeCommand.CancelCraftingByCpuName(cpuName), Item.serializer())
         // 发送结果消息
-       sendMessage(result?.message ?: "❌ 取消合成失败：未知原因")
+        sendMessage(result?.message ?: "❌ 取消合成失败：未知原因")
     }
 
     /**

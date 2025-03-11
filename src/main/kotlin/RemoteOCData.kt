@@ -26,6 +26,9 @@ object RemoteOCData : AutoSavePluginData("remote-oc") {
     @ValueDescription("存储团队绑定客户端ID")
     val teamClients: MutableMap<String, String> by value()
 
-    @ValueDescription("存储群对应的 Remote-OC 服务器信息")
+    @ValueDescription("存储团队是否启用简单模式")
+    val isSimpleMode: MutableMap<String, Boolean> by value()
+
+    @ValueDescription("存储 Remote-OC 服务器信息")
     var remoteOCServer: ServerInfo? by value(null)
 }
