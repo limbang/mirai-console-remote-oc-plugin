@@ -9,6 +9,7 @@ package top.limbang.remoteoc.utils
 
 
 import top.limbang.remoteoc.entity.CpuDetail
+import top.limbang.remoteoc.entity.Fluid
 import top.limbang.remoteoc.entity.Item
 import java.io.File
 import javax.imageio.ImageIO
@@ -19,6 +20,7 @@ internal class ImageUtilKtTest {
     private val itemUtil = ItemUtil("debug-sandbox/data/top.limbang.RemoteOC")
     private val cpuDetailJson = javaClass.classLoader.getResource("json/CpuDetail2.json")!!.readText()
     private val itemJson = javaClass.classLoader.getResource("json/item2.json")!!.readText()
+    private val fluidJson = javaClass.classLoader.getResource("json/item3.json")!!.readText()
 
 
     @Test
@@ -36,6 +38,17 @@ internal class ImageUtilKtTest {
             itemUtil.getLocalizedDataList(items).toImage(title = "合成终端"),
             "png",
             File("debug-sandbox/item.png")
+        )
+    }
+
+    @Test
+    fun fluidToImage() {
+        val fluids = json.decodeFromString<List<Fluid>>(fluidJson)
+        // 保存最终合并结果
+        ImageIO.write(
+            itemUtil.getLocalizedDataList(fluids).toImage(title = "流体终端"),
+            "png",
+            File("debug-sandbox/fluid.png")
         )
     }
 }

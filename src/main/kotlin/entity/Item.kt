@@ -87,7 +87,7 @@ data class Fluid(
     val label: String,
     @Serializable(with = ScientificLongSerializer::class)
     val amount: Long,
-    val isCraftable: Boolean,
+    val isCraftable: Boolean = false,
     val hasTag: Boolean = false,
     val tag: String = ""
 )

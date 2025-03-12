@@ -1,0 +1,644 @@
+[
+  {
+    "name": "impure_enriched_naquadah_solution",
+    "label": "fluid.impure_enriched_naquadah_solution",
+    "hasTag": false,
+    "amount": 6000
+  },
+  {
+    "name": "dichlorobenzene",
+    "label": "fluid.dichlorobenzene",
+    "hasTag": false,
+    "amount": 1000
+  },
+  {
+    "name": "ammonia",
+    "label": "fluid.ammonia",
+    "hasTag": false,
+    "amount": 8600
+  },
+  {
+    "name": "soldering_alloy",
+    "label": "fluid.soldering_alloy",
+    "hasTag": false,
+    "amount": 576
+  },
+  {
+    "name": "ethanol",
+    "label": "fluid.ethanol",
+    "hasTag": false,
+    "amount": 2000000
+  },
+  {
+    "name": "bisphenol_a",
+    "label": "fluid.bisphenol_a",
+    "hasTag": false,
+    "amount": 2000
+  },
+  {
+    "name": "toluene",
+    "label": "fluid.toluene",
+    "hasTag": false,
+    "amount": 26104364
+  },
+  {
+    "name": "cryotheum",
+    "label": "Gelid Cryotheum",
+    "hasTag": false,
+    "amount": 47984
+  },
+  {
+    "name": "vitriolic_copper_sulfate",
+    "label": "fluid.vitriolic_copper_sulfate",
+    "hasTag": false,
+    "amount": 39000
+  },
+  {
+    "name": "aqua_regia",
+    "label": "fluid.aqua_regia",
+    "hasTag": false,
+    "amount": 66200
+  },
+  {
+    "name": "oil",
+    "label": "fluid.oil",
+    "hasTag": false,
+    "amount": 32000
+  },
+  {
+    "name": "fluorine",
+    "label": "fluid.fluorine",
+    "hasTag": false,
+    "amount": 4096000
+  },
+  {
+    "name": "naphtha",
+    "label": "fluid.naphtha",
+    "hasTag": false,
+    "amount": 650900
+  },
+  {
+    "name": "nacre_fluid",
+    "label": "Nacre",
+    "hasTag": false,
+    "amount": 63000
+  },
+  {
+    "name": "chloroform",
+    "label": "fluid.chloroform",
+    "hasTag": false,
+    "amount": 2000
+  },
+  {
+    "name": "nitration_mixture",
+    "label": "fluid.nitration_mixture",
+    "hasTag": false,
+    "amount": 38000
+  },
+  {
+    "name": "rhodium_sulfate",
+    "label": "fluid.rhodium_sulfate",
+    "hasTag": false,
+    "amount": 144000
+  },
+  {
+    "name": "propane",
+    "label": "fluid.propane",
+    "hasTag": false,
+    "amount": 755197
+  },
+  {
+    "name": "carbon_dioxide",
+    "label": "fluid.carbon_dioxide",
+    "hasTag": false,
+    "amount": 1720064
+  },
+  {
+    "name": "methanol",
+    "label": "fluid.methanol",
+    "hasTag": false,
+    "amount": 33664
+  },
+  {
+    "name": "sulfuric_acid",
+    "label": "fluid.sulfuric_acid",
+    "hasTag": false,
+    "amount": 42965250
+  },
+  {
+    "name": "hydrogen",
+    "label": "Hydrogen",
+    "hasTag": false,
+    "amount": 17568000
+  },
+  {
+    "name": "styrene_butadiene_rubber",
+    "label": "fluid.styrene_butadiene_rubber",
+    "hasTag": false,
+    "amount": 1033884
+  },
+  {
+    "name": "mana_fluid",
+    "label": "Mana",
+    "hasTag": false,
+    "amount": 516512
+  },
+  {
+    "name": "diluted_hydrochloric_acid",
+    "label": "fluid.diluted_hydrochloric_acid",
+    "hasTag": false,
+    "amount": 267000
+  },
+  {
+    "name": "hydrochloric_acid",
+    "label": "fluid.hydrochloric_acid",
+    "hasTag": false,
+    "amount": 11386472
+  },
+  {
+    "name": "sulfuric_nickel_solution",
+    "label": "fluid.sulfuric_nickel_solution",
+    "hasTag": false,
+    "amount": 139000
+  },
+  {
+    "name": "tetranitromethane",
+    "label": "fluid.tetranitromethane",
+    "hasTag": false,
+    "amount": 256064
+  },
+  {
+    "name": "brine",
+    "label": "Brine",
+    "hasTag": false,
+    "amount": 233000
+  },
+  {
+    "name": "dichlorobenzidine",
+    "label": "fluid.dichlorobenzidine",
+    "hasTag": false,
+    "amount": 8000
+  },
+  {
+    "name": "impure_naquadria_solution",
+    "label": "fluid.impure_naquadria_solution",
+    "hasTag": false,
+    "amount": 70000
+  },
+  {
+    "name": "hydrofluoric_acid",
+    "label": "fluid.hydrofluoric_acid",
+    "hasTag": false,
+    "amount": 16900
+  },
+  {
+    "name": "refinery_gas",
+    "label": "fluid.refinery_gas",
+    "hasTag": false,
+    "amount": 50000
+  },
+  {
+    "name": "rocket_fuel",
+    "label": "Rocket Fuel",
+    "hasTag": false,
+    "amount": 59000
+  },
+  {
+    "name": "sulfuric_naphtha",
+    "label": "fluid.sulfuric_naphtha",
+    "hasTag": false,
+    "amount": 4176
+  },
+  {
+    "name": "polyvinyl_chloride",
+    "label": "fluid.polyvinyl_chloride",
+    "hasTag": false,
+    "amount": 256000
+  },
+  {
+    "name": "oxygen",
+    "label": "Oxygen",
+    "hasTag": false,
+    "amount": 2801760
+  },
+  {
+    "name": "redstone",
+    "label": "Destabilized Redstone",
+    "hasTag": false,
+    "amount": 1872
+  },
+  {
+    "name": "fluoroantimonic_acid",
+    "label": "fluid.fluoroantimonic_acid",
+    "hasTag": false,
+    "amount": 1000
+  },
+  {
+    "name": "plastic",
+    "label": "fluid.plastic",
+    "hasTag": false,
+    "amount": 1536000
+  },
+  {
+    "name": "lithium",
+    "label": "fluid.lithium",
+    "hasTag": false,
+    "amount": 21500
+  },
+  {
+    "name": "astralsorcery.liquidstarlight",
+    "label": "Liquid Starlight",
+    "hasTag": false,
+    "amount": 45561
+  },
+  {
+    "name": "water",
+    "label": "Water",
+    "hasTag": false,
+    "amount": 2147483647
+  },
+  {
+    "name": "pyrotheum",
+    "label": "Blazing Pyrotheum",
+    "hasTag": false,
+    "amount": 256064
+  },
+  {
+    "name": "hydrogen_sulfide",
+    "label": "fluid.hydrogen_sulfide",
+    "hasTag": false,
+    "amount": 5890200
+  },
+  {
+    "name": "radon",
+    "label": "fluid.radon",
+    "hasTag": false,
+    "amount": 38850
+  },
+  {
+    "name": "polytetrafluoroethylene",
+    "label": "fluid.polytetrafluoroethylene",
+    "hasTag": false,
+    "amount": 256000
+  },
+  {
+    "name": "rawlatticite",
+    "label": "fluid.rawlatticite",
+    "hasTag": false,
+    "amount": 617400
+  },
+  {
+    "name": "tetrafluoroethylene",
+    "label": "fluid.tetrafluoroethylene",
+    "hasTag": false,
+    "amount": 1208
+  },
+  {
+    "name": "acetic_acid",
+    "label": "fluid.acetic_acid",
+    "hasTag": false,
+    "amount": 259900
+  },
+  {
+    "name": "deuterium",
+    "label": "fluid.deuterium",
+    "hasTag": false,
+    "amount": 1361000
+  },
+  {
+    "name": "propene",
+    "label": "fluid.propene",
+    "hasTag": false,
+    "amount": 18013215
+  },
+  {
+    "name": "methane",
+    "label": "fluid.methane",
+    "hasTag": false,
+    "amount": 147396660
+  },
+  {
+    "name": "rubber",
+    "label": "fluid.rubber",
+    "hasTag": false,
+    "amount": 768
+  },
+  {
+    "name": "epoxy",
+    "label": "fluid.epoxy",
+    "hasTag": false,
+    "amount": 256000
+  },
+  {
+    "name": "dimethylbenzene",
+    "label": "fluid.dimethylbenzene",
+    "hasTag": false,
+    "amount": 66548600
+  },
+  {
+    "name": "ethane",
+    "label": "fluid.ethane",
+    "hasTag": false,
+    "amount": 3642953
+  },
+  {
+    "name": "polyphenylene_sulfide",
+    "label": "fluid.polyphenylene_sulfide",
+    "hasTag": false,
+    "amount": 1224
+  },
+  {
+    "name": "lubricant",
+    "label": "fluid.lubricant",
+    "hasTag": false,
+    "amount": 1671564
+  },
+  {
+    "name": "sulfur_trioxide",
+    "label": "fluid.sulfur_trioxide",
+    "hasTag": false,
+    "amount": 156000
+  },
+  {
+    "name": "diphenyl_isophthalate",
+    "label": "fluid.diphenyl_isophthalate",
+    "hasTag": false,
+    "amount": 4000
+  },
+  {
+    "name": "creosote",
+    "label": "Creosote Oil",
+    "hasTag": false,
+    "amount": 101249200
+  },
+  {
+    "name": "sulfuric_copper_solution",
+    "label": "fluid.sulfuric_copper_solution",
+    "hasTag": false,
+    "amount": 3895000
+  },
+  {
+    "name": "helium",
+    "label": "fluid.helium",
+    "hasTag": false,
+    "amount": 7749500
+  },
+  {
+    "name": "acetone",
+    "label": "fluid.acetone",
+    "hasTag": false,
+    "amount": 256000
+  },
+  {
+    "name": "ethenone",
+    "label": "fluid.ethenone",
+    "hasTag": false,
+    "amount": 32000
+  },
+  {
+    "name": "liquid_oxygen",
+    "label": "fluid.liquid_oxygen",
+    "hasTag": false,
+    "amount": 31000
+  },
+  {
+    "name": "sulfuric_gas",
+    "label": "fluid.sulfuric_gas",
+    "hasTag": false,
+    "amount": 16000
+  },
+  {
+    "name": "glowstone",
+    "label": "Energized Glowstone",
+    "hasTag": false,
+    "amount": 2736
+  },
+  {
+    "name": "polybenzimidazole",
+    "label": "fluid.polybenzimidazole",
+    "hasTag": false,
+    "amount": 504
+  },
+  {
+    "name": "lightly_steamcracked_light_fuel",
+    "label": "fluid.lightly_steamcracked_light_fuel",
+    "hasTag": false,
+    "amount": 32000
+  },
+  {
+    "name": "phthalic_acid",
+    "label": "fluid.phthalic_acid",
+    "hasTag": false,
+    "amount": 22000
+  },
+  {
+    "name": "liquidnightmares",
+    "label": "fluid.liquidnightmares",
+    "hasTag": false,
+    "amount": 512000
+  },
+  {
+    "name": "heavy_fuel",
+    "label": "fluid.heavy_fuel",
+    "hasTag": false,
+    "amount": 100500
+  },
+  {
+    "name": "naphthalene",
+    "label": "fluid.naphthalene",
+    "hasTag": false,
+    "amount": 7793600
+  },
+  {
+    "name": "nitric_acid",
+    "label": "fluid.nitric_acid",
+    "hasTag": false,
+    "amount": 322000
+  },
+  {
+    "name": "benzene",
+    "label": "fluid.benzene",
+    "hasTag": false,
+    "amount": 88299550
+  },
+  {
+    "name": "ethylene",
+    "label": "fluid.ethylene",
+    "hasTag": false,
+    "amount": 31812360
+  },
+  {
+    "name": "stainless_steel",
+    "label": "fluid.stainless_steel",
+    "hasTag": false,
+    "amount": 2592
+  },
+  {
+    "name": "resin",
+    "label": "Resin",
+    "hasTag": false,
+    "amount": 1440000
+  },
+  {
+    "name": "nitrogen",
+    "label": "Nitrogen",
+    "hasTag": false,
+    "amount": 5376000
+  },
+  {
+    "name": "mercury",
+    "label": "fluid.mercury",
+    "hasTag": false,
+    "amount": 59200
+  },
+  {
+    "name": "dye_gray",
+    "label": "fluid.dye_gray",
+    "hasTag": false,
+    "amount": 3744
+  },
+  {
+    "name": "butene",
+    "label": "fluid.butene",
+    "hasTag": false,
+    "amount": 2699929
+  },
+  {
+    "name": "chlorine",
+    "label": "fluid.chlorine",
+    "hasTag": false,
+    "amount": 128706800
+  },
+  {
+    "name": "phenol",
+    "label": "fluid.phenol",
+    "hasTag": false,
+    "amount": 20297164
+  },
+  {
+    "name": "ice",
+    "label": "fluid.ice",
+    "hasTag": false,
+    "amount": 129960
+  },
+  {
+    "name": "uu_matter",
+    "label": "fluid.uu_matter",
+    "hasTag": false,
+    "amount": 92506
+  },
+  {
+    "name": "argon",
+    "label": "fluid.argon",
+    "hasTag": false,
+    "amount": 5120000
+  },
+  {
+    "name": "vinyl_chloride",
+    "label": "fluid.vinyl_chloride",
+    "hasTag": false,
+    "amount": 112
+  },
+  {
+    "name": "glue",
+    "label": "fluid.glue",
+    "hasTag": false,
+    "amount": 7900
+  },
+  {
+    "name": "lava",
+    "label": "Lava",
+    "hasTag": false,
+    "amount": 25000
+  },
+  {
+    "name": "sulfur_dioxide",
+    "label": "fluid.sulfur_dioxide",
+    "hasTag": false,
+    "amount": 31000
+  },
+  {
+    "name": "fermented_biomass",
+    "label": "fluid.fermented_biomass",
+    "hasTag": false,
+    "amount": 500
+  },
+  {
+    "name": "lifeessence",
+    "label": "Life Essence",
+    "hasTag": false,
+    "amount": 45000
+  },
+  {
+    "name": "steam",
+    "label": "Steam",
+    "hasTag": false,
+    "amount": 88000
+  },
+  {
+    "name": "butadiene",
+    "label": "fluid.butadiene",
+    "hasTag": false,
+    "amount": 2425344
+  },
+  {
+    "name": "salt_water",
+    "label": "fluid.salt_water",
+    "hasTag": false,
+    "amount": 84000
+  },
+  {
+    "name": "experience",
+    "label": "Essence of Knowledge",
+    "hasTag": false,
+    "amount": 4000
+  },
+  {
+    "name": "menrilresin",
+    "label": "Menril Resin",
+    "hasTag": false,
+    "amount": 1284800
+  },
+  {
+    "name": "wood_vinegar",
+    "label": "fluid.wood_vinegar",
+    "hasTag": false,
+    "amount": 32000
+  },
+  {
+    "name": "ender_distillation",
+    "label": "Dew of the Void",
+    "hasTag": false,
+    "amount": 531020
+  },
+  {
+    "name": "distilled_water",
+    "label": "fluid.distilled_water",
+    "hasTag": false,
+    "amount": 267000
+  },
+  {
+    "name": "tin_alloy",
+    "label": "fluid.tin_alloy",
+    "hasTag": false,
+    "amount": 17424
+  },
+  {
+    "name": "glass",
+    "label": "fluid.glass",
+    "hasTag": false,
+    "amount": 1168
+  },
+  {
+    "name": "light_fuel",
+    "label": "fluid.light_fuel",
+    "hasTag": false,
+    "amount": 201000
+  },
+  {
+    "name": "blockfluidantimatter",
+    "label": "Liquid Antimatter",
+    "hasTag": false,
+    "amount": 113000
+  }
+]
