@@ -31,6 +31,7 @@ internal class TaskApiTest {
     private val api: TaskApi
     private val clientId: String
     private val logger = LoggerFactory.getLogger(TaskApiTest::class.java)
+    private val itemUtil = ItemUtil("debug-sandbox/data/top.limbang.RemoteOC")
 
     init {
         val prop = Properties()
@@ -52,8 +53,11 @@ internal class TaskApiTest {
 
     @Test
     fun addCommand() = runBlocking {
-        val command =
-            CommandRequest(taskId = "123", commands = listOf("return ae.getAllCraftables()"), clientId = clientId)
+        val command = CommandRequest(
+            taskId = "123",
+            commands = listOf("return ae.getAllCraftables()"),
+            clientId = clientId
+        )
 
         val response = api.addCommand(command)
 
@@ -63,14 +67,12 @@ internal class TaskApiTest {
 
     @Test
     fun getTaskStatusTest() = runBlocking {
-        val response = api.getTaskStatus("123", true, false)
+        val response = api.getTaskStatus(taskId = "123")
 
         assertEquals("success", response.message)
 
         println("任务ID: ${response.data?.taskId}, 任务状态: ${response.data?.status}, 结果: ${response.data?.result}")
     }
-
-    val itemUtil = ItemUtil(javaClass.classLoader.getResource("logback.xml")!!.path.substringBeforeLast("/"))
 
     @Test
     fun getCpuListTest() = runBlocking {
@@ -79,7 +81,7 @@ internal class TaskApiTest {
             api.executeCommand(
                 taskId = "test_getCpuList",
                 command = AeCommand.GetCpuList(includeDetails = true),
-                clientId = "limbang"
+                clientId = clientId
             )
         } catch (e: TimeoutCancellationException) {
             // 处理超时
@@ -102,10 +104,11 @@ internal class TaskApiTest {
                         "存储容量：${cpu.value.storage / 1024} K\n" +
                         "忙碌状态: ${cpu.value.busy}" +
                         (if (cpu.value.cpu.activeItems.isNotEmpty()) {
-                            "\n正在执行的物品：\n" + itemUtil.getLocalizedDataList(cpu.value.cpu.activeItems).joinToString(
-                                separator = "\n",
-                                transform = { "名称：${it.name} 数量：${it.size}" }
-                            )
+                            "\n正在执行的物品：\n" + itemUtil.getLocalizedDataList(cpu.value.cpu.activeItems)
+                                .joinToString(
+                                    separator = "\n",
+                                    transform = { "名称：${it.name} 数量：${it.size}" }
+                                )
                         } else "") +
                         (if (cpu.value.cpu.storedItems.isNotEmpty()) {
                             "\n待存储的物品：\n" + itemUtil.getLocalizedDataList(cpu.value.cpu.storedItems)
@@ -134,7 +137,7 @@ internal class TaskApiTest {
             api.executeCommand(
                 taskId = "test_getAllCraftables",
                 command = AeCommand.GetAllCraftables,
-                clientId = "limbang"
+                clientId = clientId
             )
         } catch (e: TimeoutCancellationException) {
             // 处理超时
@@ -171,7 +174,7 @@ internal class TaskApiTest {
                     damage = localizedItem.damage,
                     amount = 1
                 ),
-                clientId = "limbang"
+                clientId = clientId
             )
         } catch (e: TimeoutCancellationException) {
             // 处理超时

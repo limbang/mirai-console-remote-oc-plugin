@@ -12,7 +12,7 @@ internal class ItemUtilTest {
 
     private val items: List<Item> by lazy { Json.decodeFromString(itemsJson) }
 
-    private val itemUtil = ItemUtil(javaClass.classLoader.getResource("logback.xml")!!.path.substringBeforeLast("/"))
+    private val itemUtil = ItemUtil("debug-sandbox/data/top.limbang.RemoteOC")
 
     @Test
     fun getItemNameTest() {

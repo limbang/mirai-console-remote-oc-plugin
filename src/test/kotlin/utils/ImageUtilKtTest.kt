@@ -16,22 +16,26 @@ import kotlin.test.Test
 
 internal class ImageUtilKtTest {
 
-    private val itemUtil = ItemUtil(javaClass.classLoader.getResource("logback.xml")!!.path.substringBeforeLast("/"))
+    private val itemUtil = ItemUtil("debug-sandbox/data/top.limbang.RemoteOC")
     private val cpuDetailJson = javaClass.classLoader.getResource("json/CpuDetail2.json")!!.readText()
-    private val itemJson = javaClass.classLoader.getResource("json/item1.json")!!.readText()
+    private val itemJson = javaClass.classLoader.getResource("json/item2.json")!!.readText()
 
 
     @Test
     fun cpuToImage() {
         val cpuDetails = json.decodeFromString<List<CpuDetail>>(cpuDetailJson)
         // 保存最终合并结果
-        ImageIO.write(cpuDetails.toImage(itemUtil), "png", File("cpus.png"))
+        ImageIO.write(cpuDetails.toImage(itemUtil), "png", File("debug-sandbox/cpus.png"))
     }
 
     @Test
-    fun itemToImage(){
+    fun itemToImage() {
         val items = json.decodeFromString<List<Item>>(itemJson)
         // 保存最终合并结果
-        ImageIO.write(itemUtil.getLocalizedDataList(items).toImage(title = "合成终端"), "png", File("item.png"))
+        ImageIO.write(
+            itemUtil.getLocalizedDataList(items).toImage(title = "合成终端"),
+            "png",
+            File("debug-sandbox/item.png")
+        )
     }
 }
