@@ -202,7 +202,7 @@ private fun drawCpuHeader(
     val startY = (height - metrics.height) / 2 + metrics.ascent + borderSize / 2
 
     if (isDrawDetailedCpuStatus) {
-        val cpuName = cpuDetail.name.ifEmpty { "CPU # $cpuNumber" }
+        val cpuName = "CPU #${cpuDetail.name.ifEmpty { cpuNumber + 1 }}"
         val statusText = "状态: ${if (cpuDetail.busy) "忙碌中" else "空闲"}"
         val storageText = "可存储: ${cpuDetail.storage / 1024} KB"
         val coresText = "并行处理单元: ${cpuDetail.coprocessors}"
@@ -421,7 +421,7 @@ fun List<CpuDetail>.drawCpuStatus(
  */
 fun List<CpuDetail>.toImage(itemUtil: ItemUtil): BufferedImage {
     // 查看是否有忙碌的 CPU,若没有则返回 绘制 CPU 状态栏
-    val activeCpu = filter { it.cpu.isEmpty.not() }
+    val activeCpu = filter { it.busy && it.cpu.isEmpty.not() }
     val cpuStatus = drawCpuStatus()
     if (activeCpu.isEmpty()) return cpuStatus
     // 判断有几个忙碌的 CPU,如果等于 1 则绘制 CPU 状态栏靠左,活动任务靠右的布局
