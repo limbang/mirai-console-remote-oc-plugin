@@ -1,0 +1,5876 @@
+[
+  {
+    "name": "botania:managlass",
+    "damage": 0,
+    "size": 122,
+    "label": "Managlass"
+  },
+  {
+    "name": "projecte:item.pe_matter",
+    "damage": 1,
+    "size": 1,
+    "label": "Red Matter"
+  },
+  {
+    "name": "projecte:item.pe_matter",
+    "damage": 0,
+    "size": 12,
+    "label": "Dark Matter"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 437,
+    "size": 0,
+    "label": "Iridium Chloride Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 354,
+    "size": 1,
+    "label": "Indium Gallium Phosphide Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 1011,
+    "size": 0,
+    "label": "Polydimethylsiloxane Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2516,
+    "size": 0,
+    "label": "HSS-G Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2013,
+    "size": 3,
+    "label": "Tungstensteel Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 275,
+    "size": 28761,
+    "label": "Dark Ashes"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 361,
+    "size": 0,
+    "label": "Sodium Bisulfate Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 90,
+    "size": 76,
+    "label": "Rhodium Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 113,
+    "size": 0,
+    "label": "Titanium Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 294,
+    "size": 0,
+    "label": "Nichrome Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2519,
+    "size": 0,
+    "label": "HSS-E Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 103,
+    "size": 1,
+    "label": "Sulfur Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 296,
+    "size": 0,
+    "label": "Niobium-Titanium Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 1007,
+    "size": 9,
+    "label": "Polyvinyl Chloride (PVC) Pulp"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2036,
+    "size": 13,
+    "label": "Vanadiumsteel Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 310,
+    "size": 0,
+    "label": "Ruridit Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 436,
+    "size": 0,
+    "label": "Osmium Tetroxide Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 435,
+    "size": 0,
+    "label": "Ruthenium Tetroxide Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 3008,
+    "size": 6,
+    "label": "Tantalum Carbide Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 18,
+    "size": 21498,
+    "label": "Carbon Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 277,
+    "size": 12,
+    "label": "Electrum Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2007,
+    "size": 73,
+    "label": "Lapis Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 302,
+    "size": 6,
+    "label": "Black Bronze Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 446,
+    "size": 80,
+    "label": "Antimony Trifluoride Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 351,
+    "size": 25,
+    "label": "Gallium Arsenide Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 1647,
+    "size": 5,
+    "label": "Lapotron Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 443,
+    "size": 0,
+    "label": "Trinium Sulfide Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 320,
+    "size": 3,
+    "label": "Soldering Alloy Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 369,
+    "size": 4,
+    "label": "Antimony Trioxide Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 1004,
+    "size": 13,
+    "label": "Styrene-Butadiene Rubber Pulp"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 1000,
+    "size": 0,
+    "label": "Silicone Rubber Pulp"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2058,
+    "size": 3292,
+    "label": "Raw Palladium Powder"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 1615,
+    "size": 340,
+    "label": "Flour"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 32124,
+    "size": 3,
+    "label": "gregtech.material.stellar_alloy Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 433,
+    "size": 376,
+    "label": "Inert Metal Mixture"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2062,
+    "size": 0,
+    "label": "Rhodium Plated Palladium Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 75,
+    "size": 0,
+    "label": "Osmium Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 323,
+    "size": 4,
+    "label": "Stainless Steel Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 3020,
+    "size": 2,
+    "label": "HSLA Steel Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 3007,
+    "size": 0,
+    "label": "Titanium Carbide Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 77,
+    "size": 2036,
+    "label": "Palladium Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 1016,
+    "size": 1,
+    "label": "Polytetrafluoroethylene (PTFE) Pulp"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2057,
+    "size": 496,
+    "label": "Platinum Sludge Residue"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 3009,
+    "size": 1,
+    "label": "Molybdenum Disilicide Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2059,
+    "size": 426,
+    "label": "Rarest Metal Mixture"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2507,
+    "size": 0,
+    "label": "Electrotine Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 334,
+    "size": 0,
+    "label": "Vanadium-Gallium Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2520,
+    "size": 0,
+    "label": "HSS-S Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 32031,
+    "size": 2,
+    "label": "gregtech.material.skystone Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2011,
+    "size": 12,
+    "label": "Black Steel Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 324,
+    "size": 13,
+    "label": "Steel Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 2522,
+    "size": 670,
+    "label": "Iridium Metal Residue"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 364,
+    "size": 124,
+    "label": "Platinum Group Sludge"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 1012,
+    "size": 2,
+    "label": "Polyethylene (PE) Pulp"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 424,
+    "size": 16,
+    "label": "Manganese Phosphide Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 331,
+    "size": 5,
+    "label": "Ultimet Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 338,
+    "size": 3,
+    "label": "Yttrium Barium Cuprate Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 358,
+    "size": 0,
+    "label": "Sodium Sulfide Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 93,
+    "size": 0,
+    "label": "Ruthenium Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 1010,
+    "size": 9,
+    "label": "Polybenzimidazole (PBI) Pulp"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 287,
+    "size": 1,
+    "label": "Invar Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 396,
+    "size": 1,
+    "label": "Tungstencarbide Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 451,
+    "size": 12,
+    "label": "RTM Alloy Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 50,
+    "size": 20010,
+    "label": "Iridium Dust"
+  },
+  {
+    "name": "gregtech:meta_dust",
+    "damage": 1648,
+    "size": 0,
+    "label": "Treated Wood Pulp"
+  },
+  {
+    "name": "advancedrocketry:liquidtank",
+    "damage": 0,
+    "size": 0,
+    "label": "Pressurized Tank"
+  },
+  {
+    "name": "minecraft:stone_slab",
+    "damage": 3,
+    "size": 49,
+    "label": "Cobblestone Slab"
+  },
+  {
+    "name": "gregtech:battery_block",
+    "damage": 0,
+    "size": 0,
+    "label": "Empty Tier I Capacitor"
+  },
+  {
+    "name": "bloodmagic:component",
+    "damage": 0,
+    "size": 0,
+    "label": "Water Reagent"
+  },
+  {
+    "name": "bloodmagic:component",
+    "damage": 3,
+    "size": 0,
+    "label": "Mining Reagent"
+  },
+  {
+    "name": "nae2:coprocessor_64x",
+    "damage": 0,
+    "size": 0,
+    "label": "§964x§r Crafting Co-Processing Unit"
+  },
+  {
+    "name": "enderutilities:enderpart",
+    "damage": 1,
+    "size": 1,
+    "label": "Ender Alloy (Enhanced)"
+  },
+  {
+    "name": "enderutilities:enderpart",
+    "damage": 0,
+    "size": 0,
+    "label": "Ender Alloy (Basic)"
+  },
+  {
+    "name": "enderutilities:enderpart",
+    "damage": 10,
+    "size": 0,
+    "label": "Inactive Ender Core (Basic)"
+  },
+  {
+    "name": "appliedenergistics2:crafting_storage_64k",
+    "damage": 0,
+    "size": 0,
+    "label": "§b64k§r Crafting Storage"
+  },
+  {
+    "name": "projecte:item.pe_covalence_dust",
+    "damage": 2,
+    "size": 0,
+    "label": "High Covalence Dust"
+  },
+  {
+    "name": "botania:bifrostperm",
+    "damage": 0,
+    "size": 0,
+    "label": "Bifrost Block"
+  },
+  {
+    "name": "gregtech:meta_spring",
+    "damage": 3020,
+    "size": 0,
+    "label": "HSLA Steel Spring"
+  },
+  {
+    "name": "gregtech:meta_spring",
+    "damage": 3009,
+    "size": 0,
+    "label": "Molybdenum Disilicide Spring"
+  },
+  {
+    "name": "gregtech:meta_spring",
+    "damage": 294,
+    "size": 0,
+    "label": "Nichrome Spring"
+  },
+  {
+    "name": "gregtech:meta_spring",
+    "damage": 296,
+    "size": 0,
+    "label": "Niobium-Titanium Spring"
+  },
+  {
+    "name": "gregtech:meta_spring",
+    "damage": 2,
+    "size": 0,
+    "label": "Aluminium Spring"
+  },
+  {
+    "name": "gregtech:meta_spring",
+    "damage": 115,
+    "size": 0,
+    "label": "Tungsten Spring"
+  },
+  {
+    "name": "minecraft:bread",
+    "damage": 0,
+    "size": 0,
+    "label": "Bread"
+  },
+  {
+    "name": "advancedrocketry:itemcircuitplate",
+    "damage": 0,
+    "size": 0,
+    "label": "Basic Circuit Plate"
+  },
+  {
+    "name": "thaumcraft:stone_arcane",
+    "damage": 0,
+    "size": 0,
+    "label": "Arcane Stone"
+  },
+  {
+    "name": "advancedrocketry:fueltank",
+    "damage": 0,
+    "size": 0,
+    "label": "Monopropellant Fuel Tank"
+  },
+  {
+    "name": "gregtech:meta_block_frame_157",
+    "damage": 8,
+    "size": 1,
+    "label": "HSS-S Frame Box"
+  },
+  {
+    "name": "gregtech:meta_block_frame_157",
+    "damage": 4,
+    "size": 0,
+    "label": "HSS-G Frame Box"
+  },
+  {
+    "name": "libvulpes:coil0",
+    "damage": 7,
+    "size": 0,
+    "label": "Titanium Coil"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1400,
+    "size": 0,
+    "label": "EV 4A Dynamo Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1197,
+    "size": 0,
+    "label": "MV Output Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 640,
+    "size": 0,
+    "label": "Elite Circuit Assembler II"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1240,
+    "size": 0,
+    "label": "IV 4A Energy Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1631,
+    "size": 11,
+    "label": "Tungstensteel Crate"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1626,
+    "size": 0,
+    "label": "Bronze Crate"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1020,
+    "size": 0,
+    "label": "Fusion Reactor Computer Mark 1"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1041,
+    "size": 0,
+    "label": "Power Substation"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1612,
+    "size": 0,
+    "label": "Steel Drum"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1275,
+    "size": 0,
+    "label": "Insane Voltage Transformer"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1245,
+    "size": 0,
+    "label": "IV 16A Energy Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 937,
+    "size": 4,
+    "label": "Turbo Combustion Generator"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1265,
+    "size": 0,
+    "label": "IV 64A Substation Dynamo Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1654,
+    "size": 0,
+    "label": "Maintenance Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1215,
+    "size": 1,
+    "label": "IV Energy Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1748,
+    "size": 1,
+    "label": "ME Input Bus"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1230,
+    "size": 0,
+    "label": "IV Dynamo Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 50,
+    "size": 0,
+    "label": "Basic Electric Furnace"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 2000,
+    "size": 1,
+    "label": "Large Maceration Tower"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1184,
+    "size": 1,
+    "label": "EV Input Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 2011,
+    "size": 0,
+    "label": "Large Cutting Machine"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1213,
+    "size": 11,
+    "label": "HV Energy Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 987,
+    "size": 0,
+    "label": "MV Machine Hull"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1404,
+    "size": 0,
+    "label": "Data Access Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 204,
+    "size": 0,
+    "label": "Elite Chemical Bath"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1152,
+    "size": 0,
+    "label": "MV Input Bus"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 988,
+    "size": 0,
+    "label": "HV Machine Hull"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1023,
+    "size": 2,
+    "label": "Large Chemical Reactor"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1250,
+    "size": 0,
+    "label": "IV 4A Dynamo Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1627,
+    "size": 0,
+    "label": "Steel Crate"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1260,
+    "size": 0,
+    "label": "IV 64A Substation Energy Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1181,
+    "size": 10,
+    "label": "LV Input Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1747,
+    "size": 1,
+    "label": "ME Input Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1667,
+    "size": 3,
+    "label": "Monitor Screen"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1001,
+    "size": 0,
+    "label": "Electric Blast Furnace"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1190,
+    "size": 6,
+    "label": "EV Quadruple Input Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 2005,
+    "size": 0,
+    "label": "Large Material Press"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1029,
+    "size": 0,
+    "label": "Central Monitor"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 609,
+    "size": 0,
+    "label": "Elite Thermal Centrifuge"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 2007,
+    "size": 0,
+    "label": "Large Centrifuge Unit"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 990,
+    "size": 0,
+    "label": "IV Machine Hull"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1697,
+    "size": 1,
+    "label": "LuV Energy Converter (16A)"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 429,
+    "size": 0,
+    "label": "Elite Forming Press"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1241,
+    "size": 0,
+    "label": "LuV 4A Energy Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 249,
+    "size": 0,
+    "label": "Elite Cutting Machine"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1216,
+    "size": 1,
+    "label": "LuV Energy Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 985,
+    "size": 0,
+    "label": "ULV Machine Hull"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1183,
+    "size": 0,
+    "label": "HV Input Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1019,
+    "size": 0,
+    "label": "Assembly Line"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1229,
+    "size": 1,
+    "label": "EV Dynamo Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1688,
+    "size": 0,
+    "label": "EV Energy Converter (8A)"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1735,
+    "size": 0,
+    "label": "Insane Voltage Hi-Amp Transformer"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 989,
+    "size": 0,
+    "label": "EV Machine Hull"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1628,
+    "size": 0,
+    "label": "Aluminium Crate"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 144,
+    "size": 0,
+    "label": "Elite Bending Machine"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 414,
+    "size": 0,
+    "label": "Elite Forge Hammer"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1290,
+    "size": 0,
+    "label": "Insane Voltage Power Transformer"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1693,
+    "size": 0,
+    "label": "IV Energy Converter (16A)"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 189,
+    "size": 0,
+    "label": "Elite Centrifuge"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1185,
+    "size": 0,
+    "label": "IV Input Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 444,
+    "size": 0,
+    "label": "Elite Lathe"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 69,
+    "size": 0,
+    "label": "Elite Macerator"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 2008,
+    "size": 0,
+    "label": "Large Chemical Bath"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 2050,
+    "size": 1,
+    "label": "Elite Parallel Control Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1150,
+    "size": 0,
+    "label": "ULV Input Bus"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1214,
+    "size": 8,
+    "label": "EV Energy Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1613,
+    "size": 0,
+    "label": "Aluminium Drum"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1153,
+    "size": 0,
+    "label": "HV Input Bus"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1611,
+    "size": 0,
+    "label": "Bronze Drum"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 991,
+    "size": 0,
+    "label": "LuV Machine Hull"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1685,
+    "size": 0,
+    "label": "HV Energy Converter (16A)"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1614,
+    "size": 0,
+    "label": "Stainless Steel Drum"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1785,
+    "size": 0,
+    "label": "IV Nonuple Input Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 489,
+    "size": 0,
+    "label": "Elite Ore Washing Plant"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 234,
+    "size": 0,
+    "label": "Elite Compressor"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1154,
+    "size": 2,
+    "label": "EV Input Bus"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1151,
+    "size": 14,
+    "label": "LV Input Bus"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1577,
+    "size": 6,
+    "label": "Super Tank III"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 1255,
+    "size": 0,
+    "label": "IV 16A Dynamo Hatch"
+  },
+  {
+    "name": "gregtech:machine",
+    "damage": 986,
+    "size": 0,
+    "label": "LV Machine Hull"
+  },
+  {
+    "name": "wizardry:nacre_block",
+    "damage": 0,
+    "size": 4,
+    "label": "Nacre Block"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 8,
+    "size": 5,
+    "label": "Fluix Dust"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 38,
+    "size": 46,
+    "label": "§b64k§r ME Storage Component"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 36,
+    "size": 0,
+    "label": "§e4k§r ME Storage Component"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 57,
+    "size": 2,
+    "label": "§b64k§r ME Fluid Storage Component"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 22,
+    "size": 0,
+    "label": "Logic Processor"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 37,
+    "size": 1,
+    "label": "§a16k§r ME Storage Component"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 1,
+    "size": 0,
+    "label": "Energized Polylattice Isometric Crystal"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 44,
+    "size": 0,
+    "label": "Annihilation Core"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 9,
+    "size": 0,
+    "label": "Fluix Pearl"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 24,
+    "size": 0,
+    "label": "Engineering Processor"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 30,
+    "size": 0,
+    "label": "Acceleration Card"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 35,
+    "size": 0,
+    "label": "§61k§r ME Storage Component"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 0,
+    "size": 0,
+    "label": "Diploid Polylattice Crystal"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 52,
+    "size": 0,
+    "label": "Blank Pattern"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 20,
+    "size": 1,
+    "label": "Printed Silicon"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 16,
+    "size": 0,
+    "label": "Printed Calculation Circuit"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 43,
+    "size": 0,
+    "label": "Formation Core"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 41,
+    "size": 2,
+    "label": "Wireless Receiver"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 12,
+    "size": 1,
+    "label": "Pure Fluix Crystal"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 17,
+    "size": 0,
+    "label": "Printed Engineering Circuit"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 28,
+    "size": 21,
+    "label": "Advanced Card"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 23,
+    "size": 0,
+    "label": "Calculation Processor"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 18,
+    "size": 0,
+    "label": "Printed Logic Circuit"
+  },
+  {
+    "name": "appliedenergistics2:material",
+    "damage": 10,
+    "size": 1,
+    "label": "Pure Certus Quartz Crystal"
+  },
+  {
+    "name": "appliedenergistics2:dense_energy_cell",
+    "damage": 0,
+    "size": 0,
+    "label": "Dense Energy Cell"
+  },
+  {
+    "name": "appliedenergistics2:quartz_glass",
+    "damage": 0,
+    "size": 2,
+    "label": "Quartz Glass"
+  },
+  {
+    "name": "rftools:crafter2",
+    "damage": 0,
+    "size": 0,
+    "label": "Crafter Tier 2"
+  },
+  {
+    "name": "gregtech:meta_block_compressed_62",
+    "damage": 12,
+    "size": 17,
+    "label": "Block of Styrene-Butadiene Rubber"
+  },
+  {
+    "name": "gregtech:meta_block_compressed_62",
+    "damage": 8,
+    "size": 0,
+    "label": "Block of Silicone Rubber"
+  },
+  {
+    "name": "gregtech:meta_block_compressed_62",
+    "damage": 15,
+    "size": 0,
+    "label": "Block of Polyvinyl Chloride (PVC)"
+  },
+  {
+    "name": "opencomputers:storage",
+    "damage": 4,
+    "size": 8,
+    "label": "Hard Disk Drive (Tier 3) (4MB)"
+  },
+  {
+    "name": "astralsorcery:itemshiftingstar",
+    "damage": 0,
+    "size": 0,
+    "label": "Shifting Star"
+  },
+  {
+    "name": "mekanism:enrichedalloy",
+    "damage": 0,
+    "size": 0,
+    "label": "Enriched Alloy"
+  },
+  {
+    "name": "thaumcraft:ingot",
+    "damage": 1,
+    "size": 0,
+    "label": "Void Metal Ingot"
+  },
+  {
+    "name": "gregtech:meta_gear",
+    "damage": 396,
+    "size": 0,
+    "label": "Tungstencarbide Gear"
+  },
+  {
+    "name": "gregtech:meta_gear",
+    "damage": 323,
+    "size": 0,
+    "label": "Stainless Steel Gear"
+  },
+  {
+    "name": "gregtech:meta_gear",
+    "damage": 260,
+    "size": 0,
+    "label": "Bronze Gear"
+  },
+  {
+    "name": "gregtech:meta_gear",
+    "damage": 310,
+    "size": 0,
+    "label": "Ruridit Gear"
+  },
+  {
+    "name": "gregtech:meta_gear",
+    "damage": 1617,
+    "size": 0,
+    "label": "Wood Gear"
+  },
+  {
+    "name": "gregtech:meta_gear",
+    "damage": 2520,
+    "size": 0,
+    "label": "HSS-S Gear"
+  },
+  {
+    "name": "gregtech:meta_gear",
+    "damage": 331,
+    "size": 0,
+    "label": "Ultimet Gear"
+  },
+  {
+    "name": "nae2:material",
+    "damage": 5,
+    "size": 0,
+    "label": "§c256k§r ME Fluid Storage Component"
+  },
+  {
+    "name": "nae2:material",
+    "damage": 1,
+    "size": 0,
+    "label": "§c256k§r ME Storage Component"
+  },
+  {
+    "name": "enderio:block_tank",
+    "damage": 0,
+    "size": 0,
+    "label": "tile.block_tank.name"
+  },
+  {
+    "name": "minecraft:iron_bars",
+    "damage": 0,
+    "size": 10,
+    "label": "Iron Bars"
+  },
+  {
+    "name": "minecraft:ender_pearl",
+    "damage": 0,
+    "size": 675,
+    "label": "Ender Pearl"
+  },
+  {
+    "name": "gregtech:meta_screw",
+    "damage": 51,
+    "size": 6,
+    "label": "Iron Screw"
+  },
+  {
+    "name": "gregtech:meta_screw",
+    "damage": 323,
+    "size": 0,
+    "label": "Stainless Steel Screw"
+  },
+  {
+    "name": "gregtech:meta_screw",
+    "damage": 2,
+    "size": 0,
+    "label": "Aluminium Screw"
+  },
+  {
+    "name": "gregtech:meta_screw",
+    "damage": 2520,
+    "size": 0,
+    "label": "HSS-S Screw"
+  },
+  {
+    "name": "gregtech:meta_screw",
+    "damage": 331,
+    "size": 0,
+    "label": "Ultimet Screw"
+  },
+  {
+    "name": "gregtech:meta_screw",
+    "damage": 300,
+    "size": 4,
+    "label": "Sterling Silver Screw"
+  },
+  {
+    "name": "gregtech:meta_spring_small",
+    "damage": 115,
+    "size": 2,
+    "label": "Small Tungsten Spring"
+  },
+  {
+    "name": "appliedenergistics2:fluid_storage_cell_64k",
+    "damage": 0,
+    "size": 0,
+    "label": "§b64k§r ME Fluid Storage Cell"
+  },
+  {
+    "name": "gregtech:wire_coil",
+    "damage": 6,
+    "size": 0,
+    "label": "Trinium Coil Block"
+  },
+  {
+    "name": "gregtech:wire_coil",
+    "damage": 4,
+    "size": 52,
+    "label": "HSS-G Coil Block"
+  },
+  {
+    "name": "gregtech:wire_coil",
+    "damage": 3,
+    "size": 4,
+    "label": "RTM Alloy Coil Block"
+  },
+  {
+    "name": "gregtech:wire_coil",
+    "damage": 2,
+    "size": 16,
+    "label": "Nichrome Coil Block"
+  },
+  {
+    "name": "gregtech:wire_coil",
+    "damage": 5,
+    "size": 8,
+    "label": "Naquadah Coil Block"
+  },
+  {
+    "name": "gregtech:fluid_pipe_normal",
+    "damage": 1012,
+    "size": 2,
+    "label": "Polyethylene (PE) Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_normal",
+    "damage": 324,
+    "size": 0,
+    "label": "Steel Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_normal",
+    "damage": 1010,
+    "size": 0,
+    "label": "Polybenzimidazole (PBI) Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_normal",
+    "damage": 323,
+    "size": 0,
+    "label": "Stainless Steel Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_normal",
+    "damage": 1016,
+    "size": 0,
+    "label": "Polytetrafluoroethylene (PTFE) Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_normal",
+    "damage": 2013,
+    "size": 0,
+    "label": "Tungstensteel Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_normal",
+    "damage": 32120,
+    "size": 0,
+    "label": "gregtech.material.mithril Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_normal",
+    "damage": 113,
+    "size": 1,
+    "label": "Titanium Fluid Pipe"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 95,
+    "size": 0,
+    "label": "Long Samarium Rod"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 2,
+    "size": 0,
+    "label": "Long Aluminium Rod"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 310,
+    "size": 0,
+    "label": "Long Ruridit Rod"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 3020,
+    "size": 0,
+    "label": "Long HSLA Steel Rod"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 2013,
+    "size": 0,
+    "label": "Long Tungstensteel Rod"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 115,
+    "size": 0,
+    "label": "Long Tungsten Rod"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 324,
+    "size": 0,
+    "label": "Long Steel Rod"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 3009,
+    "size": 0,
+    "label": "Long Molybdenum Disilicide Rod"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 323,
+    "size": 0,
+    "label": "Long Stainless Steel Rod"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 260,
+    "size": 0,
+    "label": "Long Bronze Rod"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 2520,
+    "size": 0,
+    "label": "Long HSS-S Rod"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 294,
+    "size": 0,
+    "label": "Long Nichrome Rod"
+  },
+  {
+    "name": "gregtech:meta_stick_long",
+    "damage": 423,
+    "size": 0,
+    "label": "Long Magnetic Samarium Rod"
+  },
+  {
+    "name": "threng:material",
+    "damage": 1,
+    "size": 64,
+    "label": "Carbonic Fluix Complex"
+  },
+  {
+    "name": "threng:material",
+    "damage": 6,
+    "size": 2,
+    "label": "Massively Parallel Processor"
+  },
+  {
+    "name": "threng:material",
+    "damage": 5,
+    "size": 2,
+    "label": "Resonating Crystal"
+  },
+  {
+    "name": "enderio:item_conduit_facade",
+    "damage": 0,
+    "size": 0,
+    "label": "Conduit Facade"
+  },
+  {
+    "name": "actuallyadditions:item_crystal_empowered",
+    "damage": 4,
+    "size": 0,
+    "label": "Empowered Emeradic Crystal"
+  },
+  {
+    "name": "actuallyadditions:item_crystal_empowered",
+    "damage": 3,
+    "size": 0,
+    "label": "Empowered Void Crystal"
+  },
+  {
+    "name": "actuallyadditions:item_crystal_empowered",
+    "damage": 1,
+    "size": 0,
+    "label": "Empowered Palis Crystal"
+  },
+  {
+    "name": "actuallyadditions:item_crystal_empowered",
+    "damage": 5,
+    "size": 0,
+    "label": "Empowered Enori Crystal"
+  },
+  {
+    "name": "actuallyadditions:item_crystal_empowered",
+    "damage": 0,
+    "size": 0,
+    "label": "Empowered Restonia Crystal"
+  },
+  {
+    "name": "actuallyadditions:item_crystal_empowered",
+    "damage": 2,
+    "size": 0,
+    "label": "Empowered Diamatine Crystal"
+  },
+  {
+    "name": "minecraft:nether_star",
+    "damage": 0,
+    "size": 6,
+    "label": "Nether Star"
+  },
+  {
+    "name": "advancedrocketry:oxidizerfueltank",
+    "damage": 0,
+    "size": 6,
+    "label": "Oxidizer Fuel Tank"
+  },
+  {
+    "name": "gregtech:meta_bolt",
+    "damage": 323,
+    "size": 2,
+    "label": "Stainless Steel Bolt"
+  },
+  {
+    "name": "gregtech:meta_bolt",
+    "damage": 51,
+    "size": 59,
+    "label": "Iron Bolt"
+  },
+  {
+    "name": "gregtech:meta_bolt",
+    "damage": 300,
+    "size": 4,
+    "label": "Sterling Silver Bolt"
+  },
+  {
+    "name": "gregtech:meta_bolt",
+    "damage": 2527,
+    "size": 112,
+    "label": "Blue Alloy Bolt"
+  },
+  {
+    "name": "gregtech:meta_bolt",
+    "damage": 331,
+    "size": 0,
+    "label": "Ultimet Bolt"
+  },
+  {
+    "name": "gregtech:meta_bolt",
+    "damage": 2520,
+    "size": 0,
+    "label": "HSS-S Bolt"
+  },
+  {
+    "name": "gregtech:meta_bolt",
+    "damage": 2,
+    "size": 48,
+    "label": "Aluminium Bolt"
+  },
+  {
+    "name": "redstonearsenal:material",
+    "damage": 160,
+    "size": 0,
+    "label": "Flux Crystal"
+  },
+  {
+    "name": "ironchest:wood_iron_chest_upgrade",
+    "damage": 0,
+    "size": 0,
+    "label": "Wood to Iron Chest Upgrade"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 310,
+    "size": 0,
+    "label": "Fine Ruridit Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 344,
+    "size": 0,
+    "label": "Fine Osmiridium Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 324,
+    "size": 0,
+    "label": "Fine Steel Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 50,
+    "size": 0,
+    "label": "Fine Iridium Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 277,
+    "size": 60,
+    "label": "Fine Electrum Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 2516,
+    "size": 0,
+    "label": "Fine HSS-G Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 2013,
+    "size": 0,
+    "label": "Fine Tungstensteel Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 2517,
+    "size": 4,
+    "label": "Fine Red Alloy Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 2011,
+    "size": 56,
+    "label": "Fine Black Steel Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 77,
+    "size": 12,
+    "label": "Fine Palladium Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 252,
+    "size": 4,
+    "label": "Fine Annealed Copper Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 80,
+    "size": 4,
+    "label": "Fine Platinum Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 274,
+    "size": 24,
+    "label": "Fine Cupronickel Wire"
+  },
+  {
+    "name": "gregtech:meta_wire_fine",
+    "damage": 113,
+    "size": 0,
+    "label": "Fine Titanium Wire"
+  },
+  {
+    "name": "gregtech:meta_block_frame_0",
+    "damage": 2,
+    "size": 0,
+    "label": "Aluminium Frame Box"
+  },
+  {
+    "name": "extrautils2:decorativesolid",
+    "damage": 3,
+    "size": 4,
+    "label": "Stoneburnt"
+  },
+  {
+    "name": "nae2:coprocessor_4x",
+    "damage": 0,
+    "size": 0,
+    "label": "§b4x§r Crafting Co-Processing Unit"
+  },
+  {
+    "name": "gregtech:fluid_pipe_large",
+    "damage": 1016,
+    "size": 0,
+    "label": "Large Polytetrafluoroethylene (PTFE) Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_large",
+    "damage": 1012,
+    "size": 4,
+    "label": "Large Polyethylene (PE) Fluid Pipe"
+  },
+  {
+    "name": "deepmoblearning:simulation_chamber",
+    "damage": 0,
+    "size": 0,
+    "label": "Simulation Chamber"
+  },
+  {
+    "name": "minecraft:beacon",
+    "damage": 0,
+    "size": 1,
+    "label": "Beacon"
+  },
+  {
+    "name": "gregtech:meta_block_frame_188",
+    "damage": 12,
+    "size": 0,
+    "label": "HSLA Steel Frame Box"
+  },
+  {
+    "name": "gregtech:meta_block_frame_188",
+    "damage": 14,
+    "size": 0,
+    "label": "Incoloy-MA956 Frame Box"
+  },
+  {
+    "name": "rftools:crafter1",
+    "damage": 0,
+    "size": 1,
+    "label": "Crafter Tier 1"
+  },
+  {
+    "name": "minecraft:diamond_block",
+    "damage": 0,
+    "size": 0,
+    "label": "Block of Diamond"
+  },
+  {
+    "name": "gregtech:meta_block_compressed_21",
+    "damage": 4,
+    "size": 0,
+    "label": "Block of Quartzite"
+  },
+  {
+    "name": "minecraft:crafting_table",
+    "damage": 0,
+    "size": 0,
+    "label": "Crafting Table"
+  },
+  {
+    "name": "enderio:item_material",
+    "damage": 11,
+    "size": 0,
+    "label": "Infinity Bimetal Gear"
+  },
+  {
+    "name": "enderio:item_material",
+    "damage": 12,
+    "size": 2,
+    "label": "Energized Bimetal Gear"
+  },
+  {
+    "name": "enderio:item_material",
+    "damage": 75,
+    "size": 35,
+    "label": "Infinity Reagent"
+  },
+  {
+    "name": "enderio:item_material",
+    "damage": 69,
+    "size": 16,
+    "label": "Simple Machine Parts"
+  },
+  {
+    "name": "enderio:item_material",
+    "damage": 4,
+    "size": 8,
+    "label": "Conduit Binder"
+  },
+  {
+    "name": "enderio:item_material",
+    "damage": 1,
+    "size": 1,
+    "label": "Industrial Machine Chassis"
+  },
+  {
+    "name": "enderio:item_material",
+    "damage": 64,
+    "size": 2,
+    "label": "Remote Awareness Upgrade"
+  },
+  {
+    "name": "enderio:item_material",
+    "damage": 0,
+    "size": 0,
+    "label": "Simple Machine Chassis"
+  },
+  {
+    "name": "enderio:item_material",
+    "damage": 43,
+    "size": 0,
+    "label": "Ender Resonator"
+  },
+  {
+    "name": "enderio:item_material",
+    "damage": 68,
+    "size": 0,
+    "label": "Enhanced Machine Parts"
+  },
+  {
+    "name": "harvestcraft:doughitem",
+    "damage": 0,
+    "size": 148,
+    "label": "Dough"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 32121,
+    "size": 59,
+    "label": "gregtech.material.manasteel Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 424,
+    "size": 0,
+    "label": "Manganese Phosphide Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 310,
+    "size": 0,
+    "label": "Ruridit Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 324,
+    "size": 39,
+    "label": "Steel Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 331,
+    "size": 0,
+    "label": "Ultimet Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 32033,
+    "size": 20,
+    "label": "gregtech.material.elementium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 66,
+    "size": 1,
+    "label": "Neodymium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 50,
+    "size": 0,
+    "label": "Iridium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 287,
+    "size": 0,
+    "label": "Invar Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 260,
+    "size": 15,
+    "label": "Bronze Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3003,
+    "size": 0,
+    "label": "Hastelloy-C276 Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 320,
+    "size": 0,
+    "label": "Soldering Alloy Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 2516,
+    "size": 0,
+    "label": "HSS-G Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3001,
+    "size": 10,
+    "label": "Watertight Steel Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 344,
+    "size": 0,
+    "label": "Osmiridium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 423,
+    "size": 0,
+    "label": "Magnetic Samarium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 396,
+    "size": 0,
+    "label": "Tungstencarbide Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 2519,
+    "size": 16,
+    "label": "HSS-E Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 2035,
+    "size": 0,
+    "label": "Magnetic Steel Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 256,
+    "size": 2,
+    "label": "Battery Alloy Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 323,
+    "size": 109,
+    "label": "Stainless Steel Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 39,
+    "size": 25,
+    "label": "Gallium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3002,
+    "size": 16,
+    "label": "Maraging Steel 300 Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 2,
+    "size": 39,
+    "label": "Aluminium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 2036,
+    "size": 0,
+    "label": "Vanadiumsteel Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3022,
+    "size": 11,
+    "label": "Incoloy-MA956 Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 296,
+    "size": 0,
+    "label": "Niobium-Titanium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 2062,
+    "size": 50,
+    "label": "Rhodium Plated Palladium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 32120,
+    "size": 7,
+    "label": "gregtech.material.mithril Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 32125,
+    "size": 27,
+    "label": "gregtech.material.terrasteel Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 75,
+    "size": 0,
+    "label": "Osmium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3007,
+    "size": 0,
+    "label": "Titanium Carbide Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3008,
+    "size": 0,
+    "label": "Tantalum Carbide Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3021,
+    "size": 1,
+    "label": "Titanium Tungsten Carbide Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3006,
+    "size": 12,
+    "label": "Zeron-100 Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3000,
+    "size": 0,
+    "label": "Stellite-100 Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 130,
+    "size": 8,
+    "label": "Trinium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 338,
+    "size": 106,
+    "label": "Yttrium Barium Cuprate Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 80,
+    "size": 1265,
+    "label": "Platinum Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 2520,
+    "size": 0,
+    "label": "HSS-S Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3005,
+    "size": 0,
+    "label": "Trinaquadalloy Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 335,
+    "size": 30,
+    "label": "Wrought Iron Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 32124,
+    "size": 42,
+    "label": "gregtech.material.stellar_alloy Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 294,
+    "size": 1,
+    "label": "Nichrome Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3004,
+    "size": 29,
+    "label": "Hastelloy-X Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 277,
+    "size": 12,
+    "label": "Electrum Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 274,
+    "size": 1,
+    "label": "Cupronickel Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 124,
+    "size": 0,
+    "label": "Naquadah Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3020,
+    "size": 0,
+    "label": "HSLA Steel Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 2013,
+    "size": 400,
+    "label": "Tungstensteel Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 2527,
+    "size": 3,
+    "label": "Blue Alloy Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 95,
+    "size": 221,
+    "label": "Samarium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 355,
+    "size": 113,
+    "label": "Nickel Zinc Ferrite Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 2011,
+    "size": 2,
+    "label": "Black Steel Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 115,
+    "size": 0,
+    "label": "Tungsten Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 104,
+    "size": 0,
+    "label": "Tantalum Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 3009,
+    "size": 0,
+    "label": "Molybdenum Disilicide Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 2517,
+    "size": 5,
+    "label": "Red Alloy Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 252,
+    "size": 56,
+    "label": "Annealed Copper Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 334,
+    "size": 36,
+    "label": "Vanadium-Gallium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 77,
+    "size": 16,
+    "label": "Palladium Ingot"
+  },
+  {
+    "name": "gregtech:meta_ingot",
+    "damage": 451,
+    "size": 0,
+    "label": "RTM Alloy Ingot"
+  },
+  {
+    "name": "extrautils2:trashcan",
+    "damage": 0,
+    "size": 1,
+    "label": "Trash Can"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 76,
+    "size": 66,
+    "label": "ME Dense Smart Cable - Fluix"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 180,
+    "size": 1,
+    "label": "Illuminated Panel"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 221,
+    "size": 2,
+    "label": "ME Fluid Storage Bus"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 360,
+    "size": 0,
+    "label": "ME Crafting Terminal"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 280,
+    "size": 0,
+    "label": "ME Level Emitter"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 16,
+    "size": 224,
+    "label": "ME Glass Cable - Fluix"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 36,
+    "size": 0,
+    "label": "ME Covered Cable - Fluix"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 222,
+    "size": 3,
+    "label": "ME OreDict Storage Bus"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 220,
+    "size": 18,
+    "label": "ME Storage Bus"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 400,
+    "size": 0,
+    "label": "ME Storage Monitor"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 460,
+    "size": 9,
+    "label": "P2P Tunnel - ME"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 420,
+    "size": 0,
+    "label": "ME Conversion Monitor"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 140,
+    "size": 102,
+    "label": "Quartz Fiber"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 340,
+    "size": 0,
+    "label": "ME Pattern Terminal"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 380,
+    "size": 0,
+    "label": "ME Terminal"
+  },
+  {
+    "name": "appliedenergistics2:part",
+    "damage": 516,
+    "size": 0,
+    "label": "ME Dense Covered Cable - Fluix"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 2520,
+    "size": 14,
+    "label": "HSS-S Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 323,
+    "size": 5,
+    "label": "Stainless Steel Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 1012,
+    "size": 96,
+    "label": "Thin Polyethylene (PE) Sheet"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 2036,
+    "size": 0,
+    "label": "Vanadiumsteel Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 396,
+    "size": 0,
+    "label": "Tungstencarbide Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 1008,
+    "size": 2,
+    "label": "Thin Polyphenylene Sulfide Sheet"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 75,
+    "size": 0,
+    "label": "Osmium Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 252,
+    "size": 2,
+    "label": "Annealed Copper Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 277,
+    "size": 0,
+    "label": "Electrum Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 1010,
+    "size": 12,
+    "label": "Thin Polybenzimidazole (PBI) Sheet"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 25,
+    "size": 6,
+    "label": "Copper Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 39,
+    "size": 19,
+    "label": "Gallium Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 77,
+    "size": 8,
+    "label": "Palladium Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 342,
+    "size": 0,
+    "label": "Graphene Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 334,
+    "size": 8,
+    "label": "Vanadium-Gallium Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 104,
+    "size": 0,
+    "label": "Tantalum Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 50,
+    "size": 3,
+    "label": "Iridium Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 80,
+    "size": 1,
+    "label": "Platinum Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 113,
+    "size": 1,
+    "label": "Titanium Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 41,
+    "size": 8,
+    "label": "Gold Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 2,
+    "size": 12,
+    "label": "Aluminium Foil"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 1007,
+    "size": 84,
+    "label": "Thin Polyvinyl Chloride (PVC) Sheet"
+  },
+  {
+    "name": "gregtech:meta_foil",
+    "damage": 125,
+    "size": 8,
+    "label": "Enriched Naquadah Foil"
+  },
+  {
+    "name": "appliedenergistics2:chest",
+    "damage": 0,
+    "size": 4,
+    "label": "ME Chest"
+  },
+  {
+    "name": "gregtech:metal_casing",
+    "damage": 7,
+    "size": 0,
+    "label": "Robust Tungstensteel Machine Casing"
+  },
+  {
+    "name": "gregtech:metal_casing",
+    "damage": 9,
+    "size": 19,
+    "label": "Chemically Inert PTFE Machine Casing"
+  },
+  {
+    "name": "gregtech:metal_casing",
+    "damage": 6,
+    "size": 2,
+    "label": "Stable Titanium Machine Casing"
+  },
+  {
+    "name": "gregtech:metal_casing",
+    "damage": 4,
+    "size": 6,
+    "label": "Solid Steel Machine Casing"
+  },
+  {
+    "name": "gregtech:metal_casing",
+    "damage": 2,
+    "size": 6,
+    "label": "Heat Proof Invar Machine Casing"
+  },
+  {
+    "name": "gregtech:metal_casing",
+    "damage": 11,
+    "size": 0,
+    "label": "Palladium Substation Casing"
+  },
+  {
+    "name": "gregtech:metal_casing",
+    "damage": 3,
+    "size": 13,
+    "label": "Frost Proof Aluminium Machine Casing"
+  },
+  {
+    "name": "gregtech:meta_gem_flawless",
+    "damage": 340,
+    "size": 50,
+    "label": "Flawless Quartzite"
+  },
+  {
+    "name": "gregtech:meta_gem_flawless",
+    "damage": 278,
+    "size": 25,
+    "label": "Flawless Emerald"
+  },
+  {
+    "name": "ftbi:luv_diesel_generator",
+    "damage": 0,
+    "size": 0,
+    "label": "tile.ftbi.luv_diesel_generator.name"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.dye_lime"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 1872,
+    "label": "Drop of Destabilized Redstone"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.dimethyldichlorosilane"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.hsla_steel"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.nitrochlorobenzene"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.nichrome"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 256000,
+    "label": "Drop of fluid.epoxy"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.vanadium_gallium"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.chlorobenzene"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.unstable_mana"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 6000,
+    "label": "Drop of fluid.impure_enriched_naquadah_solution"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 8000,
+    "label": "Drop of fluid.dichlorobenzidine"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.dye_yellow"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 2000,
+    "label": "Drop of fluid.chloroform"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 504,
+    "label": "Drop of fluid.polybenzimidazole"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 322000,
+    "label": "Drop of fluid.nitric_acid"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 70000,
+    "label": "Drop of fluid.impure_naquadria_solution"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.sodium_potassium"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 2000,
+    "label": "Drop of fluid.bisphenol_a"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 1000,
+    "label": "Drop of fluid.dichlorobenzene"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.tungsten_steel"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 1168,
+    "label": "Drop of fluid.glass"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.dye_brown"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.aluminium"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.glycerol"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 256000,
+    "label": "Drop of fluid.polytetrafluoroethylene"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 38000,
+    "label": "Drop of fluid.nitration_mixture"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 16900,
+    "label": "Drop of fluid.hydrofluoric_acid"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of Resonant Ender"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 3744,
+    "label": "Drop of fluid.dye_gray"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 576,
+    "label": "Drop of fluid.soldering_alloy"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of Primal Mana"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.chloromethane"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 144000,
+    "label": "Drop of fluid.rhodium_sulfate"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 66200,
+    "label": "Drop of fluid.aqua_regia"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.silicone_rubber"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 8600,
+    "label": "Drop of fluid.ammonia"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.sodium_persulfate"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 1000,
+    "label": "Drop of fluid.fluoroantimonic_acid"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 59000,
+    "label": "Drop of Rocket Fuel"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 1208,
+    "label": "Drop of fluid.tetrafluoroethylene"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 22000,
+    "label": "Drop of fluid.phthalic_acid"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.dye_pink"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 1033884,
+    "label": "Drop of fluid.styrene_butadiene_rubber"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 4000,
+    "label": "Drop of fluid.diphenyl_isophthalate"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.diaminobenzidine"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 25000,
+    "label": "Drop of Lava"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 2736,
+    "label": "Drop of Energized Glowstone"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 11386472,
+    "label": "Drop of fluid.hydrochloric_acid"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 43214250,
+    "label": "Drop of fluid.sulfuric_acid"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 1224,
+    "label": "Drop of fluid.polyphenylene_sulfide"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 256000,
+    "label": "Drop of fluid.polyvinyl_chloride"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.acidic_osmium_solution"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.liquid_hydrogen"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.naquadah"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.carbon_monoxide"
+  },
+  {
+    "name": "ae2fc:fluid_drop",
+    "damage": 0,
+    "size": 0,
+    "label": "Drop of fluid.tungsten"
+  },
+  {
+    "name": "enderio:item_alloy_ingot",
+    "damage": 3,
+    "size": 1,
+    "label": "Redstone Alloy Ingot"
+  },
+  {
+    "name": "enderio:item_alloy_ingot",
+    "damage": 7,
+    "size": 0,
+    "label": "Soularium Ingot"
+  },
+  {
+    "name": "enderio:item_alloy_ingot",
+    "damage": 0,
+    "size": 6,
+    "label": "Electrical Steel Ingot"
+  },
+  {
+    "name": "netherbackport:netheriteingot",
+    "damage": 0,
+    "size": 0,
+    "label": "Netherite Ingot"
+  },
+  {
+    "name": "rftools:infused_diamond",
+    "damage": 0,
+    "size": 0,
+    "label": "Infused Diamond"
+  },
+  {
+    "name": "actuallyadditions:block_laser_relay_item_whitelist",
+    "damage": 0,
+    "size": 1,
+    "label": "Advanced Item Laser Relay"
+  },
+  {
+    "name": "gregtech:item_pipe_large",
+    "damage": 1007,
+    "size": 0,
+    "label": "Large Polyvinyl Chloride (PVC) Item Pipe"
+  },
+  {
+    "name": "gregtech:meta_ring",
+    "damage": 1004,
+    "size": 30,
+    "label": "Styrene-Butadiene Rubber Ring"
+  },
+  {
+    "name": "gregtech:meta_ring",
+    "damage": 2520,
+    "size": 2,
+    "label": "HSS-S Ring"
+  },
+  {
+    "name": "gregtech:meta_ring",
+    "damage": 2035,
+    "size": 0,
+    "label": "Magnetic Steel Ring"
+  },
+  {
+    "name": "gregtech:meta_ring",
+    "damage": 1000,
+    "size": 56,
+    "label": "Silicone Rubber Ring"
+  },
+  {
+    "name": "gregtech:meta_ring",
+    "damage": 2,
+    "size": 1,
+    "label": "Aluminium Ring"
+  },
+  {
+    "name": "gregtech:meta_ring",
+    "damage": 355,
+    "size": 4,
+    "label": "Nickel Zinc Ferrite Ring"
+  },
+  {
+    "name": "gregtech:meta_ring",
+    "damage": 2519,
+    "size": 3,
+    "label": "HSS-E Ring"
+  },
+  {
+    "name": "gregtech:meta_ring",
+    "damage": 51,
+    "size": 6,
+    "label": "Iron Ring"
+  },
+  {
+    "name": "gregtech:meta_ring",
+    "damage": 3009,
+    "size": 0,
+    "label": "Molybdenum Disilicide Ring"
+  },
+  {
+    "name": "minecraft:obsidian",
+    "damage": 0,
+    "size": 32783,
+    "label": "Obsidian"
+  },
+  {
+    "name": "appliedenergistics2:crafting_monitor",
+    "damage": 0,
+    "size": 0,
+    "label": "Crafting Monitor"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 323,
+    "size": 4,
+    "label": "Stainless Steel Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 51,
+    "size": 82,
+    "label": "Iron Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 1007,
+    "size": 12,
+    "label": "Polyvinyl Chloride (PVC) Sheet"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 276,
+    "size": 1,
+    "label": "Diamond Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 3008,
+    "size": 3,
+    "label": "Tantalum Carbide Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 3003,
+    "size": 0,
+    "label": "Hastelloy-C276 Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 3006,
+    "size": 0,
+    "label": "Zeron-100 Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 1006,
+    "size": 0,
+    "label": "Fiber-Reinforced Epoxy Resin Sheet"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 331,
+    "size": 18,
+    "label": "Ultimet Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 41,
+    "size": 11,
+    "label": "Gold Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 324,
+    "size": 5,
+    "label": "Steel Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 214,
+    "size": 95,
+    "label": "Certus Quartz Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 1012,
+    "size": 258,
+    "label": "Polyethylene (PE) Sheet"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 3020,
+    "size": 1,
+    "label": "HSLA Steel Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 32124,
+    "size": 1,
+    "label": "gregtech.material.stellar_alloy Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 1008,
+    "size": 5,
+    "label": "Polyphenylene Sulfide Sheet"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 115,
+    "size": 2,
+    "label": "Tungsten Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 77,
+    "size": 0,
+    "label": "Palladium Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 32122,
+    "size": 4,
+    "label": "gregtech.material.signalum Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 3000,
+    "size": 0,
+    "label": "Stellite-100 Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 287,
+    "size": 9,
+    "label": "Invar Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 1648,
+    "size": 0,
+    "label": "Treated Wood Plank"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 396,
+    "size": 0,
+    "label": "Tungstencarbide Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 3009,
+    "size": 0,
+    "label": "Molybdenum Disilicide Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 113,
+    "size": 1,
+    "label": "Titanium Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 2,
+    "size": 0,
+    "label": "Aluminium Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 278,
+    "size": 4,
+    "label": "Emerald Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 2011,
+    "size": 0,
+    "label": "Black Steel Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 335,
+    "size": 3,
+    "label": "Wrought Iron Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 256,
+    "size": 0,
+    "label": "Battery Alloy Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 3001,
+    "size": 0,
+    "label": "Watertight Steel Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 25,
+    "size": 3,
+    "label": "Copper Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 32121,
+    "size": 3,
+    "label": "gregtech.material.manasteel Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 32031,
+    "size": 1,
+    "label": "gregtech.material.skystone Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 3007,
+    "size": 2,
+    "label": "Titanium Carbide Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 2013,
+    "size": 3,
+    "label": "Tungstensteel Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 3004,
+    "size": 0,
+    "label": "Hastelloy-X Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 3022,
+    "size": 2,
+    "label": "Incoloy-MA956 Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 2062,
+    "size": 3,
+    "label": "Rhodium Plated Palladium Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 260,
+    "size": 12,
+    "label": "Bronze Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 32123,
+    "size": 0,
+    "label": "gregtech.material.enderium Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 3002,
+    "size": 0,
+    "label": "Maraging Steel 300 Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 340,
+    "size": 2,
+    "label": "Quartzite Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 3021,
+    "size": 2,
+    "label": "Titanium Tungsten Carbide Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 2520,
+    "size": 0,
+    "label": "HSS-S Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 1013,
+    "size": 1,
+    "label": "Epoxy Resin Sheet"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 2000,
+    "size": 847,
+    "label": "Glass Pane"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 1016,
+    "size": 0,
+    "label": "Polytetrafluoroethylene (PTFE) Sheet"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 80,
+    "size": 0,
+    "label": "Platinum Plate"
+  },
+  {
+    "name": "gregtech:meta_plate",
+    "damage": 1010,
+    "size": 18,
+    "label": "Polybenzimidazole (PBI) Sheet"
+  },
+  {
+    "name": "gregtech:fluid_pipe_quadruple",
+    "damage": 113,
+    "size": 3,
+    "label": "Quadruple Titanium Fluid Pipe"
+  },
+  {
+    "name": "extrautils2:trashcanfluid",
+    "damage": 0,
+    "size": 3,
+    "label": "Trash Can (Fluid)"
+  },
+  {
+    "name": "minecraft:glass",
+    "damage": 0,
+    "size": 7492,
+    "label": "Glass"
+  },
+  {
+    "name": "gregtech:fluid_pipe_nonuple",
+    "damage": 2013,
+    "size": 0,
+    "label": "Nonuple Tungstensteel Fluid Pipe"
+  },
+  {
+    "name": "gregtech:turbine_casing",
+    "damage": 3,
+    "size": 0,
+    "label": "Titanium Gearbox Casing"
+  },
+  {
+    "name": "gregtech:wire_hex",
+    "damage": 115,
+    "size": 0,
+    "label": "16x Tungsten Wire"
+  },
+  {
+    "name": "gregtech:wire_hex",
+    "damage": 41,
+    "size": 0,
+    "label": "16x Gold Wire"
+  },
+  {
+    "name": "gregtech:wire_hex",
+    "damage": 80,
+    "size": 0,
+    "label": "16x Platinum Wire"
+  },
+  {
+    "name": "gregtech:wire_hex",
+    "damage": 296,
+    "size": 0,
+    "label": "16x Niobium-Titanium Wire"
+  },
+  {
+    "name": "gregtech:wire_hex",
+    "damage": 2517,
+    "size": 0,
+    "label": "16x Red Alloy Wire"
+  },
+  {
+    "name": "mekanism:atomicalloy",
+    "damage": 0,
+    "size": 0,
+    "label": "Atomic Alloy"
+  },
+  {
+    "name": "gregtech:meta_block_frame_125",
+    "damage": 13,
+    "size": 0,
+    "label": "Tungstensteel Frame Box"
+  },
+  {
+    "name": "gregtech:meta_block_frame_63",
+    "damage": 8,
+    "size": 0,
+    "label": "Polytetrafluoroethylene (PTFE) Frame Box"
+  },
+  {
+    "name": "rftools:infused_enderpearl",
+    "damage": 0,
+    "size": 3,
+    "label": "Infused Enderpearl"
+  },
+  {
+    "name": "mekanism:reinforcedalloy",
+    "damage": 0,
+    "size": 0,
+    "label": "Reinforced Alloy"
+  },
+  {
+    "name": "minecraft:glowstone_dust",
+    "damage": 0,
+    "size": 36401,
+    "label": "Glowstone Dust"
+  },
+  {
+    "name": "actuallyadditions:block_phantom_energyface",
+    "damage": 0,
+    "size": 2,
+    "label": "Phantom Energyface"
+  },
+  {
+    "name": "botania:shimmerwoodplanks",
+    "damage": 0,
+    "size": 0,
+    "label": "Shimmerwood Planks"
+  },
+  {
+    "name": "thaumcraft:void_seed",
+    "damage": 0,
+    "size": 3,
+    "label": "Void Seed"
+  },
+  {
+    "name": "nae2:part",
+    "damage": 0,
+    "size": 28,
+    "label": "ME Beam Former"
+  },
+  {
+    "name": "ae2fc:fluid_pattern_encoder",
+    "damage": 0,
+    "size": 0,
+    "label": "Fluid Pattern Encoder"
+  },
+  {
+    "name": "minecraft:hopper",
+    "damage": 0,
+    "size": 0,
+    "label": "Hopper"
+  },
+  {
+    "name": "botania:elfglass",
+    "damage": 0,
+    "size": 0,
+    "label": "Alfglass"
+  },
+  {
+    "name": "libvulpes:productsheet",
+    "damage": 9,
+    "size": 0,
+    "label": "Aluminum Sheet"
+  },
+  {
+    "name": "libvulpes:productsheet",
+    "damage": 6,
+    "size": 0,
+    "label": "Steel Sheet"
+  },
+  {
+    "name": "multiblocked:fluid_input",
+    "damage": 0,
+    "size": 0,
+    "label": "Fluid Input Hatch"
+  },
+  {
+    "name": "deepmoblearning:machine_casing",
+    "damage": 0,
+    "size": 0,
+    "label": "Soot-covered Machine Casing"
+  },
+  {
+    "name": "appliedenergistics2:crystal_seed",
+    "damage": 0,
+    "size": 1,
+    "label": "Certus Quartz Seed"
+  },
+  {
+    "name": "appliedenergistics2:crystal_seed",
+    "damage": 1200,
+    "size": 0,
+    "label": "Fluix Seed"
+  },
+  {
+    "name": "botania:dreamwood",
+    "damage": 1,
+    "size": 50,
+    "label": "Dreamwood Planks"
+  },
+  {
+    "name": "botania:dreamwood",
+    "damage": 0,
+    "size": 0,
+    "label": "Dreamwood"
+  },
+  {
+    "name": "actuallyadditions:item_crystal",
+    "damage": 2,
+    "size": 0,
+    "label": "Diamatine Crystal"
+  },
+  {
+    "name": "actuallyadditions:item_crystal",
+    "damage": 0,
+    "size": 0,
+    "label": "Restonia Crystal"
+  },
+  {
+    "name": "actuallyadditions:item_crystal",
+    "damage": 1,
+    "size": 0,
+    "label": "Palis Crystal"
+  },
+  {
+    "name": "thermalexpansion:tank",
+    "damage": 0,
+    "size": 0,
+    "label": "Portable Tank (Basic)"
+  },
+  {
+    "name": "gregtech:boiler_casing",
+    "damage": 4,
+    "size": 6,
+    "label": "PTFE Pipe Casing"
+  },
+  {
+    "name": "gregtech:boiler_casing",
+    "damage": 1,
+    "size": 1,
+    "label": "Steel Pipe Casing"
+  },
+  {
+    "name": "fluxnetworks:fluxpoint",
+    "damage": 0,
+    "size": 2,
+    "label": "Flux Point"
+  },
+  {
+    "name": "enderio:block_impulse_hopper",
+    "damage": 0,
+    "size": 0,
+    "label": "tile.block_impulse_hopper.name"
+  },
+  {
+    "name": "botania:manaresource",
+    "damage": 2,
+    "size": 42,
+    "label": "Mana Diamond"
+  },
+  {
+    "name": "botania:manaresource",
+    "damage": 8,
+    "size": 10,
+    "label": "Pixie Dust"
+  },
+  {
+    "name": "botania:manaresource",
+    "damage": 1,
+    "size": 26,
+    "label": "Mana Pearl"
+  },
+  {
+    "name": "botania:manaresource",
+    "damage": 9,
+    "size": 27,
+    "label": "Dragonstone"
+  },
+  {
+    "name": "botania:manaresource",
+    "damage": 14,
+    "size": 3,
+    "label": "Gaia Spirit Ingot"
+  },
+  {
+    "name": "minecraft:wooden_slab",
+    "damage": 3,
+    "size": 131,
+    "label": "Jungle Wood Slab"
+  },
+  {
+    "name": "advancedrocketry:bipropellantfueltank",
+    "damage": 0,
+    "size": 0,
+    "label": "Bipropellant Fuel Tank"
+  },
+  {
+    "name": "minecraft:chest",
+    "damage": 0,
+    "size": 73,
+    "label": "Chest"
+  },
+  {
+    "name": "gregtech:fluid_pipe_huge",
+    "damage": 1012,
+    "size": 0,
+    "label": "Huge Polyethylene (PE) Fluid Pipe"
+  },
+  {
+    "name": "gcym:large_multiblock_casing",
+    "damage": 5,
+    "size": 9,
+    "label": "Vibration-Safe Casing"
+  },
+  {
+    "name": "gcym:large_multiblock_casing",
+    "damage": 1,
+    "size": 0,
+    "label": "High Temperature Smelting Casing"
+  },
+  {
+    "name": "gcym:large_multiblock_casing",
+    "damage": 8,
+    "size": 3,
+    "label": "Nonconducting Casing"
+  },
+  {
+    "name": "gcym:large_multiblock_casing",
+    "damage": 7,
+    "size": 18,
+    "label": "Shock Proof Cutting Casing"
+  },
+  {
+    "name": "gcym:large_multiblock_casing",
+    "damage": 2,
+    "size": 18,
+    "label": "Large-Scale Assembler Casing"
+  },
+  {
+    "name": "gcym:large_multiblock_casing",
+    "damage": 10,
+    "size": 0,
+    "label": "Laser-Safe Engraving Casing"
+  },
+  {
+    "name": "gcym:large_multiblock_casing",
+    "damage": 3,
+    "size": 28,
+    "label": "Stress Proof Casing"
+  },
+  {
+    "name": "gcym:large_multiblock_casing",
+    "damage": 6,
+    "size": 30,
+    "label": "Watertight Casing"
+  },
+  {
+    "name": "gcym:large_multiblock_casing",
+    "damage": 0,
+    "size": 19,
+    "label": "Secure Maceration Casing"
+  },
+  {
+    "name": "gcym:large_multiblock_casing",
+    "damage": 9,
+    "size": 18,
+    "label": "Reaction-Safe Mixing Casing"
+  },
+  {
+    "name": "extrautils2:drum",
+    "damage": 0,
+    "size": 0,
+    "label": "Stone Drum"
+  },
+  {
+    "name": "gregtech:meta_block_compressed_2007",
+    "damage": 12,
+    "size": 0,
+    "label": "Block of gregtech.material.stellar_alloy"
+  },
+  {
+    "name": "fluxnetworks:flux",
+    "damage": 0,
+    "size": 3,
+    "label": "Flux"
+  },
+  {
+    "name": "appliedenergistics2:crafting_accelerator",
+    "damage": 0,
+    "size": 0,
+    "label": "Crafting Co-Processing Unit"
+  },
+  {
+    "name": "gregtech:meta_gem",
+    "damage": 1647,
+    "size": 0,
+    "label": "Lapotron"
+  },
+  {
+    "name": "minecraft:iron_block",
+    "damage": 0,
+    "size": 14,
+    "label": "Block of Iron"
+  },
+  {
+    "name": "harvestcraft:toastitem",
+    "damage": 0,
+    "size": 256,
+    "label": "Toast"
+  },
+  {
+    "name": "appliedenergistics2:fluid_interface",
+    "damage": 0,
+    "size": 10,
+    "label": "ME Fluid Interface"
+  },
+  {
+    "name": "ae2fc:part_fluid_pattern_terminal",
+    "damage": 0,
+    "size": 0,
+    "label": "ME Fluid Pattern Terminal"
+  },
+  {
+    "name": "enderio:block_fused_glass",
+    "damage": 0,
+    "size": 0,
+    "label": "Quite Clear Glass"
+  },
+  {
+    "name": "gregtech:meta_block_frame_187",
+    "damage": 10,
+    "size": 0,
+    "label": "Maraging Steel 300 Frame Box"
+  },
+  {
+    "name": "gregtech:meta_block_frame_187",
+    "damage": 12,
+    "size": 0,
+    "label": "Hastelloy-X Frame Box"
+  },
+  {
+    "name": "gregtech:meta_block_frame_187",
+    "damage": 11,
+    "size": 0,
+    "label": "Hastelloy-C276 Frame Box"
+  },
+  {
+    "name": "gregtech:meta_block_frame_187",
+    "damage": 9,
+    "size": 0,
+    "label": "Watertight Steel Frame Box"
+  },
+  {
+    "name": "deepmoblearning:soot_covered_plate",
+    "damage": 0,
+    "size": 4,
+    "label": "Soot-covered Plate"
+  },
+  {
+    "name": "astralsorcery:blockcelestialcollectorcrystal",
+    "damage": 0,
+    "size": 0,
+    "label": "Floating Crystal"
+  },
+  {
+    "name": "opencomputers:material",
+    "damage": 9,
+    "size": 19,
+    "label": "Microchip (Tier 3)"
+  },
+  {
+    "name": "opencomputers:material",
+    "damage": 6,
+    "size": 3,
+    "label": "Transistor"
+  },
+  {
+    "name": "opencomputers:material",
+    "damage": 0,
+    "size": 0,
+    "label": "Cutting Wire"
+  },
+  {
+    "name": "opencomputers:material",
+    "damage": 29,
+    "size": 178,
+    "label": "Diamond Chip"
+  },
+  {
+    "name": "opencomputers:material",
+    "damage": 12,
+    "size": 0,
+    "label": "Disk Platter"
+  },
+  {
+    "name": "opencomputers:material",
+    "damage": 8,
+    "size": 4,
+    "label": "Microchip (Tier 2)"
+  },
+  {
+    "name": "opencomputers:material",
+    "damage": 11,
+    "size": 2,
+    "label": "Control Unit (CU)"
+  },
+  {
+    "name": "gregtech:wire_quadruple",
+    "damage": 294,
+    "size": 0,
+    "label": "4x Nichrome Wire"
+  },
+  {
+    "name": "gregtech:wire_quadruple",
+    "damage": 2,
+    "size": 0,
+    "label": "4x Aluminium Wire"
+  },
+  {
+    "name": "gregtech:wire_quadruple",
+    "damage": 115,
+    "size": 0,
+    "label": "4x Tungsten Wire"
+  },
+  {
+    "name": "gregtech:wire_quadruple",
+    "damage": 296,
+    "size": 0,
+    "label": "4x Niobium-Titanium Wire"
+  },
+  {
+    "name": "gregtech:wire_quadruple",
+    "damage": 75,
+    "size": 5,
+    "label": "4x Osmium Wire"
+  },
+  {
+    "name": "gregtech:wire_quadruple",
+    "damage": 80,
+    "size": 1,
+    "label": "4x Platinum Wire"
+  },
+  {
+    "name": "gregtech:wire_quadruple",
+    "damage": 424,
+    "size": 0,
+    "label": "4x Manganese Phosphide Wire"
+  },
+  {
+    "name": "gregtech:cable_octal",
+    "damage": 2517,
+    "size": 0,
+    "label": "8x Red Alloy Cable"
+  },
+  {
+    "name": "gregtech:cable_octal",
+    "damage": 2,
+    "size": 0,
+    "label": "8x Aluminium Cable"
+  },
+  {
+    "name": "gregtech:cable_octal",
+    "damage": 80,
+    "size": 0,
+    "label": "8x Platinum Cable"
+  },
+  {
+    "name": "gregtech:cable_octal",
+    "damage": 296,
+    "size": 0,
+    "label": "8x Niobium-Titanium Cable"
+  },
+  {
+    "name": "fluiddrawers:tank_custom",
+    "damage": 0,
+    "size": 0,
+    "label": "Framed Tank"
+  },
+  {
+    "name": "gregtech:meta_block_frame_17",
+    "damage": 15,
+    "size": 1,
+    "label": "Invar Frame Box"
+  },
+  {
+    "name": "ironchest:gold_diamond_chest_upgrade",
+    "damage": 0,
+    "size": 30,
+    "label": "Gold to Diamond Chest Upgrade"
+  },
+  {
+    "name": "astralsorcery:itemcraftingcomponent",
+    "damage": 0,
+    "size": 15,
+    "label": "Aquamarine"
+  },
+  {
+    "name": "astralsorcery:itemcraftingcomponent",
+    "damage": 4,
+    "size": 0,
+    "label": "Resonating Gem"
+  },
+  {
+    "name": "minecraft:piston",
+    "damage": 0,
+    "size": 71,
+    "label": "Piston"
+  },
+  {
+    "name": "appliedenergistics2:controller",
+    "damage": 0,
+    "size": 9,
+    "label": "ME Controller"
+  },
+  {
+    "name": "thermalfoundation:material",
+    "damage": 1024,
+    "size": 2074,
+    "label": "Pyrotheum Dust"
+  },
+  {
+    "name": "thermalfoundation:material",
+    "damage": 1028,
+    "size": 0,
+    "label": "Mana Dust"
+  },
+  {
+    "name": "thermalfoundation:material",
+    "damage": 512,
+    "size": 0,
+    "label": "Redstone Servo"
+  },
+  {
+    "name": "thermalfoundation:material",
+    "damage": 1025,
+    "size": 2339,
+    "label": "Cryotheum Dust"
+  },
+  {
+    "name": "thermalfoundation:material",
+    "damage": 1027,
+    "size": 2048,
+    "label": "Petrotheum Dust"
+  },
+  {
+    "name": "thermalfoundation:material",
+    "damage": 1026,
+    "size": 2112,
+    "label": "Aerotheum Dust"
+  },
+  {
+    "name": "minecraft:blaze_powder",
+    "damage": 0,
+    "size": 3,
+    "label": "Blaze Powder"
+  },
+  {
+    "name": "minecraft:stained_glass_pane",
+    "damage": 14,
+    "size": 1,
+    "label": "Red Stained Glass Pane"
+  },
+  {
+    "name": "nae2:exposer",
+    "damage": 0,
+    "size": 4,
+    "label": "ME Storage Exposer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 529,
+    "size": 16,
+    "label": "Advanced SMD Resistor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 603,
+    "size": 10,
+    "label": "LPIC"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 492,
+    "size": 0,
+    "label": "Engraved Lapotron Crystal Chip"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 130,
+    "size": 0,
+    "label": "EV Electric Motor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 99,
+    "size": 0,
+    "label": "High Voltage Coil"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 307,
+    "size": 0,
+    "label": "Computer Monitor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 222,
+    "size": 0,
+    "label": "LuV Emitter"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 177,
+    "size": 0,
+    "label": "LuV Electric Piston"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 503,
+    "size": 0,
+    "label": "Wireless Transmitter"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 526,
+    "size": 8,
+    "label": "SMD Diode"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 735,
+    "size": 10,
+    "label": "Small Lithium Battery"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 384,
+    "size": 0,
+    "label": "Epoxy Circuit Board"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 491,
+    "size": 6,
+    "label": "Energium Dust"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 404,
+    "size": 0,
+    "label": "Advanced Circuit Board"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 717,
+    "size": 0,
+    "label": "Small Battery Hull"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 261,
+    "size": 0,
+    "label": "Data Stick"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 523,
+    "size": 8,
+    "label": "SMD Transistor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 101,
+    "size": 0,
+    "label": "Insane Voltage Coil"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 742,
+    "size": 0,
+    "label": "Lapotron Crystal"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 591,
+    "size": 8,
+    "label": "CPU"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 190,
+    "size": 0,
+    "label": "EV Robot Arm"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 577,
+    "size": 96,
+    "label": "ULPIC Wafer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 637,
+    "size": 0,
+    "label": "Quantumprocessor Assembly"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 575,
+    "size": 0,
+    "label": "NAND Wafer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 580,
+    "size": 0,
+    "label": "HPIC Wafer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 597,
+    "size": 3,
+    "label": "SoC"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 233,
+    "size": 0,
+    "label": "MV Sensor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 704,
+    "size": 0,
+    "label": "Crystal CPU"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 600,
+    "size": 0,
+    "label": "NAND"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 218,
+    "size": 0,
+    "label": "MV Emitter"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 719,
+    "size": 2,
+    "label": "Large Battery Hull"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 636,
+    "size": 1,
+    "label": "Quantumprocessor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 595,
+    "size": 2,
+    "label": "Qubit CPU"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 581,
+    "size": 0,
+    "label": "UHPIC Wafer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 579,
+    "size": 0,
+    "label": "PIC Wafer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 312,
+    "size": 0,
+    "label": "Digital Interface"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 174,
+    "size": 0,
+    "label": "HV Electric Piston"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 405,
+    "size": 0,
+    "label": "Extreme Circuit Board"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 570,
+    "size": 0,
+    "label": "Qubit CPU Wafer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 776,
+    "size": 0,
+    "label": "Power Thruster"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 362,
+    "size": 20,
+    "label": "Phosphorus-doped Monocrystalline Silicon Boule"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 825,
+    "size": 1,
+    "label": "Glass Lens (Lime)"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 175,
+    "size": 0,
+    "label": "EV Electric Piston"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 826,
+    "size": 0,
+    "label": "Glass Lens (Pink)"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 383,
+    "size": 17,
+    "label": "Plastic Circuit Board"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 202,
+    "size": 4,
+    "label": "LV Field Generator"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 824,
+    "size": 0,
+    "label": "Glass Lens (Yellow)"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 525,
+    "size": 24,
+    "label": "SMD Capacitor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 532,
+    "size": 6,
+    "label": "Advanced SMD Inductor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 176,
+    "size": 0,
+    "label": "IV Electric Piston"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 601,
+    "size": 12,
+    "label": "NOR"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 162,
+    "size": 0,
+    "label": "LuV Conveyor Module"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 499,
+    "size": 3,
+    "label": "Raw Carbon Fibers"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 372,
+    "size": 16,
+    "label": "Phosphorus-doped Wafer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 572,
+    "size": 0,
+    "label": "SoC Wafer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 403,
+    "size": 0,
+    "label": "Plastic Circuit Board"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 594,
+    "size": 4,
+    "label": "Nano CPU"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 741,
+    "size": 0,
+    "label": "Energium Crystal"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 748,
+    "size": 0,
+    "label": "Lapotronic Energy Orb"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 159,
+    "size": 2,
+    "label": "HV Conveyor Module"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 386,
+    "size": 17,
+    "label": "Multi-layer Fiber-Reinforced Circuit Board"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 129,
+    "size": 0,
+    "label": "HV Electric Motor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 128,
+    "size": 0,
+    "label": "MV Electric Motor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 531,
+    "size": 44,
+    "label": "Advanced SMD Diode"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 292,
+    "size": 0,
+    "label": "Ore Dictionary Filter"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 705,
+    "size": 8,
+    "label": "Crystal SoC"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 267,
+    "size": 0,
+    "label": "Tungsten Grinding Head"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 144,
+    "size": 0,
+    "label": "HV Electric Pump"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 832,
+    "size": 0,
+    "label": "Glass Lens (Brown)"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 606,
+    "size": 0,
+    "label": "UHPIC"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 638,
+    "size": 0,
+    "label": "Quantum Supercomputer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 147,
+    "size": 0,
+    "label": "LuV Electric Pump"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 161,
+    "size": 1,
+    "label": "IV Conveyor Module"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 131,
+    "size": 0,
+    "label": "IV Electric Motor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 604,
+    "size": 0,
+    "label": "PIC"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 628,
+    "size": 6,
+    "label": "Integrated Processor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 221,
+    "size": 0,
+    "label": "IV Emitter"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 569,
+    "size": 0,
+    "label": "Nano CPU Wafer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 639,
+    "size": 0,
+    "label": "Quantumprocessor Mainframe"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 313,
+    "size": 0,
+    "label": "Wireless Digital Interface"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 192,
+    "size": 0,
+    "label": "LuV Robot Arm"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 236,
+    "size": 2,
+    "label": "IV Sensor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 528,
+    "size": 2,
+    "label": "Advanced SMD Transistor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 605,
+    "size": 1,
+    "label": "HPIC"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 827,
+    "size": 1,
+    "label": "Glass Lens (Gray)"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 100,
+    "size": 0,
+    "label": "Extreme Voltage Coil"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 282,
+    "size": 1,
+    "label": "Quantum Star"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 191,
+    "size": 0,
+    "label": "IV Robot Arm"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 524,
+    "size": 60,
+    "label": "SMD Resistor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 632,
+    "size": 1,
+    "label": "Nanoprocessor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 527,
+    "size": 44,
+    "label": "SMD Inductor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 567,
+    "size": 0,
+    "label": "RAM Wafer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 502,
+    "size": 8,
+    "label": "BrainTech Aerospace Advanced Reinforced Duct Tape FAL-84"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 281,
+    "size": 0,
+    "label": "Quantum Eye"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 189,
+    "size": 8,
+    "label": "HV Robot Arm"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 146,
+    "size": 1,
+    "label": "IV Electric Pump"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 592,
+    "size": 4,
+    "label": "RAM"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 132,
+    "size": 1,
+    "label": "LuV Electric Motor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 530,
+    "size": 14,
+    "label": "Advanced SMD Capacitor"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 576,
+    "size": 0,
+    "label": "NOR Wafer"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 102,
+    "size": 0,
+    "label": "Ludicrous Voltage Coil"
+  },
+  {
+    "name": "gregtech:meta_item_1",
+    "damage": 385,
+    "size": 0,
+    "label": "Fiber-Reinforced Circuit Board"
+  },
+  {
+    "name": "minecraft:iron_ingot",
+    "damage": 0,
+    "size": 3386,
+    "label": "Iron Ingot"
+  },
+  {
+    "name": "gregtech:transparent_casing",
+    "damage": 2,
+    "size": 167,
+    "label": "Laminated Glass"
+  },
+  {
+    "name": "gregtech:transparent_casing",
+    "damage": 0,
+    "size": 62,
+    "label": "Tempered Glass"
+  },
+  {
+    "name": "gregtech:meta_nugget",
+    "damage": 2520,
+    "size": 0,
+    "label": "HSS-S Nugget"
+  },
+  {
+    "name": "enderio:item_basic_capacitor",
+    "damage": 0,
+    "size": 28,
+    "label": "Basic Capacitor"
+  },
+  {
+    "name": "enderio:item_basic_capacitor",
+    "damage": 2,
+    "size": 3,
+    "label": "Octadic Capacitor"
+  },
+  {
+    "name": "enderio:item_basic_capacitor",
+    "damage": 1,
+    "size": 0,
+    "label": "Double-Layer Capacitor"
+  },
+  {
+    "name": "fluxnetworks:fluxcore",
+    "damage": 0,
+    "size": 0,
+    "label": "Flux Core"
+  },
+  {
+    "name": "minecraft:redstone_torch",
+    "damage": 0,
+    "size": 0,
+    "label": "Redstone Torch"
+  },
+  {
+    "name": "actuallyadditions:block_giant_chest",
+    "damage": 0,
+    "size": 0,
+    "label": "Small Storage Crate"
+  },
+  {
+    "name": "minecraft:paper",
+    "damage": 0,
+    "size": 683,
+    "label": "Paper"
+  },
+  {
+    "name": "libvulpes:productgem",
+    "damage": 0,
+    "size": 106,
+    "label": "Dilithium Crystal"
+  },
+  {
+    "name": "thaumcraft:creative_flux_sponge",
+    "damage": 0,
+    "size": 1,
+    "label": "Flux Sponge"
+  },
+  {
+    "name": "bloodmagic:slate",
+    "damage": 0,
+    "size": 8,
+    "label": "Blank Slate"
+  },
+  {
+    "name": "storagedrawers:customdrawers",
+    "damage": 0,
+    "size": 0,
+    "label": "Framed Drawer"
+  },
+  {
+    "name": "storagedrawers:upgrade_template",
+    "damage": 0,
+    "size": 0,
+    "label": "Upgrade Template"
+  },
+  {
+    "name": "gregtech:cable_single",
+    "damage": 32125,
+    "size": 17,
+    "label": "1x gregtech.material.terrasteel Cable"
+  },
+  {
+    "name": "gregtech:cable_single",
+    "damage": 2,
+    "size": 1,
+    "label": "1x Aluminium Cable"
+  },
+  {
+    "name": "gregtech:cable_single",
+    "damage": 112,
+    "size": 1,
+    "label": "1x Tin Cable"
+  },
+  {
+    "name": "gregtech:cable_single",
+    "damage": 252,
+    "size": 0,
+    "label": "1x Annealed Copper Cable"
+  },
+  {
+    "name": "gregtech:cable_single",
+    "damage": 32124,
+    "size": 14,
+    "label": "1x gregtech.material.stellar_alloy Cable"
+  },
+  {
+    "name": "gregtech:cable_single",
+    "damage": 25,
+    "size": 1,
+    "label": "1x Copper Cable"
+  },
+  {
+    "name": "gregtech:cable_single",
+    "damage": 2517,
+    "size": 0,
+    "label": "1x Red Alloy Cable"
+  },
+  {
+    "name": "gregtech:cable_single",
+    "damage": 80,
+    "size": 2,
+    "label": "1x Platinum Cable"
+  },
+  {
+    "name": "gregtech:cable_single",
+    "damage": 115,
+    "size": 2,
+    "label": "1x Tungsten Cable"
+  },
+  {
+    "name": "gregtech:cable_single",
+    "damage": 32122,
+    "size": 15,
+    "label": "1x gregtech.material.signalum Cable"
+  },
+  {
+    "name": "gregtech:cable_single",
+    "damage": 41,
+    "size": 3,
+    "label": "1x Gold Cable"
+  },
+  {
+    "name": "gregtech:cable_single",
+    "damage": 296,
+    "size": 3,
+    "label": "1x Niobium-Titanium Cable"
+  },
+  {
+    "name": "extrautils2:ingredients",
+    "damage": 11,
+    "size": 176,
+    "label": "Demon Ingot"
+  },
+  {
+    "name": "ironchest:diamond_obsidian_chest_upgrade",
+    "damage": 0,
+    "size": 9,
+    "label": "Diamond to Obsidian Chest Upgrade"
+  },
+  {
+    "name": "advancedrocketry:ic",
+    "damage": 0,
+    "size": 7,
+    "label": "Basic Circuit"
+  },
+  {
+    "name": "advancedrocketry:ic",
+    "damage": 1,
+    "size": 0,
+    "label": "Tracking Circuit"
+  },
+  {
+    "name": "appliedenergistics2:energy_cell",
+    "damage": 0,
+    "size": 17,
+    "label": "Energy Cell"
+  },
+  {
+    "name": "appliedenergistics2:drive",
+    "damage": 0,
+    "size": 0,
+    "label": "ME Drive"
+  },
+  {
+    "name": "gregtech:item_pipe_normal",
+    "damage": 1007,
+    "size": 0,
+    "label": "Polyvinyl Chloride (PVC) Item Pipe"
+  },
+  {
+    "name": "enderio:item_alloy_nugget",
+    "damage": 5,
+    "size": 1,
+    "label": "Pulsating Iron Nugget"
+  },
+  {
+    "name": "enderio:item_alloy_nugget",
+    "damage": 1,
+    "size": 4,
+    "label": "Energetic Alloy Nugget"
+  },
+  {
+    "name": "gregtech:meta_tool_head_buzz_saw",
+    "damage": 396,
+    "size": 0,
+    "label": "Tungstencarbide Buzzsaw Blade"
+  },
+  {
+    "name": "ironchest:iron_chest",
+    "damage": 6,
+    "size": 1,
+    "label": "Obsidian Chest"
+  },
+  {
+    "name": "avaritia:compressed_crafting_table",
+    "damage": 0,
+    "size": 0,
+    "label": "Compressed Crafting Table"
+  },
+  {
+    "name": "nae2:coprocessor_16x",
+    "damage": 0,
+    "size": 1,
+    "label": "§d16x§r Crafting Co-Processing Unit"
+  },
+  {
+    "name": "storagedrawers:upgrade_void",
+    "damage": 0,
+    "size": 60,
+    "label": "Void Upgrade"
+  },
+  {
+    "name": "enderio:block_enlightened_fused_glass",
+    "damage": 0,
+    "size": 2,
+    "label": "Enlightened Clear Glass"
+  },
+  {
+    "name": "botania:rune",
+    "damage": 1,
+    "size": 8,
+    "label": "Rune of Fire"
+  },
+  {
+    "name": "gregtech:meta_block_frame_7",
+    "damage": 1,
+    "size": 0,
+    "label": "Titanium Frame Box"
+  },
+  {
+    "name": "gregtech:meta_block_frame_7",
+    "damage": 3,
+    "size": 0,
+    "label": "Tungsten Frame Box"
+  },
+  {
+    "name": "ftbi:zero_point_matrix",
+    "damage": 0,
+    "size": 0,
+    "label": "tile.ftbi.zero_point_matrix.name"
+  },
+  {
+    "name": "gregtech:meta_block_compressed_63",
+    "damage": 0,
+    "size": 0,
+    "label": "Block of Polyphenylene Sulfide"
+  },
+  {
+    "name": "gregtech:meta_block_compressed_63",
+    "damage": 2,
+    "size": 7,
+    "label": "Block of Polybenzimidazole (PBI)"
+  },
+  {
+    "name": "gregtech:meta_block_compressed_63",
+    "damage": 8,
+    "size": 0,
+    "label": "Block of Polytetrafluoroethylene (PTFE)"
+  },
+  {
+    "name": "gregtech:meta_block_compressed_63",
+    "damage": 4,
+    "size": 0,
+    "label": "Block of Polyethylene (PE)"
+  },
+  {
+    "name": "gregtech:meta_block_compressed_63",
+    "damage": 5,
+    "size": 0,
+    "label": "Block of Epoxy Resin"
+  },
+  {
+    "name": "bloodmagic:blood_rune",
+    "damage": 0,
+    "size": 8,
+    "label": "Blank Rune"
+  },
+  {
+    "name": "gregtech:multiblock_casing",
+    "damage": 4,
+    "size": 1,
+    "label": "Assembly Line Casing"
+  },
+  {
+    "name": "gregtech:multiblock_casing",
+    "damage": 2,
+    "size": 6,
+    "label": "Grate Machine Casing"
+  },
+  {
+    "name": "gregtech:multiblock_casing",
+    "damage": 0,
+    "size": 5,
+    "label": "Engine Intake Casing"
+  },
+  {
+    "name": "gregtech:multiblock_casing",
+    "damage": 3,
+    "size": 1,
+    "label": "Assembly Control Casing"
+  },
+  {
+    "name": "minecraft:bowl",
+    "damage": 0,
+    "size": 18,
+    "label": "Bowl"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 3022,
+    "size": 0,
+    "label": "Incoloy-MA956 Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 277,
+    "size": 20,
+    "label": "Electrum Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 50,
+    "size": 6,
+    "label": "Iridium Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 2520,
+    "size": 0,
+    "label": "HSS-S Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 51,
+    "size": 4,
+    "label": "Iron Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 113,
+    "size": 2,
+    "label": "Titanium Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 323,
+    "size": 122,
+    "label": "Stainless Steel Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 2,
+    "size": 11,
+    "label": "Aluminium Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 80,
+    "size": 5,
+    "label": "Platinum Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 324,
+    "size": 0,
+    "label": "Steel Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 2013,
+    "size": 0,
+    "label": "Tungstensteel Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 3002,
+    "size": 0,
+    "label": "Maraging Steel 300 Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 331,
+    "size": 0,
+    "label": "Ultimet Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 1648,
+    "size": 0,
+    "label": "Treated Wood Stick"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 1016,
+    "size": 0,
+    "label": "Polytetrafluoroethylene (PTFE) Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 3001,
+    "size": 0,
+    "label": "Watertight Steel Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 260,
+    "size": 4,
+    "label": "Bronze Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 3003,
+    "size": 0,
+    "label": "Hastelloy-C276 Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 396,
+    "size": 0,
+    "label": "Tungstencarbide Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 3009,
+    "size": 0,
+    "label": "Molybdenum Disilicide Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 418,
+    "size": 0,
+    "label": "Magnetic Neodymium Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 2516,
+    "size": 0,
+    "label": "HSS-G Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 287,
+    "size": 0,
+    "label": "Invar Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 115,
+    "size": 0,
+    "label": "Tungsten Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 423,
+    "size": 0,
+    "label": "Magnetic Samarium Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 294,
+    "size": 0,
+    "label": "Nichrome Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 3004,
+    "size": 0,
+    "label": "Hastelloy-X Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 340,
+    "size": 1,
+    "label": "Quartzite Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 2035,
+    "size": 4,
+    "label": "Magnetic Steel Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 66,
+    "size": 1,
+    "label": "Neodymium Rod"
+  },
+  {
+    "name": "gregtech:meta_stick",
+    "damage": 3020,
+    "size": 0,
+    "label": "HSLA Steel Rod"
+  },
+  {
+    "name": "contenttweaker:overworldessencel",
+    "damage": 0,
+    "size": 0,
+    "label": "Aurellia Artifact"
+  },
+  {
+    "name": "gregtech:meta_gear_small",
+    "damage": 396,
+    "size": 0,
+    "label": "Small Tungstencarbide Gear"
+  },
+  {
+    "name": "gregtech:meta_gear_small",
+    "damage": 2520,
+    "size": 1,
+    "label": "Small HSS-S Gear"
+  },
+  {
+    "name": "gregtech:meta_gear_small",
+    "damage": 2042,
+    "size": 0,
+    "label": "Small Naquadah Alloy Gear"
+  },
+  {
+    "name": "gregtech:meta_gear_small",
+    "damage": 323,
+    "size": 5,
+    "label": "Small Stainless Steel Gear"
+  },
+  {
+    "name": "gregtech:meta_gear_small",
+    "damage": 324,
+    "size": 28,
+    "label": "Small Steel Gear"
+  },
+  {
+    "name": "gregtech:meta_gear_small",
+    "damage": 344,
+    "size": 0,
+    "label": "Small Osmiridium Gear"
+  },
+  {
+    "name": "gregtech:meta_gear_small",
+    "damage": 2013,
+    "size": 1,
+    "label": "Small Tungstensteel Gear"
+  },
+  {
+    "name": "gregtech:meta_gear_small",
+    "damage": 2,
+    "size": 14,
+    "label": "Small Aluminium Gear"
+  },
+  {
+    "name": "thaumcraft:metal_alchemical_advanced",
+    "damage": 0,
+    "size": 0,
+    "label": "Advanced Alchemical Construct"
+  },
+  {
+    "name": "gregtech:machine_casing",
+    "damage": 6,
+    "size": 0,
+    "label": "LuV Machine Casing"
+  },
+  {
+    "name": "gregtech:machine_casing",
+    "damage": 0,
+    "size": 9,
+    "label": "ULV Machine Casing"
+  },
+  {
+    "name": "gregtech:machine_casing",
+    "damage": 4,
+    "size": 0,
+    "label": "EV Machine Casing"
+  },
+  {
+    "name": "gregtech:machine_casing",
+    "damage": 2,
+    "size": 0,
+    "label": "MV Machine Casing"
+  },
+  {
+    "name": "gregtech:machine_casing",
+    "damage": 5,
+    "size": 0,
+    "label": "IV Machine Casing"
+  },
+  {
+    "name": "gregtech:machine_casing",
+    "damage": 3,
+    "size": 0,
+    "label": "HV Machine Casing"
+  },
+  {
+    "name": "gregtech:machine_casing",
+    "damage": 1,
+    "size": 0,
+    "label": "LV Machine Casing"
+  },
+  {
+    "name": "gregtech:boiler_firebox_casing",
+    "damage": 3,
+    "size": 0,
+    "label": "Tungstensteel Firebox Casing"
+  },
+  {
+    "name": "mekanism:basicblock",
+    "damage": 10,
+    "size": 8,
+    "label": "Structural Glass"
+  },
+  {
+    "name": "appliedenergistics2:energy_acceptor",
+    "damage": 0,
+    "size": 0,
+    "label": "Energy Acceptor"
+  },
+  {
+    "name": "actuallyadditions:block_phantomface",
+    "damage": 0,
+    "size": 0,
+    "label": "Phantomface"
+  },
+  {
+    "name": "gregtech:meta_block_frame_3",
+    "damage": 2,
+    "size": 0,
+    "label": "Iridium Frame Box"
+  },
+  {
+    "name": "minecraft:bucket",
+    "damage": 0,
+    "size": 6,
+    "label": "Bucket"
+  },
+  {
+    "name": "framedcompactdrawers:framed_slave",
+    "damage": 0,
+    "size": 0,
+    "label": "Framed Controller Slave"
+  },
+  {
+    "name": "gregtech:cable_hex",
+    "damage": 2517,
+    "size": 0,
+    "label": "16x Red Alloy Cable"
+  },
+  {
+    "name": "gregtech:cable_hex",
+    "damage": 80,
+    "size": 0,
+    "label": "16x Platinum Cable"
+  },
+  {
+    "name": "gregtech:cable_hex",
+    "damage": 41,
+    "size": 0,
+    "label": "16x Gold Cable"
+  },
+  {
+    "name": "gregtech:cable_hex",
+    "damage": 115,
+    "size": 0,
+    "label": "16x Tungsten Cable"
+  },
+  {
+    "name": "gregtech:cable_hex",
+    "damage": 296,
+    "size": 0,
+    "label": "16x Niobium-Titanium Cable"
+  },
+  {
+    "name": "astralsorcery:itemusabledust",
+    "damage": 1,
+    "size": 45,
+    "label": "Nocturnal Powder"
+  },
+  {
+    "name": "astralsorcery:itemusabledust",
+    "damage": 0,
+    "size": 58,
+    "label": "Illumination Powder"
+  },
+  {
+    "name": "gregtech:meta_block_frame_103",
+    "damage": 0,
+    "size": 0,
+    "label": "Treated Wood Frame Box"
+  },
+  {
+    "name": "thaumcraft:primordial_pearl",
+    "damage": 0,
+    "size": 1,
+    "label": "Primordial Pearl"
+  },
+  {
+    "name": "actuallyadditions:item_misc",
+    "damage": 8,
+    "size": 0,
+    "label": "Advanced Coil"
+  },
+  {
+    "name": "actuallyadditions:item_misc",
+    "damage": 7,
+    "size": 0,
+    "label": "Basic Coil"
+  },
+  {
+    "name": "libvulpes:productdust",
+    "damage": 0,
+    "size": 0,
+    "label": "Dilithium Dust"
+  },
+  {
+    "name": "gcym:unique_casing",
+    "damage": 3,
+    "size": 0,
+    "label": "Heat Vent"
+  },
+  {
+    "name": "gcym:unique_casing",
+    "damage": 1,
+    "size": 0,
+    "label": "Slicing Blades"
+  },
+  {
+    "name": "gcym:unique_casing",
+    "damage": 0,
+    "size": 0,
+    "label": "Crushing Wheels"
+  },
+  {
+    "name": "gcym:unique_casing",
+    "damage": 4,
+    "size": 0,
+    "label": "Molybdenum Disilicide Coil Block"
+  },
+  {
+    "name": "gcym:unique_casing",
+    "damage": 2,
+    "size": 2,
+    "label": "Electrolytic Cell"
+  },
+  {
+    "name": "gregtech:cable_quadruple",
+    "damage": 296,
+    "size": 0,
+    "label": "4x Niobium-Titanium Cable"
+  },
+  {
+    "name": "gregtech:cable_quadruple",
+    "damage": 80,
+    "size": 0,
+    "label": "4x Platinum Cable"
+  },
+  {
+    "name": "ae2stuff:visualiser",
+    "damage": 0,
+    "size": 0,
+    "label": "Network Visualisation Tool"
+  },
+  {
+    "name": "framedcompactdrawers:framed_drawer_controller",
+    "damage": 0,
+    "size": 0,
+    "label": "Framed Drawer Controller"
+  },
+  {
+    "name": "gregtech:fluid_pipe_small",
+    "damage": 113,
+    "size": 0,
+    "label": "Small Titanium Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_small",
+    "damage": 127,
+    "size": 0,
+    "label": "Small Neutronium Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_small",
+    "damage": 2013,
+    "size": 0,
+    "label": "Small Tungstensteel Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_small",
+    "damage": 50,
+    "size": 0,
+    "label": "Small Iridium Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_small",
+    "damage": 124,
+    "size": 0,
+    "label": "Small Naquadah Fluid Pipe"
+  },
+  {
+    "name": "gregtech:fluid_pipe_small",
+    "damage": 296,
+    "size": 0,
+    "label": "Small Niobium-Titanium Fluid Pipe"
+  },
+  {
+    "name": "gregtech:planks",
+    "damage": 1,
+    "size": 4,
+    "label": "Treated Wood Planks"
+  },
+  {
+    "name": "gregtech:wire_octal",
+    "damage": 2,
+    "size": 0,
+    "label": "8x Aluminium Wire"
+  },
+  {
+    "name": "gregtech:wire_octal",
+    "damage": 115,
+    "size": 0,
+    "label": "8x Tungsten Wire"
+  },
+  {
+    "name": "gregtech:wire_octal",
+    "damage": 296,
+    "size": 0,
+    "label": "8x Niobium-Titanium Wire"
+  },
+  {
+    "name": "gregtech:wire_octal",
+    "damage": 2517,
+    "size": 0,
+    "label": "8x Red Alloy Wire"
+  },
+  {
+    "name": "actuallyadditions:block_giant_chest_large",
+    "damage": 0,
+    "size": 1,
+    "label": "Large Storage Crate"
+  },
+  {
+    "name": "thermalfoundation:upgrade",
+    "damage": 0,
+    "size": 8,
+    "label": "Hardened Upgrade Kit"
+  },
+  {
+    "name": "gregtech:meta_block_frame_20",
+    "damage": 3,
+    "size": 0,
+    "label": "Stainless Steel Frame Box"
+  },
+  {
+    "name": "gregtech:meta_block_frame_20",
+    "damage": 4,
+    "size": 0,
+    "label": "Steel Frame Box"
+  },
+  {
+    "name": "gregtech:meta_block_frame_20",
+    "damage": 11,
+    "size": 0,
+    "label": "Ultimet Frame Box"
+  },
+  {
+    "name": "minecraft:stained_glass",
+    "damage": 14,
+    "size": 7,
+    "label": "Red Stained Glass"
+  },
+  {
+    "name": "minecraft:comparator",
+    "damage": 0,
+    "size": 2,
+    "label": "Redstone Comparator"
+  },
+  {
+    "name": "gregtech:meta_rotor",
+    "damage": 2013,
+    "size": 0,
+    "label": "Tungstensteel Rotor"
+  },
+  {
+    "name": "gregtech:meta_rotor",
+    "damage": 2520,
+    "size": 0,
+    "label": "HSS-S Rotor"
+  },
+  {
+    "name": "gregtech:meta_rotor",
+    "damage": 50,
+    "size": 0,
+    "label": "Iridium Rotor"
+  },
+  {
+    "name": "gregtech:meta_rotor",
+    "damage": 323,
+    "size": 2,
+    "label": "Stainless Steel Rotor"
+  },
+  {
+    "name": "gregtech:meta_rotor",
+    "damage": 324,
+    "size": 0,
+    "label": "Steel Rotor"
+  },
+  {
+    "name": "gregtech:meta_rotor",
+    "damage": 113,
+    "size": 2,
+    "label": "Titanium Rotor"
+  },
+  {
+    "name": "minecraft:emerald_block",
+    "damage": 0,
+    "size": 0,
+    "label": "Block of Emerald"
+  },
+  {
+    "name": "gregtech:meta_round",
+    "damage": 2520,
+    "size": 4,
+    "label": "HSS-S Round"
+  },
+  {
+    "name": "gregtech:wire_single",
+    "damage": 80,
+    "size": 70,
+    "label": "1x Platinum Wire"
+  },
+  {
+    "name": "gregtech:wire_single",
+    "damage": 252,
+    "size": 0,
+    "label": "1x Annealed Copper Wire"
+  },
+  {
+    "name": "gregtech:wire_single",
+    "damage": 25,
+    "size": 0,
+    "label": "1x Copper Wire"
+  },
+  {
+    "name": "gregtech:wire_single",
+    "damage": 2517,
+    "size": 7,
+    "label": "1x Red Alloy Wire"
+  },
+  {
+    "name": "gregtech:wire_single",
+    "damage": 32122,
+    "size": 8,
+    "label": "1x gregtech.material.signalum Wire"
+  },
+  {
+    "name": "gregtech:wire_single",
+    "damage": 112,
+    "size": 0,
+    "label": "1x Tin Wire"
+  },
+  {
+    "name": "gregtech:wire_single",
+    "damage": 296,
+    "size": 0,
+    "label": "1x Niobium-Titanium Wire"
+  },
+  {
+    "name": "gregtech:wire_single",
+    "damage": 2,
+    "size": 0,
+    "label": "1x Aluminium Wire"
+  },
+  {
+    "name": "gregtech:wire_single",
+    "damage": 32125,
+    "size": 0,
+    "label": "1x gregtech.material.terrasteel Wire"
+  },
+  {
+    "name": "gregtech:wire_single",
+    "damage": 41,
+    "size": 0,
+    "label": "1x Gold Wire"
+  },
+  {
+    "name": "gregtech:wire_single",
+    "damage": 115,
+    "size": 0,
+    "label": "1x Tungsten Wire"
+  },
+  {
+    "name": "gregtech:wire_single",
+    "damage": 429,
+    "size": 0,
+    "label": "1x Indium Tin Barium Titanium Cuprate Wire"
+  },
+  {
+    "name": "enderio:item_alloy_endergy_ingot",
+    "damage": 1,
+    "size": 0,
+    "label": "Crystalline Alloy Ingot"
+  },
+  {
+    "name": "minecraft:clock",
+    "damage": 0,
+    "size": 1,
+    "label": "Clock"
+  },
+  {
+    "name": "minecraft:planks",
+    "damage": 3,
+    "size": 765,
+    "label": "Jungle Wood Planks"
+  },
+  {
+    "name": "appliedenergistics2:crafting_unit",
+    "damage": 0,
+    "size": 0,
+    "label": "Crafting Unit"
+  },
+  {
+    "name": "gregtech:meta_block_compressed_13",
+    "damage": 6,
+    "size": 0,
+    "label": "Block of Certus Quartz"
+  },
+  {
+    "name": "bhc:canister",
+    "damage": 0,
+    "size": 0,
+    "label": "Canister"
+  },
+  {
+    "name": "appliedenergistics2:interface",
+    "damage": 0,
+    "size": 28,
+    "label": "ME Interface"
+  },
+  {
+    "name": "gregtech:cable_double",
+    "damage": 115,
+    "size": 0,
+    "label": "2x Tungsten Cable"
+  },
+  {
+    "name": "gregtech:cable_double",
+    "damage": 2,
+    "size": 5,
+    "label": "2x Aluminium Cable"
+  },
+  {
+    "name": "gregtech:cable_double",
+    "damage": 100,
+    "size": 0,
+    "label": "2x Silver Cable"
+  },
+  {
+    "name": "gregtech:cable_double",
+    "damage": 32123,
+    "size": 17,
+    "label": "2x gregtech.material.enderium Cable"
+  },
+  {
+    "name": "gregtech:cable_double",
+    "damage": 32124,
+    "size": 0,
+    "label": "2x gregtech.material.stellar_alloy Cable"
+  },
+  {
+    "name": "gregtech:cable_double",
+    "damage": 32122,
+    "size": 4,
+    "label": "2x gregtech.material.signalum Cable"
+  },
+  {
+    "name": "gregtech:cable_double",
+    "damage": 80,
+    "size": 0,
+    "label": "2x Platinum Cable"
+  },
+  {
+    "name": "appliedenergistics2:quartz_block",
+    "damage": 0,
+    "size": 0,
+    "label": "Certus Quartz Block"
+  },
+  {
+    "name": "actuallyadditions:block_misc",
+    "damage": 6,
+    "size": 0,
+    "label": "Block of Enderpearl"
+  },
+  {
+    "name": "storagedrawers:upgrade_storage",
+    "damage": 2,
+    "size": 31,
+    "label": "Storage Upgrade (III)"
+  },
+  {
+    "name": "gregtech:meta_plate_double",
+    "damage": 3020,
+    "size": 0,
+    "label": "Double HSLA Steel Plate"
+  },
+  {
+    "name": "gregtech:meta_plate_double",
+    "damage": 3009,
+    "size": 0,
+    "label": "Double Molybdenum Disilicide Plate"
+  },
+  {
+    "name": "gregtech:meta_plate_double",
+    "damage": 2036,
+    "size": 0,
+    "label": "Double Vanadiumsteel Plate"
+  },
+  {
+    "name": "framedcompactdrawers:framed_compact_drawer",
+    "damage": 0,
+    "size": 5,
+    "label": "Framed Compacting Drawer"
+  },
+  {
+    "name": "minecraft:sticky_piston",
+    "damage": 0,
+    "size": 0,
+    "label": "Sticky Piston"
+  },
+  {
+    "name": "ironchest:iron_gold_chest_upgrade",
+    "damage": 0,
+    "size": 9,
+    "label": "Iron to Gold Chest Upgrade"
+  },
+  {
+    "name": "gregtech:hermetic_casing",
+    "damage": 2,
+    "size": 0,
+    "label": "Hermetic Casing III"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 115,
+    "size": 0,
+    "label": "2x Tungsten Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 451,
+    "size": 0,
+    "label": "2x RTM Alloy Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 277,
+    "size": 0,
+    "label": "2x Electrum Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 80,
+    "size": 11,
+    "label": "2x Platinum Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 2516,
+    "size": 0,
+    "label": "2x HSS-G Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 32122,
+    "size": 10,
+    "label": "2x gregtech.material.signalum Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 130,
+    "size": 8,
+    "label": "2x Trinium Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 32123,
+    "size": 0,
+    "label": "2x gregtech.material.enderium Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 100,
+    "size": 1,
+    "label": "2x Silver Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 294,
+    "size": 0,
+    "label": "2x Nichrome Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 2,
+    "size": 3,
+    "label": "2x Aluminium Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 342,
+    "size": 0,
+    "label": "2x Graphene Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 32124,
+    "size": 0,
+    "label": "2x gregtech.material.stellar_alloy Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 124,
+    "size": 0,
+    "label": "2x Naquadah Wire"
+  },
+  {
+    "name": "gregtech:wire_double",
+    "damage": 274,
+    "size": 0,
+    "label": "2x Cupronickel Wire"
+  },
+  {
+    "name": "gregtech:meta_block_frame_24",
+    "damage": 12,
+    "size": 0,
+    "label": "Tungstencarbide Frame Box"
+  },
+  {
+    "name": "advancedrocketry:bipropellantrocketmotor",
+    "damage": 0,
+    "size": 0,
+    "label": "Bipropellant Rocket Engine"
+  },
+  {
+    "name": "opencomputers:component",
+    "damage": 5,
+    "size": 0,
+    "label": "Component Bus (Tier 3)"
+  },
+  {
+    "name": "opencomputers:component",
+    "damage": 15,
+    "size": 1,
+    "label": "Server (Tier 3)"
+  },
+  {
+    "name": "opencomputers:component",
+    "damage": 19,
+    "size": 0,
+    "label": "Terminal Server"
+  },
+  {
+    "name": "opencomputers:component",
+    "damage": 11,
+    "size": 4,
+    "label": "Memory (Tier 3.5)"
+  },
+  {
+    "name": "actuallyadditions:block_giant_chest_medium",
+    "damage": 0,
+    "size": 0,
+    "label": "Medium Storage Crate"
+  }
+]
