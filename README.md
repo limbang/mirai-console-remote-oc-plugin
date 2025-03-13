@@ -19,6 +19,8 @@
 
 资源文件可以使用 [nesql-exporter](https://github.com/z5882852/nesql-exporter) 从游戏导出也可以下载我提供的,使用 [NesqlUtils](src/main/kotlin/utils/NesqlUtil.kt) 导出 json 文件,测试方法见 [testExport](src/test/kotlin/utils/NesqlUtilTest.kt)
 
+[IRAR](https://www.mcmod.cn/class/3115.html) 数据转换使用 [IRARUtils](src/main/kotlin/utils/IRARUtil.kt) 转换,测试方法见 [testIRARExport](src/test/kotlin/utils/IRARUtilTest.kt)
+
 ```
 目录结构
 -- data/top.limbang.RemoteOC/
