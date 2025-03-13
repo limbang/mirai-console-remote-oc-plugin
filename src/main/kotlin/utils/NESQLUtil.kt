@@ -11,6 +11,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import org.slf4j.LoggerFactory
 import top.limbang.remoteoc.entity.FluidMetadata
 import top.limbang.remoteoc.entity.ItemMetadata
 import top.limbang.remoteoc.utils.NBTUtil.readTargetCircuitStringId
@@ -26,6 +27,8 @@ import java.sql.DriverManager
  *
  */
 object NESQLUtil {
+
+    private val logger = LoggerFactory.getLogger(NESQLUtil::class.java)
 
     /**
      * 物品表
@@ -239,11 +242,11 @@ object NESQLUtil {
     /**
      * 将物品表数据转换为本地化 JSON 并写入文件
      *
-     * @param outputPath 输出目录 (默认: src/test/resources/)
+     * @param outputPath 输出目录 (默认: debug-sandbox/data/top.limbang.RemoteOC/))
      * @param fileName 文件名 (默认: items.json)
      */
     fun Map<String, Map<String, ItemMetadata>>.writeItemJsonToFile(
-        outputPath: String = "src/test/resources/",
+        outputPath: String = "debug-sandbox/data/top.limbang.RemoteOC/",
         fileName: String = "items.json"
     ) {
         writeJsonFile(outputPath, fileName)
@@ -252,11 +255,11 @@ object NESQLUtil {
     /**
      * 将流体表数据转换为本地化 JSON 并写入文件
      *
-     * @param outputPath 输出目录 (默认: src/test/resources/)
+     * @param outputPath 输出目录 (默认: debug-sandbox/data/top.limbang.RemoteOC/)
      * @param fileName 文件名 (默认: fluids.json)
      */
     fun Map<String, FluidMetadata>.writeFluidJsonToFile(
-        outputPath: String = "src/test/resources/",
+        outputPath: String = "debug-sandbox/data/top.limbang.RemoteOC/",
         fileName: String = "fluids.json"
     ) {
         writeJsonFile(outputPath, fileName)
@@ -265,7 +268,7 @@ object NESQLUtil {
     /**
      * 将数据转换为本地化 JSON 并写入文件
      *
-     * @param outputPath 输出目录 (默认: src/test/resources/)
+     * @param outputPath 输出目录 (默认: debug-sandbox/data/top.limbang.RemoteOC/))
      * @param fileName 文件名 (默认: items.json)
      */
     private inline fun <reified T> T.writeJsonFile(
@@ -282,7 +285,7 @@ object NESQLUtil {
             // 序列化并写入文件
             outputFile.writeText(json.encodeToString(this), Charsets.UTF_8)
 
-            println(
+            logger.info(
                 """
                     JSON 文件已成功写入
                     路径：${outputFile.absolutePath}
@@ -290,7 +293,7 @@ object NESQLUtil {
                 """.trimIndent()
             )
         } catch (e: Exception) {
-            System.err.println("文件写入失败: ${e.message}")
+            logger.error("文件写入失败: ${e.message}")
             outputFile.delete() // 清理无效文件
         }
     }
