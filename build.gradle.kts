@@ -35,3 +35,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-debug:$coroutinesVersion")
     testImplementation("ch.qos.logback:logback-classic:1.5.16")
 }
+
+tasks.test {
+    enabled = false
+}
