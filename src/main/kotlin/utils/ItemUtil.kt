@@ -206,6 +206,7 @@ class ItemUtil(
      */
     fun getLocalizedData(fluid: Fluid): LocalizedData {
         val fluidMetadata = fluidData[fluid.name]
+        if (fluidMetadata == null) logger.warn("未找到液体: ${fluid.label} ${fluid.name} 采用默认名称和图片")
         return LocalizedData(
             id = fluid.name,
             name = fluidMetadata?.localizedName ?: fluid.label,

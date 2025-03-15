@@ -20,7 +20,7 @@ internal class ImageUtilKtTest {
     private val itemUtil = ItemUtil("debug-sandbox/data/top.limbang.RemoteOC")
     private val cpuDetailJson = javaClass.classLoader.getResource("json/CpuDetail2.json")!!.readText()
     private val itemJson = javaClass.classLoader.getResource("json/item4.json")!!.readText()
-    private val fluidJson = javaClass.classLoader.getResource("json/item3.json")!!.readText()
+    private val fluidJson = javaClass.classLoader.getResource("json/item5.json")!!.readText()
 
 
     @Test
