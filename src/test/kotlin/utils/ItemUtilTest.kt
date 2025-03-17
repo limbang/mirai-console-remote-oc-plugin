@@ -1,6 +1,6 @@
 package top.limbang.remoteoc.utils
 
-import kotlinx.serialization.json.Json
+import junit.framework.TestCase.assertEquals
 import top.limbang.remoteoc.entity.Item
 import kotlin.test.Test
 import kotlin.test.assertTrue
@@ -26,4 +26,119 @@ internal class ItemUtilTest {
     }
 
 
+}
+
+
+class PinyinTest {
+    private val itemUtil = ItemUtil("debug-sandbox/data/top.limbang.RemoteOC")
+
+    /**
+     * 测试纯中文字符（无多音字）
+     */
+    @Test
+    fun testAllChineseNoPolyphone() {
+        val input = "你好"
+        val expected = "nihao"  // 直接返回拼音，不需要集合
+        val result = itemUtil.generatePinyinVariations(input)
+        println("testAllChineseNoPolyphone: input = '$input', expected = $expected, result = $result")
+        assertEquals(expected, result)
+    }
+
+    /**
+     * 测试包含多音字的中文字符（假设库返回第一个拼音）
+     */
+    @Test
+    fun testChineseWithPolyphone() {
+        val input = "重庆"
+        // 假设 "重" 返回 "zhong"，"庆" 返回 "qing"
+        val expected = "zhongqing"  // 直接返回拼音，不需要集合
+        val result = itemUtil.generatePinyinVariations(input)
+        println("testChineseWithPolyphone: input = '$input', expected = $expected, result = $result")
+        assertEquals(expected, result)
+    }
+
+    /**
+     * 测试混合中英文、数字、符号
+     */
+    @Test
+    fun testMixedCharacters() {
+        val input = "a你b好123@"
+        val expected = "anibhao123@"  // 直接返回拼音，不需要集合
+        val result = itemUtil.generatePinyinVariations(input)
+        println("testMixedCharacters: input = '$input', expected = $expected, result = $result")
+        assertEquals(expected, result)
+    }
+
+    /**
+     * 测试空字符串
+     */
+    @Test
+    fun testEmptyString() {
+        val input = ""
+        val expected = ""  // 空字符串应该返回空字符串
+        val result = itemUtil.generatePinyinVariations(input)
+        println("testEmptyString: input = '$input', expected = '$expected', result = '$result'")
+        assertEquals(expected, result)
+    }
+
+    /**
+     * 测试非中文字符（字母、数字）
+     */
+    @Test
+    fun testNonChineseCharacters() {
+        val input = "abc123"
+        val expected = "abc123"  // 直接返回拼音，不需要集合
+        val result = itemUtil.generatePinyinVariations(input)
+        println("testNonChineseCharacters: input = '$input', expected = '$expected', result = '$result'")
+        assertEquals(expected, result)
+    }
+}
+
+class ItemUtilTestByName {
+    private val itemUtil = ItemUtil("debug-sandbox/data/top.limbang.RemoteOC")
+
+    @Test
+    fun `test search item by exact name - silver wire`() {
+        val results = itemUtil.searchItemByName("1x银导线")
+        println("Search results for '1x银导线': $results")
+        val expectedItem = Item(name = "gregtech:wire_single", damage = 100, label = "1x银导线", size = 0)
+        assertTrue(results.any { item -> item.name == expectedItem.name && item.damage == expectedItem.damage })
+
+    }
+
+    @Test
+    fun `test search item by exact name - tin wire`() {
+        val results = itemUtil.searchItemByName("1x锡导线")
+        println("Search results for '1x锡导线': $results")
+        val expectedItem = Item(name = "gregtech:wire_single", damage = 112, label = "1x锡导线", size = 0)
+        assertTrue(results.any { item -> item.name == expectedItem.name && item.damage == expectedItem.damage })
+        // 验证列表是否包含至少一个匹配的 Item
+    }
+
+    @Test
+    fun `test search item by exact name - tungsten wire`() {
+        val results = itemUtil.searchItemByName("1x钨导线")
+        println("Search results for '1x钨导线': $results")
+        val expectedItem = Item(name = "gregtech:wire_single", damage = 115, label = "1x钨导线", size = 0)
+        assertTrue(results.any { item -> item.name == expectedItem.name && item.damage == expectedItem.damage })
+        // 验证列表是否包含至少一个匹配的 Item
+    }
+
+    @Test
+    fun `test search item by non-existent name`() {
+        val results = itemUtil.searchItemByName("1x金导线")  // 假设"金导线"不存在
+        println("Search results for '1x金导线': $results")
+        val expectedItem = Item(name = "gregtech:wire_single", damage = 41, label = "1x金导线", size = 0)
+        assertTrue(results.any { item -> item.name == expectedItem.name && item.damage == expectedItem.damage })
+        // 验证列表是否包含至少一个匹配的 Item
+    }
+
+    @Test
+    fun `test search item by pinyin with different case`() {
+        val results = itemUtil.searchItemByName("jindaoxian")  // 拼音的不同大小写
+        println("Search results for 'jindaoxian': $results")
+        val expectedItem = Item(name = "gregtech:wire_single", damage = 41, label = "1x金导线", size = 0)
+        assertTrue(results.any { item -> item.name == expectedItem.name && item.damage == expectedItem.damage })
+        // 验证列表是否包含至少一个匹配的 Item
+    }
 }

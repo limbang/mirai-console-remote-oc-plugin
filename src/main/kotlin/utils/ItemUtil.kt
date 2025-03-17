@@ -8,6 +8,7 @@
 package top.limbang.remoteoc.utils
 
 
+import com.github.promeg.pinyinhelper.Pinyin
 import kotlinx.serialization.json.Json
 import org.slf4j.LoggerFactory
 import top.limbang.remoteoc.entity.*
@@ -36,6 +37,8 @@ class ItemUtil(
     private val itemData: Map<String, Map<String, ItemMetadata>>
     private val fluidData: Map<String, FluidMetadata>
 
+    private val localizedIndex = mutableMapOf<String, Pair<String, Int>>()
+    private val pinyinIndex = mutableMapOf<String, MutableList<Pair<String, Int>>>()
     init {
         // 检查资源目录是否存在
         val itemFile = File(resourceDir, itemJsonName).takeIf { it.exists() }
@@ -47,6 +50,38 @@ class ItemUtil(
         itemData = itemFile.reader(Charsets.UTF_8).use { json.decodeFromString(it.readText()) }
         // 加载液体数据,自动关闭流
         fluidData = fluidFile.reader(Charsets.UTF_8).use { json.decodeFromString(it.readText()) }
+
+        // 构建索引逻辑
+        itemData.forEach { (itemId, metas) ->
+            metas.forEach { (metaStr, entry) ->
+                metaStr.toIntOrNull()?.let { meta ->
+                    val pair = itemId to meta
+
+                    // 1. 构建原始名称索引
+                    localizedIndex[entry.localizedName] = pair
+
+                    // 2. 生成拼音索引（处理多音字）
+                    val pinyin = generatePinyinVariations(entry.localizedName) // 只返回一个拼音变体
+                    pinyinIndex.computeIfAbsent(pinyin) { mutableListOf() }.add(pair)
+                }
+            }
+        }
+    }
+
+    /**
+     * 生成拼音变体（处理多音字）
+     */
+    fun generatePinyinVariations(chinese: String): String {
+        val words = chinese.toCharArray()
+        val pinyinList = words.map { char ->
+            if (Pinyin.isChinese(char)) {
+                Pinyin.toPinyin(char).lowercase() // `拼音` 转 `pinyin`
+            } else {
+                char.toString().lowercase() // 非汉字直接保留
+            }
+        }
+        // 组合所有可能的拼音变体
+        return pinyinList.joinToString("") //setOf(pinyinList.joinToString(""), pinyinList.joinToString(" "))
     }
 
     /**
@@ -77,6 +112,92 @@ class ItemUtil(
         if (item.isFluidDrop()) return handleFluidDrop(item)
         // 常规物品处理流程
         return handleRegularItem(item)
+    }
+
+    /**
+     * 通过本地化名字或拼音查询 itemId 和 damage，支持模糊匹配
+     */
+    fun searchItemByName(query: String): List<Item> {
+        val results = mutableListOf<Item>()
+
+        // 中文直接查询
+//        localizedIndex[query]?.let {
+//            results.add(Item(name, damage = damage, label = query, size = 0))
+//        }
+        // 模糊匹配：查找包含 query 的本地化名称
+        localizedIndex.filterKeys { it.contains(query) }.values.forEach { (name, damage) ->
+            results.add(Item(name, damage = damage, label = query, size = 0))
+        }
+
+        // 拼音查询（支持多种拼音格式）
+//       val pinyinQuery = query.lowercase()
+//        pinyinIndex[pinyinQuery]?.let {
+//            results.add(Item(name, damage = damage, label = query, size = 0))
+//        }
+
+        // 拼音模糊匹配
+        val pinyinQuery = query.lowercase()
+        pinyinIndex.filterKeys { it.contains(pinyinQuery) }.values.flatten().forEach { (name, damage) ->
+            results.add(Item(name, damage = damage, label = query, size = 0))
+        }
+        return results.distinct()
+    }
+
+    fun searchItemsByNames(queries: List<String>): List<searchItem> {
+        val results = mutableListOf<searchItem>()
+        // 遍历每个查询
+        queries.forEach { query ->
+            var chineseResultCount = 0
+            val isChinese = query.any { Pinyin.isChinese(it) }
+
+            if (isChinese) {
+                if (query.contains("*")) {
+                    // 模糊查询
+                    val regex = query.replace("*", ".*") // 将 * 替换为 .*
+                    val pattern = Regex("^$regex$") // 添加 ^ 和 $ 确保匹配整个字符串
+                    localizedIndex.forEach { (key, value) ->
+                        if (pattern.matches(key)) {
+                            val item = searchItem(value.first, value.second)
+                            results.add(item)
+                            chineseResultCount++
+                        }
+                    }
+                } else {
+                    // 精确查询
+                    localizedIndex[query]?.let { (name, damage) ->
+                        val item = searchItem(name, damage)
+                        results.add(item)
+                        chineseResultCount++
+                    }
+                }
+            }
+
+            if (chineseResultCount < 2) {
+                val pinyinQuery = query.lowercase()
+                if (pinyinQuery.contains("*")) {
+                    // 拼音模糊查询
+                    val regex = pinyinQuery.replace("*", ".*")
+                    val pattern = Regex("^$regex$")
+                    pinyinIndex.forEach { (key, mappings) ->
+                        if (pattern.matches(key)) {
+                            mappings.forEach { (name, damage) ->
+                                results.add(searchItem(name, damage))
+                            }
+                        }
+                    }
+                } else {
+                    // 拼音精确查询
+                    pinyinIndex[pinyinQuery]?.let { mappings ->
+                        mappings.forEach { (name, damage) ->
+                            results.add(searchItem(name, damage))
+                        }
+                    }
+                }
+            }
+        }
+
+        // 返回去重后的结果
+        return results.distinct()
     }
 
     /**

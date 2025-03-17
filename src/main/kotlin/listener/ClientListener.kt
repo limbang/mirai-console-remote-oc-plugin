@@ -9,6 +9,7 @@ package top.limbang.remoteoc.listener
 
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.serialization.KSerializer
+
 import net.mamoe.mirai.contact.Contact.Companion.uploadImage
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.SimpleListenerHost
@@ -24,6 +25,8 @@ import top.limbang.remoteoc.listener.TeamListener.sendMessage
 import top.limbang.remoteoc.network.model.ResultData
 import top.limbang.remoteoc.utils.*
 import java.awt.image.BufferedImage
+import java.io.File
+import javax.imageio.ImageIO
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -35,6 +38,7 @@ object ClientListener : SimpleListenerHost() {
     private val BIND_CLIENT_REGEX = """^绑定客户端\s?([a-zA-Z0-9]{2,16})(?:\s+(true|false))?""".toRegex()
     private val CRAFT_ITEM_REGEX = """^合成\s+([^\s\n]+(?:\s+[^\s\n]+)*?)(?:\s+(\d{1,12}))?$""".toRegex()
     private val CANCEL_CRAFTING_REGEX = """^取消合成\s+(.*)""".toRegex()
+    private val ITEM_QUERY_REGEX = """^物品终端\s+([^\s\n]+(?:\s+[^\s\n]+)*)$""".toRegex()
 
     // 物品本地化工具
     private val itemUtil = ItemUtil(dataFolderPath.toString())
@@ -154,6 +158,49 @@ object ClientListener : SimpleListenerHost() {
         result?.data ?: run { sendMessage("❌ 获取CPU信息失败"); return }
         // 发送CPU信息图片
         sendImage(result.data.toImage(itemUtil))
+    }
+    /**
+     * 物品终端查询功能
+     */
+    @EventHandler
+    suspend fun GroupMessageEvent.getAllItems() {
+        // 1. 确认消息包含 "物品终端"
+        val content = message.contentToString()
+        if (!ITEM_QUERY_REGEX.matches(content)) return
+
+        // 2. 获取团队信息
+        val team = validateTeamAndClient() ?: return
+
+
+        // 3. 获取所有查询的本地化名称
+        val queryItems = content.removePrefix("物品终端").trim().split(" ")
+        val items = itemUtil.searchItemsByNames(queryItems)
+
+        if (items.isEmpty()) {
+            sendMessage("❌ 数据库没有任何匹配的物品")
+            return
+        }
+
+        val allData = mutableListOf<LocalizedData>()
+
+        // 4. 批量处理物品查询
+        if(items.size < 2)
+        {
+            val firstItem = items.first()
+            val result = sendCommandRequest(team, AeCommand.GetSingleItem(firstItem.name,firstItem.damage), Item.serializer())
+            if (result?.data == null) return
+            allData.addAll(itemUtil.getLocalizedDataList(result.data))
+        }
+        else {
+            val result = sendCommandRequest(team, AeCommand.GetAllItems(convertToLuaTable(items)), Item.serializer())
+            if (result?.data == null) return
+            allData.addAll(itemUtil.getLocalizedDataList(result.data))
+        }
+
+        //返回图片
+        if (allData.isNotEmpty()) {
+            sendImage(allData.toImage("物品终端"))
+        }else sendMessage("❌ 未找到物品");
     }
 
     /**
@@ -278,6 +325,18 @@ object ClientListener : SimpleListenerHost() {
     }
 
     /**
+     * 将物品列表转换为 Lua 表格式
+     *
+     * @param items 待查询的物品列表
+     * @return Lua 表格式的字符串
+     */
+    private fun convertToLuaTable(items: List<searchItem>): String {
+        return items.joinToString(prefix = "{", postfix = "}") { item ->
+            val damagePart = item.damage?.let { ", damage=$it" } ?: ""
+            "{name=\"${item.name}\"$damagePart}"
+        }
+    }
+    /**
      * 发送命令请求
      *
      * @param T 命令返回类型
@@ -323,3 +382,5 @@ object ClientListener : SimpleListenerHost() {
     }
 
 }
+
+
