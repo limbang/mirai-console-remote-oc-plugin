@@ -10,6 +10,7 @@ group = "top.limbang"
 version = "0.0.1"
 
 repositories {
+    maven { url = uri("https://maven.aliyun.com/repository/public")}
     mavenCentral()
     maven { url = uri("https://jitpack.io") }
 }
@@ -30,6 +31,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
+    implementation("com.github.promeg:tinypinyin:2.0.3")                        // TinyPinyin核心包，约80KB
+    implementation("com.github.promeg:tinypinyin-lexicons-java-cncity:2.0.3")  // 可选，适用于Java的中国地区词典
 
     testImplementation(kotlin("test"))
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-debug:$coroutinesVersion")
