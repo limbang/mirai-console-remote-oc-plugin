@@ -12,9 +12,9 @@ import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
+import top.limbang.remoteoc.utils.json
 
 /**
  * 自定义序列化器，处理 data 字段可能是 List<T> 或单个 T 的情况。
@@ -36,9 +36,9 @@ class ListOrSingleSerializer<T>(private val elementSerializer: KSerializer<T>) :
     override fun deserialize(decoder: Decoder): List<T> {
         return when (val input = decoder.decodeSerializableValue(JsonElement.serializer())) {
             // 如果是数组，用 ListSerializer 解析
-            is JsonArray -> Json.decodeFromJsonElement(listSerializer, input)
+            is JsonArray -> json.decodeFromJsonElement(listSerializer, input)
             // 如果是对象，解析为单个元素并包装成 List
-            else -> listOf(Json.decodeFromJsonElement(elementSerializer, input))
+            else -> listOf(json.decodeFromJsonElement(elementSerializer, input))
         }
     }
 }

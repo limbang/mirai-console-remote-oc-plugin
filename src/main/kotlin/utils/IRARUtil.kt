@@ -74,7 +74,7 @@ object IRARUtil {
         // 逐行读取数据
         itemFile.reader(Charsets.UTF_8).use {
             it.readLines().forEach { line ->
-                irarEntries.add(Json.decodeFromString<IRAREntry>(line))
+                irarEntries.add(json.decodeFromString<IRAREntry>(line))
             }
         }
         return irarEntries
@@ -181,17 +181,17 @@ object IRARUtil {
         // 读取并解析第一个JSON文件
         val itemData1: Map<String, Map<String, ItemMetadata>> = File(json1Path)
             .reader()
-            .use { Json.decodeFromString(it.readText()) }
+            .use { json.decodeFromString(it.readText()) }
 
         // 读取并解析第二个JSON文件
         val itemData2: Map<String, Map<String, ItemMetadata>> = File(json2Path)
             .reader()
-            .use { Json.decodeFromString(it.readText()) }
+            .use { json.decodeFromString(it.readText()) }
 
 
         // 写入合并后的结果到新文件
         File(outputPath).parentFile.mkdirs()  // 确保目录存在
-        File(outputPath).writeText(Json.encodeToString(itemData1.mergeItemData(itemData2)))
+        File(outputPath).writeText(json.encodeToString(itemData1.mergeItemData(itemData2)))
     }
 
 }

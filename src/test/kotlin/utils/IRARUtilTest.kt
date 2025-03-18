@@ -76,7 +76,7 @@ internal class IRARUtilTest {
         }?.forEach { file ->
             // 安全读取并合并数据
             file.reader().use { reader ->
-                val data: Map<String, Map<String, ItemMetadata>> = Json.decodeFromString(reader.readText())
+                val data: Map<String, Map<String, ItemMetadata>> = json.decodeFromString(reader.readText())
                 data.forEach { (namespace, items) ->
                     mergedData.getOrPut(namespace) { mutableMapOf() }.apply {
                         items.forEach { (itemId, metadata) ->
@@ -90,7 +90,7 @@ internal class IRARUtilTest {
 
         // 原子化写入合并结果
         mergedFile.writer().buffered().use { writer ->
-            Json.encodeToString(mergedData).also {
+            json.encodeToString(mergedData).also {
                 writer.write(it)
                 writer.flush()
             }

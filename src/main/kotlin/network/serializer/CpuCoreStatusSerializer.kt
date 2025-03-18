@@ -12,11 +12,11 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonDecoder
 import kotlinx.serialization.json.JsonObject
 import top.limbang.remoteoc.entity.CpuCoreStatus
+import top.limbang.remoteoc.utils.json
 
 /**
  * 用于获取简单的 CPU 核心状态信息为数组的情况,自定义序列化器
@@ -46,7 +46,7 @@ object CpuCoreStatusSerializer : KSerializer<CpuCoreStatus> {
                 busy = false
             )
             // 正常对象的情况
-            element is JsonObject -> Json.decodeFromJsonElement(delegate, element)
+            element is JsonObject -> json.decodeFromJsonElement(delegate, element)
             // 其他异常情况
             else -> throw SerializationException("Expected JSON object or empty array, got ${element::class}")
         }

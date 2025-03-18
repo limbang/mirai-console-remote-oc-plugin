@@ -44,9 +44,9 @@ class ItemUtil(
             ?: throw IllegalArgumentException("液体数据文件不存在: $resourceDir/$fluidsJsonName")
 
         // 加载物品数据,自动关闭流
-        itemData = itemFile.reader(Charsets.UTF_8).use { Json.decodeFromString(it.readText()) }
+        itemData = itemFile.reader(Charsets.UTF_8).use { json.decodeFromString(it.readText()) }
         // 加载液体数据,自动关闭流
-        fluidData = fluidFile.reader(Charsets.UTF_8).use { Json.decodeFromString(it.readText()) }
+        fluidData = fluidFile.reader(Charsets.UTF_8).use { json.decodeFromString(it.readText()) }
     }
 
     /**
