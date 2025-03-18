@@ -42,8 +42,8 @@ sealed class AeCommand(val commandString: String) {
     /**
      * 获取所有物品命令
      */
-    data class GetAllItems(val filter: String?) :
-        AeCommand("return ae.getAllItems(${filter?.let { "'$it'" } ?: ""})")
+    data class GetAllItems(val filter: Item?) : AeCommand(
+        "return ae.getAllItems(${filter?.let { "{name = \"${it.name}\",damage = ${it.damage}}" } ?: ""})")
 
     /**
      * 请求物品命令
