@@ -200,7 +200,7 @@ object ClientListener : SimpleListenerHost() {
 
         //返回图片
         if (allData.isNotEmpty()) {
-            sendImage(allData.toImage("物品终端"))
+            sendImage(allData.toImage("物品终端", cellsWidth = 120, columnCount = 4, cellHeight = 86))
         }else sendMessage("❌ 未找到物品");
     }
 
@@ -276,29 +276,34 @@ object ClientListener : SimpleListenerHost() {
             teamCraftables[team.name] ?: run { sendMessage("❌ 请先发送[合成终端]指令获取可合成物品清单"); return }
         // 查询物品是否可以合成
         // 尝试精确匹配
-        var localizedItem = craftItems.find { it.name == itemName }
+        var craftItem = craftItems.find { it.name == itemName }
 
-        // 如果精确匹配失败，尝试拼音匹配
-        if (localizedItem == null) {
-            val targetPinyin = Pinyin.toPinyin(itemName, "").replace(" ", "").lowercase()
-            localizedItem = craftItems.find {
-                val itemPinyin = Pinyin.toPinyin(it.name, "").replace(" ", "").lowercase()
-                itemPinyin == targetPinyin
+        // 如果精确匹配失败，使用拼音通配符匹配
+        if (craftItem == null) {
+            val normalizedInput = Pinyin.toPinyin(itemName, " ").replace(" ", "").lowercase()
+            val patternPinyin = if (itemName.contains("*")) {
+                normalizedInput.replace("*", ".*")
+            } else {
+                ".*${normalizedInput}.*"
+            }
+
+            craftItem = craftItems.sortedBy { it.name.startsWith(itemName) }.find {
+                val itemPinyin = Pinyin.toPinyin(it.name, " ").replace(" ", "").lowercase()
+                itemPinyin.matches(patternPinyin.toRegex())
             }
         }
 
         // 查询物品是否可以合成
-        localizedItem ?: run { sendMessage("❌ 该物品无法合成,发送[合成终端]刷新可合成物品清单"); return }
+        craftItem ?: run { sendMessage("❌ 该物品无法合成,发送[合成终端]刷新可合成物品清单"); return }
 
         // 发送合成请求
-        sendMessage("📤 合成[${localizedItem.name}*$countInt]正在发送合成请求，请等待结果")
-
+        sendMessage("📤 合成[${craftItem.name}*$countInt]正在发送合成请求，请等待结果")
         // 发送合成请求
         val result = sendCommandRequest(
             team = team,
             aeCommand = AeCommand.RequestItem(
-                itemName = localizedItem.id,
-                damage = localizedItem.damage,
+                itemName = craftItem.id,
+                damage = craftItem.damage,
                 amount = countInt
             ),
             serializer = CraftingData.serializer()
@@ -310,12 +315,12 @@ object ClientListener : SimpleListenerHost() {
             if (craftingData.failed) {
                 val failureReason = craftingData.canceled.why ?: "未知原因"
                 val failureMessage = when {
-                    failureReason.contains("missing resources") -> "❌ 合成失败：${localizedItem.name} 原因：缺少资源"
-                    else -> "❌ 合成失败：${localizedItem.name} 原因：$failureReason"
+                    failureReason.contains("missing resources") -> "❌ 合成失败：${craftItem.name} 原因：缺少资源"
+                    else -> "❌ 合成失败：${craftItem.name} 原因：$failureReason"
                 }
                 sendMessage(failureMessage)
             } else {
-                sendMessage("📥 [${localizedItem.name}*${countInt}]合成请求已发送，正在获取CPU信息,请等待结果")
+                sendMessage("📥 [${craftItem.name}*${countInt}]合成请求已发送，正在获取CPU信息,请等待结果")
                 sendCpuInfo(team)
             }
         }
@@ -396,5 +401,3 @@ object ClientListener : SimpleListenerHost() {
     }
 
 }
-
-

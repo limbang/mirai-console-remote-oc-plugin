@@ -204,7 +204,9 @@ private fun drawCpuHeader(
     if (isDrawDetailedCpuStatus) {
         val cpuName = "CPU #${cpuDetail.name.ifEmpty { cpuNumber + 1 }}"
         val statusText = "状态: ${if (cpuDetail.busy) "忙碌中" else "空闲"}"
-        val storageText = "可存储: ${cpuDetail.storage / 1024} KB"
+        val storageText = cpuDetail.storage.toLongOrNull()?.let {
+            "可存储: ${it / 1024} KB"
+        } ?: "可存储: Infinity"
         val coresText = "并行处理单元: ${cpuDetail.coprocessors}"
         val fullText = listOf(cpuName, statusText, storageText, coresText).joinToString("  |  ")
 
@@ -391,7 +393,10 @@ fun List<CpuDetail>.drawCpuStatus(
         val iconY = infoY - 22
 
         g.drawImage(storageIcon, nameX, iconY, null)
-        g.drawString("${cpuDetail.storage / 1024} KB", firstTextX, infoY)
+        val storageText = cpuDetail.storage.toLongOrNull()?.let {
+            "${it / 1024} KB"
+        } ?: "Infinity"
+        g.drawString(storageText, firstTextX, infoY)
 
         g.drawImage(processorIcon, secondIconX, iconY, null)
         g.drawString("${cpuDetail.coprocessors}", secondTextX, infoY)

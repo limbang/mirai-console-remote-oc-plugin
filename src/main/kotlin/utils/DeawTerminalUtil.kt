@@ -14,6 +14,7 @@ import top.limbang.remoteoc.utils.MinecraftStyle.BORDER_HIGHLIGHT_COLOR
 import top.limbang.remoteoc.utils.MinecraftStyle.BORDER_SHADOW_COLOR
 import top.limbang.remoteoc.utils.MinecraftStyle.ITEM_TEXT_COLOR
 import java.awt.*
+import java.awt.SystemColor.text
 import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
@@ -25,8 +26,8 @@ import kotlin.math.ceil
  *
  * @param title 终端标题 默认为 "终端"
  * @param columnCount 列数 默认为 9
- * @param cellWidth 单元格宽度 默认为 64
- * @param cellHeight 单元格高度 默认为 64
+ * @param cellsWidth 单元格宽度 默认为 64
+ * @param cellHeight 单元格高度 默认为 0 表示与 cell为正方形
  * @param horizontalPadding 水平边距 默认为 20
  * @param bottomPadding 底部边距 默认为 20
  * @param headerHeight 标题高度 默认为 40
@@ -36,7 +37,7 @@ import kotlin.math.ceil
 fun List<LocalizedData>.toImage(
     title: String = "终端",
     columnCount: Int = 9,
-    cellWidth: Int = 64,
+    cellsWidth: Int = 0, // 0 表示与 cellHeight 相同
     cellHeight: Int = 64,
     horizontalPadding: Int = 20,
     bottomPadding: Int = 20,
@@ -45,6 +46,7 @@ fun List<LocalizedData>.toImage(
 ): BufferedImage {
 
     // 计算网格布局参数
+    val cellWidth = if (cellsWidth <= 0) cellHeight else maxOf(64, cellsWidth)
     val rowCount = ceil(size.toDouble() / columnCount).toInt()
     val canvasWidth = (cellWidth * columnCount) + (horizontalPadding * 2) + borderSize
     val canvasHeight = headerHeight + (cellHeight * rowCount) + bottomPadding + borderSize
@@ -121,32 +123,37 @@ private fun drawTableCell(g: Graphics2D, data: LocalizedData?, x: Int, y: Int, w
 
     // 若数据为 null，不需要绘制内容
     if (data == null) return
-
-    val iconSize = if (data.isFluid) 58 else 48
+    val iconSize = ((if (data.isFluid) 58 else 48) * (height/64.0)).toInt()
 
     // 加载并绘制图标
     val icon = try {
         ImageIO.read(File(data.imgPath)).getScaledInstance(iconSize, iconSize, Image.SCALE_SMOOTH)
     } catch (e: Exception) {
         // 图标加载失败，读取默认图标
-        getImage("default.png")!!
+        val defaultIcon = getImage("default.png")!!
+        val scaledDefaultIcon = (defaultIcon as BufferedImage).getScaledInstance(iconSize, iconSize, Image.SCALE_SMOOTH)
+        scaledDefaultIcon
     }
-    g.drawImage(icon, x + (width - iconSize) / 2, y + (height - iconSize) / 2, null)
+    g.drawImage(icon, x + 3, y + (height - iconSize) / 2, null)
 
-
-    // 绘制数据名称
-    g.color = Color.WHITE
-    g.font = Font("Microsoft YaHei", Font.PLAIN, 9)
-    g.drawString(truncateText(data.name, g.fontMetrics, 55), x + 5, y + 2 + g.fontMetrics.ascent)
+    if((width / height) < 3)
+    {
+        // 绘制数据名称
+        g.color = Color.WHITE
+        g.font = Font("Microsoft YaHei", Font.PLAIN, height/7)
+        g.drawString(truncateText(data.name, g.fontMetrics, width-9), x + 5, y + 2 + g.fontMetrics.ascent)
+    }
 
     // 获取字体度量信息
-    g.font = Font("Microsoft YaHei", Font.PLAIN, 12)
+    g.font = Font("Microsoft YaHei", Font.PLAIN, height/5)
     val fm = g.fontMetrics
-    val text = if (data.size < 1 && data.isCraftable) "合成" else NumberFormatter.format(data.size)
+    val textSize  = if (data.size > 0 || ((width*2 / height) > 3)) NumberFormatter.format(data.size) else ""
+    val textCraft = if(data.isCraftable) "合成" else ""
+    val text = textCraft+textSize
     val textWidth = fm.stringWidth(text)
 
     // 计算文本的绘制位置，确保右对齐并留有边距
-    val textX = x + width - 8 - textWidth // 右对齐，距离右边 8px
+    val textX = x + width - 6 - textWidth // 右对齐，距离右边 8px
     val textY = y + height - 4 - fm.descent // 确保底部间距 8px
 
     // 绘制合成或数量

@@ -60,8 +60,8 @@ class ItemUtil(
                     // 1. 构建原始名称索引
                     localizedIndex[entry.localizedName] = pair
 
-                    // 2. 生成拼音索引（处理多音字）
-                    val pinyin = generatePinyinVariations(entry.localizedName) // 只返回一个拼音变体
+                    /* 2. 生成拼音索引（无多音字处理） */
+                    val pinyin = generatePinyinVariations(entry.localizedName)
                     pinyinIndex.computeIfAbsent(pinyin) { mutableListOf() }.add(pair)
                 }
             }
@@ -72,16 +72,7 @@ class ItemUtil(
      * 生成拼音变体（处理多音字）
      */
     fun generatePinyinVariations(chinese: String): String {
-        val words = chinese.toCharArray()
-        val pinyinList = words.map { char ->
-            if (Pinyin.isChinese(char)) {
-                Pinyin.toPinyin(char).lowercase() // `拼音` 转 `pinyin`
-            } else {
-                char.toString().lowercase() // 非汉字直接保留
-            }
-        }
-        // 组合所有可能的拼音变体
-        return pinyinList.joinToString("") //setOf(pinyinList.joinToString(""), pinyinList.joinToString(" "))
+        return Pinyin.toPinyin(chinese," ").replace(" ", "").lowercase()
     }
 
     /**
@@ -136,7 +127,7 @@ class ItemUtil(
 //        }
 
         // 拼音模糊匹配
-        val pinyinQuery = query.lowercase()
+        val pinyinQuery = Pinyin.toPinyin(query," ").replace(" ", "").lowercase()
         pinyinIndex.filterKeys { it.contains(pinyinQuery) }.values.flatten().forEach { (name, damage) ->
             results.add(Item(name, damage = damage, label = query, size = 0))
         }

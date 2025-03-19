@@ -21,7 +21,7 @@ import top.limbang.remoteoc.network.serializer.CpuCoreStatusSerializer
  */
 @Serializable
 data class CpuDetail(
-    val storage: Int,
+    val storage: String,
     val coprocessors: Int,
     val name: String,
     @Serializable(with = CpuCoreStatusSerializer::class)
