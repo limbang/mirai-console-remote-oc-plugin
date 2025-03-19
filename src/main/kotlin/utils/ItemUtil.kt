@@ -47,10 +47,8 @@ class ItemUtil(
             ?: throw IllegalArgumentException("液体数据文件不存在: $resourceDir/$fluidsJsonName")
 
         // 加载物品数据,自动关闭流
-        itemData = itemFile.reader(Charsets.UTF_8).use { Json.decodeFromString(it.readText()) }
         itemData = itemFile.reader(Charsets.UTF_8).use { json.decodeFromString(it.readText()) }
         // 加载液体数据,自动关闭流
-        fluidData = fluidFile.reader(Charsets.UTF_8).use { Json.decodeFromString(it.readText()) }
         fluidData = fluidFile.reader(Charsets.UTF_8).use { json.decodeFromString(it.readText()) }
 
         // 构建索引逻辑
@@ -145,8 +143,8 @@ class ItemUtil(
         return results.distinct()
     }
 
-    fun searchItemsByNames(queries: List<String>): List<Item> {
-        val results = mutableListOf<Item>()
+    fun searchItemsByNames(queries: List<String>): List<searchItem> {
+        val results = mutableListOf<searchItem>()
         // 遍历每个查询
         queries.forEach { query ->
             var chineseResultCount = 0
@@ -159,7 +157,7 @@ class ItemUtil(
                     val pattern = Regex("^$regex$") // 添加 ^ 和 $ 确保匹配整个字符串
                     localizedIndex.forEach { (key, value) ->
                         if (pattern.matches(key)) {
-                            val item = Item(value.first, damage = value.second, label = key, size = 0)
+                            val item = searchItem(value.first, value.second)
                             results.add(item)
                             chineseResultCount++
                         }
@@ -167,7 +165,7 @@ class ItemUtil(
                 } else {
                     // 精确查询
                     localizedIndex[query]?.let { (name, damage) ->
-                        val item = Item(name, damage = damage, label = query, size = 0)
+                        val item = searchItem(name, damage)
                         results.add(item)
                         chineseResultCount++
                     }
@@ -183,7 +181,7 @@ class ItemUtil(
                     pinyinIndex.forEach { (key, mappings) ->
                         if (pattern.matches(key)) {
                             mappings.forEach { (name, damage) ->
-                                results.add(Item(name, damage = damage, label = query, size = 0))
+                                results.add(searchItem(name, damage))
                             }
                         }
                     }
@@ -191,7 +189,7 @@ class ItemUtil(
                     // 拼音精确查询
                     pinyinIndex[pinyinQuery]?.let { mappings ->
                         mappings.forEach { (name, damage) ->
-                            results.add(Item(name, damage = damage, label = query, size = 0))
+                            results.add(searchItem(name, damage))
                         }
                     }
                 }

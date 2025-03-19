@@ -155,3 +155,15 @@ data class LocalizedData(
     val size: Long,
     val isFluid: Boolean = false
 )
+
+/**
+ * 物品查询数据实体
+ * 用于物品终端过滤查询
+ * @property name 唯一命名空间标识符
+ * @property damage 损伤值或元数据标识，用于区分同类物品的不同状态。
+ */
+@Serializable
+data class searchItem(
+    val name: String,
+    val damage: Int,
+)

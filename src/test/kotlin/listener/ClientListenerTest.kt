@@ -90,11 +90,11 @@ internal class ClientListenerTest {
 
         val result = sendCommandRequest(
             clientId = clientId,
-            aeCommand = AeCommand.GetAllItems(item),
+            aeCommand = AeCommand.GetSingleItem(item.name,item.damage),
             serializer = Item.serializer()
         )
         result?.data ?: run { logger.error("❌ 获取物品终端失败"); return@runBlocking }
-        val image = itemUtil.getLocalizedDataList(result.data!!).toImage("物品终端")
+        val image = itemUtil.getLocalizedDataList(result.data!!).toImage("[{name:\"minecraft:redstone\"},{name:\"minecraft:glass\"}]")
         ImageIO.write(image, "PNG", File("物品终端.png"))
         logger.info(result.data.toString())
     }

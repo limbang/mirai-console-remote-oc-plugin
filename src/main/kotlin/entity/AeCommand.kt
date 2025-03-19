@@ -42,9 +42,21 @@ sealed class AeCommand(val commandString: String) {
     /**
      * 获取所有物品命令
      */
-    data class GetAllItems(val filter: Item?) : AeCommand(
-        "return ae.getAllItems(${filter?.let { "{name = \"${it.name}\",damage = ${it.damage}}" } ?: ""})")
+    data class GetSingleItem(val name: String?, val damage: Int?) : AeCommand(
+        "return ae.getSingleItems(${
+            if (name != null) {
+                if (damage != null) {
+                    "{name = \"$name\",damage = $damage}"
+                } else {
+                    "{name = \"$name\"}"
+                }
+            } else {"{}"}
+        })"
+    )
 
+    data class GetAllItems(val filterJson: String?) : AeCommand(
+        "return ae.getAllItems(${filterJson ?: ""})"
+    )
     /**
      * 请求物品命令
      * @param itemName 物品名称

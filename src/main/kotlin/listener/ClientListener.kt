@@ -9,6 +9,7 @@ package top.limbang.remoteoc.listener
 
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.serialization.KSerializer
+
 import net.mamoe.mirai.contact.Contact.Companion.uploadImage
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.SimpleListenerHost
@@ -183,29 +184,23 @@ object ClientListener : SimpleListenerHost() {
         val allData = mutableListOf<LocalizedData>()
 
         // 4. 批量处理物品查询
-        if(items.size > 2)
+        if(items.size < 2)
         {
             val firstItem = items.first()
-            val result = sendCommandRequest(team, AeCommand.GetAllItems(firstItem), Item.serializer())
-            if (result?.data == null) {
-                // sendMessage("❌ 获取物品终端失败: ${firstItem.name}")
-                return
-            }
-            allData.addAll(itemUtil.getLocalizedDataList(result.data!!))
+            val result = sendCommandRequest(team, AeCommand.GetSingleItem(firstItem.name,firstItem.damage), Item.serializer())
+            if (result?.data == null) return
+            allData.addAll(itemUtil.getLocalizedDataList(result.data))
         }
-        else items.forEach { item ->
-            val result = sendCommandRequest(team, AeCommand.GetAllItems(item), Item.serializer())
-            if (result?.data == null) {
-                //sendMessage("❌ 获取物品终端失败: ${item.name}")
-                return
-            }
-            allData.addAll(itemUtil.getLocalizedDataList(result.data!!))
+        else {
+            val result = sendCommandRequest(team, AeCommand.GetAllItems(convertToLuaTable(items)), Item.serializer())
+            if (result?.data == null) return
+            allData.addAll(itemUtil.getLocalizedDataList(result.data))
         }
 
         //返回图片
         if (allData.isNotEmpty()) {
             sendImage(allData.toImage("物品终端"))
-        }
+        }else sendMessage("❌ 未找到物品");
     }
 
     /**
@@ -329,6 +324,18 @@ object ClientListener : SimpleListenerHost() {
         sendMessage(result?.message ?: "❌ 取消合成失败：未知原因")
     }
 
+    /**
+     * 将物品列表转换为 Lua 表格式
+     *
+     * @param items 待查询的物品列表
+     * @return Lua 表格式的字符串
+     */
+    private fun convertToLuaTable(items: List<searchItem>): String {
+        return items.joinToString(prefix = "{", postfix = "}") { item ->
+            val damagePart = item.damage?.let { ", damage=$it" } ?: ""
+            "{name=\"${item.name}\"$damagePart}"
+        }
+    }
     /**
      * 发送命令请求
      *
