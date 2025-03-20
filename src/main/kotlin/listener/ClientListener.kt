@@ -10,6 +10,7 @@ package top.limbang.remoteoc.listener
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.serialization.KSerializer
 
+import com.github.promeg.pinyinhelper.Pinyin
 import net.mamoe.mirai.contact.Contact.Companion.uploadImage
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.SimpleListenerHost
@@ -274,10 +275,23 @@ object ClientListener : SimpleListenerHost() {
         val craftItems =
             teamCraftables[team.name] ?: run { sendMessage("❌ 请先发送[合成终端]指令获取可合成物品清单"); return }
         // 查询物品是否可以合成
-        val localizedItem =
-            craftItems.find { it.name == itemName } ?: run { sendMessage("❌ 该物品无法合成"); return }
+        // 尝试精确匹配
+        var localizedItem = craftItems.find { it.name == itemName }
+
+        // 如果精确匹配失败，尝试拼音匹配
+        if (localizedItem == null) {
+            val targetPinyin = Pinyin.toPinyin(itemName, "").replace(" ", "").lowercase()
+            localizedItem = craftItems.find {
+                val itemPinyin = Pinyin.toPinyin(it.name, "").replace(" ", "").lowercase()
+                itemPinyin == targetPinyin
+            }
+        }
+
+        // 查询物品是否可以合成
+        localizedItem ?: run { sendMessage("❌ 该物品无法合成,发送[合成终端]刷新可合成物品清单"); return }
+
         // 发送合成请求
-        sendMessage("📤 合成[$itemName*$countInt]正在发送合成请求，请等待结果")
+        sendMessage("📤 合成[${localizedItem.name}*$countInt]正在发送合成请求，请等待结果")
 
         // 发送合成请求
         val result = sendCommandRequest(

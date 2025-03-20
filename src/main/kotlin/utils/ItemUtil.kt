@@ -173,7 +173,7 @@ class ItemUtil(
             }
 
             if (chineseResultCount < 2) {
-                val pinyinQuery = query.lowercase()
+                val pinyinQuery = Pinyin.toPinyin(query," ").replace(" ", "").lowercase()
                 if (pinyinQuery.contains("*")) {
                     // 拼音模糊查询
                     val regex = pinyinQuery.replace("*", ".*")
@@ -207,14 +207,15 @@ class ItemUtil(
      * 1. 从NBT标签解析流体名称
      * 2. 使用流体名称的本地化版本+"液滴"后缀
      * 3. 保持液滴自身材质路径逻辑不变
+     * 4. 不匹配物品时显示独立的滴液图标和本地化名字
      */
     private fun handleFluidDrop(item: Item): LocalizedData {
         // 处理缺少tag的情况,使用流体数据文件中的名称
         if (item.tag.isEmpty()) {
             val fluidName = item.label.removePrefix("drop of ").lowercase().replace(" ", ".")
             val fluidMetadata = fluidData[fluidName]
-            val fluidLocalizedName = fluidMetadata?.localizedName ?: fluidName
-            val fluidImgPath = "$resourceDir/image/${fluidMetadata?.imgPath ?: "default.png"}"
+            val fluidLocalizedName = fluidMetadata?.localizedName ?: fluidName.replace("drop.of.fluid.", "")
+            val fluidImgPath = "$resourceDir/image/${fluidMetadata?.imgPath ?: "defaultDrop.png"}"
             return LocalizedData(
                 id = item.name,
                 name = fluidLocalizedName,
@@ -239,7 +240,7 @@ class ItemUtil(
             ?.get(item.damage.toString())
             ?.imgPath
             ?.let { "$resourceDir/image/$it" }
-            ?: "$resourceDir/image/default.png"
+            ?: "$resourceDir/image/defaultDrop.png"
 
         return LocalizedData(
             id = item.name,
@@ -316,7 +317,10 @@ class ItemUtil(
      */
     @JvmName("getLocalizedDataListFromItems")
     fun getLocalizedDataList(items: List<Item>): List<LocalizedData> {
-        return items.map { getLocalizedData(it) }
+        //排序并本地化
+        return items
+            .sortedWith(compareBy<Item> { it.name }.thenBy { it.damage })
+            .map { getLocalizedData(it) }
     }
 
     /**
