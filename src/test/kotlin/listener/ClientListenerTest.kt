@@ -48,7 +48,7 @@ internal class ClientListenerTest {
         result?.data ?: run { logger.error("❌ 获取CPU信息失败"); return@runBlocking }
         // 发送流体终端图片
         val image = result.data!!.toImage(itemUtil)
-        ImageIO.write(image, "PNG", File("合成终端.png"))
+        ImageIO.write(image, "PNG", File("CPU状态.png"))
         logger.info(result.data.toString())
     }
 
@@ -69,7 +69,7 @@ internal class ClientListenerTest {
     @Test
     fun requestItemTest() = runBlocking {
         // 定义一个物品
-        val localizedItem = itemUtil.getLocalizedData(Item("gregtech:gt.metaitem.01", "Titanium Plate", 17028, 0))!!
+        val localizedItem = itemUtil.getLocalizedData(Item("gregtech:gt.metaitem.01", "Titanium Plate", 17028, 0))
 
         val result = sendCommandRequest(
             clientId = clientId,
@@ -86,11 +86,13 @@ internal class ClientListenerTest {
 
     @Test
     fun getItemsTest() = runBlocking {
-        val item = Item("minecraft:stone", "Stone", 0, 0)
+        val aeCommands = mutableListOf<AeCommand>()
+        aeCommands.add(AeCommand.GetAllItems(Item("minecraft:stone", "石头", 0, 0)))
+        aeCommands.add(AeCommand.GetAllItems(Item("minecraft:chest", "箱子", 0, 0)))
 
         val result = sendCommandRequest(
             clientId = clientId,
-            aeCommand = AeCommand.GetAllItems(item),
+            aeCommands = aeCommands,
             serializer = Item.serializer()
         )
         result?.data ?: run { logger.error("❌ 获取物品终端失败"); return@runBlocking }
@@ -99,32 +101,49 @@ internal class ClientListenerTest {
         logger.info(result.data.toString())
     }
 
-
     private suspend fun <T> sendCommandRequest(
         clientId: String,
         aeCommand: AeCommand,
         serializer: KSerializer<T>
+    ): ResultData<T>? = sendCommandRequest(clientId, listOf(aeCommand), serializer)
+
+    private suspend fun <T> sendCommandRequest(
+        clientId: String,
+        aeCommands: List<AeCommand>,
+        serializer: KSerializer<T>
     ): ResultData<T>? {
-        // 创建命令请求
-        val taskStatusResponse = try {
+        // 执行命令
+        val results = executeCommands(clientId, aeCommands) ?: return null
+        // 构建反序列化器
+        val resultDataSerializer = ResultData.serializer(serializer)
+
+        // 处理多结果合并逻辑
+        return results
+            .map { json.decodeFromString(resultDataSerializer, it) }
+            .let { resultDataList ->
+                ResultData(
+                    // 合并所有data集合，保留非空结果
+                    data = resultDataList.flatMap { it.data.orEmpty() }.takeIf { it.isNotEmpty() },
+                    // 取第一个有效消息
+                    message = resultDataList.first().message
+                )
+            }
+    }
+
+    private suspend fun executeCommands(clientId: String, commands: List<AeCommand>): List<String>? {
+        return try {
+            // 生成唯一任务ID（基于第一个命令和用户ID）
+            val taskId = commands.first().generateTaskId("test")
+            // 执行命令
             api.executeCommand(
-                taskId = "test_${
-                    aeCommand.commandString.removePrefix("return ae.").substringBefore("(")
-                }",
-                command = aeCommand,
+                taskId = taskId,
+                commands = commands,
                 clientId = clientId
-            )
+            )?.result
         } catch (e: TimeoutCancellationException) {
             // 处理超时
             logger.error(TIMEOUT_ERROR)
-            return null
-        } ?: return null
-        // 处理结果
-        val itemList = taskStatusResponse.result!!.first()
-        // 构造 ResultData 的序列化器，并传入 T 的序列化器
-        val resultDataSerializer = ResultData.serializer(serializer)
-        // 返回解析结果
-        return json.decodeFromString(resultDataSerializer, itemList)
+            null
+        }
     }
-
 }

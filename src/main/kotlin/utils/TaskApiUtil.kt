@@ -29,7 +29,7 @@ val json: Json = Json {
  * 异步执行远程命令并轮询任务状态直至完成或超时
  *
  * @param taskId 任务唯一标识符，用于状态查询
- * @param command 包含实际命令的[AeCommand]对象，通过commandString获取命令文本
+ * @param commands 远程命令列表
  * @param clientId 客户端唯一标识符，用于命令发送
  * @return 最终完成状态的任务数据，当命令提交失败或超时时返回null
  * @throws TimeoutCancellationException 若30秒内未完成将抛出超时异常
@@ -39,12 +39,12 @@ val json: Json = Json {
  * 2. 自动清理远程任务状态（remove=true）
  * 3. 协程作用域内可取消
  */
-suspend fun TaskApi.executeCommand(taskId: String, command: AeCommand, clientId: String): TaskStatusResponse? {
+suspend fun TaskApi.executeCommand(taskId: String, commands: List<AeCommand>, clientId: String): TaskStatusResponse? {
     // 发送命令
     addCommand(
         CommandRequest(
             taskId = taskId,
-            commands = listOf(command.commandString),
+            commands = commands.map { it.commandString },
             clientId = clientId
         )
     ).takeIf { it.isSuccess() } ?: return run { logger.error(REQUEST_FAILED);null }
@@ -69,4 +69,17 @@ suspend fun TaskApi.executeCommand(taskId: String, command: AeCommand, clientId:
         }
         return@withTimeout finalResponse
     }
+}
+
+/**
+ * 生成任务唯一标识符
+ *
+ * @param id 客户端唯一标识符
+ * @return 任务唯一标识符
+ */
+fun AeCommand.generateTaskId(id: String): String {
+    val commandPrefix = commandString
+        .removePrefix("return ae.")
+        .substringBefore("(")
+    return "${id}_$commandPrefix"
 }

@@ -24,7 +24,6 @@ import top.limbang.remoteoc.listener.TeamListener.sendMessage
 import top.limbang.remoteoc.network.model.ResultData
 import top.limbang.remoteoc.utils.*
 import java.awt.image.BufferedImage
-import kotlin.coroutines.CoroutineContext
 
 /**
  * 监听操作客户端命令
@@ -42,11 +41,6 @@ object ClientListener : SimpleListenerHost() {
     // 合成数量限制
     private const val MAX_CRAFT_AMOUNT = 1_000_000
     private const val DEFAULT_CRAFT_AMOUNT = 1
-
-    override fun handleException(context: CoroutineContext, exception: Throwable) {
-        println("捕获到事件处理异常: ${exception.message}")
-        exception.printStackTrace()
-    }
 
     /**
      * 绑定客户端
@@ -289,27 +283,61 @@ object ClientListener : SimpleListenerHost() {
         team: Team,
         aeCommand: AeCommand,
         serializer: KSerializer<T>
+    ): ResultData<T>? = sendCommandRequest(team, listOf(aeCommand), serializer)
+
+    /**
+     * 发送命令列表请求
+     *
+     * @param T 命令返回类型
+     * @param team 团队信息
+     * @param aeCommands AE命令列表
+     * @return 命令返回结果 为空表示请求失败
+     */
+    private suspend fun <T> GroupMessageEvent.sendCommandRequest(
+        team: Team,
+        aeCommands: List<AeCommand>,
+        serializer: KSerializer<T>
     ): ResultData<T>? {
-        // 创建命令请求
-        val taskStatusResponse = try {
+        // 执行命令
+        val results = executeCommands(team, aeCommands) ?: return null
+        // 构建反序列化器
+        val resultDataSerializer = ResultData.serializer(serializer)
+
+        // 处理多结果合并逻辑
+        return results
+            .map { json.decodeFromString(resultDataSerializer, it) }
+            .let { resultDataList ->
+                ResultData(
+                    // 合并所有data集合，保留非空结果
+                    data = resultDataList.flatMap { it.data.orEmpty() }.takeIf { it.isNotEmpty() },
+                    // 取第一个有效消息
+                    message = resultDataList.first().message
+                )
+            }
+    }
+
+    /**
+     * 执行AE命令列表
+     *
+     * @param team 目标团队配置信息
+     * @param commands 待执行命令列表（需非空）
+     * @return 原始结果字符串列表，null 表示执行过程中发生错误
+     */
+    private suspend fun GroupMessageEvent.executeCommands(team: Team, commands: List<AeCommand>): List<String>? {
+        return try {
+            // 生成唯一任务ID（基于第一个命令和用户ID）
+            val taskId = commands.first().generateTaskId(sender.id.toString())
+            // 执行命令
             taskApi.executeCommand(
-                taskId = "${sender.id}_${
-                    aeCommand.commandString.removePrefix("return ae.").substringBefore("(")
-                }",
-                command = aeCommand,
+                taskId = taskId,
+                commands = commands,
                 clientId = teamClients.getValue(team.name)
-            )
+            )?.result
         } catch (e: TimeoutCancellationException) {
             // 处理超时
             sendMessage(TIMEOUT_ERROR)
-            return null
-        } ?: return null
-        // 处理结果
-        val itemList = taskStatusResponse.result!!.first()
-        // 构造 ResultData 的序列化器，并传入 T 的序列化器
-        val resultDataSerializer = ResultData.serializer(serializer)
-        // 返回解析结果
-        return json.decodeFromString(resultDataSerializer, itemList)
+            null
+        }
     }
 
     /**
