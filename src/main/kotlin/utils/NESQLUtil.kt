@@ -14,6 +14,7 @@ import kotlinx.serialization.json.Json
 import org.slf4j.LoggerFactory
 import top.limbang.remoteoc.entity.FluidMetadata
 import top.limbang.remoteoc.entity.ItemMetadata
+import top.limbang.remoteoc.utils.NBTUtil.readTargetCircuitDamage
 import top.limbang.remoteoc.utils.NBTUtil.readTargetCircuitStringId
 import java.io.File
 import java.sql.Connection
@@ -207,7 +208,7 @@ object NESQLUtil {
             groupEntries.associate { entry ->
                 // 处理 prog_circuit 特殊情况
                 val damage = if (entry.internalName == "prog_circuit" && entry.nbt.isNotBlank()) {
-                    NBTUtil.parseNBTFromString(entry.nbt).readTargetCircuitStringId()
+                    NBTUtil.parseNBTFromString(entry.nbt).readTargetCircuitDamage()
                 } else entry.itemDamage
                 // Key格式: damage
                 damage.toString() to ItemMetadata(
