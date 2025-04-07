@@ -20,6 +20,7 @@ dependencies {
     val serializationVersion = "1.6.2"
     val coroutinesVersion = "1.10.0"
 
+    implementation("com.github.Towdium:PinIn:1.6.0")
     implementation("com.github.Querz:NBT:6.1")
     implementation("org.hsqldb:hsqldb:2.7.4")
     implementation("org.slf4j:slf4j-api:2.0.16")
