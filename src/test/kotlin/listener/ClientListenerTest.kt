@@ -24,6 +24,7 @@ internal class ClientListenerTest {
 
     private val logger = LoggerFactory.getLogger(TaskApiTest::class.java)
     private val itemUtil = ItemUtil("debug-sandbox/data/top.limbang.RemoteOC")
+    private val itemSearcherUtil = ItemSearcherUtil(itemUtil.localizedItems)
 
     private val api: TaskApi
     private val clientId: String
@@ -86,13 +87,13 @@ internal class ClientListenerTest {
 
     @Test
     fun getItemsTest() = runBlocking {
-        val aeCommands = mutableListOf<AeCommand>()
-        aeCommands.add(AeCommand.GetAllItems(Item("minecraft:stone", "石头", 0, 0)))
-        aeCommands.add(AeCommand.GetAllItems(Item("minecraft:chest", "箱子", 0, 0)))
-
+        val commands = mutableListOf<AeCommand>()
+        itemSearcherUtil.search("电路").forEach {
+            commands.add(AeCommand.GetAllItems(it))
+        }
         val result = sendCommandRequest(
             clientId = clientId,
-            aeCommands = aeCommands,
+            aeCommands = commands,
             serializer = Item.serializer()
         )
         result?.data ?: run { logger.error("❌ 获取物品终端失败"); return@runBlocking }
