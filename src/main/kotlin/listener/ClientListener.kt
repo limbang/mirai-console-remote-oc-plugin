@@ -34,9 +34,12 @@ object ClientListener : SimpleListenerHost() {
     private val BIND_CLIENT_REGEX = """^绑定客户端\s?([a-zA-Z0-9]{2,16})(?:\s+(true|false))?""".toRegex()
     private val CRAFT_ITEM_REGEX = """^合成\s+([^\s\n]+(?:\s+[^\s\n]+)*?)(?:\s+(\d{1,12}))?$""".toRegex()
     private val CANCEL_CRAFTING_REGEX = """^取消合成\s+(.*)""".toRegex()
+    private val GET_ITEMS_REGEX = """^物品终端\s?(.*)""".toRegex()
 
     // 物品本地化工具
     private val itemUtil = ItemUtil(dataFolderPath.toString())
+    // 本地化物品搜索工具
+    private val searchUtil = ItemSearcherUtil(itemUtil.localizedItems)
 
     // 合成数量限制
     private const val MAX_CRAFT_AMOUNT = 1_000_000
@@ -148,6 +151,37 @@ object ClientListener : SimpleListenerHost() {
         result?.data ?: run { sendMessage("❌ 获取CPU信息失败"); return }
         // 发送CPU信息图片
         sendImage(result.data.toImage(itemUtil))
+    }
+
+    /**
+     * 物品终端
+     */
+    @EventHandler
+    suspend fun GroupMessageEvent.getItems() {
+        val content = message.contentToString()
+        val commandMatch = GET_ITEMS_REGEX.find(content) ?: return
+        val (itemName) = commandMatch.destructured
+
+        // 获取团队信息
+        val team = validateTeamAndClient() ?: return
+        // 创建命令列表
+        val commands = mutableListOf<AeCommand>()
+
+        // 处理过滤名称
+        if (itemName.isNotBlank()) {
+            val searchResult = searchUtil.search(itemName)
+            sendMessage("已按照优先级搜索到 ${searchResult.size} 个物品,正在创建命令,请等待结果")
+            searchResult.forEach {
+                commands.add(AeCommand.GetAllItems(it))
+            }
+        } else commands.add(AeCommand.GetAllItems(null))
+
+        // 发送物品终端请求
+        val result = sendCommandRequest(team, commands, Item.serializer())
+        result?.data ?: run { sendMessage("❌ 未获取到任何物品"); return }
+
+        // 发送物品终端图片
+        sendImage(itemUtil.getLocalizedDataList(result.data).toImage("物品终端"))
     }
 
     /**
