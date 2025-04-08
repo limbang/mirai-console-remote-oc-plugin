@@ -1,7 +1,6 @@
 package top.limbang.remoteoc.utils
 
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import top.limbang.remoteoc.entity.ItemMetadata
 import top.limbang.remoteoc.utils.IRARUtil.convertToItemJson
 import top.limbang.remoteoc.utils.IRARUtil.exportToItemImages
@@ -26,17 +25,6 @@ internal class IRARUtilTest {
     }
 
     @Test
-    fun allWriteItemJsonToFile() {
-        File("debug-sandbox/export/").listFiles { _, name ->
-            name.endsWith(".json")
-        }?.forEach {
-            val irarDataList = IRARUtil.readIRARDataList(it.absolutePath)
-            val itemMetadataMap = irarDataList.convertToItemJson()
-            itemMetadataMap.writeItemJsonToFile(it.parentFile.absolutePath + "metadata/", it.name)
-        }
-    }
-
-    @Test
     fun exportToItemImages() {
         val irarDataList = IRARUtil.readIRARDataList("debug-sandbox/gregtech_item.json")
 
@@ -54,14 +42,25 @@ internal class IRARUtilTest {
         }
     }
 
+    /**
+     * 1.遍历文件夹所有 json文件，导出物品元数据到对应文件夹的 metadata 文件夹下
+     *
+     */
     @Test
-    fun mergeJsonFiles() {
-        val itemData1Path = "debug-sandbox/data/top.limbang.RemoteOC/items.json"
-        val itemData2Path = "debug-sandbox/exportmetadata/merged.json"
-
-        IRARUtil.mergeJsonFiles(itemData1Path, itemData2Path, "debug-sandbox/data/top.limbang.RemoteOC/merged.json")
+    fun allWriteItemJsonToFile() {
+        File("debug-sandbox/export/").listFiles { _, name ->
+            name.endsWith(".json")
+        }?.forEach {
+            val irarDataList = IRARUtil.readIRARDataList(it.absolutePath)
+            val itemMetadataMap = irarDataList.convertToItemJson()
+            itemMetadataMap.writeItemJsonToFile(it.parentFile.absolutePath + "metadata/", it.name)
+        }
     }
 
+    /**
+     * 2.合并所有 metadata 文件夹下 json 文件，生成一个 merged.json 文件
+     *
+     */
     @Test
     fun allMergeJsonFiles() {
         val exportDir = File("debug-sandbox/exportmetadata/").apply { mkdirs() }
@@ -95,5 +94,17 @@ internal class IRARUtilTest {
                 writer.flush()
             }
         }
+    }
+
+    /**
+     * 3.合并单个 json 文件到 merged.json 文件
+     *
+     */
+    @Test
+    fun mergeJsonFiles() {
+        val itemData1Path = "debug-sandbox/data/top.limbang.RemoteOC/items.json"
+        val itemData2Path = "debug-sandbox/exportmetadata/merged.json"
+
+        IRARUtil.mergeJsonFiles(itemData1Path, itemData2Path, "debug-sandbox/data/top.limbang.RemoteOC/merged.json")
     }
 }
