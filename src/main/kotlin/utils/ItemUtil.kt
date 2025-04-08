@@ -8,7 +8,6 @@
 package top.limbang.remoteoc.utils
 
 
-import kotlinx.serialization.json.Json
 import org.slf4j.LoggerFactory
 import top.limbang.remoteoc.entity.*
 import top.limbang.remoteoc.utils.NBTUtil.readFluidName
@@ -36,6 +35,9 @@ class ItemUtil(
     private val itemData: Map<String, Map<String, ItemMetadata>>
     private val fluidData: Map<String, FluidMetadata>
 
+    /** 所有带本地化名称的物品列表 */
+    val localizedItems: List<Item> by lazy { toLocalizedItems() }
+
     init {
         // 检查资源目录是否存在
         val itemFile = File(resourceDir, itemJsonName).takeIf { it.exists() }
@@ -47,6 +49,21 @@ class ItemUtil(
         itemData = itemFile.reader(Charsets.UTF_8).use { json.decodeFromString(it.readText()) }
         // 加载液体数据,自动关闭流
         fluidData = fluidFile.reader(Charsets.UTF_8).use { json.decodeFromString(it.readText()) }
+    }
+
+    /**
+     * 转换为带有本地化名称的物品列表
+     *
+     * @return [List] 包含所有物品的本地化信息的列表
+     */
+    private fun toLocalizedItems(): List<Item> {
+        val items = mutableListOf<Item>()
+        itemData.forEach { (itemId, damageMap) ->
+            damageMap.forEach { (damage, metadata) ->
+                items.add(Item(itemId, metadata.localizedName, damage.toInt(), 0, isCraftable = false))
+            }
+        }
+        return items
     }
 
     /**
