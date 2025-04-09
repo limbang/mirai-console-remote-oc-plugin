@@ -1,8 +1,8 @@
 <div align="center">
 
-[![](https://img.shields.io/github/v/release/limbang/mirai-console-remote-oc-plugin?include_prereleases)](https://github.com/limbang/mirai-console-mcsm-plugin/releases)
+[![](https://img.shields.io/github/v/release/limbang/mirai-console-remote-oc-plugin?include_prereleases)](https://github.com/limbang/mirai-console-remote-oc-plugin/releases)
 ![](https://img.shields.io/github/downloads/limbang/mirai-console-remote-oc-plugin/total)
-[![](https://img.shields.io/github/license/limbang/mirai-console-mcsm-plugin)](https://github.com/limbang/mirai-console-mcsm-plugin/blob/master/LICENSE)
+[![](https://img.shields.io/github/license/limbang/mirai-console-remote-oc-plugin)](https://github.com/limbang/mirai-console-remote-oc-plugin/blob/master/LICENSE)
 [![](https://img.shields.io/badge/mirai-2.16.0-69c1b9)](https://github.com/mamoe/mirai)
 
 本项目是基于 Mirai Console 编写的插件
