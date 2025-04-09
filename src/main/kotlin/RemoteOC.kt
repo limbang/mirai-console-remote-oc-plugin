@@ -27,7 +27,7 @@ object RemoteOC : KotlinPlugin(
     JvmPluginDescription(
         id = "top.limbang.RemoteOC",
         name = "RemoteOC",
-        version = "0.0.1",
+        version = "0.1.0",
     ) {
         author("limbang")
         info("远程控制OC")
